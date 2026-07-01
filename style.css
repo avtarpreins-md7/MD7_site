@@ -1,0 +1,76 @@
+body { 
+    font-family: 'Cairo', sans-serif; 
+    background: #0a0a0a; 
+    color: white; 
+    margin: 0; 
+}
+header { 
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+    padding: 20px 5%; 
+    background: rgba(17,17,17,0.8); 
+    border-bottom: 1px solid #333; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100;
+}
+header nav a { 
+    color: white; 
+    text-decoration: none; 
+    margin-right: 25px; 
+    font-weight: 700; 
+    transition: color 0.3s;
+}
+header nav a:hover { color: #d4af37; }
+
+.hero { 
+    text-align: center; 
+    padding: 120px 20px; 
+    min-height: 90vh; 
+    background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)), url('md7-logo.png') no-repeat center; 
+    background-size: contain; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+.hero h1 { 
+    font-size: 80px; 
+    color: #d4af37; 
+    margin: 0; 
+    text-shadow: 0 0 20px #000; 
+}
+.hero h2 { 
+    font-size: 24px;
+    color: #00AEEF; 
+    text-shadow: 0 0 15px #000; 
+    margin-top: 10px;
+}
+.hero p { 
+    max-width: 600px; 
+    font-size: 18px; 
+    text-shadow: 0 0 10px #000; 
+    line-height: 1.8;
+}
+.btn-matrouh { 
+    background: #00AEEF; 
+    color: white; 
+    padding: 12px 25px; 
+    border-radius: 12px; 
+    text-decoration: none; 
+    font-weight: 900; 
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.section { padding: 60px 5%; }
+.section-title { font-size: 36px; text-align: center; margin-bottom: 40px; color: #d4af37; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.project-card { background: #111; border: 1px solid #333; border-radius: 20px; padding: 30px; transition: transform 0.3s; }
+.project-card:hover { transform: translateY(-10px); border-color: #d4af37; }
+.contact-form { max-width: 600px; margin: auto; background: #111; padding: 40px; border-radius: 20px; }
+.form-group { margin-bottom: 15px; }
+.form-group input, .form-group textarea { width: 100%; padding: 12px; background: #222; border: 1px solid #333; border-radius: 8px; color: white; font-family: 'Cairo'; }
+.btn-submit { width: 100%; padding: 15px; background: #d4af37; color: #0a0a0a; border: none; border-radius: 12px; font-size: 18px; font-weight: 900; cursor: pointer; }
+footer { text-align: center; padding: 30px; background: #111; color: #aaa; margin-top: 60px; }
