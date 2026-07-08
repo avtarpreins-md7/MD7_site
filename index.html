@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD7 GROUP - مجموعة محمد دياب</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    :root { --gold: #D4AF37; --dark: #0A0A0A; --black2: #121212; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--dark); color: #EAEAEA; font-family: 'Cairo', sans-serif; }
+
+    /* زرار الموسيقى */
+  .music-btn { position: fixed; bottom: 20px; left: 20px; background: var(--gold); color: var(--dark); width: 50px; height: 50px; border-radius: 50%; border: none; font-size: 1.5rem; cursor: pointer; z-index: 9999; box-shadow: 0 0 20px var(--gold); }
+
+    header { text-align: center; padding: 60px 20px; background: linear-gradient(180deg, var(--black2), var(--dark)); }
+    header h1 { font-size: 3rem; color: var(--gold); margin-bottom: 10px; animation: glow 2s ease-in-out infinite; }
+    @keyframes glow { 0%,100%{text-shadow:0 0 10px var(--gold)} 50%{text-shadow:0 0 30px var(--gold)} }
+    header p { color: #aaa; font-size: 1.2rem; }
+
+  .institutions { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; padding: 60px 5%; }
+  .card { background: var(--black2); padding: 40px 20px; border-radius: 15px; text-align: center; cursor: pointer; border: 2px solid transparent; transition: 0.3s; }
+  .card:hover { border-color: var(--gold); transform: translateY(-10px); box-shadow: 0 0 20px rgba(212,175,55,0.3); }
+  .card i { font-size: 3rem; color: var(--gold); margin-bottom: 15px; }
+  .card h3 { font-size: 1.5rem; color: var(--gold); }
+
+    /* المودال */
+  .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
+  .modal-content { background: var(--black2); margin: 5% auto; padding: 40px; border-radius: 15px; width: 90%; max-width: 700px; border: 2px solid var(--gold); }
+  .close { color: var(--gold); float: left; font-size: 30px; font-weight: bold; cursor: pointer; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  .form-group input,.form-group textarea { width: 100%; padding: 12px; background: #222; border: 1px solid #333; color: white; border-radius: 8px; margin-bottom: 15px; }
+  .submit-btn { width: 100%; background: var(--gold); color: var(--dark); padding: 15px; border: none; border-radius: 8px; font-weight: 800; font-size: 1.1rem; cursor: pointer; }
+  .project-item { background: #1a1a1a; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-right: 3px solid var(--gold); }
+
+    footer { text-align: center; padding: 30px; color: #666; border-top: 1px solid #222; }
+</style>
+</head>
+<body>
+
+<!-- موسيقى الواجهة الرئيسية -->
+<audio id="mainMusic" loop>
+    <source src="https://cdn.pixabay.com/audio/1/1/cinematic-112186.mp3" type="audio/mpeg">
+</audio>
+
+<!-- زرار التحكم -->
+<button class="music-btn" onclick="toggleMusic()"><i id="musicIcon" class="fa-solid fa-volume-high"></i></button>
+
+<header>
+    <h1>MD7 GROUP</h1>
+    <p>IMAGINE • INNOVATE • INSPIRE</p>
+</header>
+
+<section class="institutions">
+    <div class="card" onclick="openModal('الفكري')">
+        <i class="fa-solid fa-lightbulb"></i>
+        <h3>الإبداع الفكري</h3>
+    </div>
+    <div class="card" onclick="openModal('الرقمي')">
+        <i class="fa-solid fa-broadcast-tower"></i>
+        <h3>القنوات والمنصات</h3>
+    </div>
+    <div class="card" onclick="openModal('السياحة')">
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <h3>السياحة والترفيه</h3>
+    </div>
+    <div class="card" onclick="openModal('الطاقة')">
+        <i class="fa-solid fa-solar-panel"></i>
+        <h3>الطاقة والغذاء</h3>
+    </div>
+</section>
+
+<!-- المودال -->
+<div id="consultModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle" style="color: var(--gold); margin-bottom: 20px;"></h2>
+
+    <div id="smartForm">
+        <h3 style="margin-top: 20px;">اختر الجهة الخاصة بك:</h3>
+        <select id="entityType" onchange="showProject()" style="width:100%; padding:12px; background:#222; border:1px solid var(--gold); color:white; border-radius:8px; margin:15px 0;">
+            <option value="">-- اختر --</option>
+            <option value="wazara">وزارة الشباب والرياضة</option>
+            <option value="etihad">اتحاد الكرة</option>
+            <option value="nady">نادي</option>
+        </select>
+        <div id="projectDetails" style="background:#1a1a1a; padding:20px; border-radius:10px; border-right:3px solid var(--gold); display:none; margin:20px 0;"></div>
+
+        <h3>2. نموذج طلب رأي استشاري</h3>
+        <form id="consultForm" onsubmit="submitForm(event)">
+            <div class="form-grid">
+                <div class="form-group"><input type="text" id="name" placeholder="الاسم" required></div>
+                <div class="form-group"><input type="email" id="email" placeholder="الايميل" required></div>
+            </div>
+            <div class="form-group"><textarea id="message" rows="4" placeholder="اكتب طلبك أو فكرتك"></textarea></div>
+            <button type="submit" class="submit-btn">إرسال الطلب</button>
+        </form>
+    </div>
+
+    <h3 style="margin-top: 30px;">3. المشاريع المضافة</h3>
+    <div id="projectsList" class="projects-list"></div>
+
+    <audio id="bgMusic" loop></audio>
+  </div>
+</div>
+
+<footer>
+    <p>© 2026 MD7 GROUP. جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+    // تشغيل الموسيقى تلقائي
+    window.addEventListener('load', () => {
+        let music = document.getElementById('mainMusic');
+        music.volume = 0.4; // وطي الصوت شوية
+        music.play().catch(()=>{}); // بعض المتصفحات بتمنع التشغيل التلقائي
+    });
+
+    function toggleMusic(){
+        let music = document.getElementById('mainMusic');
+        let icon = document.getElementById('musicIcon');
+        if(music.paused){
+            music.play();
+            icon.className = 'fa-solid fa-volume-high';
+        } else {
+            music.pause();
+            icon.className = 'fa-solid fa-volume-xmark';
+        }
+    }
+
+    const projects = {
+        'الفكري': [
+            {title: '🎁 هدية المؤسسة: ملف تطوير كرة القدم 2030', link: 'football-vision.html'},
+            {title: 'تحويل النصوص لفيلم بالـ AI', link: 'text-to-film.html'}
+        ],
+        'الرقمي': [
+            {title: 'استوديو MD7: دمج التكنولوجيا بالماضي', link: 'music-studio.html'},
+            {title: 'قناة MD7 الذكية', link: 'vr-hub.html'},
+            {title: 'أفلام الهرم', link: 'pyramid-film.html'}
+        ],
+        'السياحة': [
+            {title: 'هرم الواقع الافتراضي', link: 'pyramid-vr.html'},
+            {title: 'مشروع بلاتينيوم مطروح', link: 'platinum-matrouh.html'}
+        ],
+        'الطاقة': [
+            {title: 'ملف MD6 الطاقة المتجددة', link: 'md6-energy.html'},
+            {title: 'الطاقة اللاسلكية', link: 'wireless-energy.html'}
+        ]
+    };
+
+    const projectContent = {
+        wazara: `<h4 style="color:var(--gold)">مشروع: تطوير اللعبة والبنية التحتية</h4><ul style="list-style:none; padding:0;"><li><i class="fa-solid fa-stadium"></i> تطوير 20 استاد رئيسي بتقنية ذكية</li><li><i class="fa-solid fa-tree"></i> إنشاء 1000 ملعب خماسي في القرى</li><li><i class="fa-solid fa-chart-line"></i> إطلاق "استراتيجية 2030" للعبة</li></ul>`,
+        etihad: `<h4 style="color:var(--gold)">مشروع: الإدارة الحديثة والمسابقات</h4><ul style="list-style:none; padding:0;"><li><i class="fa-solid fa-graduation-cap"></i> نظام "التدريب الجديد" للمدربين المصريين</li><li><i class="fa-solid fa-sitemap"></i> إعادة توزيع الأندية جغرافياً</li><li><i class="fa-solid fa-gears"></i> نظام إدارة المسابقة الجديد: VAR + AI</li></ul>`,
+        nady: `<h4 style="color:var(--gold)">مشروع: تأسيس وتطوير الأندية</h4><ul style="list-style:none; padding:0;"><li><i class="fa-solid fa-hand-holding-dollar"></i> طريقة إنشاء نادي عبر جمع الاستثمارات</li><li><i class="fa-solid fa-people-group"></i> تطوير الملعب + شراء اللاعبين</li><li><i class="fa-solid fa-calendar-days"></i> الاستفادة من الملاعب وتأجيرها</li></ul>`
+    };
+
+    function showProject(){
+        let type = document.getElementById('entityType').value;
+        let details = document.getElementById('projectDetails');
+        if(type && projectContent[type]){ details.innerHTML = projectContent[type]; details.style.display = 'block'; }
+        else { details.style.display = 'none'; }
+    }
+
+    function openModal(type) {
+        document.getElementById('modalTitle').innerText = `مؤسسة ${type}`;
+        document.getElementById('consultModal').style.display = 'block';
+        document.getElementById('smartForm').style.display = (type == 'الفكري')? 'block' : 'none';
+        let list = document.getElementById('projectsList');
+        list.innerHTML = '';
+        projects[type].forEach(p => {
+            list.innerHTML += `<div class="project-item"><a href="${p.link}" target="_blank" style="color:var(--gold); text-decoration:none; font-weight:700;">${p.title} <i class="fa-solid fa-arrow-left"></i></a></div>`;
+        });
+    }
+
+    function submitForm(e){
+        e.preventDefault();
+        let name = document.getElementById('name').value;
+        alert(`شكراً ${name} ✅ تم استلام طلبك بنجاح. سيتم التواصل معك قريباً`);
+        document.getElementById('consultForm').reset();
+        closeModal();
+    }
+
+    function closeModal() {
+        document.getElementById('consultModal').style.display = 'none';
+        document.getElementById('bgMusic').pause();
+        document.getElementById('projectDetails').style.display = 'none';
+        document.getElementById('entityType').value = '';
+    }
+</script>
+
+</body>
+</html>
