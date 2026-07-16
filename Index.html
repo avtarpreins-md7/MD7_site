@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD7 GROUP | المحفظة الاستثمارية والمنصات التفاعلية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0d47a1; --accent: #D4AF37; --bg: #1a1a1a; --text: #fff; --text-muted: #aaa;
+        }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; margin:0; }
+
+        /* 1. شريط الأسهم */
+        .ticker-wrap { width: 100%; overflow: hidden; background: var(--primary); color: white; padding: 10px 0; position: fixed; top:0; z-index:1000; border-bottom: 2px solid var(--accent); }
+        .ticker { display: flex; animation: ticker-scroll 25s linear infinite; }
+        .ticker:hover { animation-play-state: paused; }
+        .ticker-item { padding: 0 30px; font-weight: bold; white-space: nowrap; font-size: 14px; }
+        @keyframes ticker-scroll { from { transform: translateX(100%);} to { transform: translateX(-100%);} }
+
+        /* 2. الهيدر */
+        header { position: fixed; width:100%; top:40px; display:flex; justify-content:space-between; align-items:center; padding:15px 40px; background:rgba(0,0,0,0.6); backdrop-filter: blur(10px); z-index:999; }
+        nav a { color:white; text-decoration:none; margin:0 15px; font-weight:bold; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+
+        /* 3. الهيرو */
+        .hero { padding: 180px 20px 100px; text-align:center; background: linear-gradient(rgba(13,71,161,0.8), rgba(0,0,0,0.9)), url('https://i.ibb.co/Xz9tG9S/images-16.jpg') center/cover fixed; }
+        .hero h1 { font-size: 70px; color: var(--accent); margin:0; text-shadow: 0 0 15px var(--accent); }
+        .hero h2 { font-size: 22px; letter-spacing: 5px; color: var(--text); margin:10px 0; }
+        .hero p { font-size: 18px; max-width: 700px; margin: 20px auto; color: var(--text-muted); }
+
+        /* 4. الـ 7 لوجو المتحرك */
+        .section { padding: 80px 20px; }
+        .section-title { text-align:center; font-size: 36px; color: var(--accent); margin-bottom: 15px; font-weight: 900; }
+        .logos-container { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; max-width: 1200px; margin: 40px auto 0; }
+        .logo-box-link { text-decoration: none; color: inherit; transition: transform 0.3s ease; }
+        .logo-box-link:hover { transform: translateY(-8px) scale(1.03); }
+        .logo-box { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 15px; padding: 20px; text-align: center; width: 240px; backdrop-filter: blur(8px); transition: all 0.4s ease; }
+        .logo-box:hover { border-color: var(--glow-color); box-shadow: 0 0 25px var(--glow-color); background: rgba(255, 255, 255, 0.08); }
+        .platform-name { font-size: 15px; font-weight: bold; margin-bottom: 15px; color: var(--text-muted); }
+        .logo-svg { width: 160px; height: auto; background: transparent; }
+        .text-m { fill: #000; font-weight: 900; font-size: 42px; }
+        .text-d { fill: #D4AF37; font-weight: 900; font-size: 42px; }
+        .text-group { fill: #ffffff; font-size: 11px; letter-spacing: 3px; opacity: 0.7; }
+        
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 3px var(--glow-color)); }
+            50% { filter: drop-shadow(0 0 15px var(--glow-color)) drop-shadow(0 0 25px var(--glow-color)); }
+        }
+        .glow-7 { font-weight: 900; font-size: 52px; animation: glowPulse 2.5s ease-in-out infinite; }
+
+        /* 5. المشاريع */
+        .projects-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:30px; max-width:1200px; margin:auto; }
+        .project-card { background: rgba(255,255,255,0.05); padding:30px; border-radius:15px; transition: 0.3s; }
+        .project-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.08); }
+        .project-card h3 { margin-top:0; font-size: 22px; }
+        .project-card p { color: var(--text-muted); line-height: 1.8; }
+        .project-card.highlight { color:white; border: 1px solid var(--glow-color); }
+        .btn-matrouh { display:inline-block; margin-top:15px; padding:12px 25px; background:var(--glow-color); color:#000; text-decoration:none; border-radius:8px; font-weight:bold; transition: 0.3s; }
+        .btn-matrouh:hover { filter: brightness(1.2); }
+        
+        footer { text-align:center; padding:30px; background:#000; color:var(--text-muted); border-top: 1px solid #333; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. شريط الأسهم -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span class="ticker-item">📈 أسهم MD7 لـتطوير مطروح: +4.8%</span>
+            <span class="ticker-item">🏨 قطاع الفنادق والرفاهية: 142.5 EGP (+2.3%)</span>
+            <span class="ticker-item">🌐 منصة مطروح 360 الرقمية: 98.7 EGP (+5.1%)</span>
+            <span class="ticker-item">🚌 للنقل الذكي والأساطيل: 64.2 EGP (+1.9%)</span>
+            <span class="ticker-item">🎖️ الراعي الرسمي لمحافظة مرسى مطروح 2026</span>
+        </div>
+    </div>
+
+    <!-- 2. الهيدر -->
+    <header>
+        <div class="logo">
+            <img src="https://i.ibb.co/gJBX9mK/file-00000fe907246bd288f26f61eff2d.png" alt="MD7 Group Logo" style="height: 45px;">
+        </div>
+        <nav>
+            <a href="#home">الرئيسية</a>
+            <a href="#branding-panel">أقسام المجموعة</a>
+            <a href="#projects-section">ملفات المشاريع</a>
+        </nav>
+    </header>
+
+    <!-- 3. الهيرو -->
+    <section class="hero" id="home">
+        <h1>MD7 GROUP</h1>
+        <h2>IMAGINE • INNOVATE • INSPIRE</h2>
+        <p>بناء قطاعات الغد وإدارة الخدمات السياحية والتطويرية الشاملة بمحافظة مرسى مطروح.</p>
+    </section>
+
+    <!-- 4. الـ 7 لوجو -->
+    <section class="section" id="branding-panel">
+        <div class="section-title">منصاتنا الاستثمارية الموحدة</div>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">اضغط على لوجو القطاع للانتقال فوراً لملف خطة العمل الخاصة به</p>
+        
+        <div class="logos-container">
+            <!-- 1 -->
+            <a href="#project-creativity" class="logo-box-link"><div class="logo-box" style="--glow-color: #0d47a1;"><div class="platform-name">الفكر والإبداع</div><svg class="logo-svg" viewBox="0 0 200 100"><text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#0d47a1" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text></svg></div></a>
+            <!-- 2 -->
+            <a href="#project-tourism" class="logo-box-link"><div class="logo-box" style="--glow-color: #00bcd4;"><div class="platform-name">البرامج السياحية</div><svg class="logo-svg" viewBox="0 0 200 100"><text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#00bcd4" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text></svg></div></a>
+            <!-- 3 -->
+            <a href="#project-media" class="logo-box-link"><div class="logo-box" style="--glow-color: #9c27b0;"><div class="platform-name">الإنتاج الفني</div><svg class="logo-svg" viewBox="0 0 200 100"><text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#9c27b0" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text></svg></div></a>
+            <!-- 4 -->
+            <a href="#project-cities" class="logo-box-link"><div class="logo-box" style="--glow-color: #4caf50;"><div class="platform-name">تطوير إدارة المدن</div><svg class="logo-svg" viewBox="0 0 200 100"><text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#4caf50" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text></svg></div></a>
+            <!-- 5 -->
+            <a href="#project-commerce" class="logo-box-link"><div class="logo-box" style="--glow-color: #ff9800;"><div class="platform-name">البيع والشراء</div><svg class="logo-svg" viewBox="0 0 200 100"><text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#ff9800" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text></svg></div></a>
+            <!-- 6 -->
+            <a href="#project-health" class="logo-box-link"><div class="logo-box" style="--glow-color: #8bc34a;"><div class="platform-name">الغذاء الصحي</div><svg class="logo-svg" viewBox="0 0 200 100"><text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#8bc34a" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text></svg></div></a>
+            <!-- 7 -->
+            <a href="#project-faq" class="logo-box-link"><div class="logo-box" style="--glow-color: #03a9f4;"><div class="platform-name">مركز الأسئلة</div><svg class="logo-svg" viewBox="0 0 200 100"><text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#03a9f4" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text></svg></div></a>
+        </div>
+    </section>
+
+    <!-- 5. المشاريع -->
+    <section class="section" id="projects-section">
+        <div class="section-title">تفاصيل المشاريع الاستراتيجية</div>
+        <div class="projects-grid">
+            <div class="project-card" id="project-creativity" style="border-right: 5px solid #0d47a1;"><h3 style="color: #0d47a1;">💡 حاضنة الفكر والإبداع</h3><p>مركز متكامل لصياغة الأفكار الثورية والنظريات البديلة، ودراسة أحدث التقنيات وتقديم الأبحاث المبتكرة للمستثمرين.</p></div>
+            <div class="project-card highlight" id="project-tourism" style="--glow-color: #00bcd4; border-right: 5px solid #00bcd4; background-image: linear-gradient(rgba(26,26,26,0.9), rgba(26,26,26,0.95)), url('https://i.ibb.co/Xz9tG9S/images-16.jpg'); background-size: cover;"><h3 style="color: #00bcd4;">✈️ منظومة البرامج السياحية الفاخرة</h3><p>إدارة الرحلة النموذجية في مرسى مطروح مدمجاً بـ <strong>باقة الرفاهية والمونديال الملكية لحضور مباراة البرازيل وتاهيتي 2026</strong>.</p><a href="https://wa.me/201033182019" target="_blank" class="btn-matrouh" style="--glow-color: #00bcd4;">احجز تذكرتك الذكية بالـ QR Code</a></div>
+            <div class="project-card" id="project-media" style="border-right: 5px solid #9c27b0;"><h3 style="color: #9c27b0;">🎬 استوديو الإنتاج الفني والأوتوميشن</h3><p>تطوير قنوات اليوتيوب وصناعة المحتوى التفاعلي الفاخر، باستخدام أحدث تقنيات تحريك الصور الذكية بالكامل.</p></div>
+            <div class="project-card" id="project-cities" style="border-right: 5px solid #4caf50;"><h3 style="color: #4caf50;">🏙️ منصة تطوير وإدارة المدن الذكية</h3><p>الرعاية الاستثمارية والتنظيمية لمحافظة مرسى مطروح لعام 2026، لتحويلها إلى بيئة رقمية مستدامة.</p></div>
+            <div class="project-card" id="project-commerce" style="border-right: 5px solid #ff9800;"><h3 style="color: #ff9800;">📦 متجر الإكسسوارات والمستلزمات الشخصية</h3><p>المشروع التجاري المتقدم لبيع الساعات بنظام التغليف الفاخر الفوري وعروض الخصومات المشروطة.</p></div>
+            <div class="project-card" id="project-health" style="border-right: 5px solid #8bc34a;"><h3 style="color: #8bc34a;">🍏 قطاع الغذاء الصحي والتموين الفاخر</h3><p>تجهيز وتوريد الوجبات العضوية وتأمين المطاعم الكبرى والفنادق لتقديم مأكولات توافق نمط الحياة الصحي.</p></div>
+            <div class="project-card" id="project-faq" style="border-right: 5px solid #03a9f4;"><h3 style="color: #03a9f4;">❓ مركز الدعم الفني والأسئلة الذكي</h3><p>الواجهة الخدمية المباشرة المربوطة بنظام "امسح وقيم" لتلقي شكاوى واقتراحات العملاء وتقديم حلول فورية.</p></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 لشركة MD7 GROUP - رعاية وتطوير محافظة مرسى مطروح</p>
+    </footer>
+
+</body>
+</html>
