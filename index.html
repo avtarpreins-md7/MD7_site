@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD7 GROUP | المحفظة الاستثمارية العالمية المستقبلية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root { 
+            --primary: #0d47a1; 
+            --accent: #D4AF37; 
+            --bg: #0a0a0c; 
+            --text: #ffffff; 
+            --text-muted: #a0a0a8;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.07);
+        }
+        
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Cairo', sans-serif; 
+            margin: 0; 
+            padding-top: 100px;
+            overflow-x: hidden;
+        }
+
+        /* شريط حركة الأسهم والمؤشرات العالمي */
+        .ticker-wrap { 
+            width: 100%; 
+            overflow: hidden; 
+            background: linear-gradient(90deg, #072552, var(--primary)); 
+            color: white; 
+            padding: 10px 0; 
+            position: fixed; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 2px solid var(--accent); 
+            box-shadow: 0 2px 20px rgba(13,71,161,0.5);
+        }
+        .ticker { display: flex; animation: ticker-scroll 28s linear infinite; }
+        .ticker:hover { animation-play-state: paused; }
+        .ticker-item { padding: 0 40px; font-weight: bold; white-space: nowrap; font-size: 14px; letter-spacing: 0.5px; }
+        @keyframes ticker-scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+
+        /* الهيدر الزجاجي الاحترافي المحدث بدون صور مكسورة */
+        header { 
+            position: fixed; 
+            width: 100%; 
+            top: 43px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 40px; 
+            background: rgba(10, 10, 12, 0.85); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 999; 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        /* حل مشكلة المربع الأزرق: لوجو نصي بديل أنيق ونظيف */
+        .text-logo {
+            font-weight: 900;
+            font-size: 24px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .text-logo span { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+
+        .nav-container { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; margin: 0 12px; font-weight: bold; transition: 0.3s ease; font-size: 15px; }
+        .nav-links a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+
+        /* أزرار التحكم في الموسيقى التفاعلية في الهيدر */
+        .audio-control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--accent);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-family: 'Cairo';
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .audio-control-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 15px var(--accent); }
+
+        /* سيكشن الهيرو المستقبلي */
+        .hero { 
+            padding: 180px 20px 150px; 
+            text-align: center; 
+            background: linear-gradient(180deg, rgba(13,71,161,0.5) 0%, rgba(10,10,12,1) 90%);
+            position: relative;
+        }
+        .hero h1 { font-size: 85px; color: var(--accent); margin: 0; font-weight: 900; text-shadow: 0 0 30px rgba(212,175,55,0.6); letter-spacing: 2px; }
+        .hero h2 { font-size: 24px; letter-spacing: 8px; color: #fff; margin: 15px 0 5px; opacity: 0.9; font-weight: 400; }
+        .hero p { color: var(--text-muted); max-width: 600px; margin: 15px auto 0; font-size: 16px; line-height: 1.6; }
+
+        /* التنسيق الموحد للأقسام */
+        .section { padding: 100px 40px; max-width: 1300px; margin: 0 auto; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .section-title { text-align: center; font-size: 42px; margin-bottom: 10px; font-weight: 900; letter-spacing: 1px; }
+        .section-desc { text-align: center; color: var(--text-muted); margin-bottom: 50px; font-size: 16px; }
+
+        /* لوحة المنصات والـ 7 لوجوهات النيون */
+        .logos-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 20px; }
+        .logo-box-link { text-decoration: none; color: inherit; }
+        .logo-box { 
+            background: var(--card-bg); 
+            border: 1px solid var(--card-border); 
+            border-radius: 20px; 
+            padding: 25px 20px; 
+            text-align: center; 
+            width: 260px; 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            position: relative;
+        }
+        .logo-box-link:hover .logo-box { 
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--glow-color); 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px var(--glow-color);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .platform-name { font-size: 15px; font-weight: 700; margin-bottom: 20px; color: #fff; opacity: 0.85; transition: 0.3s; }
+        .logo-box-link:hover .platform-name { color: var(--glow-color); opacity: 1; }
+        .logo-svg { width: 170px; height: auto; }
+        
+        .text-m { fill: #ffffff; font-weight: 900; font-size: 42px; }
+        .text-d { fill: #D4AF37; font-weight: 900; font-size: 42px; }
+        .text-group { fill: #ffffff; font-size: 11px; letter-spacing: 3px; opacity: 0.6; }
+        
+        @keyframes glowPulse { 0%, 100% { filter: drop-shadow(0 0 4px var(--glow-color)); } 50% { filter: drop-shadow(0 0 15px var(--glow-color)) drop-shadow(0 0 25px var(--glow-color)); } }
+        .glow-7 { font-weight: 900; font-size: 52px; animation: glowPulse 3s ease-in-out infinite; }
+
+        /* المدخلات والنماذج المستقبلية */
+        .glass-panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 45px; border-radius: 24px; backdrop-filter: blur(10px); }
+        input, textarea, select { 
+            width: 100%; padding: 15px 20px; margin-bottom: 20px; border-radius: 12px; 
+            border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.4); color: white; 
+            font-family: 'Cairo'; font-size: 15px; transition: 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus { border-color: var(--accent); outline: none; background: rgba(0,0,0,0.6); box-shadow: 0 0 15px rgba(212,175,55,0.2); }
+        
+        /* الأزرار التفاعلية الفاخرة */
+        .cta-btn { 
+            width: 100%; border: none; padding: 18px; font-size: 16px; font-weight: bold; 
+            border-radius: 12px; cursor: pointer; font-family: 'Cairo'; transition: 0.4s ease; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); letter-spacing: 0.5px;
+        }
+        .cta-btn:hover { transform: translateY(-3px); filter: brightness(1.2); box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+        
+        /* قطاع البيع والشراء والرحلات الذكي */
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        @media (max-width: 900px) { .grid-layout { grid-template-columns: 1fr; } }
+
+        /* كارت التذكرة والمنتجات */
+        .ticket-box { background: #ffffff; padding: 25px; border-radius: 20px; color: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .product-card { background: rgba(0,0,0,0.4); padding: 20px; border-radius: 16px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .product-card:hover { border-color: #ff9800; transform: scale(1.01); }
+
+        /* سيكشن البورصة والاكتتاب الجديد */
+        .shares-badge {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        footer { text-align: center; padding: 40px; background: #050507; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.03); font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <!-- موسيقى تشويق وهدوء مدمجة (ميكس راب ودوف خفيف) مغذاة من السيرفر -->
+    <audio id="bgMusic" loop src="attachment://An-wsO3KagEbMqOjdffGIKCqvk8G1qc8ccfgsnq8GthexTB4w-WkJGJl3L-vzv7P-a22qKWkoF96eK5vzq5u2vWC7_Kj85PyeDgt7JfLmpvp72odRbMV6eDx"></audio>
+
+    <!-- شريط المؤشرات العالمي المطور -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span class="ticker-item">📈 مؤشر أسهم MD7 التنموي الموحد: +4.8%</span>
+            <span class="ticker-item">💼 فتح باب الاكتتاب الاستثماري العام لشراء الحصص بالشركة رسمياً لعام 2026</span>
+            <span class="ticker-item">🌐 منصة مطروح 360 الرقمية: تحديثات ذكية جارية للخدمات والتواصل</span>
+            <span class="ticker-item">🎫 نظام حجز وتوليد تذاكر الـ QR Code يعمل بكفاءة تامة</span>
+        </div>
+    </div>
+
+    <!-- نافذة التنقل العلوية المحدثة بدون صور مكسورة وبزر الموسيقى -->
+    <header>
+        <a href="#home" class="text-logo">MD7 <span>GROUP</span></a>
+        
+        <div class="nav-container">
+            <nav class="nav-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#branding-panel">المنصات الذكية</a>
+                <a href="#invest-section">شراء أسهم</a>
+                <a href="mailto:invest@md7.group" style="color: var(--accent);">📧 تواصل مباشر</a>
+            </nav>
+            <button onclick="toggleMusic()" id="musicBtn" class="audio-control-btn">🎵 تشغيل الموسيقى</button>
+        </div>
+    </header>
+
+    <!-- واجهة الترحيب الفاخرة للموقع -->
+    <section class="hero" id="home">
+        <h1>MD7 GROUP</h1>
+        <h2>IMAGINE • INNOVATE • INSPIRE</h2>
+        <p>بوابتك الرقمية الاستثمارية المتكاملة لإدارة الخدمات والقطاعات الشاملة برؤية تكنولوجية مستقبلية لعام 2026.</p>
+    </section>
+
+    <!-- لوحة الهوية والربط السبعة التفاعلية (الـ 7 لوجوهات النيون) -->
+    <section class="section" id="branding-panel">
+        <div class="section-title" style="color: var(--accent);">منصاتنا الاستثمارية الموحدة</div>
+        <div class="section-desc">اضغط على لوجو أي قطاع للانتقال المباشر والفوري إلى واجهة التحكم والملف الخاص به</div>
+        
+        <div class="logos-container">
+            <!-- 1. الفكر والإبداع -->
+            <a href="#platform-creativity" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #0d47a1;">
+                    <div class="platform-name">💡 1. الفكر والإبداع</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text>
+                        <text x="60" y="55" class="text-d">D</text>
+                        <text x="95" y="58" fill="#0d47a1" class="glow-7">7</text>
+                        <text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 2. البرامج السياحية -->
+            <a href="#platform-tourism" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #00bcd4;">
+                    <div class="platform-name">✈️ 2. برنامج الرحلات الذكي</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text>
+                        <text x="60" y="55" class="text-d">D</text>
+                        <text x="95" y="58" fill="#00bcd4" class="glow-7">7</text>
+                        <text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 3. الإنتاج الفني -->
+            <a href="#platform-book" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #9c27b0;">
+                    <div class="platform-name">🎬 3. الإنتاج الفني والقصص</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text>
+                        <text x="60" y="55" class="text-d">D</text>
+                        <text x="95" y="58" fill="#9c27b0" class="glow-7">7</text>
+                        <text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 4. تطوير المدن -->
+            <a href="#platform-cities" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #4caf50;">
+                    <div class="platform-name">🏙️ 4. تطوير المدن المستدامة</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text>
+                        <text x="60" y="55" class="text-d">D</text>
+                        <text x="95" y="58" fill="#4caf50" class="glow-7">7</text>
+                        <text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 5. البيع والشراء -->
+            <a href="#platform-commerce" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #ff9800;">
+                    <div class="platform-name">📦 5. قطاع البيع والشراء</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text>
+                        <text x="60" y="55" class="text-d">D</text>
+                        <text x="95" y="58" fill="#ff9800" class="glow-7">7</text>
+                        <text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 6. الغذاء الصحي -->
+            <a href="#platform-health" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #8bc34a;">
+                    <div class="platform-name">🍏 6. الغذاء الصحي والتموين</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text>
+                        <text x="60" y="55" class="text-d">D</text>
+                        <text x="95" y="58" fill="#8bc34a" class="glow-7">7</text>
+                        <text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 7. مركز الأسئلة -->
+            <a href="#platform-faq" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #03a9f4;">
+                    <div class="platform-name">❓ 7. مركز الأسئلة الذكي</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text>
+                        <text x="60" y="55" class="text-d">D</text>
+                        <text x="95" y="58" fill="#03a9f4" class="glow-7">7</text>
+                        <text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- قسم فتح باب الاكتتاب وشراء الأسهم المطور والجديد -->
+    <section class="section" id="invest-section" style="background: linear-gradient(180deg, rgba(214, 175, 55, 0.1), transparent);">
+        <div class="section-title" style="color: var(--accent);">💼 بوابة الاستثمار المباشر والاكتتاب</div>
+        <div class="section-desc">احجز حصتك الاستثمارية الآن في القوة الاقتصادية القادمة لـ MD7 GROUP</div>
+        
+        <div class="glass-panel" style="max-width: 850px; margin: auto; text-align: center;">
+            <div class="shares-badge">📊 الحصة المتاحة للاكتتاب العام: بحد أقصى 50% من إجمالي أسهم الشركة</div>
+            <p style="color: #fff; font-size: 16px; margin-bottom: 25px;">ملاحظة: (سعر السهم الاستثماري العادل سيتم تحديده لاحقاً من قبل لجنة التقييم المالي وإشعار المكتتبين).</p>
+            
+            <div style="text-align: right;">
+                <input type="text" id="investorName" placeholder="الاسم الكامل للمستثمر أو المؤسسة">
+                <input type="tel" id="investorPhone" placeholder="رقم الهاتف للتواصل الفوري الفردي عبر WhatsApp">
+                <label style="display: block; margin-bottom: 8px; font-weight: bold; color: var(--accent);">نسبة الأسهم المطلوبة للاستحواذ (الحد الأقصى 50%):</label>
+                <select id="sharePercent">
+                    <option value="5%">5 % من الأسهم</option>
+                    <option value="10%">10 % من الأسهم</option>
+                    <option value="25%">25 % من الأسهم</option>
+                    <option value="50%">50 % من الأسهم (الحد الأقصى المتاح للشركاء)</option>
+                </select>
+                <button onclick="submitInvestment()" class="cta-btn" style="background: linear-gradient(90deg, var(--primary), var(--accent)); color: white; margin-top: 10px;">📈 تقديم طلب حجز حصة أسهم رسمية</button>
+            </div>
+            <p id="investMsg" style="color: #4caf50; font-weight: bold; margin-top: 20px; display: none;">✓ تم تسجيل طلب الاكتتاب المبدئي بنجاح. سيقوم المستشار المالي بالتواصل معكم فور تحديد سعر السهم.</p>
+        </div>
+    </section>
+
+    <!-- منصة 1: حاضنة الفكر والإبداع -->
+    <section class="section" id="platform-creativity" style="background: linear-gradient(180deg, rgba(13, 71, 161, 0.2), transparent);">
+        <div class="section-title" style="color: #0d47a1;">💡 منصة 1: حاضنة الفكر والإبداع</div>
+        <div class="section-desc">هل لديك فكرة استثمارية ثورية؟ شاركها معنا وتلقّ رداً استراتيجياً مباشراً من قيادة المجموعة</div>
+        <div class="glass-panel" style="max-width: 800px; margin: auto;">
+            <input type="text" id="ideaTitle" placeholder="عنوان الفكرة الاستراتيجية">
+            <textarea id="ideaDesc" rows="5" placeholder="اشرح معالم فكرتك المبتكرة بالتفصيل..."></textarea>
+            <input type="text" id="ideaPhone" placeholder="رقم الاتصال الفوري (WhatsApp)">
+            <button onclick="sendIdea()" class="cta-btn" style="background: linear-gradient(90deg, #0d47a1, var(--accent)); color: white;">🚀 إرسال الفكرة المشفرة لـ MD7</button>
+            <p id="ideaMsgText" style="color: #4caf50; text-align: center; margin-top: 20px; display: none; font-weight: bold;">✓ تم تسجيل فكرتك بنجاح، جاري مراجعتها من قطاع التطوير.</p>
+        </div>
+    </section>
+
+    <!-- منصة 2: اقتراح برنامج رحلة ونظام التذاكر -->
+    <section class="section" id="platform-tourism" style="background: linear-gradient(180deg, rgba(0, 188, 212, 0.15), transparent);">
+        <div class="section-title" style="color: #00bcd4;">✈️ منصة 2: منظومة حجز البرامج السياحية الذكية</div>
+        <div class="section-desc">اختر باقتك الفاخرة وأصدر تذكرتك الفورية المشفرة بالـ QR Code</div>
+        
+        <div class="grid-layout" style="max-width: 1100px; margin: auto;">
+            <div class="glass-panel">
+                <label style="display:block; margin-bottom:8px; font-weight:bold;">الباقة الاستثمارية المتاحة:</label>
+                <select id="tourPackage">
+                    <option>باقة الرفاهية الملكية 7 أيام (شاملة الفنادق والتحركات) - 15000 EGP</option>
+                    <option>باقة العائلة والرحلات المتكاملة 5 أيام - 22000 EGP</option>
+                </select>
+                <input type="text" id="tourName" placeholder="الاسم الكامل للعميل">
+                <input type="tel" id="tourPhone" placeholder="رقم الموبايل للتأكيد (01xxxxxxxxx)">
+                <input type="date" id="tourDate">
+                <button onclick="generateTicket()" class="cta-btn" style="background: #00bcd4; color: #000;">🎫 إصدار التذكرة الرقمية الفورية</button>
+            </div>
+            
+            <div id="ticketPreview" class="glass-panel" style="display: none; transition: 0.5s;">
+                <div class="ticket-box">
+                    <h3 style="margin-top: 0; text-align: center; color: var(--primary); font-weight: 900; border-bottom: 2px dashed #ccc; padding-bottom: 10px;">TICKET | MD7 GROUP</h3>
+                    <p id="ticketDetails" style="font-size: 15px; line-height: 1.8;"></p>
+                    <div id="qrcode" style="display: flex; justify-content: center; margin: 20px 0;"></div>
+                    <button onclick="downloadTicket()" class="cta-btn" style="background: var(--primary); color: white;">📥 تحميل مستند التذكرة الرسمي PDF</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- منصة 3: الإنتاج الفني والكتاب الذكي -->
+    <section class="section" id="platform-book" style="background: linear-gradient(180deg, rgba(156, 39, 176, 0.15), transparent);">
+        <div class="section-title" style="color: #9c27b0;">🎬 منصة 3: استوديو الإنتاج الفني وصناعة المحتوى</div>
+        <div class="section-desc">أداة كتابة ونشر المحتوى والسيناريوهات لإنتاج مقاطع الأتمتة وقنوات اليوتيوب الفاخرة لعام 2026</div>
+        <div class="glass-panel" style="max-width: 850px; margin: auto;">
+            <input type="text" id="bookTitle" placeholder="عنوان النص / السيناريو الفني">
+            <input type="text" id="bookAuthor" value="MD7 Group Editorial Team" readonly style="color: var(--accent); font-weight: bold;">
+            <textarea id="bookContent" rows="7" placeholder="اكتب محتوى القصة أو السيناريو بالتفصيل لدعم تقنيات تحريك الصور وتفريغ الصوت التلقائي..."></textarea>
+            <button onclick="generateBook()" class="cta-btn" style="background: #9c27b0; color: white;">📖 معالجة وإصدار الملف ككتاب PDF فاخر</button>
+        </div>
+    </section>
+
+    <!-- منصة 4: تطوير المدن -->
+    <section class="section" id="platform-cities" style="background: linear-gradient(180deg, rgba(76, 175, 80, 0.15), transparent);">
+        <div class="section-title" style="color: #4caf50;">🏙️ منصة 4: تطوير المدن الذكية المستدامة</div>
+        <div class="glass-panel" style="text-align: center; max-width: 800px; margin: auto;">
+            <div style="font-size: 50px; margin-bottom: 10px;">🗺️</div>
+            <h3>بنية تحتية رقمية ذكية وشاملة</h3>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 20px;">يجري العمل حالياً بالتعاون الاستراتيجي لربط شبكات النقل والمرافق الخدمية بالخريطة التفاعلية والتحكم المؤتمت للمجموعة.</p>
+            <span style="background: rgba(76, 175, 80, 0.2); color: #4caf50; padding: 8px 20px; border-radius: 20px; font-weight: bold; font-size: 14px;">جاري التهيئة والتطوير المستقبلي 2026</span>
+        </div>
+    </section>
+
+    <!-- منصة 5: قطاع البيع والشراء المتطور -->
+    <section class="section" id="platform-commerce" style="background: linear-gradient(180deg, rgba(255, 152, 0, 0.15), transparent);">
+        <div class="section-title" style="color: #ff9800;">📦 منصة 5: منصة التبادل التجاري والمستلزمات</div>
+        <div class="section-desc">أضف منتجاتك وساعاتك العصرية للمراجعة الفورية وعرضها للعملاء بنظام التغليف المتميز</div>
+        
+        <div class="grid-layout" style="max-width: 1200px; margin: auto;">
+            <div class="glass-panel">
+                <input type="text" id="productName" placeholder="اسم المنتج العصرى">
+                <textarea id="productDesc" placeholder="المواصفات الفنية والميزات الأساسية" rows="3"></textarea>
+                <input type="number" id="productPrice" placeholder="السعر المستهدف EGP">
+                <input type="text" id="sellerPhone" placeholder="رقم الواتساب للتواصل (مثال: 010xxxxxxxx)">
+                <button onclick="addProduct()" class="cta-btn" style="background: #ff9800; color: #000;">➕ إدراج المنتج في قائمة العرض</button>
+            </div>
+            
+            <div class="glass-panel">
+                <h3 style="margin-top: 0; color: #ff9800; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">المنتجات المعروضة حالياً بالمنصة</h3>
+                <div id="productsList" style="max-height: 380px; overflow-y: auto; padding-right: 5px;">
+                    <!-- المنتجات تظهر ديناميكياً هنا -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- منصة 6: الغذاء الصحي -->
+    <section class="section" id="platform-health" style="background: linear-gradient(180deg, rgba(139, 195, 74, 0.15), transparent);">
+        <div class="section-title" style="color: #8bc34a;">🍏 منصة 6: الغذاء الصحي والتموين الفاخر</div>
+        <div class="glass-panel" style="text-align: center; max-width: 800px; margin: auto;">
+            <div style="font-size: 50px; margin-bottom: 10px;">🥗</div>
+            <h3>سلاسل توريد وتأمين الأغذية العضوية لقطاع الفنادق</h3>
+            <p style="color: var(--text-muted); max-width: 550px; margin: 0 auto 15px;">تقديم وجبات وأنظمة غذائية صحية توافق أعلى معايير الجودة العالمية 7 نجوم للوفود والمنشآت السياحية.</p>
+            <p style="font-weight: bold; color: #fff;">لطلبات التوريد المباشرة الفورية عبر الإيميل المباشر: <a href="mailto:catering@md7.group" style="color: var(--accent); text-decoration: none;">catering@md7.group</a></p>
+        </div>
+    </section>
+
+    <!-- منصة 7: مركز الأسئلة التفاعلي مع الـ Avatar المطور صوتياً -->
+    <section class="section" id="platform-faq" style="background: linear-gradient(180deg, rgba(3, 169, 244, 0.15), transparent);">
+        <div class="section-title" style="color: #03a9f4;">❓ منصة 7: مركز المساعد الذكي والأسئلة التفاعلية</div>
+        <div class="section-desc">اطرح استفسارك بخصوص خدمات المجموعة لتلقي الإجابة الذكية الفورية المدعومة بالتوجيه الصوتي للـ Avatar</div>
+        
+        <div class="glass-panel" style="max-width: 750px; margin: auto; text-align: center;">
+            <div id="avatarBox" style="width: 200px; height: 200px; margin: 0 auto 25px; border-radius: 50%; background: #000; border: 3px solid #03a9f4; overflow: hidden; box-shadow: 0 0 30px rgba(3,169,244,0.3); transition: 0.3s;">
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#111; font-weight:900; color:var(--accent); font-size:32px;">MD7</div>
+            </div>
+            
+            <div style="display: flex; gap: 15px; max-width: 600px; margin: auto;">
+                <input type="text" id="faqQuestion" placeholder="مثال للبحث: مواعيد، حجز، سعر، فكرة..." style="margin-bottom: 0;">
+                <button onclick="askAvatar()" class="cta-btn" style="width: 140px; background: #03a9f4; color: #000; padding: 0;">تحليل الإجابة</button>
+            </div>
+            
+            <div id="avatarAnswer" style="margin-top: 30px; padding: 25px; background: rgba(0,0,0,0.4); border-radius: 16px; border: 1px solid rgba(3, 169, 244, 0.2); display: none;">
+                <p id="answerText" style="font-weight: bold; font-size: 17px; margin: 0 0 15px; color: #fff;"></p>
+                <audio id="answerAudio" controls style="width: 100%; max-width: 400px; margin: auto;" src="attachment://An-wsO3KagEbMqOjdffGIKCqvk8G1qc8ccfgsnq8GthexTB4w-WkJGJl3L-vzv7P-a22qKWkoF96eK5vzq5u2vWC7_Kj85PyeDgt7JfLmpvp72odRbMV6eDx"></audio>
+            </div>
+        </div>
+    </section>
+
+    <!-- سيكشن تواصل مباشر سفلي عبر الإيميل -->
+    <section class="section" style="background:#08080a; text-align:center;">
+        <div class="section-title" style="font-size:28px;">📧 مركز المراسلات والاستثمار المباشر الرسمي</div>
+        <p style="color: var(--text-muted); margin-bottom:25px;">يمكنك إرسال خطابات الشراكة أو استعلامات الاستحواذ مباشرة إلى الإدارة التنفيذية للمجموعة عبر البريد الإلكتروني المباشر التالي بنقرة واحدة</p>
+        <a href="mailto:management@md7.group" class="cta-btn" style="display:inline-block; width:auto; padding:15px 40px; text-decoration:none; background:linear-gradient(90deg, #0d47a1, #222); color:white; border:1px solid var(--accent);">ارسل إيميل رسمي مباشر للإدارة الآن</a>
+    </section>
+
+    <!-- ذيل الصفحة للمجموعة الاستثمارية العالمية -->
+    <footer>
+        <p>جميع الحقوق الاستثمارية والبرمجية محفوظة © 2026 لمجموعة شركات MD7 GROUP - إدارة الشراكات والتطوير التكنولوجي العالمي</p>
+    </footer>
+
+    <!-- استدعاء المكتبات الرسمية لتوليد الـ QR وبناء ملفات الـ PDF بأمان من الـ CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+        // لوجيك تشغيل وإيقاف الخلفية الموسيقية الفاخرة المدمجة
+        const audio = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play().catch(e => console.log("تحتاج لتفاعل المستخدم أولاً"));
+                musicBtn.innerText = "⏸️ إيقاف الموسيقى";
+                musicBtn.style.background = "var(--accent)";
+                musicBtn.style.color = "#000";
+            } else {
+                audio.pause();
+                musicBtn.innerText = "🎵 تشغيل الموسيقى";
+                musicBtn.style.background = "rgba(255,255,255,0.1)";
+                musicBtn.style.color = "#fff";
+            }
+        }
+
+        // دالة حجز وحساب أسهم الاكتتاب المحدثة
+        function submitInvestment() {
+            const name = document.getElementById('investorName').value;
+            const phone = document.getElementById('investorPhone').value;
+            const percent = document.getElementById('sharePercent').value;
+            
+            if(!name || !phone) { alert("يرجى ملء كافة البيانات لتقديم طلب حجز الحصص والأسهم المبدئي."); return; }
+            
+            const message = `طلب حجز أسهم واكتتاب بـ MD7 GROUP:%0A- المستثمر: ${name}%0A- النسبة المطلوبة: ${percent}%0A- رقم التواصل: ${phone}%0A- حالة السعر: يحدد لاحقاً من لجنة التقييم`;
+            window.open(`https://wa.me/201033182019?text=${message}`, '_blank');
+            
+            document.getElementById('investMsg').style.display = 'block';
+        }
+
+        // دالة منصة 1: إرسال الأفكار
+        function sendIdea(){
+            const title = document.getElementById('ideaTitle').value; 
+            const desc = document.getElementById('ideaDesc').value; 
+            const phone = document.getElementById('ideaPhone').value;
+            
+            if(!title || !desc || !phone){ alert("يرجى إدخال كافة بيانات الفكرة المطلوبة."); return; }
+            
+            const message = `إشعار حاضنة الأفكار بموقع المجموعة:%0A- العنوان: ${title}%0A- الشرح: ${desc}%0A- رقم التواصل: ${phone}`;
+            window.open(`https://wa.me/201033182019?text=${message}`, '_blank');
+            
+            document.getElementById('ideaMsgText').style.display = 'block';
+        }
+
+        // دالة منصة 2: بناء التذكرة الذكية ديناميكياً وعرض رمز الـ QR
+        function generateTicket() {
+            const name = document.getElementById('tourName').value; 
+            const phone = document.getElementById('tourPhone').value; 
+            const date = document.getElementById('tourDate').value; 
+            const packageText = document.getElementById('tourPackage').value;
+            
+            if(!name || !phone || !date) { alert("يرجى ملء جميع الحقول لإصدار تذكرة الحجز الذكية."); return; }
+            
+            const ticketID = "MD7-TOUR-" + Date.now();
+            document.getElementById('ticketDetails').innerHTML = `<b>اسم العميل:</b> ${name}<br><b>نوع الباقة الحالية:</b> ${packageText}<br><b>تاريخ انطلاق الرحلة:</b> ${date}<br><b>الرمز المشفر الفريد:</b> ${ticketID}`;
+            
+            document.getElementById('qrcode').innerHTML = ""; 
+            new QRCode(document.getElementById("qrcode"), { text: ticketID, width: 140, height: 140 });
+            
+            document.getElementById('ticketPreview').style.display = 'block';
+        }
+
+        // دالة منصة 2: تحميل مستند التذكرة PDF
+        function downloadTicket() { 
+            const { jsPDF } = window.jspdf; 
+            const doc = new jsPDF();
+            doc.setFontSize(22);
+            doc.text("MD7 GROUP SMART TICKET", 105, 30, { align: "center" });
+            doc.setFontSize(14);
+            const textContent = document.getElementById('ticketDetails').innerText;
+            doc.text(textContent, 20, 60);
+            doc.save("MD7-Smart-Ticket.pdf"); 
+        }
+
+        // دالة منصة 3: معالجة نصوص السيناريوهات وإصدار ملف PDF ككتاب
+        function generateBook() {
+            const { jsPDF } = window.jspdf; 
+            const title = document.getElementById('bookTitle').value; 
+            const author = document.getElementById('bookAuthor').value; 
+            const content = document.getElementById('bookContent').value;
+            
+            if(!title || !author || !content) { alert("يرجى كتابة العنوان والمحتوى لتهيئة النص."); return; }
+            
+            const doc = new jsPDF(); 
+            doc.setFontSize(28); 
+            doc.setTextColor(13, 71, 161); 
+            doc.text(title, 105, 90, { align: "center" });
+            
+            doc.setFontSize(16); 
+            doc.setTextColor(212, 175, 55); 
+            doc.text("الجهة الناشرة: " + author, 105, 110, { align: "center" });
+            
+            const lines = doc.splitTextToSize(content, 170); 
+            let y = 30; 
+            doc.addPage();
+            
+            lines.forEach((line) => { 
+                if(y > 270) { 
+                    doc.text("MD7 PRODUCTION", 105, 285, { align: "center" }); 
+                    doc.addPage(); 
+                    y = 30; 
+                } 
+                doc.text(line, 20, y); 
+                y += 10; 
+            });
+            
+            doc.save(title + "-Production-Script.pdf"); 
+            alert("تمت معالجة النص الفني بنجاح وإصدار ملف الـ PDF المعزز 🎉");
+        }
+
+        // لوجيك وإدارة منصة 5: قطاع المبيعات وحفظ البيانات المحسّن بـ LocalStorage
+        let products = JSON.parse(localStorage.getItem('md7_products')) || [];
+        
+        function addProduct() {
+            const name = document.getElementById('productName').value; 
+            const desc = document.getElementById('productDesc').value; 
+            const price = document.getElementById('productPrice').value; 
+            const phone = document.getElementById('sellerPhone').value;
+            
+            if(!name || !desc || !price || !phone) { alert("يرجى كتابة كافة تفاصيل السلعة المعروضة."); return; }
+            
+            products.push({ id: Date.now(), name, desc, price, phone, status: "نشط" }); 
+            localStorage.setItem('md7_products', JSON.stringify(products)); 
+            displayProducts();
+            
+            document.getElementById('productName').value = ''; 
+            document.getElementById('productDesc').value = ''; 
+            document.getElementById('productPrice').value = ''; 
+            document.getElementById('sellerPhone').value = '';
+        }
+
+        function displayProducts() {
+            const list = document.getElementById('productsList'); 
+            list.innerHTML = '';
+            
+            if(products.length === 0) {
+                list.innerHTML = '<p style="color:var(--text-muted); text-align:center; padding-top:20px;">لا توجد منتجات معروضة حالياً بالمنصة.</p>';
+                return;
+            }
+            
+            products.forEach(p => { 
+                list.innerHTML += `
+                    <div class="product-card">
+                        <h4 style="margin:0 0 8px 0; color:#D4AF37; font-size:17px;">${p.name}</h4>
+                        <p style="margin:0 0 10px 0; font-size:14px; color:var(--text-muted);">${p.desc}</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-weight:bold; color:#ff9800;">السعر: ${p.price} EGP</span>
+                            <a href="https://wa.me/2${p.phone}" target="_blank" style="background:#25D366; color:white; padding:6px 14px; border-radius:8px; text-decoration:none; font-size:13px; font-weight:bold;">تواصل للشراء</a>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        // دالة المساعد والـ Avatar لمنصة 7
+        const faqDB = {
+            "مواعيد": "تنطلق كافة الرحلات السياحية للمجموعة بانتظام يومي الخميس والجمعة من كل أسبوع لشواطئنا الفاخرة.",
+            "السعر": "تبدأ تكلفة حجز البرامج السياحية المتكاملة والشالمة بالفنادق الفاخرة من 15000 جنيه مصري.",
+            "حجز": "بإمكانك التوجه الفوري إلى منصة 2 (برنامج الرحلات الذكي) لإدخال بياناتك وإصدار التذكرة المشفرة مباشرة.",
+            "فكرة": "يسعدنا تلقي المقترحات الاستثمارية بحاضنة الفكر والإبداع بالمنصة رقم 1 لمراجعتها وتفعيلها تجارياً."
+        };
+
+        function askAvatar(){
+            const q = document.getElementById('faqQuestion').value; 
+            let answer = "تم استلام استفسارك بدقة. جاري تحليله بمركز الدعم الفني للمجموعة للتواصل معك وتأكيد الرد عبر WhatsApp.";
+            
+            for(let key in faqDB){ 
+                if(q.includes(key)){ 
+                    answer = faqDB[key]; 
+                    break; 
+                } 
+            }
+            
+            document.getElementById('answerText').innerText = answer; 
+            document.getElementById('avatarAnswer').style.display = 'block';
+            
+            const avatarAudio = document.getElementById('answerAudio');
+            avatarAudio.currentTime = 0; 
+            avatarAudio.play();
+            
+            const avatarBox = document.getElementById('avatarBox');
+            avatarBox.style.borderColor = "#4caf50";
+            avatarBox.style.boxShadow = "0 0 40px rgba(76,175,80,0.6)";
+            
+            setTimeout(() => {
+                avatarBox.style.borderColor = "#03a9f4";
+                avatarBox.style.boxShadow = "0 0 30px rgba(3,169,244,0.3)";
+            }, 4000);
+        }
+
+        window.onload = displayProducts;
+    </script>
+</body>
+</html>
