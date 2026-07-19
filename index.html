@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD7 GROUP | المحفظة الاستثمارية العالمية المستقبلية</title>
+    
+    <!-- استدعاء خط Cairo الاحترافي لدعم النصوص العربية -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root { 
+            --primary: #0d47a1; 
+            --accent: #D4AF37; 
+            --bg: #0a0a0c; 
+            --text: #ffffff; 
+            --text-muted: #a0a0a8;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.07);
+        }
+        
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Cairo', sans-serif; 
+            margin: 0; 
+            padding-top: 100px;
+            overflow-x: hidden;
+        }
+
+        /* شريط حركة الأسهم والمؤشرات العالمي - تحديث النص المضيء والوهج */
+        .ticker-wrap { 
+            width: 100%; 
+            overflow: hidden; 
+            background: linear-gradient(90deg, #072552, var(--primary)); 
+            color: white; 
+            padding: 10px 0; 
+            position: fixed; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 2px solid var(--accent); 
+            box-shadow: 0 2px 20px rgba(13,71,161,0.5);
+        }
+        .ticker { display: flex; animation: ticker-scroll 25s linear infinite; }
+        .ticker:hover { animation-play-state: paused; }
+        .ticker-item { padding: 0 40px; font-weight: 900; white-space: nowrap; font-size: 14px; letter-spacing: 0.5px; }
+        .ticker-glow { color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px var(--accent); }
+        @keyframes ticker-scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+
+        /* الهيدر الزجاجي */
+        header { 
+            position: fixed; 
+            width: 100%; 
+            top: 43px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 40px; 
+            background: rgba(10, 10, 12, 0.85); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 999; 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .text-logo { font-weight: 900; font-size: 24px; color: #fff; text-decoration: none; }
+        .text-logo span { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+
+        .nav-container { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; margin: 0 12px; font-weight: bold; transition: 0.3s ease; font-size: 15px; }
+        .nav-links a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+
+        .audio-control-btn {
+            background: rgba(255, 255, 255, 0.1); border: 1px solid var(--accent); color: #fff;
+            padding: 6px 14px; border-radius: 20px; font-size: 12px; font-family: 'Cairo', sans-serif;
+            cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px;
+        }
+        .audio-control-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 15px var(--accent); }
+
+        /* سيكشن الهيرو */
+        .hero { 
+            padding: 180px 20px 150px; text-align: center; 
+            background: linear-gradient(180deg, rgba(13,71,161,0.5) 0%, rgba(10,10,12,1) 90%);
+            position: relative;
+        }
+        .hero h1 { font-size: 85px; color: var(--accent); margin: 0; font-weight: 900; text-shadow: 0 0 30px rgba(212,175,55,0.6); letter-spacing: 2px; }
+        .hero h2 { font-size: 24px; letter-spacing: 8px; color: #fff; margin: 15px 0 5px; opacity: 0.9; font-weight: 400; }
+        .hero p { color: var(--text-muted); max-width: 600px; margin: 15px auto 0; font-size: 16px; line-height: 1.6; }
+
+        .section { padding: 100px 40px; max-width: 1300px; margin: 0 auto; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .section-title { text-align: center; font-size: 42px; margin-bottom: 10px; font-weight: 900; letter-spacing: 1px; }
+        .section-desc { text-align: center; color: var(--text-muted); margin-bottom: 50px; font-size: 16px; }
+
+        .logos-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 20px; }
+        .logo-box-link { text-decoration: none; color: inherit; }
+        .logo-box { 
+            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; 
+            padding: 25px 20px; text-align: center; width: 260px; backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); position: relative;
+        }
+        .logo-box-link:hover .logo-box { 
+            transform: translateY(-10px) scale(1.02); border-color: var(--glow-color); 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px var(--glow-color); background: rgba(255, 255, 255, 0.06);
+        }
+        .platform-name { font-size: 15px; font-weight: 700; margin-bottom: 20px; color: #fff; opacity: 0.85; transition: 0.3s; }
+        .logo-box-link:hover .platform-name { color: var(--glow-color); opacity: 1; }
+        .logo-svg { width: 170px; height: auto; }
+        
+        .text-m { fill: #ffffff; font-weight: 900; font-size: 42px; }
+        .text-d { fill: #D4AF37; font-weight: 900; font-size: 42px; }
+        .text-group { fill: #ffffff; font-size: 11px; letter-spacing: 3px; opacity: 0.6; }
+        
+        @keyframes glowPulse { 0%, 100% { filter: drop-shadow(0 0 4px var(--glow-color)); } 50% { filter: drop-shadow(0 0 15px var(--glow-color)) drop-shadow(0 0 25px var(--glow-color)); } }
+        .glow-7 { font-weight: 900; font-size: 52px; animation: glowPulse 3s ease-in-out infinite; }
+
+        .glass-panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 45px; border-radius: 24px; backdrop-filter: blur(10px); }
+        input, textarea, select { 
+            width: 100%; padding: 15px 20px; margin-bottom: 20px; border-radius: 12px; 
+            border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.4); color: white; 
+            font-family: 'Cairo', sans-serif; font-size: 15px; transition: 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus { border-color: var(--accent); outline: none; background: rgba(0,0,0,0.6); box-shadow: 0 0 15px rgba(212,175,55,0.2); }
+        
+        .cta-btn { 
+            width: 100%; border: none; padding: 18px; font-size: 16px; font-weight: bold; 
+            border-radius: 12px; cursor: pointer; font-family: 'Cairo', sans-serif; transition: 0.4s ease; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); letter-spacing: 0.5px;
+        }
+        .cta-btn:hover { transform: translateY(-3px); filter: brightness(1.2); box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+        
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        @media (max-width: 900px) { .grid-layout { grid-template-columns: 1fr; } }
+
+        .ticket-box { background: #ffffff; padding: 25px; border-radius: 20px; color: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .product-card { background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 16px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .product-card:hover { border-color: #ff9800; transform: scale(1.01); }
+        .shares-badge { background: rgba(212, 175, 55, 0.15); color: var(--accent); border: 1px solid var(--accent); padding: 10px 20px; border-radius: 30px; display: inline-block; font-weight: bold; margin-bottom: 20px; }
+
+        /* ستايل الصندوق الذكي لمنصة md1 */
+        .smart-bin-design { display: flex; background: rgba(0,0,0,0.5); border: 2px dashed var(--primary); border-radius: 16px; padding: 20px; margin-bottom: 25px; gap: 20px; align-items: center; }
+        .bin-visual { width: 100px; height: 160px; background: linear-gradient(135deg, #111, #222); border: 3px solid #0d47a1; border-radius: 12px; position: relative; box-shadow: 0 0 15px rgba(13,71,161,0.5); }
+        .bin-screen { width: 80%; height: 25px; background: #000; border: 1px solid var(--accent); margin: 15px auto 0; border-radius: 4px; color: #0f0; font-size: 10px; text-align: center; line-height: 23px; }
+        .bin-slot-food { width: 70%; height: 35px; background: rgba(76, 175, 80, 0.3); border: 2px solid #4caf50; margin: 15px auto 0; border-radius: 6px; font-size: 10px; text-align: center; line-height: 31px; }
+        .bin-slot-dry { width: 70%; height: 35px; background: rgba(212, 175, 55, 0.2); border: 2px solid var(--accent); margin: 12px auto 0; border-radius: 6px; font-size: 10px; text-align: center; line-height: 31px; }
+
+        footer { text-align: center; padding: 40px; background: #050507; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.03); font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop src="attachment://An-wsO3KagEbMqOjdffGIKCqvk8G1qc8ccfgsnq8GthexTB4w-WkJGJl3L-vzv7P-a22qKWkoF96eK5vzq5u2vWC7_Kj85PyeDgt7JfLmpvp72odRbMV6eDx"></audio>
+
+    <!-- شريط العرض المتحرك المعدل كلياً بوهج مخصص يركز على تشغيل وإدارة المنصات السبعة ودمج المستقبل بالحاضر -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span class="ticker-item">🌐 تشغيل وإدارة المنصة الرقمية المضيئة <span class="ticker-glow">MD 1.2.3.4.5.6.7</span></span>
+            <span class="ticker-item">⚡ رؤية استراتيجية متكاملة تدمج الحاضر بالمستقبل وتطور آليات التشغيل الذكي لـ MD7 GROUP</span>
+            <span class="ticker-item">✨ كفاءة تامة وتحديثات متزامنة للبنية التحتية والأنظمة التقنية الموحدة 2026</span>
+        </div>
+    </div>
+
+    <header>
+        <a href="#home" class="text-logo">MD7 <span>GROUP</span></a>
+        <div class="nav-container">
+            <nav class="nav-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#branding-panel">المنصات الذكية</a>
+                <a href="#invest-section">شراء أسهم</a>
+                <a href="mailto:avtarpreins@gmail.com" style="color: var(--accent);">📧 تواصل مباشر</a>
+            </nav>
+            <button id="musicBtn" class="audio-control-btn">🎵 تشغيل الموسيقى</button>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>MD7 GROUP</h1>
+        <h2>IMAGINE • INNOVATE • INSPIRE</h2>
+        <p>بوابتك الرقمية الاستثمارية المتكاملة لإدارة الخدمات والقطاعات الشاملة برؤية تكنولوجية مستقبلية لعام 2026.</p>
+    </section>
+
+    <!-- لوحة التنقل بين المنصات السبعة -->
+    <section class="section" id="branding-panel">
+        <div class="section-title" style="color: var(--accent);">منصاتنا الاستثمارية الموحدة</div>
+        <div class="section-desc">اضغط على لوجو أي قطاع للانتقال المباشر والفوري إلى واجهة التحكم والملف الخاص به</div>
+        
+        <div class="logos-container">
+            <!-- 1 -->
+            <a href="#platform-creativity" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #0d47a1;">
+                    <div class="platform-name">💡 1. الفكر والإبداع والبيئة</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#0d47a1" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+            <!-- 2 -->
+            <a href="#platform-tourism" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #00bcd4;">
+                    <div class="platform-name">✈️ 2. برنامج الرحلات الذكي</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#00bcd4" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+            <!-- 3 -->
+            <a href="#platform-book" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #9c27b0;">
+                    <div class="platform-name">🎬 3. الإنتاج الفني والقصص</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#9c27b0" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+            <!-- 4 -->
+            <a href="#platform-cities" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #4caf50;">
+                    <div class="platform-name">🏙️ 4. تطوير المدن المستدامة</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#4caf50" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+            <!-- 5 -->
+            <a href="#platform-commerce" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #ff9800;">
+                    <div class="platform-name">📦 5. قطاع البيع والشراء</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#ff9800" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+            <!-- 6 -->
+            <a href="#platform-health" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #8bc34a;">
+                    <div class="platform-name">🍏 6. الغذاء الصحي والتموين</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#8bc34a" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+            <!-- 7 -->
+            <a href="#platform-faq" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #03a9f4;">
+                    <div class="platform-name">❓ 7. مركز الأسئلة الذكي</div>
+                    <svg class="logo-svg" viewBox="0 0 200 100">
+                        <text x="20" y="55" class="text-m">M</text><text x="60" y="55" class="text-d">D</text><text x="95" y="58" fill="#03a9f4" class="glow-7">7</text><text x="25" y="80" class="text-group">GROUP</text>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- بوابة حجز وشراء الأسهم الجديدة وتحديث البيانات وفقاً للشروط المطلوبة -->
+    <section class="section" id="invest-section" style="background: linear-gradient(180deg, rgba(214, 175, 55, 0.1), transparent);">
+        <div class="section-title" style="color: var(--accent);">💼 كن شريكاً معنا في تطوير المجموعة وحجز الأسهم</div>
+        <div class="glass-panel" style="max-width: 850px; margin: auto; text-align: center;">
+            <div class="shares-badge">📊 قيمة السهم: 100,000 EGP | الحد الأقصى للمستثمر: 20 سهماً فقط</div>
+            <div style="text-align: right;">
+                <input type="text" id="investorName" placeholder="الاسم الكامل للشريك المستثمر">
+                <input type="tel" id="investorPhone" placeholder="رقم الهاتف الفوري المرتبط بـ WhatsApp">
+                <select id="sharePercent">
+                    <option value="1 سهم">شراء 1 سهم (100,000 EGP)</option>
+                    <option value="5 أسهم">شراء 5 أسهم (500,000 EGP)</option>
+                    <option value="10 أسهم">شراء 10 أسهم (1,000,000 EGP)</option>
+                    <option value="20 سهم">شراء 20 سهم - الحد الأقصى (2,000,000 EGP)</option>
+                </select>
+                <button id="btnSubmitInvest" class="cta-btn" style="background: linear-gradient(90deg, var(--primary), var(--accent)); color: white;">🚀 تقديم طلب رسمي لتأكيد حجز شراكة الأسهم</button>
+            </div>
+            <p id="investMsg" style="color: #4caf50; font-weight: bold; margin-top: 20px; display: none;">✓ تم تسجيل طلبك كشريك بنجاح، وجاري تجهيز قناة الاتصال الفورية للمراجعة.</p>
+        </div>
+    </section>
+
+    <!-- منصة MD1 -->
+    <section class="section" id="platform-creativity" style="background: linear-gradient(180deg, rgba(13, 71, 161, 0.2), transparent);">
+        <div class="section-title" style="color: #0d47a1;">💡 منصة MD1: حاضنة الإبداع واستدامة البيئة</div>
+        <div class="grid-layout" style="max-width: 1150px; margin: auto;">
+            <div class="glass-panel">
+                <h3 style="color: var(--accent); margin-top:0;">🛠️ تصميم وهيكلية الصندوق الذكي (Smart Bin)</h3>
+                <div class="smart-bin-design">
+                    <div class="bin-visual"><div class="bin-screen" id="binScreenText">READY</div><div class="bin-slot-food">بقايا طعام</div><div class="bin-slot-dry">جاف / تدوير</div></div>
+                    <div style="flex: 1; font-size: 13px; line-height: 1.7;">
+                        <b style="color: #4caf50;">🟢 الفتحة العلوية:</b> لبقايا الطعام العضوية.<br>
+                        <b style="color: var(--accent);">🟡 الفتحة السفلية:</b> للمواد الجافة البلاستيكية.<br>
+                        <b style="color: #03a9f4;">📊 شاشة التتبع:</b> تحديث تلقائي وفوري.
+                    </div>
+                </div>
+            </div>
+            <div class="glass-panel">
+                <h3 style="color: #0d47a1; margin-top:0;">🧮 محاكي احتساب نقاط المكافأة المباشرة</h3>
+                <select id="binMaterialType"><option value="food">بقايا طعام عضوية (10 نقاط)</option><option value="plastic">بلاستيك وزجاج (5 نقاط)</option></select>
+                <input type="number" id="binWeightInput" value="500">
+                <div style="background: rgba(13,71,161,0.2); padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 20px;"><span id="calculatedPointsDisplay" style="font-size: 28px; font-weight: 900; color: var(--accent);">50 نقطة مكافأة</span></div>
+                <input type="text" id="ideaTitle" placeholder="اسم المشارك"><textarea id="ideaDesc" rows="2" placeholder="أضف مقترحك..."></textarea><input type="text" id="ideaPhone" placeholder="رقم الاتصال">
+                <button id="btnSendIdea" class="cta-btn" style="background: linear-gradient(90deg, #0d47a1, var(--accent)); color: white;">🚀 إرسال مقترح البيئة والبيانات</button>
+                <p id="ideaMsgText" style="color: #4caf50; text-align: center; margin-top: 20px; display: none; font-weight: bold;">✓ تم تسجيل المقترح بنجاح بالمنظومة التلقائية.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- منصة MD2 -->
+    <section class="section" id="platform-tourism" style="background: linear-gradient(180deg, rgba(0, 188, 212, 0.15), transparent);">
+        <div class="section-title" style="color: #00bcd4;">✈️ منصة MD2: منظومة حجز البرامج السياحية الذكية</div>
+        <div class="grid-layout" style="max-width: 1100px; margin: auto;">
+            <div class="glass-panel">
+                <select id="tourPackage"><option>باقة الرفاهية الملكية 7 أيام - 15000 EGP</option><option>باقة العائلة والرحلات 5 أيام - 22000 EGP</option></select>
+                <input type="text" id="tourName" placeholder="الاسم الكامل للعميل"><input type="tel" id="tourPhone" placeholder="رقم الموبايل"><input type="date" id="tourDate">
+                <button id="btnGenerateTicket" class="cta-btn" style="background: #00bcd4; color: #000;">🎫 إصدار التذكرة الرقمية الفورية</button>
+            </div>
+            <div id="ticketPreview" class="glass-panel" style="display: none;">
+                <div class="ticket-box">
+                    <h3 style="margin-top:0; text-align:center; color:var(--primary); border-bottom:2px dashed #ccc; padding-bottom:10px;">TICKET | MD7 GROUP</h3>
+                    <p id="ticketDetails"></p><div id="qrcode" style="display:flex; justify-content:center; margin:20px 0;"></div>
+                    <button id="btnDownloadTicket" class="cta-btn" style="background: var(--primary); color: white;">📥 تحميل التذكرة الرسمية PDF</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- منصة MD3 -->
+    <section class="section" id="platform-book" style="background: linear-gradient(180deg, rgba(156, 39, 176, 0.15), transparent);">
+        <div class="section-title" style="color: #9c27b0;">🎬 منصة MD3: استوديو الإنتاج الفني وصناعة المحتوى</div>
+        <div class="glass-panel" style="max-width: 850px; margin: auto;">
+            <label style="font-weight:bold; color: var(--accent);">اسم المستخدم لمنصة MD3:</label>
+            <input type="text" id="md3Username" placeholder="أدخل اسم المستخدم الخاص بك هنا">
+            <input type="text" id="bookTitle" placeholder="عنوان النص / السيناريو الفني">
+            <input type="text" id="bookAuthor" value="MD7 Group Editorial Team" readonly style="color: var(--accent); font-weight: bold;">
+            <textarea id="bookContent" rows="7" placeholder="اكتب محتوى القصة أو السيناريو بالتفصيل هنا..."></textarea>
+            <button id="btnGenerateBook" class="cta-btn" style="background: #9c27b0; color: white;">📖 معالجة وإصدار الملف ككتاب PDF فاخر</button>
+        </div>
+    </section>
+
+    <!-- منصة MD4 -->
+    <section class="section" id="platform-cities" style="background: linear-gradient(180deg, rgba(76, 175, 80, 0.15), transparent);">
+        <div class="section-title" style="color: #4caf50;">🏙️ منصة MD4: تطوير المدن الذكية المستدامة</div>
+        <div class="glass-panel" style="text-align: center; max-width: 800px; margin: auto;">
+            <div style="font-size: 50px;">🗺️</div><h3>بنية تحتية رقمية ذكية وشاملة للمرافق</h3>
+            <p id="md4StatusText" style="color: var(--text-muted);">جاري استدعاء خادم البنية التحتية...</p>
+            <span style="background: rgba(76, 175, 80, 0.2); color: #4caf50; padding: 8px 20px; border-radius: 20px; font-weight: bold;">تشغيل آلي نشط 2026</span>
+        </div>
+    </section>
+
+    <!-- منصة MD5 -->
+    <section class="section" id="platform-commerce" style="background: linear-gradient(180deg, rgba(255, 152, 0, 0.15), transparent);">
+        <div class="section-title" style="color: #ff9800;">📦 منصة MD5: منصة التبادل التجاري والمستلزمات</div>
+        <div class="grid-layout" style="max-width: 1200px; margin: auto;">
+            <div class="glass-panel">
+                <input type="text" id="productName" placeholder="اسم المنتج العصري"><textarea id="productDesc" placeholder="المواصفات الفنية" rows="3"></textarea><input type="number" id="productPrice" placeholder="السعر المستهدف EGP"><input type="text" id="sellerPhone" placeholder="رقم الواتساب">
+                <button id="btnAddProduct" class="cta-btn" style="background: #ff9800; color: #000;">➕ إدراج المنتج في قائمة العرض</button>
+            </div>
+            <div class="glass-panel">
+                <h3 style="margin-top: 0; color: #ff9800; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom:10px;">المنتجات المعروضة حالياً</h3>
+                <div id="productsList" style="max-height: 380px; overflow-y: auto;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- منصة MD6 -->
+    <section class="section" id="platform-health" style="background: linear-gradient(180deg, rgba(139, 195, 74, 0.15), transparent);">
+        <div class="section-title" style="color: #8bc34a;">🍏 منصة MD6: الغذاء الصحي والتموين الفاخر</div>
+        <div class="glass-panel" style="text-align: center; max-width: 800px; margin: auto;">
+            <div style="font-size: 50px;">🥗</div><h3>تأمين الأغذية العضوية للفنادق</h3>
+            <p id="md6Info" style="color: var(--text-muted);">جاري الاتصال بنظام سلاسل التوريد...</p>
+            <p style="font-weight: bold;">البريد الإلكتروني المباشر للاستعلام والرد الفوري: <a href="mailto:avtarpreins@gmail.com" style="color: var(--accent); text-decoration: none;">avtarpreins@gmail.com</a></p>
+        </div>
+    </section>
+
+    <!-- منصة MD7 -->
+    <section class="section" id="platform-faq" style="background: linear-gradient(180deg, rgba(3, 169, 244, 0.15), transparent);">
+        <div class="section-title" style="color: #03a9f4;">❓ منصة MD7: مركز المساعد الذكي والأسئلة التفاعلية</div>
+        <div class="glass-panel" style="max-width: 750px; margin: auto; text-align: center;">
+            <div style="width: 200px; height: 200px; margin: 0 auto 25px; border-radius: 50%; background: #111; border: 3px solid #03a9f4; display:flex; align-items:center; justify-content:center; font-weight:900; color:var(--accent); font-size:32px;">MD7</div>
+            <div style="display: flex; gap: 15px; max-width: 600px; margin: auto;">
+                <input type="text" id="faqQuestion" placeholder="اكتب سؤالك (مثال: حجز، سهم، نظافة)..." style="margin-bottom: 0;">
+                <button id="btnAskAvatar" class="cta-btn" style="width: 140px; background: #03a9f4; color: #000; padding: 0;">تحليل الإجابة</button>
+            </div>
+            <div id="avatarAnswer" style="margin-top: 30px; padding: 25px; background: rgba(0,0,0,0.4); border-radius: 16px; border: 1px solid rgba(3, 169, 244, 0.2); display: none;">
+                <p id="answerText" style="font-weight: bold; font-size: 17px; color: #fff;"></p>
+                <audio id="answerAudio" controls style="width: 100%; max-width: 400px; margin: auto;" src="attachment://An-wsO3KagEbMqOjdffGIKCqvk8G1qc8ccfgsnq8GthexTB4w-WkJGJl3L-vzv7P-a22qKWkoF96eK5vzq5u2vWC7_Kj85PyeDgt7JfLmpvp72odRbMV6eDx"></audio>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق الاستثمارية والبرمجية محفوظة © 2026 لمجموعة شركات MD7 GROUP</p>
+    </footer>
+
+    <!-- استدعاء المكتبات الخارجية للملفات -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- الأكواد البرمجية الفورية -->
+    <script>
+        const audio = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        if(musicBtn) {
+            musicBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play().catch(e => console.log("User interaction needed"));
+                    musicBtn.innerText = "⏸️ إيقاف الموسيقى";
+                } else {
+                    audio.pause();
+                    musicBtn.innerText = "🎵 تشغيل الموسيقى";
+                }
+            });
+        }
+        const btnSubmitInvest = document.getElementById('btnSubmitInvest');
+        if(btnSubmitInvest){
+            btnSubmitInvest.addEventListener('click', () => {
+                const name = document.getElementById('investorName').value;
+                const phone = document.getElementById('investorPhone').value;
+                const shares = document.getElementById('sharePercent').value;
+                if(!name || !phone) { alert("يرجى ملء كافة البيانات المطلوبة للشراكة."); return; }
+                window.open(`https://wa.me/201033182019?text=طلب حجز شراكة أسهم بـ MD7 GROUP:%0A- الشريك المستثمر: ${name}%0A- عدد الأسهم المحجوزة: ${shares}%0A- هاتف التواصل: ${phone}`, '_blank');
+                document.getElementById('investMsg').style.display = 'block';
+            });
+        }
+    </script>
+
+    <!-- استدعاء ملفات التحكم المنفصلة السبعة -->
+    <script src="md1.js"></script>
+    <script src="md2.js"></script>
+    <script src="md3.js"></script>
+    <script src="md4.js"></script>
+    <script src="md5.js"></script>
+    <script src="md6.js"></script>
+    <script src="md7.js"></script>
+
+</body>
+</html>
