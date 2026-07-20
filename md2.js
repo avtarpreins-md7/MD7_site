@@ -1,6 +1,6 @@
 // نظام إدارة وتوليد وثائق قطاع الطاقة المتجددة لمنصة MD2
 (function() {
-    console.log("تحديث منصة MD2: تم تحويل القطاع إلى الطاقة المتجددة ونقل الطاقة لاسلكياً بنجاح.");
+    console.log("تحديث منصة MD2: تم تحويل القطاع إلى الطاقة المتجددة ونقل الطاقة والبيئية بنجاح.");
     
     const btnGenerateTicket = document.getElementById('btnGenerateTicket');
     if(btnGenerateTicket) {
