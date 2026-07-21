@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD7 GROUP |   تطوير ودعم وتقديم خطط تشغيل</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root { 
+            --primary: #0d47a1; 
+            --accent: #D4AF37; 
+            --bg: #0a0a0c; 
+            --text: #ffffff; 
+            --text-muted: #a0a0a8;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.07);
+        }
+        
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { 
+            background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; 
+            margin: 0; padding-top: 100px; overflow-x: hidden;
+        }
+
+        /* شريط حركة الأسهم العالمي */
+        .ticker-wrap { 
+            width: 100%; overflow: hidden; background: linear-gradient(90deg, #072552, var(--primary)); 
+            color: white; padding: 10px 0; position: fixed; top: 0; z-index: 1000; 
+            border-bottom: 2px solid var(--accent); box-shadow: 0 2px 20px rgba(13,71,161,0.5);
+        }
+        .ticker { display: flex; animation: ticker-scroll 25s linear infinite; }
+        @keyframes ticker-scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+        .ticker-item { padding: 0 40px; font-weight: 900; white-space: nowrap; font-size: 14px; }
+        .ticker-glow { color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px var(--accent); }
+
+        /* الهيدر الزجاجي المطور */
+        header { 
+            position: fixed; width: 100%; top: 43px; display: flex; justify-content: space-between; 
+            align-items: center; padding: 15px 40px; background: rgba(10, 10, 12, 0.85); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 999; 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo-container-main { display: flex; align-items: center; text-decoration: none; }
+        .header-logo-svg { width: 160px; height: auto; }
+        
+        .logo-m-black { fill: #000000; font-weight: 900; font-size: 32px; font-family: 'Cairo'; stroke: rgba(255,255,255,0.2); stroke-width: 0.5px; }
+        .logo-d-gold { fill: url(#goldGradient); font-weight: 900; font-size: 32px; font-family: 'Cairo'; }
+        .logo-77-glow { fill: url(#goldGradient); font-weight: 900; font-size: 36px; font-family: 'Cairo'; filter: drop-shadow(0 0 12px #DAA520); }
+        .logo-sub-text { fill: #ffffff; font-family: 'Cairo'; font-weight: 700; font-size: 14px; letter-spacing: 4px; opacity: 0.8; }
+
+        .menu-toggle-btn {
+            background: none; border: none; color: white; font-size: 24px; cursor: pointer;
+            transition: 0.3s; padding: 10px; z-index: 1001; order: 2;
+        }
+        .nav-links { 
+            position: fixed; top: 0; right: -300px; width: 280px; height: 100vh;
+            background: rgba(10, 10, 12, 0.98); backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255,255,255,0.05); padding: 120px 30px 40px;
+            display: flex; flex-direction: column; gap: 25px; transition: 0.4s cubic-bezier(0.77,0,0.175,1);
+            z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.7);
+        }
+        .nav-links.active { right: 0; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; font-size: 18px; transition: 0.3s; display: flex; align-items: center; gap: 15px; }
+        .nav-links a:hover { color: var(--accent); padding-right: 10px; }
+
+        /* السيكشنز والبطاقات */
+        .hero { padding: 180px 20px 150px; text-align: center; background: linear-gradient(180deg, rgba(13,71,161,0.5) 0%, rgba(10,10,12,1) 90%); }
+        .hero h1 { font-size: 75px; color: var(--accent); margin: 0; font-weight: 900; }
+        .hero h2 { font-size: 22px; color: #fff; margin: 15px 0; font-weight: 400; letter-spacing: 6px; }
+        
+        .section { padding: 90px 40px; max-width: 1300px; margin: 0 auto; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .section-title { text-align: center; font-size: 40px; margin-bottom: 10px; font-weight: 900; }
+        .section-desc { text-align: center; color: var(--text-muted); margin-bottom: 55px; }
+
+        .logos-container { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
+        .logo-box-link { text-decoration: none; color: inherit; }
+        .logo-box { 
+            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; 
+            padding: 25px 20px; text-align: center; width: 250px; backdrop-filter: blur(10px); 
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .logo-box-link:hover .logo-box { 
+            transform: translateY(-8px); border-color: var(--glow-color); 
+            box-shadow: 0 10px 35px rgba(0,0,0,0.5), 0 0 25px var(--glow-color);
+        }
+        .platform-name { font-size: 14px; font-weight: 700; margin-bottom: 15px; color: #fff; opacity: 0.85; min-height: 42px; display: flex; align-items: center; justify-content: center; }
+        .logo-svg { width: 175px; height: auto; }
+        
+        .text-m-silver { fill: url(#silverGradient); font-weight: 900; font-size: 38px; }
+        .text-d-gold { fill: url(#goldGradient); font-weight: 900; font-size: 38px; }
+        .glow-num { font-weight: 900; font-size: 44px; }
+
+        .glass-panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 40px; border-radius: 24px; margin-bottom: 25px; }
+        input, textarea, select { 
+            width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; 
+            border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.4); color: white; font-family: 'Cairo';
+        }
+        .cta-btn { 
+            width: 100%; border: none; padding: 18px; font-size: 16px; font-weight: bold; 
+            border-radius: 12px; cursor: pointer; font-family: 'Cairo'; transition: 0.3s; margin-bottom: 10px;
+        }
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        @media (max-width: 900px) { .grid-layout { grid-template-columns: 1fr; } }
+
+        /* تصاميم المنصات الفرعية وعرض كود المحاكاة */
+        .smart-bin-design { display: flex; background: rgba(0,0,0,0.5); border: 2px dashed var(--primary); border-radius: 16px; padding: 20px; gap: 20px; align-items: center; }
+        .bin-visual { width: 90px; height: 150px; background: #111; border: 3px solid #0d47a1; border-radius: 12px; position: relative; }
+        .bin-screen { width: 80%; height: 22px; background: #000; border: 1px solid var(--accent); margin: 12px auto 0; color: #0f0; font-size: 9px; text-align: center; line-height: 20px; }
+        .bin-slot-food { width: 70%; height: 32px; background: rgba(76,175,80,0.2); border: 2px solid #4caf50; margin: 12px auto; font-size: 9px; text-align: center; line-height: 28px; }
+        .bin-slot-dry { width: 70%; height: 32px; background: rgba(212,175,55,0.15); border: 2px solid var(--accent); margin: 0 auto; font-size: 9px; text-align: center; line-height: 28px; }
+        
+        .code-block { background: #050507; border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; font-family: monospace; color: #a8ffb2; text-align: left; direction: ltr; overflow-x: auto; font-size: 12px; max-height: 250px; }
+        .empty-list-msg { text-align: center; color: var(--text-muted); padding: 30px; font-style: italic; }
+        .product-card { background: rgba(255, 255, 255, 0.02); padding: 20px; border-radius: 12px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); }
+
+        footer { text-align: center; padding: 35px; background: #050507; color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(255,255,255,0.03); }
+    </style>
+</head>
+<body>
+
+    <svg style="display: none;">
+        <defs>
+            <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#999999" /><stop offset="50%" stop-color="#ffffff" /><stop offset="100%" stop-color="#777777" />
+            </linearGradient>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#B38728" /><stop offset="25%" stop-color="#FBF5B7" /><stop offset="50%" stop-color="#DAA520" /><stop offset="100%" stop-color="#AA771C" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span class="ticker-item">🌐 تشغيل وإدارة المنصة الرقمية المضيئة <span class="ticker-glow">MD 1.2.3.4.5.6.7</span></span>
+            <span class="ticker-item">✨ تحديثات البنية التحتية والأنظمة التقنية الاستثمارية الموحدة لعام 2026 لمجموعة MD7 GROUP</span>
+        </div>
+    </div>
+
+    <header>
+        <a href="#home" class="logo-container-main">
+            <svg class="header-logo-svg" viewBox="0 0 300 90">
+                <text x="10" y="45" class="logo-m-black">M</text>
+                <text x="45" y="45" class="logo-d-gold">D</text>
+                <text x="85" y="45" class="logo-77-glow">77</text>
+                <text x="12" y="75" class="logo-sub-text">MD</text>
+                <line x1="165" y1="15" x2="165" y2="75" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+                <text x="180" y="42" fill="#ffffff" font-family="Cairo" font-weight="900" font-size="20px">MD7</text>
+                <text x="180" y="65" fill="#FFD700" font-family="Cairo" font-weight="700" font-size="12px" letter-spacing="2px">GROUP</text>
+            </svg>
+        </a>
+        <button class="menu-toggle-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+        <nav class="nav-links" id="sideNav">
+            <a href="#home"><i class="fa-solid fa-house"></i> الرئيسية</a>
+            <a href="#branding-panel"><i class="fa-solid fa-cubes"></i> المنصات الاستثمارية</a>
+            <a href="#invest-section"><i class="fa-solid fa-chart-line"></i> حجز الأسهم</a>
+            <a href="mailto:avtarpreins@gmail.com"><i class="fa-solid fa-envelope"></i> تواصل مباشر</a>
+        </nav>
+    </header>
+
+    <!-- 1. تعديل قسم الـ Hero -->
+    <section class="hero" id="home">
+        <h1>MD7 OS</h1>
+        <h2>نظام التشغيل المتكامل للمؤسسات والمدن الذكية</h2>
+        <p>احنا مش بنقدم خدمة. احنا بنبني النظام اللي يشغل شركتك، هيئتك، ومدينتك. إدارة أذكى، بيانات موحدة، قرارات أسرع. من الفكرة للتنفيذ.</p>
+        <p><b>تأسست بواسطة محمد الهمام</b></p>
+    </section>
+
+    <!-- 2. تعديل اسماء ووصف الـ 7 منصات -->
+    <section class="section" id="branding-panel">
+        <div class="section-title" style="color: var(--accent);">لوحة المنصات والقطاعات الاستثمارية</div>
+        <div class="section-desc">انقر فوق أي أيقونة للانتقال إلى نظام التحكم الفوري والملفات التنفيذية الذكية</div>
+        
+        <div class="logos-container">
+            <a href="#platform-md1" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #0d47a1;">
+                    <div class="platform-name">MD1. البيئة والاستدامة</div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">نظام إدارة النفايات الذكي وإعادة التدوير</p>
+                    <svg class="logo-svg" viewBox="0 0 220 110">
+                        <text x="20" y="65" class="text-m-silver">M</text>
+                        <text x="60" y="65" class="text-d-gold">D</text>
+                        <text x="105" y="68" fill="#0d47a1" class="glow-num" style="filter: drop-shadow(0 0 8px #0d47a1);">1</text>
+                    </svg>
+                </div>
+            </a>
+            <a href="#platform-md2" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #00bcd4;">
+                    <div class="platform-name">MD2. السياحة</div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">نظام تشغيل الوجهات السياحية وإدارة الزوار</p>
+                    <svg class="logo-svg" viewBox="0 0 220 110">
+                        <text x="20" y="65" class="text-m-silver">M</text>
+                        <text x="60" y="65" class="text-d-gold">D</text>
+                        <text x="105" y="68" fill="#00bcd4" class="glow-num" style="filter: drop-shadow(0 0 8px #00bcd4);">2</text>
+                    </svg>
+                </div>
+            </a>
+            <a href="#platform-md3" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #9c27b0;">
+                    <div class="platform-name">MD3. الفن والثقافة</div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">منصة إدارة المحتوى الإبداعي والفعاليات</p>
+                    <svg class="logo-svg" viewBox="0 0 220 110">
+                        <text x="20" y="65" class="text-m-silver">M</text>
+                        <text x="60" y="65" class="text-d-gold">D</text>
+                        <text x="105" y="68" fill="#9c27b0" class="glow-num" style="filter: drop-shadow(0 0 8px #9c27b0);">3</text>
+                    </svg>
+                </div>
+            </a>
+            <a href="#platform-md4" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #4caf50;">
+                    <div class="platform-name">MD4. المدن والبنية التحتية</div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">نظام إدارة المرافق والمدن الذكية</p>
+                    <svg class="logo-svg" viewBox="0 0 220 110">
+                        <text x="20" y="65" class="text-m-silver">M</text>
+                        <text x="60" y="65" class="text-d-gold">D</text>
+                        <text x="105" y="68" fill="#4caf50" class="glow-num" style="filter: drop-shadow(0 0 8px #4caf50);">4</text>
+                    </svg>
+                </div>
+            </a>
+            <a href="#platform-md5" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #ff9800;">
+                    <div class="platform-name">MD5. التجارة وسلاسل التوريد</div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">نظام رقمنة البيع والشراء والتوريد</p>
+                    <svg class="logo-svg" viewBox="0 0 220 110">
+                        <text x="20" y="65" class="text-m-silver">M</text>
+                        <text x="60" y="65" class="text-d-gold">D</text>
+                        <text x="105" y="68" fill="#ff9800" class="glow-num" style="filter: drop-shadow(0 0 8px #ff9800);">5</text>
+                    </svg>
+                </div>
+            </a>
+            <a href="#platform-md6" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #8bc34a;">
+                    <div class="platform-name">MD6. الصحة</div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">نظام إدارة المستشفيات والملفات الطبية</p>
+                    <svg class="logo-svg" viewBox="0 0 220 110">
+                        <text x="20" y="65" class="text-m-silver">M</text>
+                        <text x="60" y="65" class="text-d-gold">D</text>
+                        <text x="105" y="68" fill="#8bc34a" class="glow-num" style="filter: drop-shadow(0 0 8px #8bc34a);">6</text>
+                    </svg>
+                </div>
+            </a>
+            <a href="#platform-md7" class="logo-box-link">
+                <div class="logo-box" style="--glow-color: #03a9f4;">
+                    <div class="platform-name">MD7. الذكاء الاصطناعي</div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">مركز البيانات والقرار ودعم المؤسسات</p>
+                    <svg class="logo-svg" viewBox="0 0 220 110">
+                        <text x="20" y="65" class="text-m-silver">M</text>
+                        <text x="60" y="65" class="text-d-gold">D</text>
+                        <text x="105" y="68" fill="#03a9f4" class="glow-num" style="filter: drop-shadow(0 0 8px #03a9f4);">7</text>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- نظام دعم المؤسسية وحجز شراكة الأسهم -->
+    <section class="section" id="invest-section" style="background: linear-gradient(180deg, rgba(214, 175, 55, 0.08), transparent);">
+        <div class="section-title" style="color: var(--accent);">💼 بوابة دعم المؤسسية والشراكة الاستثمارية المباشرة</div>
+        <div class="glass-panel" style="max-width: 800px; margin: auto;">
+            <div style="text-align:center; font-weight: bold; color: var(--accent); margin-bottom: 25px;">📊 قيمة السهم الدعمي: 100,000 EGP | سقف الاستثمار الفردي والمؤسسي: 20 سهماً</div>
+            <input type="text" id="investorName" placeholder="الاسم الكامل للمستثمر / اسم المؤسسة الداعمة">
+            <input type="tel" id="investorPhone" placeholder="رقم الهاتف الفوري المرتبط بـ WhatsApp">
+            <select id="sharePercent">
+                <option value="1 سهم">شراء سهم واحد دعمي (100,000 EGP)</option>
+                <option value="5 أسهم">شراء 5 أسهم مؤسسية (500,000 EGP)</option>
+                <option value="10 أسهم">شراء 10 أسهم مؤسسية (1,000,000 EGP)</option>
+                <option value="20 سهم">شراء 20 سهماً - الحد الأقصى للمؤسسات (2,000,000 EGP)</option>
+            </select>
+            <button id="btnSubmitInvest" class="cta-btn" style="background: linear-gradient(90deg, var(--primary), var(--accent)); color: white;">🚀 تأكيد إرسال طلب الشراكة والدعم فوريًا</button>
+            <p id="investMsg" style="color: #4caf50; font-weight: bold; text-align: center; margin-top: 15px; display: none;">✓ تم تسجيل وحفظ البيانات استثمارياً، جاري فتح قنوات التواصل والتوجيه الفوري...</p>
+        </div>
+    </section>
+
+    <!-- منصة MD1 -->
+    <section class="section" id="platform-md1">
+        <div class="section-title" style="color: #0d47a1;">💡 MD1: البيئة والاستدامة</div>
+        
+        <div class="glass-panel">
+            <h3 style="color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">📋 وثيقة النظام الديناميكي المتكامل لإعادة التدوير[cite: 1]</h3>
+            <div style="font-size: 14px; line-height: 1.8; margin-bottom: 25px;">
+                <p><strong>1. تفاصيل تصميم الصندوق (Recycling Bin Design):</strong> تم تصميم الصندوق ليكون مقسماً إلى جزأين رئيسيين؛ الجزء الأول مخصص للمواد القابلة للتدوير (الورق، البلاستيك، والمعادن) ومزود بمستشعرات ذكية لقياس الامتلاء[cite: 1]. الجزء الثاني مخصص لباقي القمامة والمواد العضوية، وهو معزول تماماً لمنع تسرب الروائح وتسهيل التفريغ التلقائي عبر قاعدة ديناميكية متصلة برصيف المشاة للتثبيت الآمن والالتقاط بالرافعة[cite: 1].</p>
+                <p><strong>2. تعديل تصميم السيارة (Side-Loading Truck Modification):</strong> تشمل خزانين منفصلين داخلياً يتوافقان مع تقسيم الصندوق[cite: 1]. تم تزويد السيارة برافعة هيدروليكية جانبية تمتد لالتقاط الصندوق من الرصيف، وفتحة استقبال جانبية تفتح تلقائياً عند اقتراب الصندوق لتقوم الرافعة بقلبه وتفريغ كل قسم في الخزان المخصص له بدقة[cite: 1].</p>
+                <p><strong>3. التركيز على الاستفادة وكفاءة التدوير:</strong> يضمن هذا النظام عدم اختلاط المواد العضوية بالمواد القابلة للتدوير أثناء عملية الجمع، وهو ما **يقلل من تكلفة الفرز في المحطات المركزية بنسبة 40%** ويرفع من كفاءة إعادة التدوير لتعزيز الاستدامة البيئية[cite: 1].</p>
+            </div>
+        </div>
+
+        <div class="grid-layout">
+            <div class="glass-panel">
+                <h3>🛠️ آلية هيكل الصندوق ومحاكاة المحرك</h3>
+                <div class="smart-bin-design" style="margin-bottom: 20px;">
+                    <div class="bin-visual"><div class="bin-screen">READY</div><div class="bin-slot-food">مواد عضوية</div><div class="bin-slot-dry">قابل للتدوير</div></div>
+                    <div style="font-size: 13px;">🟢 فتحة التدوير: مستشعرات امتلاء ذكية[cite: 1]<br>🟡 فتحة العضوي: معزول تماماً للروائح[cite: 1]</div>
+                </div>
+                <h5>💻 كود محاكاة الحركة الديناميكية للمحركات (Pseudo-code / C style):[cite: 1]</h5>
+                <div class="code-block">
+public class SideLoadingGarbageTruck {
+    private ArmState currentArmState = ArmState.Idle;
+    private bool isBinAttached = false;
+    public enum ArmState { Idle, Extending, Grabbing, LiftingAndFlipping, Emptying, Returning, Detaching, Retracting }
+
+    public void StartRecyclingProcess(RecyclingBin targetBin) {
+        if (targetBin.IsFull() && targetBin.HasRecyclables()) {
+            ExtendArm(); GrabBin(targetBin); LiftAndFlipBin();
+            EmptyContents(targetBin); ReturnBinToSidewalk(targetBin); RetractArm();
+        }
+    }
+    private void LiftAndFlipBin() {
+        currentArmState = ArmState.LiftingAndFlipping;
+        OpenSideCompartment();
+        DynamicAnimateLift(angle: 135.0f); // قلب الصندوق بمقدار 135 درجة
+    }
+}
+                </div>
+            </div>
+            <div class="glass-panel">
+                <h3>🧮 احتساب نقاط المكافآت والمقترحات البيئية</h3>
+                <select id="binMaterialType"><option value="food">مواد عضوية وبقايا طعام</option><option value="plastic">بلاستيك وزجاج ومعادن تدوير</option></select>
+                <input type="number" id="binWeightInput" value="500">
+                <div style="background: rgba(13,71,161,0.2); padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 15px;"><span id="calculatedPointsDisplay" style="font-size: 24px; font-weight: 900; color: var(--accent);">50 نقطة</span></div>
+                <input type="text" id="ideaTitle" placeholder="اسم المشارك المستثمر"><textarea id="ideaDesc" rows="2" placeholder="أضف فكرتك لتحديث كفاءة الفرز وتقليل تكلفة الـ 40%..."></textarea><input type="text" id="ideaPhone" placeholder="الهاتف الفوري"><button id="btnSendIdea" class="cta-btn" style="background:#0d47a1; color:white;">🚀 إرسال المقترح إلى حاضنة الإبداع</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- منصة MD2 -->
+    <section class="section" id="platform-md2">
+        <div class="section-title" style="color: #00bcd4;">⚡ MD2: السياحة</div>
+        <div class="glass-panel" style="max-width:700px; margin:auto;">
+            <select id="tourPackage">
+                <option>مصفوفة ألواح الطاقة الشمسية الهجينة العالية الكفاءة</option>
+                <option>البنية البرمجية المتكاملة لإدارة الأصول والموارد المستدامة</option>
+            </select>
+            <input type="text" id="tourName" placeholder="الاسم الكامل للعميل شريك التطوير">
+            <input type="tel" id="tourPhone" placeholder="رقم الموبايل الآمن">
+            <button id="btnGenerateTicket" class="cta-btn" style="background:#00bcd4; color:#000;">🎫 إصدار وثيقة تكنولوجيا الموارد الفورية</button>
+        </div>
+    </section>
+
+    <!-- منصة MD3 -->
+    <section class="section" id="platform-md3">
+        <div class="section-title" style="color: #9c27b0;">🎬 MD3: الفن والثقافة</div>
+        <div class="glass-panel" style="max-width: 800px; margin: auto;">
+            <div style="background: rgba(156, 39, 176, 0.1); border: 1px dashed #9c27b0; padding: 10px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-size: 13px; color: #e1bee7;">
+                💾 <strong>ميزة المزامنة المستمرة نشطة:</strong> يتم حفظ كلماتك تلقائياً أثناء الكتابة لاستكمال مسودتك في أي يوم دون فقدان تقدمك!
+            </div>
+            <input type="text" id="md3Username" placeholder="اسم الكاتب / المستثمر الفني">
+            <input type="text" id="bookTitle" placeholder="عنوان الكتاب أو القصة">
+            <input type="text" id="bookAuthor" value="MD7 Group Editorial Team" readonly style="color: var(--accent); font-weight: bold;">
+            <textarea id="bookContent" rows="10" placeholder="ابدأ بكتابة فصول كتابك أو قصتك هنا..."></textarea>
+            
+            <div class="grid-layout" style="gap: 15px; margin-top: 10px;">
+                <button id="btnPrintBook" class="cta-btn" style="background: #4caf50; color: white;"><i class="fa-solid fa-print"></i> جهز نسخة رقمية للطباعة الفورية</button>
+                <button id="btnPublishOnline" class="cta-btn" style="background: #9c27b0; color: white;"><i class="fa-solid fa-globe"></i> انشر العمل الإبداعي أون لاين</button>
+            </div>
+            <p id="md3Status" style="color: #4caf50; text-align: center; font-weight: bold; margin-top: 10px; display: none;"></p>
+        </div>
+    </section>
+
+    <!-- منصة MD4 -->
+    <section class="section" id="platform-md4">
+        <div class="section-title" style="color: #4caf50;">🏙️ MD4: المدن والبنية التحتية</div>
+        <div class="glass-panel" style="text-align: center; max-width: 750px; margin: auto;">
+            <h3>🗺️ مراقبة وإدارة البنية التحتية والمرافق الذكية للبلديات</h3>
+            <p style="color: var(--text-muted);">جاري الاتصال بقاعدة بيانات النظم الجغرافية والمرافق والمحاكاة المتقدمة...</p>
+            <span style="background: rgba(76, 175, 80, 0.2); color: #4caf50; padding: 8px 20px; border-radius: 20px; font-weight: bold;">تشغيل مستقل متزامن 2026</span>
+        </div>
+    </section>
+
+    <!-- منصة MD5 -->
+    <section class="section" id="platform-md5">
+        <div class="section-title" style="color: #ff9800;">📦 MD5: التجارة وسلاسل التوريد</div>
+        <div class="grid-layout">
+            <div class="glass-panel">
+                <h3>➕ إضافة سلعة جديدة للقائمة</h3>
+                <input type="text" id="productName" placeholder="اسم المنتج">
+                <textarea id="productDesc" placeholder="المواصفات الفنية للمنتج" rows="2"></textarea>
+                <input type="number" id="productPrice" placeholder="السعر EGP">
+                <input type="text" id="sellerPhone" placeholder="رقم التواصل">
+                <button id="btnAddProduct" class="cta-btn" style="background: #ff9800; color:#000;">إدراج وعرض السلعة في القائمة</button>
+            </div>
+            <div class="glass-panel">
+                <h3>📦 قائمة المنتجات المتاحة حالياً</h3>
+                <div id="productsList" style="max-height: 350px; overflow-y: auto;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- منصة MD6 -->
+    <section class="section" id="platform-md6">
+        <div class="section-title" style="color: #8bc34a;">🍏 MD6: الصحة</div>
+        <div class="glass-panel" style="text-align: center; max-width: 750px; margin: auto;">
+            <h3>🥗 الإشراف الذكي على سلاسل توريد المحاصيل الزراعية وتحديث التقنيات</h3>
+            <p style="color: var(--text-muted);">نظام المراقبة والإشراف الزراعي متصل ونشط تلقائياً وفق أحدث النظم لعام 2026.</p>
+            <p style="font-weight: bold;">المراسلات الرسمية والدعم التوريدي: <a href="mailto:avtarpreins@gmail.com" style="color: var(--accent); text-decoration: none;">avtarpreins@gmail.com</a></p>
+        </div>
+    </section>
+
+    <!-- منصة MD7 -->
+    <section class="section" id="platform-md7">
+        <div class="section-title" style="color: #03a9f4;">❓ MD7: الذكاء الاصطناعي</div>
+        <div class="glass-panel" style="max-width: 700px; margin: auto; text-align: center;">
+            <div style="width: 130px; height: 130px; margin: 0 auto 20px; border-radius: 50%; background: #111; border: 3px solid #03a9f4; display:flex; align-items:center; justify-content:center; font-weight:900; color:var(--accent); font-size:26px;">MD7</div>
+            <div style="display: flex; gap: 10px;"><input type="text" id="faqQuestion" placeholder="اسألني عن (حجز، أسهم، طاقة، تدوير)..." style="margin-bottom:0;"><button id="btnAskAvatar" class="cta-btn" style="width:130px; background:#03a9f4; color:#000; padding:0;">تحليل</button></div>
+            <div id="avatarAnswer" style="margin-top: 20px; padding: 20px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 1px solid rgba(3, 169, 244, 0.2); display: none;"><p id="answerText" style="font-weight: bold; color: #fff;"></p></div>
+        </div>
+    </section>
+
+    <section class="section" id="pilot-project">
+        <div class="glass-panel" style="text-align: center; max-width: 800px; margin: auto; border: 1px solid var(--accent);">
+            <h2 style="color: var(--accent); font-size: 36px; margin-bottom: 10px;">Pilot Project</h2>
+            <h3 style="color: #fff; font-size: 24px; margin-bottom: 15px;">مدينة علم الروم</h3>
+            <p style="color: var(--text-muted); font-size: 16px; line-height: 1.8;">نقدم MD7 OS كـ نظام التشغيل الذكي لمشروع علم الروم لربط جميع الخدمات في تطبيق واحد وتشغيل المدينة بأعلى كفاءة</p>
+        </div>
+    </section>
+
+    <!-- 3. تعديل الفوتر -->
+    <footer>
+        <p>© 2026 MD7 GROUP. جميع الحقوق محفوظة</p>
+        <p>تأسست بواسطة محمد الهمام</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sideNav = document.getElementById('sideNav');
+        if (menuToggle && sideNav) {
+            menuToggle.addEventListener('click', (e) => { e.stopPropagation(); sideNav.classList.toggle('active'); });
+            document.querySelectorAll('#sideNav a').forEach(link => { link.addEventListener('click', () => sideNav.classList.remove('active')); });
+            document.addEventListener('click', (e) => { if (!sideNav.contains(e.target) && !menuToggle.contains(e.target)) sideNav.classList.remove('active'); });
+        }
+
+        const btnSubmitInvest = document.getElementById('btnSubmitInvest');
+        if(btnSubmitInvest){
+            btnSubmitInvest.addEventListener('click', () => {
+                const name = document.getElementById('investorName').value.trim();
+                const phone = document.getElementById('investorPhone').value.trim();
+                const shares = document.getElementById('sharePercent').value;
+                if(!name || !phone) { alert("يرجى إدخال كافة الحقول لتأكيد طلب دعم المؤسسية."); return; }
+                window.open(`https://wa.me/201033182019?text=${encodeURIComponent('طلب حجز أسهم بدعم مؤسسي بـ MD7 GROUP:\n- المستثمر: ' + name + '\n- عدد الأسهم: ' + shares + '\n- الهاتف: ' + phone)}`, '_blank');
+                window.location.href = `mailto:avtarpreins@gmail.com?subject=${encodeURIComponent('طلب دعم مؤسسي واستثمار أسهم')}&body=${encodeURIComponent('الاسم: ' + name + '\nالهاتف: ' + phone + '\nالأسهم: ' + shares)}`;
+                document.getElementById('investMsg').style.display = 'block';
+            });
+        }
+
+        // --- نظام الحفظ المستمر التلقائي لمنصة الإبداع MD3 ---
+        const bookContentTextarea = document.getElementById('bookContent');
+        const bookTitleInput = document.getElementById('bookTitle');
+        const authorNameInput = document.getElementById('md3Username');
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if(localStorage.getItem('md3_saved_book_content')) bookContentTextarea.value = localStorage.getItem('md3_saved_book_content');
+            if(localStorage.getItem('md3_saved_book_title')) bookTitleInput.value = localStorage.getItem('md3_saved_book_title');
+            if(localStorage.getItem('md3_saved_author')) authorNameInput.value = localStorage.getItem('md3_saved_author');
+            renderProducts();
+        });
+
+        const saveProgress = () => {
+            localStorage.setItem('md3_saved_book_content', bookContentTextarea.value);
+            localStorage.setItem('md3_saved_book_title', bookTitleInput.value);
+            localStorage.setItem('md3_saved_author', authorNameInput.value);
+        };
+        bookContentTextarea.addEventListener('input', saveProgress);
+        bookTitleInput.addEventListener('input', saveProgress);
+        authorNameInput.addEventListener('input', saveProgress);
+
+        document.getElementById('btnPrintBook').addEventListener('click', () => {
+            if(!bookContentTextarea.value.trim()) { alert("يرجى كتابة محتوى لتتمكن من إعداد النسخة للطباعة."); return; }
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html lang="ar" dir="rtl">
+                <head><title>${bookTitleInput.value || 'مستند إبداعي'}</title><style>body { font-family: 'Cairo', sans-serif; padding: 40px; line-height: 1.8; } .header-print { text-align: center; border-bottom: 2px solid #000; padding-bottom: 20px; } .content { white-space: pre-wrap; margin-top:30px; }</style></head>
+                <body>
+                    <div class="header-print"><h2>${bookTitleInput.value || 'إصدار رقمي فاخر - MD7 GROUP'}</h2><h4>الكاتب: ${authorNameInput.value || 'مجموعة MD7'}</h4></div>
+                    <div class="content">${bookContentTextarea.value}</div>
+                    <script>window.print();<\/script>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+        });
+
+        document.getElementById('btnPublishOnline').addEventListener('click', () => {
+            if(!bookContentTextarea.value.trim()) { alert("المسودة فارغة!"); return; }
+            window.location.href = `mailto:avtarpreins@gmail.com?subject=${encodeURIComponent('نشر عمل إبداعي: ' + bookTitleInput.value)}&body=${encodeURIComponent(bookContentTextarea.value)}`;
+            document.getElementById('md3Status').innerText = "✓ جاري معالجة ونشر العمل أون لاين...";
+            document.getElementById('md3Status').style.display = "block";
+        });
+
+        // --- مصفوفة المنتجات (تبدأ فارغة تماماً) ---
+        let internalProducts = []; 
+        const renderProducts = () => {
+            const listContainer = document.getElementById('productsList');
+            if(internalProducts.length === 0) {
+                listContainer.innerHTML = `<div class="empty-list-msg">قائمة المنتجات فارغة حالياً. أضف منتجاتك التجارية لتظهر هنا فوراً.</div>`;
+                return;
+            }
+            listContainer.innerHTML = internalProducts.map(p => `
+                <div class="product-card">
+                    <h4 style="color: #ff9800; margin: 0 0 10px 0;">${p.name}</h4>
+                    <p style="font-size: 13px; color: var(--text-muted);">${p.desc}</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                        <span>السعر: <span style="color: #4caf50;">${p.price} EGP</span></span>
+                        <a href="https://wa.me/2${p.phone}" target="_blank" style="background: #ff9800; color: #000; text-decoration: none; padding: 6px 15px; border-radius: 6px; font-weight: bold; font-size: 12px;">تواصل للشراء</a>
+                    </div>
+                </div>
+            `).join('');
+        };
+
+        document.getElementById('btnAddProduct').addEventListener('click', () => {
+            const name = document.getElementById('productName').value.trim();
+            const desc = document.getElementById('productDesc').value.trim();
+            const price = document.getElementById('productPrice').value;
+            const phone = document.getElementById('sellerPhone').value.trim();
+            if(!name || !price || !phone) { alert("يرجى ملء الحقول المطلوبة لإدراج السلعة."); return; }
+            internalProducts.push({ name, desc, price, phone });
+            renderProducts();
+            document.getElementById('productName').value = '';
+            document.getElementById('productDesc').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('sellerPhone').value = '';
+        });
+    </script>
+</body>
+</html>
