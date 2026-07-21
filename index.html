@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD7 GROUP | نظام يعيد تشغيل مؤسستك</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root { 
+            --primary: #D4AF37; 
+            --accent: #ff9800; 
+            --bg: #000000; 
+            --text: #ffffff; 
+            --text-muted: #dcdcdc;
+            --card-bg: #111111;
+            --card-border: #D4AF37;
+        }
+        
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { 
+            background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; 
+            margin: 0; padding-top: 100px; overflow-x: hidden; transition: background 0.5s ease;
+        }
+
+        /* الشريط المضيء العلوي */
+        .top-bar { 
+            width: 100%; overflow: hidden; position: fixed; top: 0; z-index: 1000; 
+            padding: 10px 0; font-weight: 900; font-size: 14px; display: flex; align-items: center;
+            background: linear-gradient(90deg, #1a1a1a, #D4AF37); 
+            color: #000; border-bottom: 2px solid var(--accent);
+            box-shadow: 0 2px 20px rgba(212,175,55,0.4);
+            transition: all 0.5s ease;
+        }
+        .top-bar-content {
+            display: inline-flex; align-items: center; gap: 15px; white-space: nowrap;
+            animation: marquee-scroll 25s linear infinite; width: max-content;
+        }
+        .top-bar-content:hover { animation-play-state: paused; }
+        .top-bar-link { color: inherit; text-decoration: none; cursor: pointer; transition: color 0.2s; }
+        .top-bar-link:hover { color: #fff; text-shadow: 0 0 5px #fff; }
+
+        @keyframes marquee-scroll { 
+            from { transform: translateX(100%); } 
+            to { transform: translateX(-100%); } 
+        }
+        
+        body.night .top-bar {
+            background: linear-gradient(90deg, #0b1426, #2a2a38);
+            color: #F5E6A5; border-bottom: 2px solid #F5E6A5;
+            box-shadow: 0 0 15px #F5E6A5, 0 0 30px rgba(245, 230, 165, 0.3);
+        }
+        .moon-icon {
+            display: none; width: 18px; height: 18px; background: #F5E6A5; 
+            box-shadow: 0 0 8px #F5E6A5; transition: border-radius 0.3s ease;
+        }
+        body.night .top-bar .moon-icon { display: inline-block; }
+
+        /* الهيدر */
+        header { 
+            position: fixed; width: 100%; top: 43px; display: flex; justify-content: space-between; 
+            align-items: center; padding: 15px 40px; background: rgba(0, 0, 0, 0.95); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 999; 
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+        .logo-container-main { display: flex; align-items: center; text-decoration: none; }
+        .header-logo-svg { width: 160px; height: auto; }
+        .logo-m-black { fill: #000000; font-weight: 900; font-size: 32px; font-family: 'Cairo'; stroke: #D4AF37; stroke-width: 1.5px; }
+        .logo-d-gold { fill: #D4AF37; font-weight: 900; font-size: 32px; font-family: 'Cairo'; stroke: #C0C0C0; stroke-width: 1.5px; }
+        .logo-77-glow { fill: #ff9800; font-weight: 900; font-size: 30px; font-family: 'Cairo'; filter: drop-shadow(0 0 10px #ff9800); }
+
+        .menu-toggle-btn {
+            background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer;
+            transition: 0.3s; padding: 10px; z-index: 1001; order: 2;
+        }
+        .nav-links { 
+            position: fixed; top: 0; right: -300px; width: 280px; height: 100vh;
+            background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(212,175,55,0.2); padding: 120px 30px 40px;
+            display: flex; flex-direction: column; gap: 25px; transition: 0.4s cubic-bezier(0.77,0,0.175,1);
+            z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.9);
+        }
+        .nav-links.active { right: 0; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; font-size: 18px; transition: 0.3s; display: flex; align-items: center; gap: 15px; }
+        .nav-links a:hover { color: var(--accent); padding-right: 10px; }
+
+        /* الهيرو واللوجو الرئيسي */
+        .hero { padding: 100px 20px 80px; text-align: center; background: linear-gradient(180deg, rgba(212,175,55,0.15) 0%, rgba(0,0,0,1) 90%); }
+        .logo-pyramid { display: flex; flex-direction: column; align-items: center; }
+        .seven-sun { font-size: 180px; font-weight: 900; background: linear-gradient(180deg, #FFD700, #ff9800); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 30px #ff9800; animation: sun-pulse 3s infinite; }
+        
+        /* تعديل اتجاه كلمة GROUP وتطبيق الألوان الصحيحة */
+        .group-text { display: flex; flex-direction: row; direction: ltr; gap: 4px; margin-top: 10px; }
+        .group-text span { font-size: 55px; font-weight: 900; letter-spacing: 4px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+        .g-char { color: #1a73e8; text-shadow: 0 0 15px rgba(26,115,232,0.8); } /* أزرق */
+        .r-char { color: #34a853; text-shadow: 0 0 15px rgba(52,168,83,0.8); }  /* أخضر */
+        .o-char { color: #fbbc04; text-shadow: 0 0 15px rgba(251,188,4,0.8); }  /* أصفر */
+        .u-char { color: #2e7d32; text-shadow: 0 0 15px rgba(46,125,50,0.8); }  /* أخضر زراعي */
+        .p-char { color: #0288d1; text-shadow: 0 0 15px rgba(2,136,209,0.8); }  /* أزرق مائي */
+
+        .main-title { font-size: 60px; font-weight: 900; color: #ff9800; text-shadow: 0 0 20px #ff9800; letter-spacing: 5px; text-align: center; margin-top: 20px; }
+        .main-subtitle { font-size: 22px; color: #D4AF37; margin-top: 10px; text-align: center; }
+
+        @keyframes sun-pulse { 0%, 100% { text-shadow: 0 0 30px #ff9800, 0 0 60px #FFD700; } 50% { text-shadow: 0 0 50px #ff9800, 0 0 90px #FFD700; } }
+
+        /* المنصات والدوائر */
+        .platforms { padding: 60px 20px; background: #0a0a0a; }
+        .platforms h2 { text-align: center; color: #D4AF37; font-size: 32px; margin-bottom: 40px; }
+        .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .platform-card { background: #111; border: 1px solid #D4AF37; border-radius: 16px; padding: 25px; transition: 0.3s; text-align: center; scroll-margin-top: 120px; }
+        .platform-card:hover { box-shadow: 0 0 20px rgba(212,175,55,0.4); transform: translateY(-5px); }
+        .platform-card h3 { color: #ff9800; font-size: 20px; margin-top: 15px; margin-bottom: 10px; font-weight: 900; }
+        .platform-card p { color: #ccc; font-size: 15px; line-height: 1.6; }
+
+        .platform-circle { width: 110px; height: 110px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-weight: bold; font-size: 24px; }
+        .platform-circle span { color: #fff; }
+
+        .md1 { border: 3px solid #2E7D32; box-shadow: 0 0 20px #2E7D32; }
+        .md2 { border: 3px solid #ff9800; box-shadow: 0 0 20px #ff9800; }
+        .md3 { border: 3px solid #9C27B0; box-shadow: 0 0 20px #9C27B0; }
+        .md4 { border: 3px solid #009688; box-shadow: 0 0 20px #009688; }
+        .md5 { border: 3px solid #2196F3; box-shadow: 0 0 20px #2196F3; }
+        .md6 { border: 3px solid #E91E63; box-shadow: 0 0 20px #E91E63; }
+
+        .platform-circle.md7 { width: 140px; height: 140px; border: 3px solid #D4AF37; margin: 10px auto; transition: all 0.5s ease; }
+        body.day .md7 { background: radial-gradient(circle at 30% 30%, #FFD700 0%, #ff9800 70%); animation: sun-pulse-circle 3s infinite; }
+        body.day .md7 span { color: #D4AF37; font-weight: 900; text-shadow: 0 0 10px #FFD700; font-size: 32px; }
+        body.night .md7 { background: radial-gradient(circle at 70% 30%, #F5E6A5 0%, #1a1a1a 60%); animation: moon-pulse-circle 4s infinite; }
+        body.night .md7 span { color: #1a1a1a; font-weight: 900; font-size: 32px; }
+
+        @keyframes sun-pulse-circle { 0%,100%{ box-shadow: 0 0 30px #ff9800 } 50%{ box-shadow: 0 0 60px #FFD700 } }
+        @keyframes moon-pulse-circle { 0%,100%{ box-shadow: 0 0 20px #F5E6A5 } 50%{ box-shadow: 0 0 40px #D4AF37 } }
+
+        /* مولد حل المشاكل بالذكاء الاصطناعي (منصة MD7) */
+        .ai-solver-box {
+            margin-top: 20px; background: #080808; border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 12px; padding: 15px; text-align: right;
+        }
+        .ai-solver-box textarea {
+            width: 100%; height: 80px; background: #151515; border: 1px solid #444;
+            border-radius: 8px; color: #fff; padding: 10px; font-family: 'Cairo'; resize: none; margin-bottom: 10px;
+        }
+        .ai-solver-box textarea:focus { border-color: #ff9800; outline: none; }
+        .ai-btn {
+            width: 100%; padding: 10px; background: linear-gradient(90deg, #D4AF37, #ff9800);
+            border: none; border-radius: 6px; color: #000; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .ai-btn:hover { opacity: 0.9; box-shadow: 0 0 10px #ff9800; }
+        .ai-response {
+            margin-top: 15px; padding: 12px; background: #121212; border-right: 3px solid #ff9800;
+            border-radius: 6px; font-size: 13px; color: #ddd; display: none; line-height: 1.6;
+        }
+
+        .section { padding: 90px 40px; max-width: 1300px; margin: 0 auto; border-bottom: 1px solid rgba(212,175,55,0.1); }
+        .section-title { text-align: center; font-size: 40px; margin-bottom: 10px; font-weight: 900; }
+        .glass-panel { background: #111111; border: 1px solid var(--primary); padding: 40px; border-radius: 24px; margin-bottom: 25px; color: #fff; }
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        @media (max-width: 900px) { .grid-layout { grid-template-columns: 1fr; } }
+
+        .service-request { padding: 60px 20px; background: #0a0a0a; max-width: 800px; margin: 40px auto; border: 1px solid rgba(212,175,55,0.3); border-radius: 16px; }
+        .service-request h2 { color: #D4AF37; text-align: center; font-size: 32px; margin-bottom: 10px; font-weight: 900; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; color: #ff9800; margin-bottom: 8px; font-weight: bold; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px; background: #111; border: 1px solid #D4AF37; 
+            border-radius: 8px; color: #fff; font-size: 16px; direction: rtl; font-family: 'Cairo', sans-serif;
+        }
+        .submit-btn {
+            width: 100%; padding: 15px; background: linear-gradient(90deg, #D4AF37, #ff9800);
+            border: none; border-radius: 8px; color: #000; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .submit-btn:hover { opacity: 0.9; box-shadow: 0 0 15px #ff9800; }
+        
+        footer { text-align: center; padding: 35px; background: #050505; color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(212,175,55,0.2); }
+
+        /* تعديل مكان زر الاسهم المباشر ليكون علوياً وأنيقاً بدلاً من حجب المحتوى */
+        .stock-top-widget {
+            position: fixed; top: 110px; left: 25px; z-index: 998;
+            background: rgba(17, 17, 17, 0.9); border: 1px solid #D4AF37;
+            padding: 8px 16px; border-radius: 30px; backdrop-filter: blur(8px);
+            display: flex; align-items: center; gap: 10px; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5), 0 0 10px rgba(212,175,55,0.2);
+            transition: all 0.3s ease;
+        }
+        .stock-top-widget:hover {
+            transform: translateY(-2px); border-color: #ff9800;
+            box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+        }
+        .stock-top-widget i { color: #4caf50; font-size: 16px; }
+        .stock-top-title { font-size: 13px; font-weight: 900; color: #fff; }
+        .stock-top-price { font-size: 12px; color: #2E7D32; font-weight: bold; background: rgba(46, 125, 50, 0.2); padding: 2px 8px; border-radius: 10px; }
+
+        @media (max-width: 600px) {
+            .stock-top-widget { top: 105px; left: 10px; padding: 6px 12px; }
+            .stock-top-title { font-size: 11px; }
+            .stock-top-price { font-size: 10px; }
+        }
+
+        /* نافذة سوق الأسهم المنسدلة (Modal) */
+        .stock-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+            z-index: 10000; display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease; padding: 20px;
+        }
+        .stock-modal-overlay.active { display: flex; opacity: 1; }
+        .stock-modal-card {
+            background: #111; border: 2px solid #D4AF37; border-radius: 24px;
+            width: 100%; max-width: 900px; max-height: 90vh; overflow-y: auto;
+            padding: 30px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+            animation: modal-slide 0.4s ease;
+        }
+        @keyframes modal-slide {
+            from { transform: translateY(30px) scale(0.95); }
+            to { transform: translateY(0) scale(1); }
+        }
+        .close-modal-btn {
+            position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.1);
+            border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%;
+            font-size: 18px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center;
+        }
+        .close-modal-btn:hover { background: #e53935; color: #fff; }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط المضيء العلوي -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <span class="moon-icon"></span>
+            <span>نبذة عن مجالات المؤسسة: 
+                <a href="#card-md1" class="top-bar-link">MD1 الزراعة</a> | 
+                <a href="#card-md2" class="top-bar-link">MD2 الطاقة</a> | 
+                <a href="#card-md3" class="top-bar-link">MD3 الإعلام</a> | 
+                <a href="#card-md4" class="top-bar-link">MD4 البيئة</a> | 
+                <a href="#card-md5" class="top-bar-link">MD5 التعليم</a> | 
+                <a href="#card-md6" class="top-bar-link">MD6 الصحة</a> | 
+                <a href="#card-md7" class="top-bar-link">MD7 الذكاء الاصطناعي</a>
+            </span>
+        </div>
+    </div>
+
+    <header>
+        <a href="#home" class="logo-container-main">
+            <svg class="header-logo-svg" viewBox="0 0 300 110">
+                <text x="10" y="40" class="logo-m-black">M</text>
+                <text x="45" y="40" class="logo-d-gold">D</text>
+                <text x="28" y="80" class="logo-77-glow">7</text>
+                
+                <line x1="100" y1="15" x2="100" y2="85" stroke="rgba(212,175,55,0.3)" stroke-width="2"/>
+                <text x="115" y="45" fill="#D4AF37" font-family="Cairo" font-weight="900" font-size="20px">MD7</text>
+                <text x="115" y="68" fill="#ff9800" font-family="Cairo" font-weight="700" font-size="12px" letter-spacing="2px">GROUP</text>
+            </svg>
+        </a>
+        <button class="menu-toggle-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+        <nav class="nav-links" id="sideNav">
+            <a href="#home"><i class="fa-solid fa-house"></i> الرئيسية</a>
+            <a href="#platforms-section"><i class="fa-solid fa-cubes"></i> المنصات</a>
+            <a href="javascript:void(0)" onclick="openStockModal()"><i class="fa-solid fa-chart-line"></i> سوق الأسهم</a>
+            <a href="#service-request-section"><i class="fa-solid fa-handshake"></i> طلب خدمة</a>
+            <a href="mailto:avtarpreins@gmail.com"><i class="fa-solid fa-envelope"></i> تواصل مباشر</a>
+        </nav>
+    </header>
+
+    <!-- الهيرو وتصحيح كلمة GROUP (G-R-O-U-P) -->
+    <section class="hero" id="home">
+        <div class="logo-pyramid">
+            <div class="seven-sun">7</div>
+            <div class="group-text">
+                <span class="g-char">G</span>
+                <span class="r-char">R</span>
+                <span class="o-char">O</span>
+                <span class="u-char">U</span>
+                <span class="p-char">P</span>
+            </div>
+        </div>
+
+        <h1 class="main-title">MD7</h1>
+        <p class="main-subtitle">نظام يعيد تشغيل مؤسستك</p>
+
+        <p style="margin-top:20px;">احنا بنشغل شركتك. بنحافظ على خدماتها. بنطور أداءها. وبنجهزها للاندماج في المستقبل.</p>
+        <p style="margin-top:10px;"><b>تأسست بواسطة محمد الهمام</b></p>
+    </section>
+
+    <!-- المنصات المربوطة بالانتقال المباشر -->
+    <section class="platforms" id="platforms-section">
+        <h2>المنصات السبعة لـ MD7</h2>
+        <div class="platform-grid">
+            
+            <div class="platform-card" id="card-md1">
+                <div class="platform-circle md1"><span>MD1</span></div>
+                <h3>MD1. الزراعة وغذاء</h3>
+                <p>تشغيل الأراضي وتصدير المحاصيل B2B بين الشركات</p>
+            </div>
+
+            <div class="platform-card" id="card-md2">
+                <div class="platform-circle md2"><span>MD2</span></div>
+                <h3>MD2. الطاقة والبنية التحتية</h3>
+                <p>حلول الطاقة المتجددة وإدارة المشاريع الكبرى</p>
+            </div>
+
+            <div class="platform-card" id="card-md3">
+                <div class="platform-circle md3"><span>MD3</span></div>
+                <h3>MD3. الإنتاج الفني والسينما</h3>
+                <p>رؤية التاريخ الفرعوني عبر الشاشات والاستفادة الاقتصادية</p>
+            </div>
+
+            <div class="platform-card" id="card-md4">
+                <div class="platform-circle md4"><span>MD4</span></div>
+                <h3>MD4. البيئة والاستدامة</h3>
+                <p>إعادة التدوير وإدارة النفايات وحلول المناخ</p>
+            </div>
+
+            <div class="platform-card" id="card-md5">
+                <div class="platform-circle md5"><span>MD5</span></div>
+                <h3>MD5. التعليم والتطوير</h3>
+                <p>منصات تدريب وتأهيل الكوادر للمؤسسات</p>
+            </div>
+
+            <div class="platform-card" id="card-md6">
+                <div class="platform-circle md6"><span>MD6</span></div>
+                <h3>MD6. الصحة والرفاهية</h3>
+                <p>تشغيل المستشفيات والعيادات وتطوير الخدمات الطبية</p>
+            </div>
+
+            <!-- منصة MD7 الذكاء الاصطناعي ومولد الحلول -->
+            <div class="platform-card" id="card-md7">
+                <div class="platform-circle md7"><span>MD7</span></div>
+                <h3>MD7. التكنولوجيا والذكاء الاصطناعي</h3>
+                <p>تحليل البيانات وأتمتة العمليات وتطوير الأنظمة</p>
+                
+                <div class="ai-solver-box">
+                    <label style="color: #ff9800; font-size: 13px; font-weight: bold; display: block; margin-bottom: 5px;">🤖 مولد حل المشاكل الذكي:</label>
+                    <textarea id="aiProblemInput" placeholder="اكتب مشكلتك التقنية أو المؤسسية هنا للحصول على تحليل واقتراح حل فوري..."></textarea>
+                    <button class="ai-btn" onclick="generateAISolution()"><i class="fa-solid fa-bolt"></i> توليد إجابة وتحليل</button>
+                    <div class="ai-response" id="aiResponseBox"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- عنصر سوق الأسهم العلوي الأنيق (بدلاً من الزر السفلي العائق) -->
+    <div class="stock-top-widget" onclick="openStockModal()">
+        <i class="fa-solid fa-chart-line"></i>
+        <span class="stock-top-title">سهم MD7X</span>
+        <span class="stock-top-price">+2.5% ▲</span>
+    </div>
+
+    <!-- نافذة سوق الأسهم والشراء (Pop-up Modal) -->
+    <div class="stock-modal-overlay" id="stockModalOverlay" onclick="closeStockModalOuter(event)">
+        <div class="stock-modal-card">
+            <button class="close-modal-btn" onclick="closeStockModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="section-title" style="color: var(--primary); font-size: 28px; margin-bottom: 20px;">📈 سوق أسهم MD7 المباشر</div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 20px; margin-bottom: 25px;">
+                <div>
+                    <h3 style="margin:0; color:#fff;">سهم مجموعة MD7 <span style="font-size:14px; color:var(--primary);">(MD7X)</span></h3>
+                    <small style="color: #aaa;">رمز التداول: MD7X | السوق المباشر</small>
+                </div>
+                <div style="text-align: left;">
+                    <div id="stockPriceDisplay" style="font-size: 28px; font-weight: 900; color: #2E7D32;">100,000 EGP</div>
+                    <span id="stockChange" style="color: #4caf50; font-size: 14px; font-weight: bold;">▲ +2.5% (24h)</span>
+                </div>
+            </div>
+
+            <div style="position: relative; height:260px; width:100%; margin-bottom: 25px;">
+                <canvas id="stockChart"></canvas>
+            </div>
+
+            <div class="grid-layout" style="gap: 20px;">
+                <div style="background: #161616; padding: 20px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.2);">
+                    <h4 style="color: var(--primary); margin-top:0;">🛒 أمر شراء أسهم</h4>
+                    <div class="form-group">
+                        <label>عدد الأسهم المطلوبة:</label>
+                        <input type="number" id="buyAmount" value="1" min="1" max="20" oninput="calculateTotal()">
+                    </div>
+                    <p style="font-weight:bold;">الإجمالي المقدر: <span id="totalCost" style="color:var(--accent);">100,000</span> EGP</p>
+                    <button id="btnExecuteBuy" class="submit-btn" style="background: linear-gradient(90deg, #2E7D32, #4caf50); color:#fff;">إرسال أمر الشراء</button>
+                </div>
+
+                <div style="background: #161616; padding: 20px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.2);">
+                    <h4 style="color: #ff9800; margin-top:0;">📊 إحصائيات السهم</h4>
+                    <ul style="list-style: none; padding: 0; line-height: 2; font-size: 14px; color: #ccc;">
+                        <li><b>القيمة السوقية:</b> 20,000,000 EGP</li>
+                        <li><b>الأسهم المتاحة للتداول:</b> 200 سهم</li>
+                        <li><b>أعلى سعر (24h):</b> 102,500 EGP</li>
+                        <li><b>أدنى سعر (24h):</b> 98,000 EGP</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم طلب خدمة -->
+    <section class="service-request" id="service-request-section">
+        <h2>طلب استخدام خدمة</h2>
+        <form id="serviceForm">
+            <div class="form-group">
+                <label>الاسم الكامل *</label>
+                <input type="text" name="name" required placeholder="الاسم الثلاثي">
+            </div>
+            <div class="form-group">
+                <label>نوع الجهة *</label>
+                <select name="entity_type" required>
+                    <option value="">اختر نوع الجهة</option>
+                    <option value="شركة">شركة</option>
+                    <option value="مؤسسة">مؤسسة</option>
+                    <option value="وزارة">وزارة</option>
+                    <option value="هيئة">هيئة</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>اسم المؤسسة *</label>
+                <input type="text" name="org_name" required placeholder="اسم الشركة / الهيئة">
+            </div>
+            <div class="form-group">
+                <label>البريد الإلكتروني *</label>
+                <input type="email" name="email" required placeholder="example@domain.com">
+            </div>
+            <div class="form-group">
+                <label>رقم التواصل *</label>
+                <input type="tel" name="phone" required placeholder="01xxxxxxxxx" pattern="[0-9]{10,15}">
+            </div>
+            <div class="form-group">
+                <label>الخدمة المطلوبة *</label>
+                <select name="service" required>
+                    <option value="">اختر الخدمة</option>
+                    <option value="MD1 الزراعة وغذاء">MD1 الزراعة وغذاء</option>
+                    <option value="MD2 الطاقة والبنية التحتية">MD2 الطاقة والبنية التحتية</option>
+                    <option value="MD3 الإنتاج الفني والسينما">MD3 الإنتاج الفني والسينما</option>
+                    <option value="MD4 البيئة والاستدامة">MD4 البيئة والاستدامة</option>
+                    <option value="MD5 التعليم والتطوير">MD5 التعليم والتطوير</option>
+                    <option value="MD6 الصحة والرفاهية">MD6 الصحة والرفاهية</option>
+                    <option value="MD7 التكنولوجيا والذكاء الاصطناعي">MD7 التكنولوجيا والذكاء الاصطناعي</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>وصف المشكلة / طلب المساعدة *</label>
+                <textarea name="message" rows="5" required placeholder="برجاء وصف الطلب بالتفصيل"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">إرسال الطلب</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 MD7 GROUP</p>
+        <p>إدارة وتشغيل وتطوير | محمد الهمام</p>
+    </footer>
+
+    <script>
+        // دالة فتح وإغلاق نافذة سوق الأسهم
+        function openStockModal() {
+            const modal = document.getElementById('stockModalOverlay');
+            if(modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeStockModal() {
+            const modal = document.getElementById('stockModalOverlay');
+            if(modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function closeStockModalOuter(e) {
+            if(e.target.id === 'stockModalOverlay') {
+                closeStockModal();
+            }
+        }
+
+        // دالة توليد حل المشاكل لمنصة MD7
+        function generateAISolution() {
+            const query = document.getElementById('aiProblemInput').value.trim();
+            const box = document.getElementById('aiResponseBox');
+            
+            if(!query) {
+                alert('الرجاء كتابة السؤال أو المشكلة أولاً.');
+                return;
+            }
+            
+            box.style.display = 'block';
+            box.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري تحليل المشكلة وبناء الحل التشغيلي...';
+            
+            setTimeout(() => {
+                box.innerHTML = `<strong>[تحليل MD7 AI]:</strong><br>
+                بناءً على المشكلة الموضحة ("${query}")، نوصي بخطة العمل التالية:<br>
+                1. <strong>الأتمتة الهيكلية:</strong> ربط الأنظمة البرمجية للحد من الأخطاء البشرية.<br>
+                2. <strong>إعادة تحسين الدورة التشغيلية:</strong> تطبيق معايير MD7 في إدارة الأصول.<br>
+                3. <strong>التكامل الفوري:</strong> يُرجى تقديم طلب خدمة رسمي أدناه للتواصل المباشر مع مهندسي النظام.`;
+            }, 1200);
+        }
+
+        // تحديث وضع النهار والليل
+        function updateTheme() {
+            const hour = new Date().getHours();
+            const day = new Date().getDate();
+            const body = document.body;
+            
+            if(hour >= 6 && hour < 18) {
+                body.classList.add('day'); 
+                body.classList.remove('night');
+            } else {
+                body.classList.add('night'); 
+                body.classList.remove('day');
+                
+                const moon = document.querySelector('.moon-icon');
+                if(moon) {
+                    if(day <= 3) moon.style.borderRadius = '50% 0 0 50%';
+                    else if(day >= 14 && day <= 16) moon.style.borderRadius = '50%';
+                    else if(day >= 28) moon.style.borderRadius = '0 50% 50% 0';
+                }
+            }
+        }
+        updateTheme(); 
+        setInterval(updateTheme, 60000);
+
+        // سوق الأسهم
+        const ctx = document.getElementById('stockChart').getContext('2d');
+        let currentPrice = 100000;
+
+        const stockChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['01 يناير', '01 فبراير', '01 مارس', '01 أبريل', '01 مايو', '01 يونيو', 'اليوم'],
+                datasets: [{
+                    label: 'سعر سهم MD7 (EGP)',
+                    data: [85000, 88000, 92000, 90000, 95000, 97500, 100000],
+                    borderColor: '#D4AF37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { color: '#888' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    y: { ticks: { color: '#888' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                }
+            }
+        });
+
+        function calculateTotal() {
+            const amount = document.getElementById('buyAmount').value || 1;
+            const total = amount * currentPrice;
+            document.getElementById('totalCost').innerText = total.toLocaleString();
+        }
+
+        const btnExecuteBuy = document.getElementById('btnExecuteBuy');
+        if(btnExecuteBuy) {
+            btnExecuteBuy.addEventListener('click', () => {
+                const amount = document.getElementById('buyAmount').value;
+                const total = amount * currentPrice;
+                const message = `طلب شراء أسهم عبر البورصة المباشرة:\n- عدد الأسهم: ${amount}\n- القيمة الإجمالية: ${total.toLocaleString()} EGP`;
+                window.open(`https://wa.me/201033182019?text=${encodeURIComponent(message)}`, '_blank');
+            });
+        }
+
+        // القائمة المنسدلة
+        const menuToggle = document.getElementById('menuToggle');
+        const sideNav = document.getElementById('sideNav');
+        if (menuToggle && sideNav) {
+            menuToggle.addEventListener('click', (e) => { e.stopPropagation(); sideNav.classList.toggle('active'); });
+            document.querySelectorAll('#sideNav a').forEach(link => { link.addEventListener('click', () => sideNav.classList.remove('active')); });
+        }
+    </script>
+</body>
+</html>
