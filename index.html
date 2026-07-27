@@ -527,27 +527,58 @@
             }
         }
 
-        // دالة توليد حل المشاكل لمنصة MD7
-        function generateAISolution() {
-            const query = document.getElementById('aiProblemInput').value.trim();
-            const box = document.getElementById('aiResponseBox');
-            
-            if(!query) {
-                alert('الرجاء كتابة السؤال أو المشكلة أولاً.');
-                return;
-            }
-            
-            box.style.display = 'block';
-            box.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري تحليل المشكلة وبناء الحل التشغيلي...';
-            
-            setTimeout(() => {
-                box.innerHTML = `<strong>[تحليل MD7 AI]:</strong><br>
-                بناءً على المشكلة الموضحة ("${query}")، نوصي بخطة العمل التالية:<br>
-                1. <strong>الأتمتة الهيكلية:</strong> ربط الأنظمة البرمجية للحد من الأخطاء البشرية.<br>
-                2. <strong>إعادة تحسين الدورة التشغيلية:</strong> تطبيق معايير MD7 في إدارة الأصول.<br>
-                3. <strong>التكامل الفوري:</strong> يُرجى تقديم طلب خدمة رسمي أدناه للتواصل المباشر مع مهندسي النظام.`;
-            }, 1200);
+        // دالة توليد حل المشاكل لمنصة MD7 - نسخة ذكية
+function generateAISolution() {
+    const query = document.getElementById('aiProblemInput').value.trim().toLowerCase();
+    const box = document.getElementById('aiResponseBox');
+    
+    if(!query) {
+        alert('الرجاء كتابة السؤال أو المشكلة أولاً.');
+        return;
+    }
+    
+    box.style.display = 'block';
+    box.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري تحليل المشكلة وبناء الحل التشغيلي...';
+    
+    setTimeout(() => {
+        let response = "";
+
+        // 1. لو المشكلة فيها كهرباء او طاقة
+        if (query.includes("كهرباء") || query.includes("طاقة") || query.includes("عطل") || query.includes("قطع")) {
+            response = `<strong>[تحليل MD7 AI - قطاع الطاقة]:</strong><br>
+            تم رصد كلمات مفتاحية: "طاقة/عطل"<br>
+            1. <strong>السبب المحتمل:</strong> تحميل زائد على الشبكة او عدم صيانة دورية.<br>
+            2. <strong>الحل المقترح:</strong> تركيب حساسات IoT على لوحات الكهرباء للتنبؤ بالعطل قبل 72 ساعة.<br>
+            3. <strong>التوفير المتوقع:</strong> تقليل الاعطال 40% وتوفير 25% من استهلاك الطاقة.`;
         }
+        // 2. لو المشكلة فيها موظفين او شكاوى
+        else if (query.includes("موظف") || query.includes("شكوى") || query.includes("تأخير") || query.includes("ادارة")) {
+            response = `<strong>[تحليل MD7 AI - قطاع التشغيل]:</strong><br>
+            تم رصد كلمات مفتاحية: "موظفين/ادارة"<br>
+            1. <strong>السبب المحتمل:</strong> بطء في دورة الرد على الشكاوى وعدم وجود نظام تتبع.<br>
+            2. <strong>الحل المقترح:</strong> نظام CRM مؤتمت يرد خلال 5 دقايق ويوزع المهام تلقائي.<br>
+            3. <strong>النتيجة:</strong> سرعة استجابة 90% ورضا عملاء اعلى.`;
+        }
+        // 3. لو المشكلة فيها فلوس او تكلفة
+        else if (query.includes("فلوس") || query.includes("تكلفة") || query.includes("خسارة") || query.includes("ميزانية")) {
+            response = `<strong>[تحليل MD7 AI - قطاع التوفير]:</strong><br>
+            تم رصد كلمات مفتاحية: "تكلفة/خسارة"<br>
+            1. <strong>السبب المحتمل:</strong> هدر في الموارد وعمليات يدوية مكلفة.<br>
+            2. <strong>الحل المقترح:</strong> أتمتة 3 عمليات رئيسية باستخدام روبوتات RPA.<br>
+            3. <strong>التوفير المتوقع:</strong> تقليل تكلفة التشغيل 25% خلال 90 يوم.`;
+        }
+        // 4. رد افتراضي
+        else {
+            response = `<strong>[تحليل MD7 AI - عام]:</strong><br>
+            بناءً على المشكلة الموضحة ("${query}")، نوصي بالآتي:<br>
+            1. <strong>تحليل البيانات:</strong> جمع بيانات 30 يوم سابقة لتحديد سبب المشكلة الجذري.<br>
+            2. <strong>الأتمتة الهيكلية:</strong> ربط الأنظمة البرمجية للحد من الأخطاء البشرية.<br>
+            3. <strong>الخطوة التالية:</strong> يُرجى تقديم طلب خدمة رسمي أدناه للتواصل المباشر مع مهندسي النظام.`;
+        }
+
+        box.innerHTML = response;
+    }, 1200);
+}
 
         // تحديث وضع النهار والليل
         function updateTheme() {
