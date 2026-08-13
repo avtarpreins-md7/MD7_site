@@ -3,544 +3,550 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD7 GROUP | نظام يعيد تشغيل مؤسستك</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SN3BVTLS6"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SN3BVTLS6');
-    </script>
-
+    <title>MD7 GROUP</title>
     <style>
-        :root { 
-            --primary: #D4AF37; 
-            --accent: #ff9800; 
-            --bg: #000000; 
-            --text: #ffffff; 
-            --text-muted: #dcdcdc;
-            --card-bg: #111111;
-            --card-border: #D4AF37;
-        }
-        
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { 
-            background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; 
-            margin: 0; padding-top: 100px; overflow-x: hidden; transition: background 0.5s ease;
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-gold: #d4af37;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
         }
 
-        /* الشريط المضيء العلوي */
-        .top-bar { 
-            width: 100%; overflow: hidden; position: fixed; top: 0; z-index: 1000; 
-            padding: 10px 0; font-weight: 900; font-size: 14px; display: flex; align-items: center;
-            background: linear-gradient(90deg, #1a1a1a, #D4AF37); 
-            color: #000; border-bottom: 2px solid var(--accent);
-            box-shadow: 0 2px 20px rgba(212,175,55,0.4);
-            transition: all 0.5s ease;
-        }
-        .top-bar-content {
-            display: inline-flex; align-items: center; gap: 15px; white-space: nowrap;
-            animation: marquee-scroll 25s linear infinite; width: max-content;
-        }
-        .top-bar-content:hover { animation-play-state: paused; }
-        .top-bar-link { color: inherit; text-decoration: none; cursor: pointer; transition: color 0.2s; }
-        .top-bar-link:hover { color: #fff; text-shadow: 0 0 5px #fff; }
-
-        @keyframes marquee-scroll { 
-            from { transform: translateX(100%); } 
-            to { transform: translateX(-100%); } 
-        }
-        
-        body.night .top-bar {
-            background: linear-gradient(90deg, #0b1426, #2a2a38);
-            color: #F5E6A5; border-bottom: 2px solid #F5E6A5;
-            box-shadow: 0 0 15px #F5E6A5, 0 0 30px rgba(245, 230, 165, 0.3);
-        }
-        .moon-icon {
-            display: none; width: 18px; height: 18px; background: #F5E6A5; 
-            box-shadow: 0 0 8px #F5E6A5; transition: border-radius 0.3s ease;
-        }
-        body.night .top-bar .moon-icon { display: inline-block; }
-
-        /* الهيدر */
-        header { 
-            position: fixed; width: 100%; top: 43px; display: flex; justify-content: space-between; 
-            align-items: center; padding: 15px 40px; background: rgba(0, 0, 0, 0.95); 
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 999; 
-            border-bottom: 1px solid rgba(212,175,55,0.2);
-        }
-        .logo-container-main { display: flex; align-items: center; text-decoration: none; }
-        .header-logo-svg { width: 160px; height: auto; }
-        .logo-m-black { fill: #000000; font-weight: 900; font-size: 32px; font-family: 'Cairo'; stroke: #D4AF37; stroke-width: 1.5px; }
-        .logo-d-gold { fill: #D4AF37; font-weight: 900; font-size: 32px; font-family: 'Cairo'; stroke: #C0C0C0; stroke-width: 1.5px; }
-        .logo-77-glow { fill: #ff9800; font-weight: 900; font-size: 30px; font-family: 'Cairo'; filter: drop-shadow(0 0 10px #ff9800); }
-
-        .menu-toggle-btn {
-            background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer;
-            transition: 0.3s; padding: 10px; z-index: 1001; order: 2;
-        }
-        .nav-links { 
-            position: fixed; top: 0; right: -300px; width: 280px; height: 100vh;
-            background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(212,175,55,0.2); padding: 120px 30px 40px;
-            display: flex; flex-direction: column; gap: 25px; transition: 0.4s cubic-bezier(0.77,0,0.175,1);
-            z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.9);
-        }
-        .nav-links.active { right: 0; }
-        .nav-links a { color: white; text-decoration: none; font-weight: bold; font-size: 18px; transition: 0.3s; display: flex; align-items: center; gap: 15px; }
-        .nav-links a:hover { color: var(--accent); padding-right: 10px; }
-
-        /* الهيرو */
-        .hero { padding: 100px 20px 80px; text-align: center; background: linear-gradient(180deg, rgba(212,175,55,0.15) 0%, rgba(0,0,0,1) 90%); }
-        .logo-pyramid { display: flex; flex-direction: column; align-items: center; }
-        .seven-sun { font-size: 180px; font-weight: 900; background: linear-gradient(180deg, #FFD700, #ff9800); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 30px #ff9800; animation: sun-pulse 3s infinite; }
-        
-        .group-text { display: flex; flex-direction: row; direction: ltr; gap: 4px; margin-top: 10px; }
-        .group-text span { font-size: 55px; font-weight: 900; letter-spacing: 4px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
-        .g-char { color: #1a73e8; text-shadow: 0 0 15px rgba(26,115,232,0.8); }
-        .r-char { color: #34a853; text-shadow: 0 0 15px rgba(52,168,83,0.8); }
-        .o-char { color: #fbbc04; text-shadow: 0 0 15px rgba(251,188,4,0.8); }
-        .u-char { color: #2e7d32; text-shadow: 0 0 15px rgba(46,125,50,0.8); }
-        .p-char { color: #0288d1; text-shadow: 0 0 15px rgba(2,136,209,0.8); }
-
-        .main-title { font-size: 60px; font-weight: 900; color: #ff9800; text-shadow: 0 0 20px #ff9800; letter-spacing: 5px; text-align: center; margin-top: 20px; }
-        .main-subtitle { font-size: 22px; color: #D4AF37; margin-top: 10px; text-align: center; line-height: 1.6; }
-
-        .hero-action-btns {
-            display: flex; justify-content: center; gap: 15px; margin-top: 30px; flex-wrap: wrap;
-        }
-        .hero-btn {
-            padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 16px; text-decoration: none; transition: 0.3s; cursor: pointer;
-        }
-        .hero-btn-primary { background: linear-gradient(90deg, #D4AF37, #ff9800); color: #000; border: none; }
-        .hero-btn-primary:hover { opacity: 0.9; box-shadow: 0 0 15px #ff9800; }
-        .hero-btn-secondary { background: transparent; color: #D4AF37; border: 1px solid #D4AF37; }
-        .hero-btn-secondary:hover { background: rgba(212,175,55,0.1); }
-
-        @keyframes sun-pulse { 0%, 100% { text-shadow: 0 0 30px #ff9800, 0 0 60px #FFD700; } 50% { text-shadow: 0 0 50px #ff9800, 0 0 90px #FFD700; } }
-
-        /* سكشن النتائج اللي بنحققها في النموذج التجريبي */
-        .results-section {
-            padding: 50px 20px; background: #080808; border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2); text-align: center;
-        }
-        .results-section h2 { color: #D4AF37; font-size: 28px; margin-bottom: 30px; font-weight: 900; }
-        .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
-        .result-card {
-            background: #111; border: 1px solid #D4AF37; border-radius: 12px; padding: 25px 20px; transition: 0.3s;
-        }
-        .result-card:hover { transform: translateY(-5px); box-shadow: 0 0 15px rgba(212,175,55,0.3); }
-        .result-card h3 { color: #ff9800; font-size: 22px; margin: 0; font-weight: 900; }
-
-        /* المنصات والدوائر */
-        .platforms { padding: 60px 20px; background: #0a0a0a; }
-        .platforms h2 { text-align: center; color: #D4AF37; font-size: 32px; margin-bottom: 40px; }
-        .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .platform-card { background: #111; border: 1px solid #D4AF37; border-radius: 16px; padding: 25px; transition: 0.3s; text-align: center; scroll-margin-top: 120px; }
-        .platform-card:hover { box-shadow: 0 0 20px rgba(212,175,55,0.4); transform: translateY(-5px); }
-        .platform-card h3 { color: #ff9800; font-size: 20px; margin-top: 15px; margin-bottom: 10px; font-weight: 900; }
-        .platform-card p { color: #ccc; font-size: 15px; line-height: 1.6; }
-
-        .platform-circle { width: 110px; height: 110px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-weight: bold; font-size: 24px; }
-        .platform-circle span { color: #fff; }
-
-        .md1 { border: 3px solid #2E7D32; box-shadow: 0 0 20px #2E7D32; }
-        .md2 { border: 3px solid #ff9800; box-shadow: 0 0 20px #ff9800; }
-        .md3 { border: 3px solid #9C27B0; box-shadow: 0 0 20px #9C27B0; }
-        .md4 { border: 3px solid #009688; box-shadow: 0 0 20px #009688; }
-        .md5 { border: 3px solid #2196F3; box-shadow: 0 0 20px #2196F3; }
-        .md6 { border: 3px solid #E91E63; box-shadow: 0 0 20px #E91E63; }
-
-        .platform-circle.md7 { width: 140px; height: 140px; border: 3px solid #D4AF37; margin: 10px auto; transition: all 0.5s ease; }
-        body.day .md7 { background: radial-gradient(circle at 30% 30%, #FFD700 0%, #ff9800 70%); animation: sun-pulse-circle 3s infinite; }
-        body.day .md7 span { color: #D4AF37; font-weight: 900; text-shadow: 0 0 10px #FFD700; font-size: 32px; }
-        body.night .md7 { background: radial-gradient(circle at 70% 30%, #F5E6A5 0%, #1a1a1a 60%); animation: moon-pulse-circle 4s infinite; }
-        body.night .md7 span { color: #1a1a1a; font-weight: 900; font-size: 32px; }
-
-        @keyframes sun-pulse-circle { 0%,100%{ box-shadow: 0 0 30px #ff9800 } 50%{ box-shadow: 0 0 60px #FFD700 } }
-        @keyframes moon-pulse-circle { 0%,100%{ box-shadow: 0 0 20px #F5E6A5 } 50%{ box-shadow: 0 0 40px #D4AF37 } }
-
-        /* مولد حل المشاكل بالذكاء الاصطناعي (منصة MD7) */
-        .ai-solver-box {
-            margin-top: 20px; background: #080808; border: 1px solid rgba(212,175,55,0.3);
-            border-radius: 12px; padding: 15px; text-align: right;
-        }
-        .ai-solver-box textarea {
-            width: 100%; height: 80px; background: #151515; border: 1px solid #444;
-            border-radius: 8px; color: #fff; padding: 10px; font-family: 'Cairo'; resize: none; margin-bottom: 10px;
-        }
-        .ai-solver-box textarea:focus { border-color: #ff9800; outline: none; }
-        .ai-btn {
-            width: 100%; padding: 10px; background: linear-gradient(90deg, #D4AF37, #ff9800);
-            border: none; border-radius: 6px; color: #000; font-weight: bold; cursor: pointer; transition: 0.3s;
-        }
-        .ai-btn:hover { opacity: 0.9; box-shadow: 0 0 10px #ff9800; }
-        .ai-response {
-            margin-top: 15px; padding: 12px; background: #121212; border-right: 3px solid #ff9800;
-            border-radius: 6px; font-size: 13px; color: #ddd; display: none; line-height: 1.6;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .section { padding: 90px 40px; max-width: 1300px; margin: 0 auto; border-bottom: 1px solid rgba(212,175,55,0.1); }
-        .section-title { text-align: center; font-size: 40px; margin-bottom: 10px; font-weight: 900; }
-        .glass-panel { background: #111111; border: 1px solid var(--primary); padding: 40px; border-radius: 24px; margin-bottom: 25px; color: #fff; }
-        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        @media (max-width: 900px) { .grid-layout { grid-template-columns: 1fr; } }
-
-        .service-request { padding: 60px 20px; background: #0a0a0a; max-width: 800px; margin: 40px auto; border: 1px solid rgba(212,175,55,0.3); border-radius: 16px; }
-        .service-request h2 { color: #D4AF37; text-align: center; font-size: 32px; margin-bottom: 10px; font-weight: 900; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; color: #ff9800; margin-bottom: 8px; font-weight: bold; }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 12px; background: #111; border: 1px solid #D4AF37; 
-            border-radius: 8px; color: #fff; font-size: 16px; direction: rtl; font-family: 'Cairo', sans-serif;
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
         }
-        .submit-btn {
-            width: 100%; padding: 15px; background: linear-gradient(90deg, #D4AF37, #ff9800);
-            border: none; border-radius: 8px; color: #000; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s;
+
+        /* Gold Banner */
+        .gold-banner {
+            width: 100%;
+            max-width: 1000px;
+            background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            color: #000;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            margin-bottom: 30px;
         }
-        .submit-btn:hover { opacity: 0.9; box-shadow: 0 0 15px #ff9800; }
-        
-        footer { text-align: center; padding: 35px; background: #050505; color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(212,175,55,0.2); }
 
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    <!-- الشريط المضيء العلوي -->
-    <div class="top-bar">
-        <div class="top-bar-content">
-            <span class="moon-icon"></span>
-            <span>نبذة عن مجالات المؤسسة: 
-                <a href="#card-md1" class="top-bar-link">MD1 الزراعة</a> | 
-                <a href="#card-md2" class="top-bar-link">MD2 الطاقة</a> | 
-                <a href="#card-md3" class="top-bar-link">MD3 الإعلام</a> | 
-                <a href="#card-md4" class="top-bar-link">MD4 البيئة</a> | 
-                <a href="#card-md5" class="top-bar-link">MD5 التعليم</a> | 
-                <a href="#card-md6" class="top-bar-link">MD6 الصحة</a> | 
-                <a href="#card-md7" class="top-bar-link">MD7 الذكاء الاصطناعي</a>
-            </span>
-        </div>
+        header h1 {
+            color: var(--accent-gold);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* 7 Circles Layout */
+        .circles-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin-bottom: 40px;
+        }
+
+        .circle-item {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--accent-gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 10px;
+        }
+
+        .circle-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .circle-item .code {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .circle-item .title {
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        /* Platform Sections */
+        .platform-section {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .platform-header {
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .platform-header h2 {
+            color: var(--accent-gold);
+        }
+
+        .monetization-tag {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--accent-gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--accent-gold);
+        }
+
+        /* MD3: Product Cards Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-gold);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 120px;
+            background: #21262d;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        .product-price {
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .btn {
+            background: var(--accent-gold);
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* MD5: Creators Cards */
+        .creators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .creator-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .creator-portfolio {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .portfolio-img {
+            background: #21262d;
+            height: 60px;
+            border-radius: 4px;
+        }
+
+        .rating {
+            color: var(--accent-gold);
+            margin: 5px 0;
+        }
+
+        /* MD7: Prompt Craft */
+        .prompt-craft-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .prompt-input {
+            width: 100%;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 6px;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .prompt-output-box {
+            background: var(--bg-color);
+            border: 1px dashed var(--accent-gold);
+            padding: 15px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--border-color);
+            color: var(--text-main);
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .templates-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .template-chip {
+            background: #21262d;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .template-chip:hover {
+            border-color: var(--accent-gold);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط الذهبي -->
+    <div class="gold-banner">
+        ✨ مجموعة MD7 GROUP — المنصة المتكاملة للاستثمار والحلول الرقمية ✨
     </div>
 
     <header>
-        <a href="#home" class="logo-container-main">
-            <svg class="header-logo-svg" viewBox="0 0 300 110">
-                <text x="10" y="40" class="logo-m-black">M</text>
-                <text x="45" y="40" class="logo-d-gold">D</text>
-                <text x="28" y="80" class="logo-77-glow">7</text>
-                
-                <line x1="100" y1="15" x2="100" y2="85" stroke="rgba(212,175,55,0.3)" stroke-width="2"/>
-                <text x="115" y="45" fill="#D4AF37" font-family="Cairo" font-weight="900" font-size="20px">MD7</text>
-                <text x="115" y="68" fill="#ff9800" font-family="Cairo" font-weight="700" font-size="12px" letter-spacing="2px">GROUP</text>
-            </svg>
-        </a>
-        <button class="menu-toggle-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
-        <nav class="nav-links" id="sideNav">
-            <a href="#home"><i class="fa-solid fa-house"></i> الرئيسية</a>
-            <a href="#platforms-section"><i class="fa-solid fa-cubes"></i> المنصات</a>
-            <a href="javascript:void(0)" onclick="openStockModal()"><i class="fa-solid fa-chart-line"></i> سوق الأسهم والاستثمار</a>
-            <a href="#service-request-section"><i class="fa-solid fa-handshake"></i> طلب خدمة</a>
-            <a href="mailto:avtarpreins@gmail.com"><i class="fa-solid fa-envelope"></i> تواصل مباشر</a>
-        </nav>
+        <h1>MD7 GROUP</h1>
+        <p style="color: var(--text-muted);">منظومة الخدمات والحلول الذكية</p>
     </header>
 
-    <!-- الهيرو -->
-    <section class="hero" id="home">
-        <div class="logo-pyramid">
-            <div class="seven-sun">7</div>
-            <div class="group-text">
-                <span class="g-char">G</span>
-                <span class="r-char">R</span>
-                <span class="o-char">O</span>
-                <span class="u-char">U</span>
-                <span class="p-char">P</span>
-            </div>
+    <!-- الـ 7 دوائر الرئيسية -->
+    <div class="circles-container">
+        <div class="circle-item" onclick="openModal('MD1')">
+            <span class="code">MD1</span>
+            <span class="title">الرئيسية</span>
         </div>
+        <div class="circle-item" onclick="openModal('MD2')">
+            <span class="code">MD2</span>
+            <span class="title">الخدمات</span>
+        </div>
+        <div class="circle-item" onclick="openModal('MD3')">
+            <span class="code">MD3</span>
+            <span class="title">سوق MD</span>
+        </div>
+        <div class="circle-item" onclick="openModal('MD4')">
+            <span class="code">MD4</span>
+            <span class="title">الأعمال</span>
+        </div>
+        <div class="circle-item" onclick="openModal('MD5')">
+            <span class="code">MD5</span>
+            <span class="title">بنك المبدعين</span>
+        </div>
+        <div class="circle-item" onclick="openModal('MD6')">
+            <span class="code">MD6</span>
+            <span class="title">الأكاديمية</span>
+        </div>
+        <div class="circle-item" onclick="openModal('MD7')">
+            <span class="code">MD7</span>
+            <span class="title">Prompt Craft</span>
+        </div>
+    </div>
 
-        <h1 class="main-title">MD7</h1>
-        <p class="main-subtitle">
-            بنخلق حلول ونصنع طريقة تشغيل ونضمن استمرار وتطور المؤسسة 24/7<br>
-            بنقلل تكلفة التشغيل 25% وبنمنع الأعطال قبل ما تحصل بالذكاء الاصطناعي
-        </p>
+    <!-- المنصة الأولى المعدلة: MD3 = "سوق MD" -->
+    <section class="platform-section" id="section-md3">
+        <div class="platform-header">
+            <h2>MD3 - سوق MD</h2>
+            <span class="monetization-tag">الربح: عمولة 10% على كل بيع</span>
+        </div>
+        <p style="margin-bottom: 20px; color: var(--text-muted);">منصة عرض وبيع المنتجات الرقمية والمادية (أمازون مصغر)</p>
 
-        <div class="hero-action-btns">
-            <a href="#service-request-section" class="hero-btn hero-btn-primary">اطلب عرض توضيحي مجاني</a>
-            <a href="#platforms-section" class="hero-btn hero-btn-secondary">شاهد النموذج التجريبي</a>
+        <div class="products-grid">
+            <!-- كارت 1 -->
+            <div class="product-card">
+                <span class="badge">جديد</span>
+                <div class="product-image">صورة المنتج</div>
+                <h3>قالب موقع احترافي</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">قالب جاهز للاستخدام الرقمي</p>
+                <div class="product-price">150 ج.م</div>
+                <button class="btn">احصل عليه</button>
+            </div>
+
+            <!-- كارت 2 -->
+            <div class="product-card">
+                <span class="badge">موصى به</span>
+                <div class="product-image">صورة المنتج</div>
+                <h3>سماعات CMF Buds</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">منتج مادي عالي الجودة</p>
+                <div class="product-price">1,200 ج.م</div>
+                <button class="btn">احصل عليه</button>
+            </div>
+
+            <!-- كارت 3 -->
+            <div class="product-card">
+                <span class="badge">الأعلى تقييماً</span>
+                <div class="product-image">صورة المنتج</div>
+                <h3>حزمة أيقونات تصاميم</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">ملفات ممتدة للمصممين</p>
+                <div class="product-price">80 ج.م</div>
+                <button class="btn">احصل عليه</button>
+            </div>
         </div>
     </section>
 
-    <!-- سكشن النتائج اللي بنحققها في النموذج التجريبي -->
-    <section class="results-section">
-        <h2>النتائج اللي بنحققها في النموذج التجريبي</h2>
-        <div class="results-grid">
-            <div class="result-card">
-                <h3>40% تقليل في الاعطال المفاجئة</h3>
+    <!-- المنصة الثانية المعدلة: MD5 = "بنك المبدعين" -->
+    <section class="platform-section" id="section-md5">
+        <div class="platform-header">
+            <h2>MD5 - بنك المبدعين</h2>
+            <span class="monetization-tag">الربح: عمولة + اشتراك شهري لظهور الكارت</span>
+        </div>
+        <p style="margin-bottom: 20px; color: var(--text-muted);">منصة شبكات تواصل واحتراف للمستقلين والمبدعين</p>
+
+        <div class="creators-grid">
+            <!-- كارت مبدع 1 -->
+            <div class="creator-card">
+                <h3>أحمد مصطفى</h3>
+                <p style="font-size: 0.85rem; color: var(--accent-gold);">مصمم واجهات ومطوير web</p>
+                <p style="font-size: 0.8rem; margin: 5px 0;">تصميم مواقع واجهات مستخدم معقدة وسريعة.</p>
+                <div class="creator-portfolio">
+                    <div class="portfolio-img"></div>
+                    <div class="portfolio-img"></div>
+                    <div class="portfolio-img"></div>
+                </div>
+                <div class="rating">★★★★★★★ (7/7 نجوم)</div>
+                <div style="font-weight: bold; margin-bottom: 10px;">يبدأ من: 500 ج.م</div>
+                <button class="btn">اطلب الخدمة وتواصل</button>
             </div>
-            <div class="result-card">
-                <h3>25% توفير في استهلاك الطاقة</h3>
-            </div>
-            <div class="result-card">
-                <h3>90% سرعة في الاستجابة للشكاوى</h3>
+
+            <!-- كارت مبدع 2 -->
+            <div class="creator-card">
+                <h3>سارة خليل</h3>
+                <p style="font-size: 0.85rem; color: var(--accent-gold);">صانعة محتوى ومترجمة</p>
+                <p style="font-size: 0.8rem; margin: 5px 0;">كتابة مقالات متوافقة مع SEO وترجمة احترافية.</p>
+                <div class="creator-portfolio">
+                    <div class="portfolio-img"></div>
+                    <div class="portfolio-img"></div>
+                    <div class="portfolio-img"></div>
+                </div>
+                <div class="rating">★★★★★★★ (7/7 نجوم)</div>
+                <div style="font-weight: bold; margin-bottom: 10px;">يبدأ من: 300 ج.م</div>
+                <button class="btn">اطلب الخدمة وتواصل</button>
             </div>
         </div>
     </section>
 
-    <!-- المنصات -->
-    <section class="platforms" id="platforms-section">
-        <h2>المنصات السبعة لـ MD7</h2>
-        <div class="platform-grid">
+    <!-- المنصة الثالثة المعدلة: MD7 = "Prompt Craft" -->
+    <section class="platform-section" id="section-md7">
+        <div class="platform-header">
+            <h2>MD7 - Prompt Craft (مترجم الأفكار)</h2>
+            <span class="monetization-tag">الربح: مجاني 5 مرات يومياً، بعدها اشتراك شهري</span>
+        </div>
+        <p style="margin-bottom: 15px; color: var(--text-muted);">أداة تحويل الأفكار البسيطة إلى Prompt احترافي جاهز للنسخ للذكاء الاصطناعي</p>
+
+        <div class="prompt-craft-container">
+            <div class="templates-list">
+                <span class="template-chip" onclick="applyTemplate('تعلم البرمجة')">قالب تعليم برمجة</span>
+                <span class="template-chip" onclick="applyTemplate('كتابة قصة')">قالب كتابة قصة + توليد صور</span>
+                <span class="template-chip" onclick="applyTemplate('صناعة محتوى')">قالب صناعة محتوى</span>
+            </div>
+
+            <textarea id="userInput" class="prompt-input" placeholder="اكتب فكرتك بالعربي هنا (مثال: عايز اتعلم برمجة، عايز صورة لقصة...)"></textarea>
             
-            <div class="platform-card" id="card-md1">
-                <div class="platform-circle md1"><span>MD1</span></div>
-                <h3>MD1. الزراعة وغذاء</h3>
-                <p>تشغيل الأراضي وتصدير المحاصيل B2B بين الشركات</p>
-            </div>
+            <button class="btn" onclick="generatePrompt()">تحويل الفكرة إلى Prompt احترافي</button>
 
-            <div class="platform-card" id="card-md2">
-                <div class="platform-circle md2"><span>MD2</span></div>
-                <h3>MD2. الطاقة والبنية التحتية</h3>
-                <p>حلول الطاقة المتجددة وإدارة المشاريع الكبرى</p>
-            </div>
+            <div id="resultContainer" style="display: none; margin-top: 15px;">
+                <h4 style="color: var(--accent-gold); margin-bottom: 5px;">1. الشرح والتوجيه:</h4>
+                <p id="explanationText" style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 15px;"></p>
 
-            <div class="platform-card" id="card-md3">
-                <div class="platform-circle md3"><span>MD3</span></div>
-                <h3>MD3.
-
-            <div class="platform-card" id="card-md4">
-                <div class="platform-circle md4"><span>MD4</span></div>
-                <h3>MD4. البيئة والاستدامة</h3>
-                <p>إعادة التدوير وإدارة النفايات وحلول المناخ</p>
-            </div>
-
-            <div class="platform-card" id="card-md5">
-                <div class="platform-circle md5"><span>MD5</span></div>
-                <h3>MD5. التعليم والتطوير</h3>
-                <p>منصات تدريب وتأهيل الكوادر للمؤسسات</p>
-            </div>
-
-            <div class="platform-card" id="card-md6">
-                <div class="platform-circle md6"><span>MD6</span></div>
-                <h3>MD6. الصحة والرفاهية</h3>
-                <p>تشغيل المستشفيات والعيادات وتطوير الخدمات الطبية</p>
-            </div>
-
-            <!-- منصة MD7 الذكاء الاصطناعي ومولد الحلول المحدث -->
-            <div class="platform-card" id="card-md7">
-                <div class="platform-circle md7"><span>MD7</span></div>
-                <h3>MD7. التكنولوجيا والذكاء الاصطناعي</h3>
-                <p>تحليل البيانات وأتمتة العمليات وتطوير الأنظمة</p>
-                
-                <div class="ai-solver-box">
-                    <label style="color: #ff9800; font-size: 13px; font-weight: bold; display: block; margin-bottom: 5px;">🤖 مولد حل المشاكل الذكي:</label>
-                    <textarea id="aiProblemInput" placeholder="اكتب مشكلتك التقنية أو المؤسسية هنا (طاقة، ري، تكلفة، مبيعات، شكاوى...)..."></textarea>
-                    <button class="ai-btn" onclick="generateAISolution()"><i class="fa-solid fa-bolt"></i> توليد إجابة وتحليل</button>
-                    <div class="ai-response" id="aiResponseBox"></div>
+                <h4 style="color: var(--accent-gold); margin-bottom: 5px;">2. الـ Prompt الاحترافي الجاهز:</h4>
+                <div class="prompt-output-box">
+                    <button class="copy-btn" onclick="copyPrompt()">نسخ النص</button>
+                    <code id="promptOutput" style="color: #4af626; font-family: monospace; display: block; white-space: pre-wrap;"></code>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- قسم طلب خدمة -->
-    <section class="service-request" id="service-request-section">
-        <h2>طلب استخدام خدمة</h2>
-        <form id="serviceForm">
-            <div class="form-group">
-                <label>الاسم الكامل *</label>
-                <input type="text" name="name" required placeholder="الاسم الثلاثي">
-            </div>
-            <div class="form-group">
-                <label>نوع الجهة *</label>
-                <select name="entity_type" required>
-                    <option value="">اختر نوع الجهة</option>
-                    <option value="شركة">شركة</option>
-                    <option value="مؤسسة">مؤسسة</option>
-                    <option value="وزارة">وزارة</option>
-                    <option value="هيئة">هيئة</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>اسم المؤسسة *</label>
-                <input type="text" name="org_name" required placeholder="اسم الشركة / الهيئة">
-            </div>
-            <div class="form-group">
-                <label>البريد الإلكتروني *</label>
-                <input type="email" name="email" required placeholder="example@domain.com">
-            </div>
-            <div class="form-group">
-                <label>رقم التواصل *</label>
-                <input type="tel" name="phone" required placeholder="01xxxxxxxxx" pattern="[0-9]{10,15}">
-            </div>
-            <div class="form-group">
-                <label>الخدمة المطلوبة *</label>
-                <select name="service" required>
-                    <option value="">اختر الخدمة</option>
-                    <option value="MD1 الزراعة وغذاء">MD1 الزراعة وغذاء</option>
-                    <option value="MD2 الطاقة والبنية التحتية">MD2 الطاقة والبنية التحتية</option>
-                    <option value="MD3 الإنتاج الفني والسينما">MD3 الإنتاج الفني والسينما</option>
-                    <option value="MD4 البيئة والاستدامة">MD4 البيئة والاستدامة</option>
-                    <option value="MD5 التعليم والتطوير">MD5 التعليم والتطوير</option>
-                    <option value="MD6 الصحة والرفاهية">MD6 الصحة والرفاهية</option>
-                    <option value="MD7 التكنولوجيا والذكاء الاصطناعي">MD7 التكنولوجيا والذكاء الاصطناعي</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>وصف المشكلة / طلب المساعدة *</label>
-                <textarea name="message" rows="5" required placeholder="برجاء وصف الطلب بالتفصيل"></textarea>
-            </div>
-            <button type="submit" class="submit-btn">إرسال الطلب</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>© 2026 MD7 GROUP</p>
-        <p>إدارة وتشغيل وتطوير | محمد الهمام</p>
-    </footer>
+    <!-- Modal النوافذ المنبثقة للدوائر -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" style="color: var(--accent-gold); margin-bottom: 10px;"></h3>
+            <p id="modalBody" style="color: var(--text-main);"></p>
+        </div>
+    </div>
 
     <script>
-        // دالة الذكاء الاصطناعي الجديدة بالقطاعات الـ 5 والتقرير
-        function generateAISolution() {
-            const query = document.getElementById('aiProblemInput').value.trim().toLowerCase();
-            const box = document.getElementById('aiResponseBox');
+        // Modal functions
+        function openModal(code) {
+            const overlay = document.getElementById('modalOverlay');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+
+            title.innerText = "منصة " + code;
             
-            if(!query) { alert('الرجاء كتابة السؤال أو المشكلة أولاً.'); return; }
-            
-            box.style.display = 'block';
-            box.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري تحليل المشكلة...';
-            
-            setTimeout(() => {
-                let response = ""; let sector = "عام";
-                if (query.includes("كهرباء") || query.includes("طاقة")) {
-                    sector = "الطاقة"; response = `<strong>[تحليل MD7 AI - قطاع الطاقة]:</strong><br>1. السبب: تحميل زائد<br>2. الحل: حساسات IoT<br>3. التوفير: 25%`;
-                }
-                else if (query.includes("موظف") || query.includes("شكوى")) {
-                    sector = "التشغيل"; response = `<strong>[تحليل MD7 AI - قطاع التشغيل]:</strong><br>1. السبب: بطء الرد<br>2. الحل: نظام CRM<br>3. النتيجة: سرعة 90%`;
-                }
-                else if (query.includes("فلوس") || query.includes("تكلفة")) {
-                    sector = "التوفير"; response = `<strong>[تحليل MD7 AI - قطاع التوفير]:</strong><br>1. السبب: هدر موارد<br>2. الحل: RPA<br>3. التوفير: 25%`;
-                }
-                else if (query.includes("تسويق") || query.includes("مبيعات")) {
-                    sector = "التسويق"; response = `<strong>[تحليل MD7 AI - قطاع التسويق]:</strong><br>1. السبب: ضعف تحليل بيانات<br>2. الحل: حملات ذكية<br>3. النتيجة: +30% مبيعات`;
-                }
-                else if (query.includes("زراعة") || query.includes("ري")) {
-                    sector = "الزراعة"; response = `<strong>[تحليل MD7 AI - قطاع الزراعة]:</strong><br>1. السبب: هدر مياه<br>2. الحل: ري ذكي<br>3. النتيجة: +35% انتاج`;
-                }
-                else {
-                    response = `<strong>[تحليل MD7 AI - عام]:</strong><br>1. تحليل البيانات<br>2. الأتمتة الهيكلية`;
-                }
-                box.innerHTML = response + `<br><br><button onclick="downloadPDF('${sector}', '${query}')" style="background:#FFB400; color:#000; padding:10px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:bold;"><i class="fa-solid fa-file-pdf"></i> تحميل التقرير PDF</button>`;
-                window.lastAIResponse = response; window.lastAISector = sector; window.lastAIQuery = query;
-            }, 1200);
-        }
-
-        // دالة تنزيل التقرير
-        function downloadPDF(sector, query) {
-            const content = `تقرير تحليل MD7 AI\nالقطاع: ${sector}\nالمشكلة: ${query}\n${window.lastAIResponse.replace(/<br>/g, '\n').replace(/<[^>]*>/g, '')}`;
-            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-            const url = URL.createObjectURL(blob); const a = document.createElement('a');
-            a.href = url; a.download = `MD7-Report-${sector}.txt`; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
-        }
-
-        // دالة فتح وإغلاق نافذة سوق الأسهم
-        function openStockModal() {
-            const modal = document.getElementById('stockModalOverlay');
-            if(modal) {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeStockModal() {
-            const modal = document.getElementById('stockModalOverlay');
-            if(modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        function closeStockModalOuter(e) {
-            if(e.target.id === 'stockModalOverlay') {
-                closeStockModal();
-            }
-        }
-
-        // تحديث وضع النهار والليل
-        function updateTheme() {
-            const hour = new Date().getHours();
-            const day = new Date().getDate();
-            const body = document.body;
-            
-            if(hour >= 6 && hour < 18) {
-                body.classList.add('day'); 
-                body.classList.remove('night');
+            if(code === 'MD3') {
+                body.innerText = "تفاصيل سوق MD: منصة تجارة رقمية ومادية مع نظام عمولات 10%.";
+            } else if(code === 'MD5') {
+                body.innerText = "تفاصيل بنك المبدعين: منصة عرض خدمات المحترفين ونظام تقييم 7 نجوم.";
+            } else if(code === 'MD7') {
+                body.innerText = "تفاصيل Prompt Craft: أداة توليد الأوامر البرمجية الاحترافية للـ AI.";
             } else {
-                body.classList.add('night'); 
-                body.classList.remove('day');
-                
-                const moon = document.querySelector('.moon-icon');
-                if(moon) {
-                    if(day <= 3) moon.style.borderRadius = '50% 0 0 50%';
-                    else if(day >= 14 && day <= 16) moon.style.borderRadius = '50%';
-                    else if(day >= 28) moon.style.borderRadius = '0 50% 50% 0';
-                }
+                body.innerText = "تفاصيل ومعلومات قسم " + code + " الخاصة بـ MD7 GROUP.";
+            }
+
+            overlay.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+
+        // Prompt Craft Tool Logic
+        function applyTemplate(type) {
+            const input = document.getElementById('userInput');
+            if(type === 'تعلم البرمجة') {
+                input.value = "عايز اتعلم برمجة من الصفر كشخص مبتدئ";
+            } else if(type === 'كتابة قصة') {
+                input.value = "عايز قصة قصيرة عن رائد فضاء مع توليد صور لكل مشهد";
+            } else if(type === 'صناعة محتوى') {
+                input.value = "عايز خطة محتوى لموقع تسويق إلكتروني لمدة شهر";
             }
         }
-        updateTheme(); 
-        setInterval(updateTheme, 60000);
 
-        // سوق الأسهم
-        const ctx = document.getElementById('stockChart').getContext('2d');
-        let currentPrice = 100000;
+        function generatePrompt() {
+            const text = document.getElementById('userInput').value;
+            if(!text) return;
 
-        const stockChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['01 يناير', '01 فبراير', '01 مارس', '01 أبريل', '01 مايو', '01 يونيو', 'اليوم'],
-                datasets: [{
-                    label: 'سعر سهم MD7 (EGP)',
-                    data: [85000, 88000, 92000, 90000, 95000, 97500, 100000],
-                    borderColor: '#D4AF37',
-                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { ticks: { color: '#888' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                    y: { ticks: { color: '#888' }, grid: { color: 'rgba(255,255,255,0.05)' } }
-                }
-            }
-        });
+            const resContainer = document.getElementById('resultContainer');
+            const explanation = document.getElementById('explanationText');
+            const output = document.getElementById('promptOutput');
 
-        function calculateTotal() {
-            const amount = document.getElementById('buyAmount').value || 1;
-            const total = amount * currentPrice;
-            document.getElementById('totalCost').innerText = total.toLocaleString();
+            explanation.innerText = "هذا الأمر مصمم ليجعل نموذج الذكاء الاصطناعي يعمل كخبير متخصص ويقدم لك مخرجات دقيقة ومقسمة على خطوات منظمة.";
+            
+            output.innerText = `Act as an expert advisor. The user wants the following: "${text}". Please provide a structured, step-by-step master plan with high depth, clear actionable instructions, and specific examples. Render response in clear Arabic.`;
+
+            resContainer.style.display = 'block';
         }
 
-        const btnExecuteBuy = document.getElementById('btnExecuteBuy');
-        if(btnExecuteBuy) {
-            btnExecuteBuy.addEventListener('click', () => {
-                const amount = document.getElementById('buyAmount').value;
-                const total = amount * currentPrice;
-                const message = `طلب شراء أسهم عبر البورصة المباشرة:\n- عدد الأسهم: ${amount}\n- القيمة الإجمالية: ${total.toLocaleString()} EGP`;
-                window.open(`https://wa.me/201033182019?text=${encodeURIComponent(message)}`, '_blank');
-            });
-        }
-
-        // القائمة المنسدلة
-        const menuToggle = document.getElementById('menuToggle');
-        const sideNav = document.getElementById('sideNav');
-        if (menuToggle && sideNav) {
-            menuToggle.addEventListener('click', (e) => { e.stopPropagation(); sideNav.classList.toggle('active'); });
-            document.querySelectorAll('#sideNav a').forEach(link => { link.addEventListener('click', () => sideNav.classList.remove('active')); });
+        function copyPrompt() {
+            const codeText = document.getElementById('promptOutput').innerText;
+            navigator.clipboard.writeText(codeText);
+            alert("تم نسخ الـ Prompt بنجاح!");
         }
     </script>
 </body>
