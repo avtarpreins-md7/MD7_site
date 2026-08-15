@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD7 GROUP | العقل المركزي للذكاء الاصطناعي</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SN3BVTLS6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SN3BVTLS6');
+    </script>
+</head>
+<body class="night">
+
+    <!-- الشريط المضيء العلوي -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <span class="moon-icon"></span>
+            <span>منصات شبكة MD7 المتكاملة: 
+                <a href="javascript:void(0)" onclick="switchPlatform('md1')" class="top-bar-link">MD1 إدارة المشاريع</a> | 
+                <a href="javascript:void(0)" onclick="switchPlatform('md2')" class="top-bar-link">MD2 التأليف والنشر</a> | 
+                <a href="javascript:void(0)" onclick="switchPlatform('md3')" class="top-bar-link">MD3 العرض والطلب</a> | 
+                <a href="javascript:void(0)" onclick="switchPlatform('md4')" class="top-bar-link">MD4 البرمجة والتنفيذ</a> | 
+                <a href="javascript:void(0)" onclick="switchPlatform('md5')" class="top-bar-link">MD5 المبدعين والخدمات</a> | 
+                <a href="javascript:void(0)" onclick="switchPlatform('md6')" class="top-bar-link">MD6 السينما والإبداع</a> | 
+                <a href="javascript:void(0)" onclick="switchPlatform('md7')" class="top-bar-link">MD7 العقل المركزي</a>
+            </span>
+        </div>
+    </div>
+
+    <header>
+        <a href="#home" class="logo-container-main" onclick="showDashboard()">
+            <svg class="header-logo-svg" viewBox="0 0 300 110">
+                <text x="10" y="40" class="logo-m-black">M</text>
+                <text x="45" y="40" class="logo-d-gold">D</text>
+                <text x="28" y="80" class="logo-77-glow">7</text>
+                <line x1="100" y1="15" x2="100" y2="85" stroke="rgba(212,175,55,0.3)" stroke-width="2"/>
+                <text x="115" y="45" fill="#D4AF37" font-family="Cairo" font-weight="900" font-size="20px">MD7</text>
+                <text x="115" y="68" fill="#ff9800" font-family="Cairo" font-weight="700" font-size="12px" letter-spacing="2px">GROUP</text>
+            </svg>
+        </a>
+        <button class="menu-toggle-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+        <nav class="nav-links" id="sideNav">
+            <a href="#home" onclick="showDashboard()"><i class="fa-solid fa-house"></i> الرئيسية</a>
+            <a href="#ecosystem-section"><i class="fa-solid fa-network-wired"></i> شبكة المنصات</a>
+            <a href="#service-request-section"><i class="fa-solid fa-handshake"></i> طلب خدمة</a>
+            <a href="mailto:avtarpreins@gmail.com"><i class="fa-solid fa-envelope"></i> تواصل مباشر</a>
+            
+            <!-- أماكن جاهزة مستقبلياً -->
+            <div class="future-slots-nav">
+                <span class="slot-badge" title="مساحة المحفظة"><i class="fa-solid fa-wallet"></i> المحفظة (قريباً)</span>
+                <span class="slot-badge" title="مساحة الإشعارات"><i class="fa-solid fa-bell"></i> الإشعارات (قريباً)</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- شاشة التوجيه الذكية (ماذا تريد أن تنجز اليوم؟) -->
+    <section class="smart-router-section">
+        <div class="router-card">
+            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> ماذا تريد أن تنجز اليوم؟</h2>
+            <p>أدخل هدفك وسيقوم عقل MD7 بتوجيهك فوراً للمنصة والأداة المناسبة</p>
+            <div class="router-input-wrapper">
+                <input type="text" id="userGoalInput" placeholder="مثال: أريد كتابة كود، إنشاء خطة عمل شركة، تصميم صورة، نشر كتاب...">
+                <button onclick="routeUserGoal()"><i class="fa-solid fa-arrow-left"></i> توجيه ذكي</button>
+            </div>
+            <div id="routerSuggestion" class="router-suggestion"></div>
+        </div>
+    </section>
+
+    <!-- الهيرو -->
+    <section class="hero" id="home">
+        <div class="logo-pyramid">
+            <div class="seven-sun">7</div>
+            <div class="group-text">
+                <span class="g-char">G</span><span class="r-char">R</span><span class="o-char">O</span><span class="u-char">U</span><span class="p-char">P</span>
+            </div>
+        </div>
+
+        <h1 class="main-title">MD7 NETWORK</h1>
+        <p class="main-subtitle">
+            نظام ذكاء اصطناعي مركزي يربط 6 منظومات متخصصة لإدارة، ابتكار، وتشغيل مؤسستك بالكامل
+        </p>
+    </section>
+
+    <!-- المنظومة الدائرية المترابطة بالخطوط المضيئة -->
+    <section class="ecosystem-section" id="ecosystem-section">
+        <h2>شبكة MD7 الدائرية المترابطة</h2>
+        <div class="orbital-container">
+            <!-- SVG الخطوط المضيئة المتصلة بالمعدة -->
+            <svg class="orbital-svg" id="orbitalSvg">
+                <line id="line-md1" x1="50%" y1="50%" x2="50%" y2="50%" stroke="#2E7D32" stroke-width="2" />
+                <line id="line-md2" x1="50%" y1="50%" x2="50%" y2="50%" stroke="#ff9800" stroke-width="2" />
+                <line id="line-md3" x1="50%" y1="50%" x2="50%" y2="50%" stroke="#9C27B0" stroke-width="2" />
+                <line id="line-md4" x1="50%" y1="50%" x2="50%" y2="50%" stroke="#009688" stroke-width="2" />
+                <line id="line-md5" x1="50%" y1="50%" x2="50%" y2="50%" stroke="#2196F3" stroke-width="2" />
+                <line id="line-md6" x1="50%" y1="50%" x2="50%" y2="50%" stroke="#E91E63" stroke-width="2" />
+            </svg>
+
+            <!-- MD7 في المنتصف -->
+            <div class="node node-center md7-node" id="node-md7" onclick="switchPlatform('md7')">
+                <div class="platform-circle md7">
+                    <span>MD7</span>
+                </div>
+                <div class="node-title">العقل المركزي</div>
+            </div>
+
+            <!-- العقد الدائرية الست حول المركز -->
+            <div class="node node-orbit md1-node" id="node-md1" onclick="switchPlatform('md1')">
+                <div class="platform-circle md1"><span>MD1</span></div>
+                <div class="node-title">إدارة المشاريع</div>
+            </div>
+
+            <div class="node node-orbit md2-node" id="node-md2" onclick="switchPlatform('md2')">
+                <div class="platform-circle md2"><span>MD2</span></div>
+                <div class="node-title">التأليف والنشر</div>
+            </div>
+
+            <div class="node node-orbit md3-node" id="node-md3" onclick="switchPlatform('md3')">
+                <div class="platform-circle md3"><span>MD3</span></div>
+                <div class="node-title">العرض والطلب</div>
+            </div>
+
+            <div class="node node-orbit md4-node" id="node-md4" onclick="switchPlatform('md4')">
+                <div class="platform-circle md4"><span>MD4</span></div>
+                <div class="node-title">البرمجة والتنفيذ</div>
+            </div>
+
+            <div class="node node-orbit md5-node" id="node-md5" onclick="switchPlatform('md5')">
+                <div class="platform-circle md5"><span>MD5</span></div>
+                <div class="node-title">المبدعين والخدمات</div>
+            </div>
+
+            <div class="node node-orbit md6-node" id="node-md6" onclick="switchPlatform('md6')">
+                <div class="platform-circle md6"><span>MD6</span></div>
+                <div class="node-title">السينما والإبداع</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- منطقة عرض المنصة النشطة (تظهر بانتقال سلس) -->
+    <section class="active-platform-view" id="activePlatformView">
+        <div class="platform-view-card" id="platformViewContent">
+            <!-- يتم التبديل هنا عبر JavaScript -->
+        </div>
+    </section>
+
+    <!-- قسم طلب الخدمة -->
+    <section class="service-request" id="service-request-section">
+        <h2>طلب استخدام خدمة / الاستشارات</h2>
+        <form id="serviceForm">
+            <div class="form-group">
+                <label>الاسم الكامل *</label>
+                <input type="text" name="name" required placeholder="الاسم الثلاثي">
+            </div>
+            <div class="form-group">
+                <label>الجهة أو الشركة *</label>
+                <input type="text" name="org_name" required placeholder="اسم المؤسسة">
+            </div>
+            <div class="form-group">
+                <label>البريد الإلكتروني *</label>
+                <input type="email" name="email" required placeholder="example@domain.com">
+            </div>
+            <div class="form-group">
+                <label>رقم التواصل *</label>
+                <input type="tel" name="phone" required placeholder="01xxxxxxxxx">
+            </div>
+            <div class="form-group">
+                <label>المنصة / الخدمة المستهدفة *</label>
+                <select name="service" required>
+                    <option value="">اختر المنصة</option>
+                    <option value="MD1">MD1. إدارة المشاريع وحل المشكلات</option>
+                    <option value="MD2">MD2. التأليف والنشر الذكي</option>
+                    <option value="MD3">MD3. سوق العرض والطلب والمنتجات</option>
+                    <option value="MD4">MD4. البرمجة والحلول التقنية</option>
+                    <option value="MD5">MD5. بنك المبدعين والخدمات</option>
+                    <option value="MD6">MD6. الإنتاج السينمائي والتصميم</option>
+                    <option value="MD7">MD7. محرك العقل المركزي للذكاء الاصطناعي</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>وصف المطلوب بالتفصيل *</label>
+                <textarea name="message" rows="4" required placeholder="اكتب التفاصيل هنا..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">إرسال الطلب للمركز</button>
+        </form>
+    </section>
+
+    <!-- أماكن مستقبلية مخفية جاهزة للتفعيل -->
+    <div id="futureModules" style="display: none;">
+        <div id="walletModule"></div>
+        <div id="subscriptionsModule"></div>
+        <div id="paymentsModule"></div>
+        <div id="revenueCalculatorModule"></div>
+        <div id="ratingsModule"></div>
+    </div>
+
+    <footer>
+        <p>© 2026 MD7 GROUP | شبكة الذكاء الاصطناعي الموحدة</p>
+        <p>إدارة وتشغيل وتطوير | محمد الهمام</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
