@@ -1,60 +1,28 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<title>MD7 - المشاركة في النمو</title>
-<style>
-  body{background:#000;color:#D4AF37;font-family:tahoma;text-align:center;padding:20px;line-height:1.8}
-  .card{background:#111;border:2px solid #D4AF37;border-radius:15px;padding:20px;margin:15px auto;max-width:800px;text-align:right}
-  h1{color:#F3E5AB}
-  input,button{padding:10px;border-radius:8px;border:1px solid #D4AF37;background:#000;color:#D4AF37;font-size:16px;margin:5px}
-  button{background:#D4AF37;color:#000;font-weight:bold;cursor:pointer}
-  .result{font-size:18px;margin-top:15px;background:#0A0A0A;padding:15px;border-radius:10px}
-  .warning{color:#ff6b6b;font-weight:bold}
-</style>
-</head>
-<body>
-<h1>MD7 GROUP - المشاركة في النمو</h1>
+<div id="printArea">
+  <!-- صفحة 1: بيانات الحجز -->
+  <div class="card">
+    <h2 style="text-align:center">نموذج حجز المشاركة في MD7</h2>
+    <p><b>الاسم:</b> <span id="p_name"></span></p>
+    <p><b>الرقم القومي:</b> <span id="p_national"></span></p>
+    <p><b>العنوان:</b> <span id="p_address"></span></p>
+    <p><b>الهاتف:</b> <span id="p_phone"></span></p>
+    <p><b>اللوكيشن:</b> <span id="p_location"></span></p>
+    <hr>
+    <p><b>المبلغ:</b> <span id="p_total"></span> جنيه</p>
+    <p><b>طريقة الدفع خلال 24 ساعة:</b> <span id="p_payment"></span></p>
+    <p><b>تاريخ الحجز:</b> <span id="p_date"></span></p>
+    <br><br>
+    <p>توقيع المشارك: ............................</p>
+    <p>توقيع مؤسس الشركة: ............................</p>
+  </div>
 
-<div class="card">
-  <h3>نبني المنظومة معًا</h3>
-  <p>MD7 هي منظومة تقنية تربط الذكاء الاصطناعي بمنصات: ادارة المشاريع, النشر, البرمجة, الانتاج الابداعي.</p>
-  <p class="warning">تنبيه: MD7 لا تضمن عائد مالي محدد. الارباح تعتمد على اداء الشركة.</p>
+  <!-- صفحة 2: الشرح والهدف - هتطبع تلقائي -->
+  <div class="card" style="page-break-before: always;">
+    <h2 style="text-align:center;color:#F3E5AB">نبني المنظومة معًا</h2>
+    <p>MD7 هي منظومة تقنية تهدف إلى بناء بيئة مترابطة تجمع الذكاء الاصطناعي مع مجموعة من المنصات المتخصصة في إدارة المشاريع، التأليف والنشر، العرض والطلب، البرمجة، الخدمات التقنية، والإنتاج الإبداعي والسينمائي.</p>
+    <p><b>الهدف:</b> تطوير منظومة رقمية متكاملة تساعد الأفراد والمبدعين والمبرمجين وأصحاب المشاريع والمؤسسات على تحويل الأفكار إلى أعمال ومشروعات وحلول قابلة للتنفيذ.</p>
+    <p><b>لماذا المشاركة؟</b> توسيع المنظومة وتطوير تقنياتها وبنيتها التحتية وزيادة قدرتها على خدمة المستخدمين.</p>
+    <hr>
+    <p class="warning">تنبيه: MD7 لا تضمن تحقيق ارباح. هذه الصفحة تعريفية وليست عرض بيع ملزم.</p>
+  </div>
 </div>
-
-<div class="card">
-  <h3>حاسبة الاكتتاب</h3>
-  <h4>المرحلة الاولى: 20 سهم | من 10,000 الى 100,000 جنيه</h4>
-  <label>عدد الاسهم:</label><input type="number" id="qty1" value="1" min="1" max="20">
-  <label>سعر السهم:</label><input type="number" id="price1" value="10000">
-  <button onclick="calc(1)">احسب</button>
-
-  <h4>المرحلة الثانية: 80 سهم | من 100,000 الى 500,000 جنيه</h4>
-  <label>عدد الاسهم:</label><input type="number" id="qty2" value="1" min="1" max="80">
-  <label>سعر السهم:</label><input type="number" id="price2" value="100000">
-  <button onclick="calc(2)">احسب</button>
-
-  <div class="result" id="result"></div>
-</div>
-
-<div class="card">
-  <h3>كيف تعمل المشاركة؟</h3>
-  <p>1. يتم تحديد الملكية وفق المستندات القانونية الرسمية<br>
-    2. العقد 4 شهور بتجديد تلقائي<br>
-  3. يمكن انهاء التعاقد قبل التجديد بـ 15 يوم</p>
-  <button onclick="window.print()">🖨️ طباعة العرض</button>
-</div>
-
-<script>
-function calc(stage){
-  let qty = document.getElementById('qty'+stage).value;
-  let price = document.getElementById('price'+stage).value;
-  let total = qty * price;
-  document.getElementById('result').innerHTML = `
-  <h2>اجمالي المشاركة: ${total.toLocaleString()} جنيه</h2>
-  <p>ملاحظة: هذا مبلغ تقديري. العائد غير مضمون ويعتمد على اداء MD7</p>
-  `;
-}
-</script>
-</body>
-</html>
