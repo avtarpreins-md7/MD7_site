@@ -1,359 +1,60 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD7 GROUP - اكتتاب الأسهم</title>
-    <!-- استدعاء خط تجول الحديث -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --gold-primary: #D4AF37;
-            --gold-light: #F3E5AB;
-            --gold-dark: #AA7C11;
-            --bg-black: #0A0A0A;
-            --card-bg: #141414;
-            --border-color: rgba(212, 175, 55, 0.4);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-black);
-            color: #FFFFFF;
-            min-height: 100vh;
-            padding: 30px 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* الهيدر واللوجو */
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .brand-badge {
-            display: inline-block;
-            border: 2px solid var(--gold-primary);
-            padding: 8px 25px;
-            border-radius: 50px;
-            background: rgba(212, 175, 55, 0.05);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-            margin-bottom: 12px;
-        }
-
-        .brand-badge h1 {
-            color: var(--gold-primary);
-            font-size: 26px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            color: #AAA;
-            font-size: 15px;
-        }
-
-        /* حاوية البطاقات */
-        .stages-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 900px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 25px;
-            position: relative;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
-        .card:hover {
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .card-header {
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            color: var(--gold-primary);
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .card p.price-range {
-            color: var(--gold-light);
-            font-size: 13px;
-            margin-top: 5px;
-            opacity: 0.8;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-            text-align: right;
-        }
-
-        label {
-            display: block;
-            color: #DDD;
-            font-size: 14px;
-            margin-bottom: 6px;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            background: #000;
-            color: var(--gold-primary);
-            font-size: 16px;
-            font-weight: bold;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        input:focus {
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
-        }
-
-        .btn-calc {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: #000;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: opacity 0.3s, transform 0.1s;
-            margin-top: 10px;
-        }
-
-        .btn-calc:hover {
-            opacity: 0.9;
-        }
-
-        .btn-calc:active {
-            transform: scale(0.98);
-        }
-
-        /* كارت النتائج */
-        .result-card {
-            width: 100%;
-            max-width: 900px;
-            background: linear-gradient(180deg, #181818 0%, #0D0D0D 100%);
-            border: 2px solid var(--gold-primary);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
-            display: none;
-            animation: fadeIn 0.4s ease-in-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .result-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .result-box {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .result-box span {
-            display: block;
-            color: #AAA;
-            font-size: 13px;
-            margin-bottom: 5px;
-        }
-
-        .result-box strong {
-            color: var(--gold-primary);
-            font-size: 22px;
-            font-weight: 900;
-        }
-
-        .note-text {
-            color: #888;
-            font-size: 13px;
-            line-height: 1.6;
-            margin-top: 15px;
-            border-top: 1px dashed rgba(255,255,255,0.1);
-            padding-top: 15px;
-        }
-
-        /* زر الطباعة */
-        .btn-print {
-            margin-top: 25px;
-            background: transparent;
-            border: 1px solid var(--gold-primary);
-            color: var(--gold-primary);
-            padding: 12px 35px;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-print:hover {
-            background: var(--gold-primary);
-            color: #000;
-        }
-
-        /* إعدادات الطباعة */
-        @media print {
-            body {
-                background: #FFF !important;
-                color: #000 !important;
-            }
-            .card, .result-card {
-                border: 1px solid #000 !important;
-                background: #FFF !important;
-                color: #000 !important;
-                box-shadow: none !important;
-            }
-            input, .btn-calc, .btn-print, .price-range {
-                display: none !important;
-            }
-            .brand-badge h1, .card h3, .result-box strong {
-                color: #000 !important;
-            }
-            .result-box {
-                border: 1px solid #ccc !important;
-            }
-            .result-card {
-                display: block !important;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>MD7 - المشاركة في النمو</title>
+<style>
+  body{background:#000;color:#D4AF37;font-family:tahoma;text-align:center;padding:20px;line-height:1.8}
+  .card{background:#111;border:2px solid #D4AF37;border-radius:15px;padding:20px;margin:15px auto;max-width:800px;text-align:right}
+  h1{color:#F3E5AB}
+  input,button{padding:10px;border-radius:8px;border:1px solid #D4AF37;background:#000;color:#D4AF37;font-size:16px;margin:5px}
+  button{background:#D4AF37;color:#000;font-weight:bold;cursor:pointer}
+  .result{font-size:18px;margin-top:15px;background:#0A0A0A;padding:15px;border-radius:10px}
+  .warning{color:#ff6b6b;font-weight:bold}
+</style>
 </head>
 <body>
+<h1>MD7 GROUP - المشاركة في النمو</h1>
 
-    <header>
-        <div class="brand-badge">
-            <h1>MD7 GROUP</h1>
-        </div>
-        <p>حاسبة التقدير الأستثماري واكتتاب الأسهم</p>
-    </header>
+<div class="card">
+  <h3>نبني المنظومة معًا</h3>
+  <p>MD7 هي منظومة تقنية تربط الذكاء الاصطناعي بمنصات: ادارة المشاريع, النشر, البرمجة, الانتاج الابداعي.</p>
+  <p class="warning">تنبيه: MD7 لا تضمن عائد مالي محدد. الارباح تعتمد على اداء الشركة.</p>
+</div>
 
-    <div class="stages-container">
-        <!-- المرحلة الأولى -->
-        <div class="card">
-            <div class="card-header">
-                <h3>المرحلة الأولى: 20 سهم</h3>
-                <p class="price-range">سعر السهم: 10,000 إلى 100,000 جنيه</p>
-            </div>
-            <div class="form-group">
-                <label for="qty1">عدد الأسهم (المتاح 1-20):</label>
-                <input type="number" id="qty1" value="1" min="1" max="20" oninput="validateInput(this, 1, 20)">
-            </div>
-            <div class="form-group">
-                <label for="price1">سعر السهم (جنيه):</label>
-                <input type="number" id="price1" value="10000" min="10000" max="100000" step="1000">
-            </div>
-            <button class="btn-calc" onclick="calc(1)">احسب العرض</button>
-        </div>
+<div class="card">
+  <h3>حاسبة الاكتتاب</h3>
+  <h4>المرحلة الاولى: 20 سهم | من 10,000 الى 100,000 جنيه</h4>
+  <label>عدد الاسهم:</label><input type="number" id="qty1" value="1" min="1" max="20">
+  <label>سعر السهم:</label><input type="number" id="price1" value="10000">
+  <button onclick="calc(1)">احسب</button>
 
-        <!-- المرحلة الثانية -->
-        <div class="card">
-            <div class="card-header">
-                <h3>المرحلة الثانية: 80 سهم</h3>
-                <p class="price-range">سعر السهم: 100,000 إلى 500,000 جنيه</p>
-            </div>
-            <div class="form-group">
-                <label for="qty2">عدد الأسهم (المتاح 1-80):</label>
-                <input type="number" id="qty2" value="1" min="1" max="80" oninput="validateInput(this, 1, 80)">
-            </div>
-            <div class="form-group">
-                <label for="price2">سعر السهم (جنيه):</label>
-                <input type="number" id="price2" value="100000" min="100000" max="500000" step="5000">
-            </div>
-            <button class="btn-calc" onclick="calc(2)">احسب العرض</button>
-        </div>
-    </div>
+  <h4>المرحلة الثانية: 80 سهم | من 100,000 الى 500,000 جنيه</h4>
+  <label>عدد الاسهم:</label><input type="number" id="qty2" value="1" min="1" max="80">
+  <label>سعر السهم:</label><input type="number" id="price2" value="100000">
+  <button onclick="calc(2)">احسب</button>
 
-    <!-- كارت النتيجة -->
-    <div class="result-card" id="resultCard">
-        <h3 style="color: var(--gold-primary); font-size: 22px;" id="resultStageTitle">تفاصيل الاستثمار</h3>
-        
-        <div class="result-grid">
-            <div class="result-box">
-                <span>إجمالي قيمة الشراء</span>
-                <strong id="resTotal">0 ج.م</strong>
-            </div>
-            <div class="result-box">
-                <span>الربح المتوقع (بعد 4 شهور)</span>
-                <strong id="resProfit">0 ج.م</strong>
-            </div>
-            <div class="result-box">
-                <span>الإجمالي المتوقع عند التجديد</span>
-                <strong id="resTotalAfter">0 ج.م</strong>
-            </div>
-        </div>
+  <div class="result" id="result"></div>
+</div>
 
-        <p class="note-text">
-            <strong>تنويه هام:</strong> العقد يتجدد تلقائياً كل 4 شهور. يمكن إنهاء التعاقد وطلب استرداد رأس المال قبل تاريخ التجديد بـ 15 يوماً.
-        </p>
-    </div>
+<div class="card">
+  <h3>كيف تعمل المشاركة؟</h3>
+  <p>1. يتم تحديد الملكية وفق المستندات القانونية الرسمية<br>
+    2. العقد 4 شهور بتجديد تلقائي<br>
+  3. يمكن انهاء التعاقد قبل التجديد بـ 15 يوم</p>
+  <button onclick="window.print()">🖨️ طباعة العرض</button>
+</div>
 
-    <button class="btn-print" onclick="window.print()">طباعة العرض الاستثماري</button>
-
-    <script>
-        function validateInput(input, min, max) {
-            if (parseInt(input.value) > max) input.value = max;
-            if (parseInt(input.value) < min || !input.value) input.value = min;
-        }
-
-        function calc(stage) {
-            const qty = parseFloat(document.getElementById('qty' + stage).value) || 0;
-            const price = parseFloat(document.getElementById('price' + stage).value) || 0;
-            
-            const total = qty * price;
-            const profit4Months = total * 0.25; // نسبة 25% كل 4 شهور
-            const totalAfter = total + profit4Months;
-
-            document.getElementById('resultStageTitle').innerText = `تفاصيل الاستثمار - المرحلة ${stage === 1 ? 'الأولى' : 'الثانية'} (${qty} سهم)`;
-            document.getElementById('resTotal').innerText = total.toLocaleString('ar-EG') + ' ج.م';
-            document.getElementById('resProfit').innerText = profit4Months.toLocaleString('ar-EG') + ' ج.م';
-            document.getElementById('resTotalAfter').innerText = totalAfter.toLocaleString('ar-EG') + ' ج.م';
-
-            const resultCard = document.getElementById('resultCard');
-            resultCard.style.display = 'block';
-            resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-    </script>
+<script>
+function calc(stage){
+  let qty = document.getElementById('qty'+stage).value;
+  let price = document.getElementById('price'+stage).value;
+  let total = qty * price;
+  document.getElementById('result').innerHTML = `
+  <h2>اجمالي المشاركة: ${total.toLocaleString()} جنيه</h2>
+  <p>ملاحظة: هذا مبلغ تقديري. العائد غير مضمون ويعتمد على اداء MD7</p>
+  `;
+}
+</script>
 </body>
 </html>
