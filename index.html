@@ -19,12 +19,53 @@
     </script>
 </head>
 <body class="night">
-<!-- زرار اكتتاب اسهم MD7 -->
-<div style="background:#0A0A0A; text-align:center; padding:15px; border-bottom:2px solid #AA7C11;">
-  <a href="md7-stocks.html" style="background:linear-gradient(90deg,#AA7C11,#F3E5AB); color:#0A0A0A; padding:12px 30px; border-radius:12px; text-decoration:none; font-weight:bold; font-size:18px; box-shadow:0 0 15px #AA7C11;">
-    📈 اكتتاب اسهم MD7 - اضغط للحاسبة
-  </a>
-</div>    
+<<!-- زر المشاركة العائم -->
+<a href="md7-stocks.html" id="fab-button">
+  <span class="fab-icon">📈</span>
+  <span class="fab-text">المشاركة في النمو</span>
+</a>
+
+<style>
+#fab-button{
+  position: fixed; /* يثبت تحت ويتحرك مع السحب */
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #D4AF37, #B8860B);
+  color: #000;
+  padding: 14px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  box-shadow: 0 4px 20px rgba(212,175,55,0.4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 9999; /* يبقى فوق اي حاجة */
+  transition: all 0.3s ease;
+  border: 2px solid #F3E5AB;
+}
+#fab-button:hover{
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(212,175,55,0.6);
+}
+.fab-icon{
+  font-size: 20px; /* رمز اسهم البورصة */
+}
+.fab-text{
+  white-space: nowrap;
+}
+
+/* للموبايل نخليه اصغر شوية */
+@media (max-width: 768px){
+  #fab-button{
+    bottom: 15px;
+    right: 15px;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
+</style>
 
     <!-- الشريط المضيء العلوي -->
     <div class="top-bar">
