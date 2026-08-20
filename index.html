@@ -18,6 +18,43 @@
       gtag('config', 'G-SN3BVTLS6');
     </script>
 </head>
+    <!-- زر معلومات المؤس -->
+<a href="founder.html" id="founder-btn">
+  <span>👑</span>
+  <span>معلومات المؤس</span>
+</a>
+
+<style>
+#founder-btn{
+  position: fixed;
+  bottom: 100px; /* فوق زرار المشاركة */
+  right: 20px;
+  background: linear-gradient(135deg, #111, #000);
+  color: #D4AF37;
+  padding: 14px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  border: 2px solid #D4AF37;
+  font-family: 'Cairo', tahoma;
+}
+#founder-btn:hover{
+  transform: scale(1.05);
+  background: #D4AF37;
+  color: #000;
+}
+
+@media (max-width: 768px){
+  #founder-btn{ bottom: 90px; right: 15px; padding: 12px 18px; font-size: 14px; }
+}
+</style>
 <body class="night">
 <<!-- زر المشاركة العائم -->
 <a href="md7-stocks.html" id="fab-button">
