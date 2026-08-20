@@ -1,28 +1,126 @@
-<div id="printArea">
-  <!-- صفحة 1: بيانات الحجز -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>MD7 - حجز المشاركة</title>
+<style>
+  body{background:#000;color:#D4AF37;font-family:tahoma;text-align:center;padding:20px;line-height:1.8}
+  .card{background:#111;border:2px solid #D4AF37;border-radius:15px;padding:20px;margin:15px auto;max-width:900px;text-align:right}
+  h1,h2,h3{color:#F3E5AB;text-align:center}
+  input,select,button{padding:10px;border-radius:8px;border:1px solid #D4AF37;background:#000;color:#D4AF37;font-size:16px;margin:5px;width:90%}
+  button{background:#D4AF37;color:#000;font-weight:bold;cursor:pointer}
+  .result{font-size:18px;margin-top:15px;background:#0A0A0A;padding:15px;border-radius:10px}
+  .warning{color:#ff6b6b;font-weight:bold}
+  
+  /* ده المهم: كل ده مش هيظهر غير في الطباعة */
+  .print-only{display:none}
+  @media print {
+    .no-print{display:none}
+    .print-only{display:block}
+    body{background:#fff;color:#000}
+    .card{border:1px solid #000;background:#fff;color:#000;page-break-inside:avoid}
+    h1,h2,h3{color:#B8860B}
+  }
+</style>
+</head>
+<body>
+<h1 class="no-print">MD7 GROUP - نموذج حجز المشاركة</h1>
+
+<!-- ده اللي بيظهر عالشاشة -->
+<div class="card no-print">
+  <h3>1. حاسبة المشاركة</h3>
+  <label>المرحلة:</label>
+  <select id="stage" onchange="calc()">
+    <option value="10000">المرحلة الاولى - السهم 10,000 جنيه</option>
+    <option value="100000">المرحلة الثانية - السهم 100,000 جنيه</option>
+  </select>
+  <label>عدد الاسهم / او جزء من سهم:</label>
+  <input type="number" id="qty" value="1" step="0.01" min="0.1" oninput="calc()">
+  <label>المبلغ الاجمالي:</label>
+  <input type="text" id="total" readonly>
+  <p class="warning">ملاحظة: لا يوجد عائد مضمون</p>
+</div>
+
+<div class="card no-print">
+  <h3>2. بيانات الحجز</h3>
+  <input type="text" id="name" placeholder="الاسم رباعي">
+  <input type="text" id="national" placeholder="الرقم القومي">
+  <input type="text" id="address" placeholder="العنوان بالتفصيل">
+  <input type="text" id="phone" placeholder="رقم الهاتف">
+  <input type="text" id="location" placeholder="اللوكيشن - رابط جوجل ماب">
+  
+  <label>طريقة الدفع خلال 24 ساعة:</label>
+  <select id="payment">
+    <option>فوري</option>
+    <option>محفظة الكترونية</option>
+    <option>تحويل بنكي</option>
+    <option>طلب محصل - دفع كاش</option>
+  </select>
+  
+  <button onclick="preparePrint()">🖨️ طباعة نموذج الحجز الكامل</button>
+</div>
+
+<!-- ده اللي هيطبع بس -->
+<div id="printArea" class="print-only">
+  
+  <!-- صفحة 1: نموذج الحجز الفخم -->
   <div class="card">
-    <h2 style="text-align:center">نموذج حجز المشاركة في MD7</h2>
+    <h2>نموذج حجز المشاركة في نمو MD7 GROUP</h2>
+    <p style="text-align:center">"نبني المنظومة معًا"</p>
+    <hr>
+    <p><b>بيانات المشارك:</b></p>
     <p><b>الاسم:</b> <span id="p_name"></span></p>
     <p><b>الرقم القومي:</b> <span id="p_national"></span></p>
     <p><b>العنوان:</b> <span id="p_address"></span></p>
     <p><b>الهاتف:</b> <span id="p_phone"></span></p>
     <p><b>اللوكيشن:</b> <span id="p_location"></span></p>
     <hr>
-    <p><b>المبلغ:</b> <span id="p_total"></span> جنيه</p>
-    <p><b>طريقة الدفع خلال 24 ساعة:</b> <span id="p_payment"></span></p>
+    <p><b>تفاصيل المشاركة:</b></p>
+    <p><b>المبلغ الاجمالي:</b> <span id="p_total"></span> جنيه مصري</p>
+    <p><b>طريقة السداد:</b> <span id="p_payment"></span> خلال 24 ساعة</p>
     <p><b>تاريخ الحجز:</b> <span id="p_date"></span></p>
     <br><br>
     <p>توقيع المشارك: ............................</p>
     <p>توقيع مؤسس الشركة: ............................</p>
   </div>
 
-  <!-- صفحة 2: الشرح والهدف - هتطبع تلقائي -->
-  <div class="card" style="page-break-before: always;">
-    <h2 style="text-align:center;color:#F3E5AB">نبني المنظومة معًا</h2>
+  <!-- صفحة 2: الشرح الكامل القديم -->
+  <div class="card">
+    <h2>نبني المنظومة معًا</h2>
     <p>MD7 هي منظومة تقنية تهدف إلى بناء بيئة مترابطة تجمع الذكاء الاصطناعي مع مجموعة من المنصات المتخصصة في إدارة المشاريع، التأليف والنشر، العرض والطلب، البرمجة، الخدمات التقنية، والإنتاج الإبداعي والسينمائي.</p>
-    <p><b>الهدف:</b> تطوير منظومة رقمية متكاملة تساعد الأفراد والمبدعين والمبرمجين وأصحاب المشاريع والمؤسسات على تحويل الأفكار إلى أعمال ومشروعات وحلول قابلة للتنفيذ.</p>
-    <p><b>لماذا المشاركة؟</b> توسيع المنظومة وتطوير تقنياتها وبنيتها التحتية وزيادة قدرتها على خدمة المستخدمين.</p>
-    <hr>
-    <p class="warning">تنبيه: MD7 لا تضمن تحقيق ارباح. هذه الصفحة تعريفية وليست عرض بيع ملزم.</p>
+    <p><b>الهدف من المشروع:</b> تطوير منظومة رقمية متكاملة تساعد الأفراد والمبدعين والمبرمجين وأصحاب المشاريع والمؤسسات على تحويل الأفكار إلى أعمال ومشروعات وحلول قابلة للتنفيذ.</p>
+    <h3>لماذا المشاركة في MD7؟</h3>
+    <p>تسعى الشركة إلى توسيع المنظومة وتطوير تقنياتها وبنيتها التحتية وزيادة قدرتها على خدمة المستخدمين والأسواق المختلفة.</p>
+    <h3>كيف تعمل المشاركة؟</h3>
+    <p>يتم تحديد طريقة المشاركة وقيمة الملكية والحقوق المرتبطة بها وفق المستندات القانونية الرسمية للشركة. ونسبة ملكية المشارك تكون مرتبطة بعدد الاسهم التي يمتلكها.</p>
+    <h3>المشاركة لا تعني عائدًا مضمونًا</h3>
+    <p class="warning">MD7 لا تضمن للمشارك تحقيق ارباح او عائد مالي محدد. اي عائد محتمل يعتمد على اداء الشركة.</p>
+    <h3>خطوات المشاركة</h3>
+    <p>1. التعرف على مشروع MD7<br>2. الاطلاع على الشروط القانونية<br>3. اتمام الاجراءات عبر القنوات الرسمية</p>
+    <h3>تنبيه مهم</h3>
+    <p>هذه الصفحة تعريفية ولا تُعد عرضًا عامًا لبيع اوراق مالية. ننصح بالحصول على المشورة القانونية والمالية قبل اتخاذ القرار.</p>
   </div>
 </div>
+
+<script>
+function calc(){
+  let price = document.getElementById('stage').value;
+  let qty = document.getElementById('qty').value;
+  let total = price * qty;
+  document.getElementById('total').value = total.toLocaleString() + " جنيه";
+}
+function preparePrint(){
+  document.getElementById('p_name').innerText = document.getElementById('name').value;
+  document.getElementById('p_national').innerText = document.getElementById('national').value;
+  document.getElementById('p_address').innerText = document.getElementById('address').value;
+  document.getElementById('p_phone').innerText = document.getElementById('phone').value;
+  document.getElementById('p_location').innerText = document.getElementById('location').value;
+  document.getElementById('p_total').innerText = document.getElementById('total').value;
+  document.getElementById('p_payment').innerText = document.getElementById('payment').value;
+  document.getElementById('p_date').innerText = new Date().toLocaleDateString('ar-EG');
+  window.print();
+}
+calc();
+</script>
+</body>
+</html>
