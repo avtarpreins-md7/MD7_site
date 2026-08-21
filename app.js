@@ -1,4 +1,8 @@
-// قاعدة بيانات معرفة المركز الذكي بالمنصات الست
+/* ==========================================
+   MD7 GROUP - Master Application Logic
+   ========================================== */
+
+// قاعدة بيانات معرفة المركز الذكي بالمنصات السبع
 const platformData = {
     md1: {
         title: "MD1. إدارة المشاريع وحل المشكلات",
@@ -58,27 +62,45 @@ const platformData = {
     }
 };
 
-// تشغيل ربط الخطوط المضيئة وإدارة الواجهة
+// تهيئة النظام عند تحميل المستند
 document.addEventListener("DOMContentLoaded", () => {
     initNavigation();
+    initThemeToggle();
     drawConnectingLines();
     window.addEventListener("resize", drawConnectingLines);
 });
 
-// القائمة الجانبية
+// إدارة القائمة الجانبية المكونة آمنة من الأخطاء
 function initNavigation() {
     const btn = document.getElementById("menuToggle");
     const nav = document.getElementById("sideNav");
-    btn.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
+    if (btn && nav) {
+        btn.addEventListener("click", () => {
+            nav.classList.toggle("active");
+        });
+    }
+}
+
+// التحكم في تبديل النمط النهائي (Night / Day Mode)
+function initThemeToggle() {
+    const themeBtn = document.getElementById("themeToggleBtn");
+    if (themeBtn) {
+        themeBtn.addEventListener("click", () => {
+            document.body.classList.toggle("night");
+            document.body.classList.toggle("day");
+        });
+    }
 }
 
 // رسم خطوط مضيئة تربط بين المنصات الست والمركز (MD7)
 function drawConnectingLines() {
     const center = document.getElementById("node-md7");
+    const container = document.querySelector(".orbital-container");
+
+    if (!center || !container) return;
+
     const centerRect = center.getBoundingClientRect();
-    const containerRect = document.querySelector(".orbital-container").getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
 
     const cX = centerRect.left + centerRect.width / 2 - containerRect.left;
     const cY = centerRect.top + centerRect.height / 2 - containerRect.top;
@@ -101,9 +123,12 @@ function drawConnectingLines() {
 
 // أداة التوجيه الذكي "ماذا تريد أن تنجز اليوم؟"
 function routeUserGoal() {
-    const text = document.getElementById("userGoalInput").value.trim().toLowerCase();
+    const inputEl = document.getElementById("userGoalInput");
     const box = document.getElementById("routerSuggestion");
 
+    if (!inputEl || !box) return;
+
+    const text = inputEl.value.trim().toLowerCase();
     if (!text) return;
 
     box.style.display = "block";
@@ -133,7 +158,7 @@ function routeUserGoal() {
         textGuide = "تم التوجيه إلى **MD7 (العقل المركزي)** لكون الطلب شاملاً ويتطلب تحليل ذكاء اصطناعي متعدد الأبعاد.";
     }
 
-    box.innerHTML = `${textGuide} <br><button onclick="switchPlatform('${target}')" style="margin-top:8px; padding:6px 12px; background:var(--accent); border:none; border-radius:4px; font-weight:bold; cursor:pointer;">الانتقال للمنصة الآن</button>`;
+    box.innerHTML = `<div>${textGuide.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}</div><button onclick="switchPlatform('${target}')" class="btn-primary" style="margin-top:10px; padding:6px 14px; font-size:13px;">الانتقال للمنصة الآن</button>`;
 }
 
 // التبديل بين المنصات وانتقال العرض
@@ -142,20 +167,20 @@ function switchPlatform(id) {
     const view = document.getElementById("activePlatformView");
     const card = document.getElementById("platformViewContent");
 
-    if (!data) return;
+    if (!data || !view || !card) return;
 
     view.style.display = "block";
     card.classList.remove("show");
 
     setTimeout(() => {
         card.innerHTML = `
-            <h2 style="color:${data.color}; margin-top:0;">${data.title}</h2>
-            <p style="color:#ccc; font-size:15px; line-height:1.6;">${data.desc}</p>
+            <h2 style="color:${data.color}; margin-top:0;">${escapeHTML(data.title)}</h2>
+            <p style="color:#ccc; font-size:15px; line-height:1.6;">${escapeHTML(data.desc)}</p>
             
             <div class="ai-workspace">
-                <label style="color:#ff9800; font-size:13px; font-weight:bold; display:block; margin-bottom:8px;">🤖 أداة ${data.title} المباشرة:</label>
-                <textarea id="platformAiInput" placeholder="${data.placeholder}"></textarea>
-                <button class="ai-btn" onclick="runPlatformAi('${id}')">${data.actionText}</button>
+                <label style="color:var(--accent); font-size:13px; font-weight:bold; display:block; margin-bottom:8px;">🤖 أداة ${escapeHTML(data.title)} المباشرة:</label>
+                <textarea id="platformAiInput" placeholder="${escapeHTML(data.placeholder)}"></textarea>
+                <button class="ai-btn" onclick="runPlatformAi('${id}')">${escapeHTML(data.actionText)}</button>
                 <div class="ai-result" id="platformAiResult"></div>
             </div>
         `;
@@ -166,9 +191,13 @@ function switchPlatform(id) {
 
 // تشغيل الذكاء الاصطناعي الفرعي للمنصة
 function runPlatformAi(id) {
-    const input = document.getElementById("platformAiInput").value.trim();
+    const inputEl = document.getElementById("platformAiInput");
     const resBox = document.getElementById("platformAiResult");
-    const engine = platformData[id].promptEngine;
+
+    if (!inputEl || !resBox) return;
+
+    const input = inputEl.value.trim();
+    const engine = platformData[id]?.promptEngine;
 
     if (!input) {
         alert("برجاء كتابة البيانات المطلوب معالجتها أولاً.");
@@ -176,13 +205,27 @@ function runPlatformAi(id) {
     }
 
     resBox.style.display = "block";
-    resBox.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري التوليد بواسطة عقل MD7...';
+    resBox.innerHTML = '⚡ جاري التوليد بواسطة عقل MD7...';
 
     setTimeout(() => {
-        resBox.innerHTML = engine(input).replace(/\n/g, "<br>");
+        if (engine) {
+            const rawOutput = engine(input);
+            resBox.innerHTML = escapeHTML(rawOutput).replace(/\n/g, "<br>");
+        }
     }, 800);
 }
 
+// أداة مساعدة لتعقيم النصوص وحماية الواجهة من الأخطاء البرمجية
+function escapeHTML(str) {
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 function showDashboard() {
-    document.getElementById("activePlatformView").style.display = "none";
+    const view = document.getElementById("activePlatformView");
+    if (view) view.style.display = "none";
 }
