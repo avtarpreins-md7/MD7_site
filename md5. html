@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>MD5 | بنك المبدعين</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Cairo', sans-serif; background: #050505; color: #fff; direction: rtl; padding: 20px; }
+      .container { max-width: 800px; margin: 30px auto; background: #121212; border: 1px solid #D4AF37; padding: 25px; border-radius: 12px; }
+      .btn { background: #D4AF37; color: #000; padding: 10px 18px; font-weight: bold; border-radius: 6px; text-decoration: none; display: inline-block; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="btn" style="margin-bottom:20px;">← العودة للرئيسية</a>
+    <h2 style="color:#D4AF37;">🎬 MD5: بنك المبدعين والخدمات الإبداعية</h2>
+    <p style="color:#aaa; margin-top:10px;">معرض الخدمات الإبداعية، التصميم الجرافيكي، الإنتاج الفني والمحتوى الرقمي.</p>
+</div>
+</body>
+</html>
