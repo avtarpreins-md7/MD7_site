@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>MD6 | الطاقة والزراعة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      body { font-family: 'Cairo', sans-serif; background: #050505; color: #fff; direction: rtl; padding: 20px; }
+      .container { max-width: 800px; margin: 30px auto; background: #121212; border: 1px solid #D4AF37; padding: 25px; border-radius: 12px; }
+      .btn { background: #D4AF37; color: #000; border: none; padding: 10px 18px; font-weight: bold; border-radius: 6px; text-decoration: none; display: inline-block; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="btn" style="margin-bottom:20px;">← العودة للرئيسية</a>
+    <h2 style="color:#D4AF37;">🌱 MD6: حلول الطاقة والزراعة الاستدامة</h2>
+    <p style="color:#aaa; margin-top:10px;">تقنيات الطاقة النظيفة والمشاريع الزراعية الحديثة والبنية التحتية الذكية.</p>
+    
+    <a href="https://wa.me/201033182019" target="_blank" class="btn" style="background:#25D366; color:#fff; margin-top:20px;">
+        <i class="fa-brands fa-whatsapp"></i> طلب استشارة هندسية أو زراعية
+    </a>
+</div>
+</body>
+</html>
