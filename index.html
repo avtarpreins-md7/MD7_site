@@ -51,7 +51,6 @@
         color: #000; padding: 14px 25px; border-radius: 50px;
         text-decoration: none; font-weight: 900; z-index: 9999;
         box-shadow: 0 4px 20px rgba(212,175,55,0.4);
-        display: flex; align-items: center; gap: 8px;
       }
 
       #founder-btn {
@@ -141,7 +140,7 @@
       .btn-gold {
         background: linear-gradient(135deg, var(--gold), var(--dark-gold));
         color: #000; border: none; padding: 10px 20px; border-radius: 6px;
-        font-weight: bold; cursor: pointer; margin-top: 10px; text-decoration: none; display: inline-block;
+        font-weight: bold; cursor: pointer; margin-top: 10px; text-decoration: inline-block; display: inline-block; text-align: center;
       }
       .btn-gold:hover { opacity: 0.9; }
 
@@ -183,7 +182,7 @@
     <div class="top-bar-content">
         <span>منصات شبكة MD7 المتكاملة: 
             <a href="javascript:void(0)" onclick="switchPlatform('md1')" class="top-bar-link">MD1 إدارة المشاريع</a> | 
-            <a href="javascript:void(0)" onclick="switchPlatform('md2')" class="top-bar-link">MD2 التأليف والنشر</a> | 
+            <a href="javascript:void(0)" onclick="switchPlatform('md2')" class="top-bar-link">MD2 التأليف وتوليد الصور</a> | 
             <a href="javascript:void(0)" onclick="switchPlatform('md3')" class="top-bar-link">MD3 العرض والطلب</a> | 
             <a href="javascript:void(0)" onclick="switchPlatform('md4')" class="top-bar-link">MD4 البرمجة والتنفيذ</a> | 
             <a href="javascript:void(0)" onclick="switchPlatform('md5')" class="top-bar-link">MD5 المبدعين والخدمات</a> | 
@@ -206,8 +205,8 @@
     </a>
     <nav class="nav-links">
         <a href="#home" onclick="switchPlatform('md7')"><i class="fa-solid fa-house"></i> الرئيسية</a>
+        <a href="join-md7.html"><i class="fa-solid fa-user-plus"></i> انضم إلينا</a>
         <a href="#ecosystem-section"><i class="fa-solid fa-network-wired"></i> شبكة المنصات</a>
-        <a href="join-md7.html"><i class="fa-solid fa-user-plus"></i> الانضمام لـ MD7</a>
         <a href="#service-request-section"><i class="fa-solid fa-handshake"></i> طلب خدمة</a>
         <a href="mailto:avtarpreins@gmail.com"><i class="fa-solid fa-envelope"></i> تواصل مباشر</a>
     </nav>
@@ -219,7 +218,7 @@
         <h2><i class="fa-solid fa-wand-magic-sparkles"></i> ماذا تريد أن تنجز اليوم؟</h2>
         <p>أدخل هدفك وسيقوم عقل MD7 بتوجيهك فوراً للمنصة والأداة المناسبة</p>
         <div class="router-input-wrapper">
-            <input type="text" id="userGoalInput" placeholder="مثال: أريد كود صورة لجيمناي، خطة عمل، برمجة تطبيق...">
+            <input type="text" id="userGoalInput" placeholder="مثال: أريد كتابة كود، توليد كود صورة لجيمناي، انشاء خطة عمل...">
             <button onclick="routeUserGoal()"><i class="fa-solid fa-arrow-left"></i> توجيه ذكي</button>
         </div>
         <div id="routerSuggestion" style="margin-top:10px; color:var(--gold); font-weight:bold;"></div>
@@ -286,7 +285,7 @@
     <h3>🤖 MD7: العقل المركزي والمشاركة</h3>
     <p style="margin: 10px 0; color: #ccc;">قم بالمشاركة والانضمام المباشر لشبكة MD7 لتفعيل صلاحياتك واستخراج كارت التأسيس الرقمي.</p>
 
-    <!-- زر الانضمام المباشر -->
+    <!-- زرار ساهم وشارك المباشر لملف join-md7.html -->
     <a href="join-md7.html" class="btn-gold" style="font-size: 16px; padding: 12px 24px; margin-top: 15px;">
         <i class="fa-solid fa-handshake"></i> ساهم وشارك في MD7 الآن
     </a>
@@ -307,24 +306,32 @@
     <button class="btn-gold" style="background:#1e90ff; color:#fff;" onclick="switchPlatform('md4')">اعرض على شريك منفذ (MD4)</button>
 </div>
 
-<!-- MD2: منصة توليد أكواد الصور لـ Gemini -->
+<!-- MD2: مولد الأكواد لإنتاج الصور عبر Gemini -->
 <div id="panel-md2" class="view-panel">
-    <h3>🎨 MD2: مُوّلد أكواد صور الذكاء الاصطناعي لـ Gemini</h3>
-    <p style="font-size:13px; color:#aaa; margin-bottom:15px;">اكتب وصفك بالعربية للمشهد أو غلاف الكتاب، وستقوم المنصة بتحويله لكود أوامر موجه لـ Gemini للحصول على صور احترافية عالية الدقة.</p>
+    <h3>🎨 MD2: مُولّد أكواد الصور لـ Gemini</h3>
+    <p style="font-size:13px; color:#aaa; margin-bottom:15px;">ادخل وصف الصورة التي تريدها بالعربية، وتكفل المنصة بتوليد كود هندسي واحترافي موجه لـ Gemini. كل ما عليك هو نسخ الكود وإرساله مباشرة لـ Gemini للحصول على صورتك بالدقة المحددة.</p>
 
     <div class="form-group">
-        <label>وصف المشهد أو الصورة المطلوب إنشاء كود لها</label>
-        <textarea id="scene_desc" rows="3" placeholder="مثال: غلاف كتاب سينمائي عن الذكاء الاصطناعي، ألوان ذهبية وسوداء، إضاءة سينمائية دقيقة..."></textarea>
+        <label>وصف المشهد أو الصورة بالعربية</label>
+        <textarea id="scene_desc" rows="3" placeholder="مثال: صورة سينمائية لسيارة مستقبلية تدور حولها أضواء هولوغرام باللون الذهبي..."></textarea>
     </div>
-    <button class="btn-gold" onclick="generateGeminiPrompt()"><i class="fa-solid fa-code"></i> إنتاج كود الأوامر لـ Gemini</button>
+    
+    <div class="form-group">
+        <label>نمط الصورة المطلوبة</label>
+        <select id="image_style">
+            <option value="Hyper-realistic cinematic art, 8k resolution, dramatic lighting">سينمائي واقعي (Cinematic 8K)</option>
+            <option value="Futuristic cyberpunk style, neon lights, glowing accents">مستقبلي (Cyberpunk Neon)</option>
+            <option value="Luxury corporate branding design, gold and black theme, ultra clean">تصميم تجاري فاخر (Luxury Gold & Black)</option>
+            <option value="3D digital render, octane render, highly detailed">مجسم ثلاثي الأبعاد (3D Render)</option>
+        </select>
+    </div>
+
+    <button class="btn-gold" onclick="generateGeminiPrompt()"><i class="fa-solid fa-code"></i> توليد الكود لـ Gemini</button>
 
     <div id="prompt_result" class="prompt-box" style="display:none;">
-        <p style="color:var(--gold); font-size:13px; margin-bottom:8px; font-weight:bold;">انسخ الكود الأتي وأرسله فوراً إلى Gemini لتولد لك الصورة المطلوب إنشاءها:</p>
-        <code id="prompt_text" style="color:#00ffcc; word-break:break-all; display:block; background:#111; padding:12px; border-radius:6px; font-family:monospace;"></code>
-        <div style="display:flex; gap:10px; margin-top:10px;">
-            <button class="btn-gold" style="font-size:12px;" onclick="copyPrompt()"><i class="fa-solid fa-copy"></i> نسخ الكود</button>
-            <a href="join-md7.html" class="btn-gold" style="background:#333; color:#fff; font-size:12px;"><i class="fa-solid fa-handshake"></i> الانضمام لـ MD7</a>
-        </div>
+        <p style="color:var(--gold); font-size:13px; margin-bottom:8px; font-weight:bold;">انسخ الكود الأتي وأرسله إلى Gemini مباشرة للحصول على صورتك:</p>
+        <code id="prompt_text" style="color:#00ffcc; word-break:break-all; display:block; background:#111; padding:12px; border-radius:6px; font-family:monospace; line-height:1.5;"></code>
+        <button class="btn-gold" style="margin-top:12px; font-size:13px;" onclick="copyPrompt()"><i class="fa-solid fa-copy"></i> نسخ الكود</button>
     </div>
 </div>
 
@@ -332,7 +339,6 @@
 <div id="panel-md3" class="view-panel">
     <h3>🛒 MD3: سوق العرض والطلب والمنتجات</h3>
 
-    <!-- نموذج رفع منتج جديد -->
     <div style="background:#000; padding:15px; border-radius:8px; margin-bottom:25px; border:1px solid #333;">
         <h4 style="color:var(--gold); margin-bottom:10px;">إضافة منتج / كتاب جديد للسوق</h4>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
@@ -343,7 +349,6 @@
         <button class="btn-gold" onclick="addProduct()">رفع المنتج للسوق</button>
     </div>
 
-    <!-- شبكة المنتجات المعروضة -->
     <h4 style="color:var(--gold);">المنتجات المعروضة في الشبكة</h4>
     <div class="products-grid" id="productsGrid">
         <div class="product-card">
@@ -351,7 +356,7 @@
             <div class="product-info">
                 <div class="product-title">كتاب نهضة الماتريكس</div>
                 <div class="product-price">15$</div>
-                <button class="btn-gold" style="width:100%;" onclick="switchPlatform('md2')">اعرض في MD2</button>
+                <button class="btn-gold" style="width:100%;" onclick="switchPlatform('md2')">اصنع غلاف في MD2</button>
             </div>
         </div>
     </div>
@@ -366,7 +371,7 @@
             <h4 style="color:var(--gold);">محمد الهمام</h4>
             <p style="font-size:12px; color:#aaa;">مطور مطور نظم وتطبيقات الشبكة</p>
         </div>
-        <a href="https://wa.me/201033182019" target="_blank" class="btn-gold" style="background:#25D366; color:#fff;">تواصل واتساب</a>
+        <a href="https://wa.me/201033182019" target="_blank" class="btn-gold" style="background:#25D366; color:#fff; text-decoration:none;">تواصل واتساب</a>
     </div>
 </div>
 
@@ -380,9 +385,14 @@
 <div id="panel-md6" class="view-panel">
     <h3>🌱 MD6: مشاريع الطاقة والزراعة والتطوير العمراني</h3>
     <p style="margin-bottom:15px;">نظم تشغيل الحلول المستدامة والشبكات الذكية.</p>
-    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a href="https://wa.me/201033182019" target="_blank" class="btn-gold" style="background:#25D366; color:#fff;">💬 اطلب استشارة طاقة/زراعة عبر واتساب</a>
-        <a href="join-md7.html" class="btn-gold"><i class="fa-solid fa-handshake"></i> انضم كمساهم في MD7</a>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:15px;">
+        <a href="join-md7.html" class="btn-gold" style="text-decoration:none;">
+            <i class="fa-solid fa-handshake"></i> ساهم وشارك في MD7
+        </a>
+        <a href="https://wa.me/201033182019" target="_blank" class="btn-gold" style="background:#25D366; color:#fff; text-decoration:none;">
+            💬 استشارة طاقة/زراعة عبر واتساب
+        </a>
     </div>
 </div>
 
@@ -436,13 +446,13 @@
     const txt = document.getElementById('userGoalInput').value.toLowerCase();
     const sug = document.getElementById('routerSuggestion');
 
-    if(txt.includes('كتاب') || txt.includes('صورة') || txt.includes('رواية') || txt.includes('وصف') || txt.includes('كود')) {
-      sug.innerText = "تم توجيهك إلى MD2 لتوليد أكواد صور الذكاء الاصطناعي لـ Gemini.";
+    if(txt.includes('كتاب') || txt.includes('صورة') || txt.includes('رواية') || txt.includes('وصف') || txt.includes('جيمناي')) {
+      sug.innerText = "تم توجيهك إلى MD2 لتوليد أكواد صور Gemini والتأليف.";
       switchPlatform('md2');
     } else if(txt.includes('مشروع') || txt.includes('جدوى')) {
       sug.innerText = "تم توجيهك إلى MD1 لإدارة ونمذجة المشاريع.";
       switchPlatform('md1');
-    } else if(txt.includes('برمجة') || txt.includes('مطور')) {
+    } else if(txt.includes('كود') || txt.includes('برمجة') || txt.includes('مطور')) {
       sug.innerText = "تم توجيهك إلى MD4 سوق المبرمجين والمنفذين.";
       switchPlatform('md4');
     } else if(txt.includes('منتج') || txt.includes('بيع') || txt.includes('سوق')) {
@@ -454,13 +464,14 @@
     }
   }
 
-  // توليد كود الأوامر لـ Gemini بناءً على وصف المستخدم
+  // توليد كود الوصف الموجه لـ Gemini في MD2
   function generateGeminiPrompt() {
     const desc = document.getElementById('scene_desc').value;
-    if(!desc.trim()) { alert("يرجى كتابة وصف المشهد أولاً"); return; }
+    const style = document.getElementById('image_style').value;
+    
+    if(!desc) { alert("يرجى كتابة وصف المشهد أولاً"); return; }
 
-    // إنشاء كود معالج لإرساله لـ Gemini
-    const generatedCode = `Generate a high-quality, ultra-realistic image based on the following description: "${desc}". Style: Cinematic lighting, 8k resolution, highly detailed, photorealistic, premium MD7 design standard.`;
+    const generatedCode = `يرجى إنتاج وتصميم صورة عالية الدقة بناءً على الوصف التالي:\n[الوصف]: ${desc}\n[النمط والنموذج المطلوب]: ${style}, high quality, sharp details, masterwork.`;
 
     document.getElementById('prompt_text').innerText = generatedCode;
     document.getElementById('prompt_result').style.display = 'block';
@@ -469,7 +480,7 @@
   function copyPrompt() {
     const code = document.getElementById('prompt_text').innerText;
     navigator.clipboard.writeText(code);
-    alert("تم نسخ كود الصورة بنجاح! قم بملصقه مباشرة في شات Gemini للإنشاء.");
+    alert("تم نسخ الكود بنجاح! يمكنك الآن لصقه وإرساله لـ Gemini لتوليد الصورة.");
   }
 
   // إضافة منتج جديد لشبكة MD3
@@ -488,7 +499,7 @@
         <div class="product-info">
             <div class="product-title">${name}</div>
             <div class="product-price">${price}</div>
-            <button class="btn-gold" style="width:100%;" onclick="switchPlatform('md2')">اعرض في MD2</button>
+            <button class="btn-gold" style="width:100%;" onclick="switchPlatform('md2')">اصنع غلاف في MD2</button>
         </div>
     `;
     grid.appendChild(card);
