@@ -1,680 +1,102 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD Group - المنظومة الشاملة & MD7 AI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD7 GROUP | العقل المركزي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root { --gold: #D4AF37; --black: #050505; --dark-gray: #121212; --gold-glow: rgba(212, 175, 55, 0.4); }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: 'Cairo', sans-serif; background-color: var(--black); color: #fff; direction: rtl; text-align: center; }
 
-<!-- المكتبات الخارجية: EmailJS + QR Code -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+      /* زرار المساهمة الرئيسي */
+      .hero-join-btn {
+        display: inline-block; background: linear-gradient(135deg, #D4AF37, #B8860B);
+        color: #000; padding: 18px 40px; border-radius: 50px; text-decoration: none;
+        font-weight: 900; font-size: 20px; margin: 25px 0;
+        box-shadow: 0 0 25px var(--gold-glow); transition: 0.3s ease;
+      }
+      .hero-join-btn:hover { transform: scale(1.05); box-shadow: 0 0 35px var(--gold); }
 
-<script type="text/javascript">
-  (function(){
-    // تفعيل مفتاح EmailJS
-    emailjs.init("-VHvtaMeTpVBPHzIG");
-  })();
-</script>
+      header { background: #080808; border-bottom: 2px solid var(--gold); padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+      .logo-m { fill: #000; font-weight: 900; font-size: 35px; }
+      .logo-d { fill: var(--gold); font-weight: 900; font-size: 35px; }
 
-<style>
-  :root {
-    --gold: #D4AF37;
-    --black: #050505;
-    --dark-gray: #121212;
-    --card-bg: #1a1a1a;
-    --gold-glow: rgba(212, 175, 55, 0.3);
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--black);
-    color: #fff;
-    overflow-x: hidden;
-    direction: rtl;
-  }
-
-  /* -------------------------------------------------------------
-     1. الهيدر والبراندينج (MD Logo: M أسود, D ذهبي)
-  ------------------------------------------------------------- */
-  header {
-    background: #000;
-    border-bottom: 2px solid var(--gold);
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .brand-logo {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 26px;
-    font-weight: 900;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .brand-logo .m-letter { color: #fff; background: #000; padding: 2px 6px; border-radius: 4px; border: 1px solid var(--gold); }
-  .brand-logo .d-letter { color: var(--gold); text-shadow: 0 0 8px var(--gold); }
-  .brand-logo .group-text { font-size: 14px; color: #aaa; margin-right: 8px; }
-
-  nav { display: flex; gap: 10px; flex-wrap: wrap; }
-  nav button {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: 0.3s;
-  }
-  nav button:hover, nav button.active {
-    background: var(--gold);
-    color: #000;
-    font-weight: bold;
-  }
-
-  /* -------------------------------------------------------------
-     2. الواجهة الرئيسية (MD7 AI Solar System)
-  ------------------------------------------------------------- */
-  .view-section { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
-  .view-section.active { display: block; }
-
-  .solar-system-container {
-    position: relative;
-    width: 100%;
-    height: 75vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  /* المركز: الشمس نهاراً والقمر ليلاً */
-  .center-sun-moon {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    text-align: center;
-  }
-  .sun-mode {
-    background: radial-gradient(circle, #fff7ad 0%, #ffd700 50%, #ff8c00 100%);
-    box-shadow: 0 0 50px #ff8c00, 0 0 100px #ffd700;
-    color: #000;
-  }
-  .moon-mode {
-    background: radial-gradient(circle, #ffffff 0%, #dcdcdc 50%, #708090 100%);
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(112, 128, 144, 0.6);
-    color: #000;
-  }
-
-  /* المدار والدوائر الست */
-  .orbit-ring {
-    position: absolute;
-    width: 480px;
-    height: 480px;
-    border: 1px dashed rgba(212, 175, 55, 0.3);
-    border-radius: 50%;
-    animation: rotateOrbit 35s linear infinite;
-  }
-
-  @keyframes rotateOrbit {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .planet {
-    position: absolute;
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-weight: bold;
-    font-size: 13px;
-    cursor: pointer;
-    box-shadow: 0 0 15px currentColor;
-    animation: pulsePlanet 2s infinite alternate;
-    transition: transform 0.3s;
-  }
-  .planet:hover { transform: scale(1.2); z-index: 20; }
-
-  @keyframes pulsePlanet {
-    0% { transform: scale(0.95); }
-    100% { transform: scale(1.08); }
-  }
-
-  /* توزيع الدوائر الست زاوياً */
-  .planet-1 { top: -37px; left: calc(50% - 37px); background: #ff4757; color: #fff; } /* MD1 */
-  .planet-2 { top: 85px; right: -37px; background: #2ed573; color: #fff; } /* MD2 */
-  .planet-3 { bottom: 85px; right: -37px; background: #ffa502; color: #fff; } /* MD3 */
-  .planet-4 { bottom: -37px; left: calc(50% - 37px); background: #1e90ff; color: #fff; } /* MD4 */
-  .planet-5 { bottom: 85px; left: -37px; background: #9b59b6; color: #fff; } /* MD5 */
-  .planet-6 { top: 85px; left: -37px; background: #2acc71; color: #fff; } /* MD6 */
-
-  /* -------------------------------------------------------------
-     3. الشات بوت المساعد (MD7 AI Assistant)
-  ------------------------------------------------------------- */
-  .chat-widget {
-    background: var(--dark-gray);
-    border: 1px solid var(--gold);
-    border-radius: 12px;
-    padding: 15px;
-    margin-top: 20px;
-  }
-  .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
-  .chat-input-row { display: flex; gap: 10px; }
-  .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; }
-  .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
-
-  /* -------------------------------------------------------------
-     4. تنسيقات عامة للمواجهات والأزرار
-  ------------------------------------------------------------- */
-  .card-box {
-    background: var(--dark-gray);
-    border: 1px solid var(--gold);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  .card-box h2 { color: var(--gold); margin-bottom: 15px; font-size: 20px; border-bottom: 1px solid #333; padding-bottom: 8px; }
-  
-  input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    background: #000;
-    border: 1px solid #444;
-    color: #fff;
-    border-radius: 6px;
-  }
-  
-  .btn-gold {
-    background: linear-gradient(135deg, var(--gold), #aa7c11);
-    color: #000;
-    border: none;
-    padding: 10px 18px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 5px;
-  }
-  .btn-gold:hover { opacity: 0.9; }
-
-  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-
-  /* بطاقة المشاركة وحفظ الاستثمار (النموذج السابق) */
-  .participation-card {
-    background: linear-gradient(135deg, #000 60%, #1a1500 100%);
-    border: 2px solid var(--gold);
-    border-radius: 10px;
-    padding: 15px;
-    margin-top: 15px;
-    box-shadow: 0 0 15px var(--gold-glow);
-  }
-</style>
+      /* شبكة كروت المنصات */
+      .platforms-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px; max-width: 1000px; margin: 30px auto; padding: 0 20px;
+      }
+      .platform-card {
+        background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px;
+        padding: 25px; text-decoration: none; color: #fff; transition: 0.3s;
+        display: flex; flex-direction: column; align-items: center; gap: 10px;
+      }
+      .platform-card:hover { transform: translateY(-5px); box-shadow: 0 0 20px var(--gold-glow); background: #1a1a1a; }
+      .platform-card i { font-size: 35px; color: var(--gold); }
+      .platform-card h3 { font-size: 20px; font-weight: 900; }
+      .platform-card p { font-size: 13px; color: #aaa; }
+    </style>
 </head>
 <body>
 
-<!-- الهيدر الرئيسي واللوجو -->
 <header>
-  <a class="brand-logo" onclick="switchTab('md7')">
-    <span class="m-letter">M</span>
-    <span class="d-letter">D</span>
-    <span class="group-text">GROUP</span>
-  </a>
-  <nav>
-    <button id="btn-md7" class="active" onclick="switchTab('md7')">MD7 AI</button>
-    <button id="btn-md1" onclick="switchTab('md1')">MD1 المشاريع</button>
-    <button id="btn-md2" onclick="switchTab('md2')">MD2 المؤلفين</button>
-    <button id="btn-md3" onclick="switchTab('md3')">MD3 السوق</button>
-    <button id="btn-md4" onclick="switchTab('md4')">MD4 ألم عين</button>
-    <button id="btn-md5" onclick="switchTab('md5')">MD5 الأعمال</button>
-    <button id="btn-md6" onclick="switchTab('md6')">MD6 الطاقة والزراعة</button>
-  </nav>
+    <a href="index.html">
+        <svg viewBox="0 0 200 60" width="140">
+            <text x="10" y="45" class="logo-m">M</text>
+            <text x="45" y="45" class="logo-d">D</text>
+            <text x="85" y="45" fill="#fff" font-size="25" font-weight="900">7</text>
+        </svg>
+    </a>
 </header>
 
-<!-- =============================================================
-     MD7 AI: العقل المدبر والواجهة الفلكية
-============================================================= -->
-<section id="md7" class="view-section active">
-  <div class="solar-system-container">
-    <!-- المركز: ينبض بالوهج (شمس نهاراً / قمر ليلاً) -->
-    <div id="center-node" class="center-sun-moon" onclick="chatAutoSuggest('ما هي منظومة MD Group؟')">
-      <strong style="font-size: 16px;">MD7 AI</strong>
-      <span id="day-night-text" style="font-size: 10px;"></span>
-    </div>
-
-    <!-- الدوائر الست المحيطة -->
-    <div class="orbit-ring">
-      <div class="planet planet-1" onclick="switchTab('md1')">MD1<br>المشاريع</div>
-      <div class="planet planet-2" onclick="switchTab('md2')">MD2<br>المؤلفين</div>
-      <div class="planet planet-3" onclick="switchTab('md3')">MD3<br>السوق</div>
-      <div class="planet planet-4" onclick="switchTab('md4')">MD4<br>ألم عين</div>
-      <div class="planet planet-5" onclick="switchTab('md5')">MD5<br>الأعمال</div>
-      <div class="planet planet-6" onclick="switchTab('md6')">MD6<br>الطاقة</div>
-    </div>
-  </div>
-
-  <!-- الشات بوت الذكي -->
-  <div class="chat-widget">
-    <h3 style="color:var(--gold); margin-bottom:8px;">🤖 المساعد الذكي MD7 AI</h3>
-    <div class="chat-logs" id="chatLogs">
-      <p style="color:#aaa;">مرحباً بك! أنا المساعد الذكي للمنظومة. كيف يمكنني إرشادك اليوم؟ (جرب: "عايز اعمل فيلم")</p>
-    </div>
-    <div class="chat-input-row">
-      <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا ليتم توجيهك للمنصة المناسبة...">
-      <button onclick="sendChatMessage()">إرسال</button>
-    </div>
-  </div>
-
-  <!-- قسم التسجيل واستخراج بطاقة المساهمة التأسيسية المحفوظة -->
-  <div class="card-box" style="margin-top: 25px;">
-    <h2>💳 تسجيل بطاقة المشارك في التأسيس (MD7 Group)</h2>
-    <form id="founding-form">
-      <div class="grid-2">
-        <input type="text" id="user_name" placeholder="الاسم الكامل" required>
-        <input type="text" id="user_phone" placeholder="رقم الهاتف" required>
-      </div>
-      <input type="email" id="user_email" placeholder="البريد الإلكتروني" required>
-      <button type="submit" class="btn-gold">إصدار البطاقة وإرسال البيانات</button>
-    </form>
-
-    <div id="card-output"></div>
-  </div>
-</section>
-
-<!-- =============================================================
-     MD1: نموذج المشاريع ودراسة الجدوى
-============================================================= -->
-<section id="md1" class="view-section">
-  <div class="card-box">
-    <h2>🚀 MD1: مولد خطط المشاريع ودراسات الجدوى</h2>
-    <p style="font-size:13px; color:#ccc; margin-bottom:10px;">ادخل فكرتك وسيتم تحويلها لمستند مشروع متكامل.</p>
-    <input type="text" id="proj_title" placeholder="اسم المشروع">
-    <textarea id="proj_desc" rows="4" placeholder="اكتب فكرة المشروع والتفاصيل..."></textarea>
-    <button class="btn-gold" onclick="generateProjectPDF()">توليد ملف المشروع PDF</button>
-
-    <div id="proj_result" style="display:none; margin-top:15px; background:#000; padding:15px; border-radius:8px;">
-      <h3 id="res_title" style="color:var(--gold);"></h3>
-      <p id="res_body" style="font-size:13px; margin:10px 0;"></p>
-      <div style="display:flex; gap:10px;">
-        <button class="btn-gold" onclick="alert('جاري تحميل ملف المشروع...')">📥 تحميل ملف المشروع</button>
-        <button class="btn-gold" style="background:#1e90ff; color:#fff;" onclick="switchTab('md4')">🤝 اعرض على شريك منفذ (MD4)</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =============================================================
-     MD2: نموذج المؤلفين وصناعة السيناريو + Gemini Image API
-============================================================= -->
-<section id="md2" class="view-section">
-  <div class="card-box">
-    <h2>📚 MD2: منصة المؤلفين وتوليد المشاهد الرقمية</h2>
-    <input type="text" id="book_title" placeholder="عنوان الكتاب / السيناريو">
-    <input type="text" id="author_name" placeholder="اسم المؤلف">
-    <textarea id="book_index" rows="3" placeholder="الفهرس والفصول..."></textarea>
+<!-- قسم المساهمة والترحيب -->
+<section style="padding: 40px 20px;">
+    <h1 style="color:var(--gold); font-size: 36px; font-weight: 900;">MD7 GROUP NETWORK</h1>
+    <p style="color:#ccc; margin-top: 10px;">العقل المركزي والشبكة المتكاملة للمنصات الرقمية</p>
     
-    <hr style="border-color:#333; margin:15px 0;">
-    
-    <h3 style="color:var(--gold); font-size:16px;">🖼️ توليد صور المشاهد (Gemini API)</h3>
-    <textarea id="scene_prompt" rows="2" placeholder="صف المشهد هنا لإنشاء صورة سينمائية بالذكاء الاصطناعي..."></textarea>
-    <button class="btn-gold" onclick="triggerGeminiImage()">توليد صورة للمشهد</button>
-    
-    <div id="image_result" style="margin-top:10px; text-align:center;"></div>
-  </div>
-</section>
-
-<!-- =============================================================
-     MD3: السوق الرقمي
-============================================================= -->
-<section id="md3" class="view-section">
-  <div class="card-box">
-    <h2>🛒 MD3: السوق الرقمي للمنتجات والكتب</h2>
-    <div class="grid-2">
-      <div>
-        <h3>إضافة منتج جديد</h3>
-        <input type="text" id="prod_name" placeholder="اسم المنتج">
-        <input type="number" id="prod_price" placeholder="السعر (USD)">
-        <select id="prod_type">
-          <option value="general">منتج عام</option>
-          <option value="book">كتاب / رواية</option>
-        </select>
-        <button class="btn-gold" onclick="addProduct()">رفع المنتج للسوق</button>
-      </div>
-      <div>
-        <h3>المنتجات المعروضة</h3>
-        <div id="product_list" style="display:flex; flex-direction:column; gap:10px;"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =============================================================
-     MD4: واجهة ألم عين - سوق المبرمجين والمصممين
-============================================================= -->
-<section id="md4" class="view-section">
-  <div class="card-box">
-    <h2>👁️ MD4: منصة "ألم عين" للمنفذين والمطورين</h2>
-    <div id="freelancers_list" class="grid-2"></div>
-  </div>
-</section>
-
-<!-- =============================================================
-     MD5: منصة عرض الأعمال الفنية والإنتاج
-============================================================= -->
-<section id="md5" class="view-section">
-  <div class="card-box">
-    <h2>🎬 MD5: معرض الأعمال الفنية والسينمائية</h2>
-    <div class="grid-2">
-      <div>
-        <h3>رفع عمل جديد</h3>
-        <input type="text" id="media_title" placeholder="عنوان العمل">
-        <input type="url" id="media_link" placeholder="رابط العمل (يوتيوب / تيك توك)">
-        <button class="btn-gold" onclick="addMediaWork()">نشر العمل</button>
-      </div>
-      <div>
-        <h3>الأعمال المعروضة</h3>
-        <div id="media_list" style="display:flex; flex-direction:column; gap:10px;"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =============================================================
-     MD6: التطوير والطاقة والزراعة
-============================================================= -->
-<section id="md6" class="view-section">
-  <div class="card-box">
-    <h2>🌱 MD6: مشاريع الطاقة المستدامة والتطوير الزراعي</h2>
-    <p style="font-size:14px; color:#ccc; line-height:1.8;">
-      تختص هذه المنصة بإدارة وتطوير الحلول الذكية للطاقة الشمسية، وأنظمة الري الحديث، ومبادرات المدن المستدامة.
-    </p>
-    <br>
-    <a href="https://wa.me/201033182019" target="_blank" style="text-decoration:none;">
-      <button class="btn-gold" style="background:#25D366; color:#fff;">💬 اطلب استشارة مباشرة عبر واتساب (01033182019)</button>
+    <!-- زرار ساهم وشارك المباشر -->
+    <a href="join-md7.html" class="hero-join-btn">
+        <i class="fa-solid fa-handshake"></i> ساهم وشارك في MD7 الآن
     </a>
-  </div>
 </section>
 
-<!-- =============================================================
-     5. البرمجة والوحدات (JS Modules & APIs)
-============================================================= -->
-<script>
-  /* -------------------------------------------------------------
-     A. الإعدادات والتهيئات العامة (State & Config)
-  ------------------------------------------------------------- */
-  const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE"; // استبدل بالمفتاح الخاص بك
-  let productsData = [
-    { name: "كتاب نهضة الماتريكس", price: 15, type: "book" }
-  ];
-  let mediaWorks = [
-    { title: "العرض الإعلاني لـ MD7", link: "https://youtube.com" }
-  ];
-  let freelancers = [
-    { name: "محمد الهمام", role: "مطور Full-Stack", phone: "01033182019" },
-    { name: "مهندس تصميم", role: "مصمم هويات وبانرات", phone: "01033784505" }
-  ];
+<!-- شبكة توجيه المنصات المباشرة -->
+<h2 style="color:var(--gold); margin-bottom: 10px;">اختر المنصة للدخول المباشر</h2>
+<div class="platforms-grid">
+    <a href="md1.html" class="platform-card">
+        <i class="fa-solid fa-diagram-project"></i>
+        <h3>MD1 المشاريع</h3>
+        <p>إدارة ونمذجة دراسات الجدوى والحلول</p>
+    </a>
+    <a href="md2.html" class="platform-card">
+        <i class="fa-solid fa-book-open"></i>
+        <h3>MD2 المؤلفين</h3>
+        <p>توليد أكواد وصف الصور لـ Gemini</p>
+    </a>
+    <a href="md3.html" class="platform-card">
+        <i class="fa-solid fa-store"></i>
+        <h3>MD3 السوق</h3>
+        <p>عرض وشراء المنتجات والكتب</p>
+    </a>
+    <a href="md4.html" class="platform-card">
+        <i class="fa-solid fa-code"></i>
+        <h3>MD4 ألم عين</h3>
+        <p>منصة المطورين والمنفذين البرمجيين</p>
+    </a>
+    <a href="md5.html" class="platform-card">
+        <i class="fa-solid fa-paint-brush"></i>
+        <h3>MD5 المبدعين</h3>
+        <p>بنك الخدمات والتصاميم والإبداع</p>
+    </a>
+    <a href="md6.html" class="platform-card">
+        <i class="fa-solid fa-seedling"></i>
+        <h3>MD6 الطاقة والزراعة</h3>
+        <p>حلول الاستدامة والتقنيات الحديثة</p>
+    </a>
+</div>
 
-  // التبديل بين المنصات (Routing)
-  function switchTab(tabId) {
-    document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('nav button').forEach(el => el.classList.remove('active'));
-    
-    const targetSection = document.getElementById(tabId);
-    if(targetSection) targetSection.classList.add('active');
-    
-    const targetBtn = document.getElementById('btn-' + tabId);
-    if(targetBtn) targetBtn.classList.add('active');
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  /* -------------------------------------------------------------
-     B. طقس الشمس والقمر المترتب على الوقت
-  ------------------------------------------------------------- */
-  function updateSolarNode() {
-    const hour = new Date().getHours();
-    const node = document.getElementById('center-node');
-    const text = document.getElementById('day-night-text');
-    
-    if (hour >= 6 && hour < 18) {
-      node.className = 'center-sun-moon sun-mode';
-      text.innerText = 'وهج الشمس (نهار)';
-    } else {
-      node.className = 'center-sun-moon moon-mode';
-      text.innerText = 'وهج القمر (ليل)';
-    }
-  }
-
-  /* -------------------------------------------------------------
-     C. المساعد الذكي MD7 AI (Chatbot Engine)
-  ------------------------------------------------------------- */
-  function sendChatMessage() {
-    const input = document.getElementById('chatInput');
-    const logs = document.getElementById('chatLogs');
-    const val = input.value.trim();
-    if (!val) return;
-
-    logs.innerHTML += `<p style="color:var(--gold);"><b>أنت:</b> ${val}</p>`;
-    const query = val.toLowerCase();
-    let response = "أنا هنا لمساعدتك عبر منصات MD Group. يمكنك التواجد في الواجهة الرئيسية للوصول لكافة الخدمات.";
-
-    if (query.includes("فيلم") || query.includes("سيناريو") || query.includes("ممثل")) {
-      response = "لصناعة أو عرض فيلم: يمكنك كتابة السيناريو وتوليد المشاهد في <b>MD2</b>، ثم عرض وتوزيع العمل الفني في <b>MD5</b>.";
-    } else if (query.includes("مشروع") || query.includes("جدوى")) {
-      response = "يمكنك بناء دراسة الجدوى وخطة التنفيذ فوراً في منصة <b>MD1</b>.";
-    } else if (query.includes("شراء") || query.includes("كتاب") || query.includes("سوق")) {
-      response = "تفضل بزيارة <b>MD3</b> لاستعراض وشراء المنتجات والكتب الرقمية.";
-    } else if (query.includes("مبرمج") || query.includes("مصمم") || query.includes("تنفيذ")) {
-      response = "منصة <b>MD4 (ألم عين)</b> توفر لك قائمة بالمنفذين والمطورين المتاحين للتواصل.";
-    } else if (query.includes("طاقة") || query.includes("زراعة") || query.includes("استشارة")) {
-      response = "يمكنك متابعة مشاريع الطاقة والزراعة والحصول على استشارة عبر <b>MD6</b>.";
-    }
-
-    logs.innerHTML += `<p style="color:#fff;"><b>MD7 AI:</b> ${response}</p>`;
-    logs.scrollTop = logs.scrollHeight;
-    input.value = '';
-  }
-
-  function chatAutoSuggest(txt) {
-    document.getElementById('chatInput').value = txt;
-    sendChatMessage();
-  }
-
-  /* -------------------------------------------------------------
-     D. Gemini API Image Generation (MD2)
-  ------------------------------------------------------------- */
-  async function generateImage(prompt) {
-    // دالة النواة لاستدعاء API Gemini للصور
-    if (GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
-      return "https://via.placeholder.com/400x250/000000/D4AF37?text=ضع+مفتاح+Gemini+API+في+الكود";
-    }
-    try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/image-generation-vision:generateContent?key=${GEMINI_API_KEY}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: prompt })
-      });
-      const data = await response.json();
-      return data.imageUrl || "https://via.placeholder.com/400x250/000000/D4AF37?text=تم+توليد+المشهد";
-    } catch (e) {
-      console.error(e);
-      return "https://via.placeholder.com/400x250/000000/D4AF37?text=خطأ+في+الاتصال+بـ+Gemini";
-    }
-  }
-
-  async function triggerGeminiImage() {
-    const prompt = document.getElementById('scene_prompt').value;
-    const resBox = document.getElementById('image_result');
-    if(!prompt) { alert("يرجى كتابة وصف المشهد أولاً"); return; }
-    
-    resBox.innerHTML = "<p style='color:var(--gold);'>جاري توليد الصورة عبر Gemini API...</p>";
-    const imgUrl = await generateImage(prompt);
-    resBox.innerHTML = `<img src="${imgUrl}" style="max-width:100%; border:1px solid var(--gold); border-radius:8px; margin-top:10px;">`;
-  }
-
-  /* -------------------------------------------------------------
-     E. MD1 & MD3 & MD4 & MD5 Functions
-  ------------------------------------------------------------- */
-  function generateProjectPDF() {
-    const title = document.getElementById('proj_title').value;
-    const desc = document.getElementById('proj_desc').value;
-    if(!title) { alert("ادخل اسم المشروع"); return; }
-    
-    document.getElementById('res_title').innerText = "وثيقة مشروع: " + title;
-    document.getElementById('res_body').innerText = "خطة التنفيذ والدراسة الأولية: " + desc;
-    document.getElementById('proj_result').style.display = 'block';
-  }
-
-  function renderProducts() {
-    const container = document.getElementById('product_list');
-    container.innerHTML = '';
-    productsData.forEach(p => {
-      container.innerHTML += `
-        <div style="background:#000; padding:10px; border:1px solid #333; border-radius:6px; display:flex; justify-content:space-between; align-items:center;">
-          <div>
-            <strong>${p.name}</strong> - <span style="color:var(--gold);">$${p.price}</span>
-          </div>
-          ${p.type === 'book' ? `<button class="btn-gold" style="font-size:11px;" onclick="switchTab('md2')">اعرض في MD2</button>` : ''}
-        </div>
-      `;
-    });
-  }
-
-  function addProduct() {
-    const name = document.getElementById('prod_name').value;
-    const price = document.getElementById('prod_price').value;
-    const type = document.getElementById('prod_type').value;
-    if(name && price) {
-      productsData.push({ name, price, type });
-      renderProducts();
-    }
-  }
-
-  function renderFreelancers() {
-    const container = document.getElementById('freelancers_list');
-    container.innerHTML = '';
-    freelancers.forEach(f => {
-      container.innerHTML += `
-        <div style="background:#000; padding:15px; border:1px solid var(--gold); border-radius:8px; text-align:center;">
-          <div style="font-size:30px; color:var(--gold);">★</div>
-          <h4 style="color:#fff;">${f.name}</h4>
-          <p style="font-size:12px; color:#aaa;">${f.role}</p>
-          <a href="tel:${f.phone}" class="btn-gold" style="display:inline-block; text-decoration:none; margin-top:8px; font-size:12px;">تواصل: ${f.phone}</a>
-        </div>
-      `;
-    });
-  }
-
-  function renderMedia() {
-    const container = document.getElementById('media_list');
-    container.innerHTML = '';
-    mediaWorks.forEach(m => {
-      container.innerHTML += `
-        <div style="background:#000; padding:10px; border:1px solid #333; border-radius:6px; display:flex; justify-content:space-between; align-items:center;">
-          <span>🎬 ${m.title}</span>
-          <button class="btn-gold" style="font-size:11px;" onclick="window.open('${m.link}', '_blank')">مشاهدة في المتصفح الخارجي</button>
-        </div>
-      `;
-    });
-  }
-
-  function addMediaWork() {
-    const title = document.getElementById('media_title').value;
-    const link = document.getElementById('media_link').value;
-    if(title && link) {
-      mediaWorks.push({ title, link });
-      renderMedia();
-    }
-  }
-
-  /* -------------------------------------------------------------
-     F. EmailJS & بطاقة المساهم الرقمية المحفوظة
-  ------------------------------------------------------------- */
-  let cardCounter = localStorage.getItem('md7_card_counter') || 312;
-
-  document.getElementById('founding-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    cardCounter = parseInt(cardCounter) + 1;
-    localStorage.setItem('md7_card_counter', cardCounter);
-
-    const name = document.getElementById('user_name').value;
-    const phone = document.getElementById('user_phone').value;
-    const email = document.getElementById('user_email').value;
-    const cardId = "MD7-" + cardCounter;
-    const dateStr = new Date().toLocaleString('ar-EG');
-
-    // إرسال عبر البريد بواسطة EmailJS
-    emailjs.send("service_86qhdym", "template_5qkl29p", {
-      from_name: name,
-      phone: phone,
-      user_email: email,
-      card_id: cardId,
-      date: dateStr
-    }).then(() => {
-      alert("تم التسجيل وإرسال البيانات بنجاح!");
-    }).catch(err => {
-      console.log("Email error: ", err);
-    });
-
-    // توليد وتجسيد البطاقة
-    renderParticipationCard(name, phone, cardId, dateStr);
-  });
-
-  function renderParticipationCard(name, phone, cardId, dateStr) {
-    const output = document.getElementById('card-output');
-    output.innerHTML = `
-      <div class="participation-card">
-        <h3 style="color:var(--gold); text-align:center;">بطاقة مشارك - MD7 Group</h3>
-        <p style="text-align:center; font-size:18px; color:var(--gold); font-weight:bold;">${cardId}</p>
-        <p style="font-size:12px;"><b>الاسم:</b> ${name}</p>
-        <p style="font-size:12px;"><b>الهاتف:</b> ${phone}</p>
-        <p style="font-size:12px;"><b>التاريخ:</b> ${dateStr}</p>
-        
-        <div style="display:flex; justify-content:space-around; margin-top:15px; background:#000; padding:10px; border-radius:8px; border:1px solid var(--gold);">
-          <div text-align="center">
-            <span style="font-size:9px; color:var(--gold); display:block;">الموقع</span>
-            <div id="card-qr-site"></div>
-          </div>
-          <div text-align="center">
-            <span style="font-size:9px; color:var(--gold); display:block;">USDT</span>
-            <div id="card-qr-usdt"></div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    QRCode.toCanvas(document.getElementById('card-qr-site'), "https://md-7-site.vercel.app/", { width: 70, color: { dark: '#D4AF37', light: '#000000' } });
-    QRCode.toCanvas(document.getElementById('card-qr-usdt'), "0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d", { width: 70, color: { dark: '#D4AF37', light: '#000000' } });
-  }
-
-  /* -------------------------------------------------------------
-     G. التشغيل الأولي للمنظومة
-  ------------------------------------------------------------- */
-  window.onload = function() {
-    updateSolarNode();
-    renderProducts();
-    renderFreelancers();
-    renderMedia();
-  };
-</script>
 </body>
 </html>
