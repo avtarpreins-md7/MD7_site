@@ -148,18 +148,27 @@
       <div class="address-text">https://md-7-site.vercel.app/</div>
     </div>
 
-    <!-- QR 2: Bitcoin -->
+    <!-- QR 2: الدولار الرقمي USDT -->
     <div class="qr-card">
-      <h4>🪙 محفظة Bitcoin (BTC)</h4>
+      <h4>💵 التحويل بالدولار الرقمي (USDT - ERC20/BEP20)</h4>
+      <div class="qr-canvas-wrap">
+        <div id="qr-usdt"></div>
+      </div>
+      <div class="address-text">0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d</div>
+    </div>
+
+    <!-- QR 3: Bitcoin -->
+    <div class="qr-card">
+      <h4>🪙 محفظة بيتكوين (Bitcoin BTC)</h4>
       <div class="qr-canvas-wrap">
         <div id="qr-btc"></div>
       </div>
       <div class="address-text">bc1q6vk7zzs9956zzktnt0emhtcp7jn730zrt5k0kp</div>
     </div>
 
-    <!-- QR 3: Ethereum & USDT -->
+    <!-- QR 4: Ethereum -->
     <div class="qr-card">
-      <h4>🔷 محفظة Ethereum / USDT (BEP20)</h4>
+      <h4>🔷 محفظة إيثريوم (Ethereum ETH)</h4>
       <div class="qr-canvas-wrap">
         <div id="qr-eth"></div>
       </div>
@@ -181,13 +190,19 @@
       color: { dark: goldColor, light: blackBg }
     });
 
-    // 2. QR بيتكوين
+    // 2. QR الدولار الرقمي USDT
+    QRCode.toCanvas(document.getElementById('qr-usdt'), "0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d", {
+      width: 110,
+      color: { dark: goldColor, light: blackBg }
+    });
+
+    // 3. QR بيتكوين
     QRCode.toCanvas(document.getElementById('qr-btc'), "bc1q6vk7zzs9956zzktnt0emhtcp7jn730zrt5k0kp", {
       width: 110,
       color: { dark: goldColor, light: blackBg }
     });
 
-    // 3. QR إيثريوم و USDT
+    // 4. QR إيثريوم
     QRCode.toCanvas(document.getElementById('qr-eth'), "0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d", {
       width: 110,
       color: { dark: goldColor, light: blackBg }
