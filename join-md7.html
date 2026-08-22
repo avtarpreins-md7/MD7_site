@@ -3,17 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD7 Group - التسجيل وبطاقة المشارك</title>
-<!-- مكتبات الـ QR Code و EmailJS -->
+<title>MD7 Group - لوحة المنصة وأكواد المساهمة الرقمية</title>
+<!-- مكتبة توليد الـ QR Code -->
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script type="text/javascript">
-   (function(){
-      // تفعيل المفتاح الخاص بك
-      emailjs.init("-VHvtaMeTpVBPHzIG");
-   })();
-</script>
-
 <style>
   :root { 
     --gold: #D4AF37; 
@@ -31,107 +23,90 @@
     color: #fff; 
     margin: 0; 
     padding: 20px; 
-    line-height: 1.6;
   }
 
   .main-container {
-    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
-  .matrix-header {
+  /* الجانب الأيمن: استعراض المنصة */
+  .platform-section {
+    flex: 2;
+    min-width: 320px;
+    background: var(--dark-gray);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 0 15px var(--gold-glow);
+  }
+
+  /* الجانب الأيسر: أكواد الكيو ار */
+  .qr-section {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .qr-card {
+    background: var(--card-bg);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  }
+
+  .qr-card h4 {
+    margin: 0 0 10px 0;
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  .qr-canvas-wrap {
+    background: #000;
+    padding: 8px;
+    display: inline-block;
+    border-radius: 8px;
+    border: 1px solid #333;
+  }
+
+  .address-text {
+    font-size: 9px;
+    color: #aaa;
+    word-break: break-all;
+    margin-top: 8px;
+    font-family: monospace;
+  }
+
+  .matrix-banner {
     background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(0,0,0,0.8));
     border-right: 4px solid var(--gold);
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 6px;
-    text-align: right;
   }
 
-  .matrix-header h2 { margin: 0; color: var(--gold); font-size: 18px; }
-  .matrix-header p { margin: 5px 0 0 0; font-size: 12px; color: #ccc; }
-
-  .box { 
-    background: var(--dark-gray); 
-    padding: 25px; 
-    border-radius: 12px; 
-    border: 1px solid var(--gold); 
-    box-shadow: 0 0 20px var(--gold-glow);
-  }
-
-  input { 
-    width: 100%; 
-    padding: 12px; 
-    margin: 8px 0; 
-    border: 1px solid var(--gold); 
-    background: #000; 
-    color: #fff; 
-    border-radius: 8px; 
-    text-align: right; 
-    font-size: 14px;
-  }
-
-  .cta-btn { 
-    background: linear-gradient(135deg, var(--gold), #AA7C11); 
-    color: #000; 
-    border: none; 
-    padding: 12px 25px; 
-    border-radius: 8px; 
-    font-weight: bold; 
-    cursor: pointer; 
-    margin-top: 10px; 
-    width: 100%; 
-    min-height: 44px; 
-    font-size: 15px;
-  }
-
-  .card { 
-    width: 100%; 
-    max-width: 400px;
-    background: linear-gradient(135deg, #000 60%, #1a1500 100%); 
-    border: 2px solid var(--gold); 
-    border-radius: 10px; 
-    padding: 15px; 
-    margin: 20px auto; 
-    color: #fff; 
-    font-size: 12px; 
-    text-align: right; 
-    box-shadow: 0 0 15px var(--gold-glow); 
-  }
-
-  .card h3 { color: var(--gold); margin: 3px 0; font-size: 16px; text-align: center; }
-  .card .id { font-size: 20px; color: var(--gold); font-weight: bold; text-align: center; margin: 5px 0; }
-  
-  .qr-grid {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-    margin: 15px 0;
-  }
-
-  .qr-item {
-    background: #000;
-    border: 1px solid var(--gold);
-    padding: 8px;
-    border-radius: 6px;
-    text-align: center;
-  }
-
-  .qr-item span { display: block; font-size: 10px; color: var(--gold); margin-bottom: 4px; }
+  .matrix-banner h2 { margin: 0; color: var(--gold); font-size: 18px; }
+  .matrix-banner p { margin: 5px 0 0 0; font-size: 12px; color: #ccc; }
 
   .instructions-box {
-    background: #0d0d0d;
-    border: 1px solid #333;
+    background: #000;
+    border: 1px dashed var(--gold);
+    padding: 12px;
     border-radius: 8px;
-    padding: 10px;
-    margin-top: 10px;
-    font-size: 11px;
-    color: #ccc;
+    font-size: 12px;
+    margin-top: 20px;
+    color: #ddd;
   }
 
-  @media print { 
-    .no-print { display: none !important; } 
-    body { background: #fff; color: #000; } 
+  @media (max-width: 768px) {
+    .main-container { flex-direction: column; }
   }
 </style>
 </head>
@@ -139,127 +114,101 @@
 
 <div class="main-container">
 
-  <div class="matrix-header no-print">
-    <h2>نهضة الماتريكس - الخروج من المصفوفة</h2>
-    <p>"الخروج من التقاليد والعادات أشبه بالخروج من فكرة ما وجدنا عليه آباءنا.. أفيقوا، الوقت يمر والجنة تصنع الآن بتوقيتك."</p>
+  <!-- قسم المنصة الرئيسي (اليمين) -->
+  <div class="platform-section">
+    <div class="matrix-banner">
+      <h2>نهضة الماتريكس - الخروج من المصفوفة</h2>
+      <p>"الخروج من التقاليد والعادات أشبه بالخروج من فكرة ما وجدنا عليه آباءنا.. أفيقوا، الوقت يمر والجنة تصنع الآن بتوقيتك."</p>
+    </div>
+
+    <h3 style="color:var(--gold);">منصة MD7 GROUP الرقمية</h3>
+    <p style="font-size: 13px; color: #ccc; line-height: 1.8;">
+      منظومة ريادية تهدف لتطوير البنية التحتية، حلول الذكاء الاصطناعي، والخدمات التنموية. أُنشئت هذه البطاقات والرموز لتسهيل الدعم والمشاركة الفعالة في المشاريع عبر بروتوكولات الأمان الرقمية.
+    </p>
+
+    <div class="instructions-box">
+      <b style="color:var(--gold);">📲 كيف تساهم وتتفاعل مع الكروت؟</b>
+      <ol style="margin: 8px 0 0 0; padding-right: 20px;">
+        <li>قم بتحديث وفتح تطبيق <b>"عدسة جوجل" (Google Lens)</b> على هاتفك.</li>
+        <li>وجه كاميرا الهاتف نحو الـ QR المخصص لمساهمتك بالجهة المقابلة.</li>
+        <li>سيتم استخراج العنوان الرقمي تلقائياً لإتمام التحويل والدعم فوراً.</li>
+      </ol>
+    </div>
   </div>
 
-  <div class="box no-print" id="form-box">
-    <h3 style="color:var(--gold); margin-top:0; text-align:center;">التسجيل في منصة MD7</h3>
-    <p style="color:#ccc; font-size:12px; text-align:center;">سجل بياناتك لإصدار بطاقة المشارك وإرسال الإشعار تلقائياً</p>
+  <!-- قسم الأكواد QR Codes (اليسار) -->
+  <div class="qr-section">
     
-    <form id="contact-form">
-      <input type="text" name="from_name" placeholder="الاسم الكامل" required>
-      <input type="text" name="phone" placeholder="رقم الهاتف" required>
-      <input type="email" name="user_email" placeholder="البريد الإلكتروني" required>
-      <input type="hidden" name="card_id" id="card_id_input">
-      <input type="hidden" name="date" id="date_input">
-      
-      <button type="submit" class="cta-btn" id="submitBtn">إرسال التسجيل وإصدار الكرت</button>
-    </form>
-  </div>
+    <!-- QR 1: رابط الموقع واستلام المساهمات -->
+    <div class="qr-card">
+      <h4>🌐 رابط المنصة / استلام المساهمة</h4>
+      <div class="qr-canvas-wrap">
+        <div id="qr-site"></div>
+      </div>
+      <div class="address-text">https://md-7-site.vercel.app/</div>
+    </div>
 
-  <div id="card-print"></div>
+    <!-- QR 2: الدولار الرقمي USDT -->
+    <div class="qr-card">
+      <h4>💵 التحويل بالدولار الرقمي (USDT - ERC20/BEP20)</h4>
+      <div class="qr-canvas-wrap">
+        <div id="qr-usdt"></div>
+      </div>
+      <div class="address-text">0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d</div>
+    </div>
+
+    <!-- QR 3: Bitcoin -->
+    <div class="qr-card">
+      <h4>🪙 محفظة بيتكوين (Bitcoin BTC)</h4>
+      <div class="qr-canvas-wrap">
+        <div id="qr-btc"></div>
+      </div>
+      <div class="address-text">bc1q6vk7zzs9956zzktnt0emhtcp7jn730zrt5k0kp</div>
+    </div>
+
+    <!-- QR 4: Ethereum -->
+    <div class="qr-card">
+      <h4>🔷 محفظة إيثريوم (Ethereum ETH)</h4>
+      <div class="qr-canvas-wrap">
+        <div id="qr-eth"></div>
+      </div>
+      <div class="address-text">0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d</div>
+    </div>
+
+  </div>
 
 </div>
 
 <script>
-let lastNumber = localStorage.getItem('md7_last_card') || 312;
+  window.onload = function() {
+    const goldColor = '#D4AF37';
+    const blackBg = '#000000';
 
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const submitBtn = document.getElementById('submitBtn');
-    submitBtn.disabled = true;
-    submitBtn.innerText = "جاري الإصدار والتسجيل...";
+    // 1. QR الموقع الرسمي
+    QRCode.toCanvas(document.getElementById('qr-site'), "https://md-7-site.vercel.app/", {
+      width: 110,
+      color: { dark: goldColor, light: blackBg }
+    });
 
-    // توليد التسلسل والبيانات
-    lastNumber = parseInt(lastNumber) + 1;
-    localStorage.setItem('md7_last_card', lastNumber);
-    const generatedId = "MD7-" + lastNumber;
-    const currentDate = new Date().toLocaleString('ar-EG');
+    // 2. QR الدولار الرقمي USDT
+    QRCode.toCanvas(document.getElementById('qr-usdt'), "0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d", {
+      width: 110,
+      color: { dark: goldColor, light: blackBg }
+    });
 
-    // إسناد البيانات للنموذج المقترن بـ EmailJS
-    document.getElementById('card_id_input').value = generatedId;
-    document.getElementById('date_input').value = currentDate;
+    // 3. QR بيتكوين
+    QRCode.toCanvas(document.getElementById('qr-btc'), "bc1q6vk7zzs9956zzktnt0emhtcp7jn730zrt5k0kp", {
+      width: 110,
+      color: { dark: goldColor, light: blackBg }
+    });
 
-    const formData = {
-      name: this.from_name.value,
-      phone: this.phone.value,
-      email: this.user_email.value,
-      id: generatedId,
-      date: currentDate,
-      num: lastNumber
-    };
-
-    // إرسال عبر EmailJS
-    emailjs.sendForm('service_86qhdym', 'template_5qkl29p', this)
-        .then(function() {
-            alert('تم التسجيل بنجاح! وتم إصدار بطاقة المشارك.');
-            showCard(formData);
-            document.getElementById('form-box').style.display = 'none';
-        }, function(error) {
-            alert('فشل الإرسال عبر البريد، وسيتم عرض الكرت فوراً: ' + JSON.stringify(error));
-            showCard(formData);
-            document.getElementById('form-box').style.display = 'none';
-        });
-});
-
-function showCard(d){
-  const siteUrl = "https://md-7-site.vercel.app/";
-  const usdtAddress = "0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d";
-  const btcAddress = "bc1q6vk7zzs9956zzktnt0emhtcp7jn730zrt5k0kp";
-  const cashNumber = "01033182019";
-
-  document.getElementById('card-print').innerHTML = `
-  <div class="card">
-    <h3>بطاقة مشارك MD7</h3>
-    <p style="margin:2px 0; text-align:center;"><b>رقم الكرت التسلسلي:</b></p>
-    <p class="id">${d.id}</p>
-    <p><b>الاسم:</b> ${d.name}</p>
-    <p><b>الهاتف:</b> ${d.phone}</p>
-    <p><b>التاريخ:</b> ${d.date}</p>
-    
-    <div style="border-top: 1px dashed var(--gold); padding-top: 10px; margin-top: 10px;">
-      <b style="color:var(--gold);">رموز الاستجابة السريعة والدفع:</b>
-      
-      <div class="qr-grid">
-        <div class="qr-item">
-          <span>الموقع الرسمى</span>
-          <div id="qr-site"></div>
-        </div>
-        <div class="qr-item">
-          <span>USDT / ETH</span>
-          <div id="qr-usdt"></div>
-        </div>
-        <div class="qr-item">
-          <span>Bitcoin</span>
-          <div id="qr-btc"></div>
-        </div>
-      </div>
-
-      <p style="font-size:10px; margin:4px 0;">• <b>فودافون كاش / إنستاباي:</b> ${cashNumber}</p>
-
-      <div class="instructions-box">
-        <b>طريقة المساهمة والاستخدام:</b><br>
-        1. قم بفتح تطبيق <b>"عدسة جوجل" (Google Lens)</b> على هاتفك.<br>
-        2. وجه الكاميرا نحو كود الـ QR المناسب لنسخ العنوان وإتمام المساهمة.<br>
-        3. يرجى الاحتفاظ بهذه البطاقة لحين طلبها.
-      </div>
-    </div>
-  </div>
-  
-  <button onclick="window.print()" class="cta-btn no-print" style="margin-top:15px;">طباعة / حفظ البطاقة (PDF)</button>
-  `;
-
-  // رسم الأكواد
-  const qrOpts = { width: 85, color: { dark: '#D4AF37', light: '#000000' } };
-  QRCode.toCanvas(document.getElementById('qr-site'), siteUrl, qrOpts);
-  QRCode.toCanvas(document.getElementById('qr-usdt'), usdtAddress, qrOpts);
-  QRCode.toCanvas(document.getElementById('qr-btc'), btcAddress, qrOpts);
-
-  document.getElementById('card-print').scrollIntoView({ behavior: 'smooth' });
-}
+    // 4. QR إيثريوم
+    QRCode.toCanvas(document.getElementById('qr-eth'), "0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d", {
+      width: 110,
+      color: { dark: goldColor, light: blackBg }
+    });
+  };
 </script>
+
 </body>
 </html>
