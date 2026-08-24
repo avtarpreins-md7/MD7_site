@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>محول النص لـ HTML</title>
+  <style>
+    body {background:#0a0a0a; color:#f5deb3; font-family:'Cairo'; padding:20px;}
+    .container {max-width:1000px; margin:auto; display:flex; gap:20px; flex-wrap:wrap;}
+    textarea, iframe {width:48%; height:500px; background:#1a1a1a; color:#fff; border:2px solid #d4af37; border-radius:10px; padding:15px; font-size:16px;}
+    h1 {text-align:center; color:#d4af37;}
+    button {background:#d4af37; color:#000; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; margin:5px;}
+    button:hover {background:#ffcc00;}
+    .controls {text-align:center; margin:15px;}
+  </style>
+</head>
+<body>
+  <h1>✍️ محول النص لـ HTML</h1>
+  <p style="text-align:center">اكتب النص هنا وهيتحول تلقائي لكود HTML</p>
+
+  <div class="controls">
+    <button onclick="makeBold()">عريض</button>
+    <button onclick="makeTitle()">عنوان</button>
+    <button onclick="makeList()">قائمة</button>
+    <button onclick="copyCode()">نسخ الكود</button>
+  </div>
+
+  <div class="container">
+    <textarea id="inputText" placeholder="اكتب النص هنا...
+مثال:
+مرحبا بك في وصل 24
+بن البرنس الأصلي"></textarea>
+    
+    <iframe id="outputHTML"></iframe>
+  </div>
+
+  <textarea id="codeOutput" placeholder="الكود HTML هيظهر هنا" style="width:100%; height:200px; margin-top:20px;"></textarea>
+
+<script>
+const input = document.getElementById('inputText');
+const outputFrame = document.getElementById('outputHTML');
+const codeOutput = document.getElementById('codeOutput');
+
+function convertToHTML(text) {
+  // يحول السطور لـ <p> والـ ** لعريض
+  let html = text
+    .split('\n')
+    .map(line => {
+      if(line.startsWith('# ')) return `<h1>${line.replace('# ', '')}</h1>`;
+      if(line.startsWith('## ')) return `<h2>${line.replace('## ', '')}</h2>`;
+      if(line.startsWith('- ')) return `<li>${line.replace('- ', '')}</li>`;
+      if(line.includes('**')) line = line.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+      return `<p>${line}</p>`;
+    }).join('');
+  
+  return `
+    <style>body{background:#1a1a1a;color:#f5deb3;font-family:Cairo;padding:20px;}</style>
+    ${html}
+  `;
+}
+
+function update() {
+  const text = input.value;
+  const html = convertToHTML(text);
+  outputFrame.srcdoc = html;
+  codeOutput.value = html;
+}
+
+function makeBold() {
+  input.value += '**نص عريض**';
+  update();
+}
+function makeTitle() {
+  input.value += '\n# عنوان كبير';
+  update();
+}
+function makeList() {
+  input.value += '\n- بند 1\n- بند 2';
+  update();
+}
+function copyCode() {
+  navigator.clipboard.writeText(codeOutput.value);
+  alert('تم نسخ الكود!');
+}
+
+input.addEventListener('input', update);
+update(); // اول تحميل
+</script>
+</body>
+</html>
