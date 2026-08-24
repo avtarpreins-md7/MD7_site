@@ -104,7 +104,7 @@
   </a>
   <nav>
     <button id="btn-md7" class="active" onclick="switchTab('md7')">MD7 AI</button>
-    <button id="btn-md1" onclick="switchTab('md1')">MD1 المشاريع</button>
+    <button id="btn-md1" onclick="switchTab('md1')">MD1 المشاريع</button><button class="tab-btn" onclick="switchTab('md1')">MD1 المشاريع</button>
     <button id="btn-md2" onclick="switchTab('md2')">MD2 المؤلفين</button>
     <button id="btn-md3" onclick="switchTab('md3')">MD3 السوق</button>
     <button id="btn-md4" onclick="switchTab('md4')">MD4 ألم عين</button>
@@ -232,10 +232,70 @@
     .then(() => { alert("تم التسجيل وإرسال البيانات بنجاح!"); })
     .catch(err => { console.log("Email error: ", err); });
   });
+// ====== دوال MD1 ======
+function saveKeyMD1(){
+  localStorage.setItem('md1_api_key', document.getElementById('apiKeyMD1').value);
+  alert('تم حفظ المفتاح');
+}
 
+async function generateCodeMD1() {
+  const apiKey = document.getElementById('apiKeyMD1').value;
+  const prompt = document.getElementById('userInputMD1').value;
+  if(!apiKey ||!prompt) return alert('كمل البيانات');
+
+  document.getElementById('codeBoxMD1').innerText = 'جاري التوليد بواسطة Gemini...';
+
+  const fullPrompt = `انت مطور ويب. حول الطلب لكود HTML كامل في ملف واحد.
+  استخدم ستايل بني غامق وذهبي لبراند "وصل 24 بن البرنس".
+  الخط Cairo. الاتجاه RTL. رجع الكود فقط بدون شرح.
+  الطلب: ${prompt}`;
+
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({contents:[{parts:[{text:fullPrompt}]}]})
+    });
+    const data = await res.json();
+    let code = data.candidates[0].content.parts[0].text.replace(/```html/g, '').replace(/```/g, '');
+    document.getElementById('codeBoxMD1').innerText = code;
+    document.getElementById('previewBoxMD1').srcdoc = code;
+  } catch(e) { alert('خطأ: '+e.message); }
+}
+
+// تحميل المفتاح اول ما الصفحة تفتح
+window.onload = function() {
+  updateSolarNode();
+  document.getElementById('apiKeyMD1').value = localStorage.getItem('md1_api_key') || '';
+};
   window.onload = function() {
     updateSolarNode();
   };
 </script>
+  <!-- محتوى تبويب MD1 -->
+<div id="md1" class="tab-content" style="display:none; padding:20px;">
+  <h2 style="color:#d4af37; text-align:center">🔧 MD1 - محول النص الى كود</h2>
+
+  <div style="background:#2a1a10; padding:15px; border-radius:10px; border:1px solid #d4af37; margin-bottom:15px;">
+    <label><b>مفتاح Gemini API:</b></label>
+    <input type="password" id="apiKeyMD1" placeholder="AIza..." style="width:70%; padding:10px; background:#000; color:#fff; border:1px solid #d4af37;">
+    <button onclick="saveKeyMD1()" style="background:#d4af37; color:#000; padding:10px 20px; border:none; font-weight:bold;">حفظ</button>
+  </div>
+
+  <textarea id="userInputMD1" placeholder="مثال: اعملي صفحة هبوط لوصل 24 بن البرنس" style="width:100%; height:120px; background:#000; color:#fff; border:1px solid #d4af37; padding:10px; font-size:16px;"></textarea>
+  <button onclick="generateCodeMD1()" style="background:#d4af37; color:#000; padding:15px; width:100%; font-weight:bold; font-size:18px; margin:10px 0; cursor:pointer;">🚀 شغل MD1</button>
+
+  <div style="display:flex; gap:15px; flex-wrap:wrap;">
+    <div style="flex:1; min-width:300px;">
+      <h3>الكود HTML</h3>
+      <pre id="codeBoxMD1" style="background:#000; color:#00ff88; height:400px; padding:10px; overflow:auto; border:1px solid #d4af37;"></pre>
+    </div>
+    <div style="flex:1; min-width:300px;">
+      <h3>المعاينة</h3>
+      <iframe id="previewBoxMD1" style="background:#fff; width:100%; height:400px; border:1px solid #d4af37;"></iframe>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
