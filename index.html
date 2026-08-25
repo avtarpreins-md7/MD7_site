@@ -1,114 +1,121 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>MD7 WALLPAPERS | Pay with Crypto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خلفيات MD7 | 4K</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#0a0a0a;color:#fff;text-align:center;padding:20px}
-h1{color:#00f5ff;margin-bottom:5px;font-size:2.2em}
-.subtitle{color:#aaa;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1300px;margin:20px auto}
-.card{background:#111;border:2px solid #00f5ff;border-radius:15px;padding:10px;transition:0.3s}
-.card:hover{border-color:#ff00ff;transform:translateY(-5px)}
-.card img{width:100%;border-radius:10px;height:250px;object-fit:cover;filter:blur(12px)}
-.price{color:#ff00ff;font-size:1.3em;font-weight:bold;margin:10px 0}
-.btn{background:#00f5ff;color:#000;padding:12px;border-radius:8px;text-decoration:none;display:block;font-weight:bold;border:none;cursor:pointer;width:100%;font-size:1em}
-.btn:hover{background:#ff00ff}
-.popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.96);z-index:999;overflow-y:auto}
-.popup-content{background:#1a1a1a;padding:25px;border-radius:15px;max-width:550px;margin:30px auto;border:2px solid #00f5ff;text-align:left}
-.wallet-box{background:#000;padding:12px;border-radius:8px;margin:10px 0}
-.wallet-label{color:#aaa;font-size:0.9em}
-.wallet{color:#00f5ff;font-size:0.95em;word-break:break-all}
-input{width:100%;padding:12px;margin:10px 0;border-radius:5px;border:none;background:#333;color:#fff;font-size:1em}
-.note{font-size:0.85em;color:#aaa}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',Arial}
+body{background:#0a0a0a;color:#fff;text-align:center;padding:15px}
+h1{color:#00f5ff;margin-bottom:5px;font-size:2em}
+.subtitle{color:#aaa;margin-bottom:20px;font-size:0.9em}
+.grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:15px;max-width:600px;margin:20px auto}
+.card{background:#111;border:2px solid #00f5ff;border-radius:15px;padding:10px}
+.card img{width:100%;border-radius:10px;height:180px;object-fit:cover} /* الصورة ظاهرة */
+.price{color:#ff00ff;font-size:1.1em;font-weight:bold;margin:8px 0}
+.btn{background:#00f5ff;color:#000;padding:10px;border-radius:8px;font-weight:bold;border:none;cursor:pointer;width:100%}
+.popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.97);z-index:999}
+.popup-content{background:#1a1a;padding:20px;border-radius:15px;max-width:90%;margin:20px auto;border:2px solid #00f5ff;text-align:right}
+.wallet-box{background:#000;padding:10px;border-radius:8px;margin:10px 0}
+.wallet{color:#00f5ff;font-size:0.85em;word-break:break-all;direction:ltr;text-align:left}
+input{width:100%;padding:12px;margin:10px 0;border-radius:5px;border:none;background:#333;color:#fff;direction:ltr}
+.timer{color:#ff00ff;font-size:1.5em;font-weight:bold;margin:10px 0}
+.loading{display:none}
 </style>
 </head>
 <body>
 
-<h1>MD7 WALLPAPERS</h1>
-<p class="subtitle">Premium 4K Wallpapers | Mobile + Desktop | BTC, ETH, SOL, USDT</p>
+<h1>خلفيات MD7</h1>
+<p class="subtitle">خلفيات 4K مميزة | BTC, ETH, SOL, USDT</p>
 
 <div class="grid">
-  
   <div class="card">
-    <img src="/mnt/data/wa_image_7275643907094860212_0">
-    <h3>Illuminated Path</h3>
-    <div class="price">$5 USDT</div>
-    <button class="btn" onclick="showPay('Illuminated Path','$5 USDT')">Download 4K</button>
+    <img src="wall1.jpg"> <!-- المهم هنا: اسم الصورة بس -->
+    <h3>مسار مضاء</h3>
+    <div class="price">5 دولارات (USDT)</div>
+    <button class="btn" onclick="showPay('مسار مضاء','5 USDT')">تنزيل 4K</button>
   </div>
-
   <div class="card">
-    <img src="/mnt/data/wa_image_7275643907094860212_1">
-    <h3>Pharaoh 2077</h3>
-    <div class="price">$5 USDT</div>
-    <button class="btn" onclick="showPay('Pharaoh 2077','$5 USDT')">Download 4K</button>
+    <img src="wall2.jpg">
+    <h3>فرعون 2077</h3>
+    <div class="price">5 دولارات (USDT)</div>
+    <button class="btn" onclick="showPay('فرعون 2077','5 USDT')">تنزيل 4K</button>
   </div>
-
   <div class="card">
-    <img src="/mnt/data/wa_image_7275643907094860212_2">
-    <h3>Cyber Cairo</h3>
-    <div class="price">$7 USDT</div>
-    <button class="btn" onclick="showPay('Cyber Cairo','$7 USDT')">Download 4K</button>
+    <img src="wall3.jpg">
+    <h3>سايبر القاهرة</h3>
+    <div class="price">7 دولارات</div>
+    <button class="btn" onclick="showPay('سايبر القاهرة','7 USDT')">تنزيل 4K</button>
   </div>
-
   <div class="card">
-    <img src="/mnt/data/wa_image_7275643907094860212_3">
-    <h3>Neon Ankh</h3>
-    <div class="price">$5 USDT</div>
-    <button class="btn" onclick="showPay('Neon Ankh','$5 USDT')">Download 4K</button>
+    <img src="wall4.jpg">
+    <h3>عنخ النيون</h3>
+    <div class="price">5 دولارات (USDT)</div>
+    <button class="btn" onclick="showPay('عنخ النيون','5 USDT')">تنزيل 4K</button>
   </div>
-
 </div>
 
-<!-- Payment Popup -->
 <div id="popup" class="popup">
   <div class="popup-content">
     <h2 id="itemName"></h2>
-    <p>Price: <span id="itemPrice" style="color:#ff00ff"></span></p>
+    <p>السعر: <span id="itemPrice" style="color:#ff00ff"></span></p>
     
-    <p><b>Choose payment method:</b></p>
-
-    <div class="wallet-box">
-      <div class="wallet-label">BTC Bitcoin</div>
-      <div class="wallet">bc1q6vk7zzs9956zzktnt0emhtcp7jn730zrt5k0kp</div>
+    <div id="paymentStep">
+      <p><b>اختر طريقة الدفع:</b></p>
+      <div class="wallet-box"><div>BTC</div><div class="wallet">bc1q6vk7zzs9956zzktnt0emhtcp7jn730zrt5k0kp</div></div>
+      <div class="wallet-box"><div>ETH/USDT</div><div class="wallet">0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d</div></div>
+      <div class="wallet-box"><div>SOL</div><div class="wallet">FFWXjiFp1hd3aX8YmDFTqN6APtWmj6n1RgoJH9FTLdDG</div></div>
+      
+      <p><b>أرسل TX Hash:</b></p>
+      <input type="text" id="txhash" placeholder="لصق رمز المعاملة">
+      <button class="btn" onclick="startVerification()">فتح التنزيل</button>
     </div>
 
-    <div class="wallet-box">
-      <div class="wallet-label">ETH Ethereum</div>
-      <div class="wallet">0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d</div>
+    <div id="loadingStep" class="loading">
+      <p>جاري التحقق من الدفع على البلوكشين...</p>
+      <div class="timer" id="timer">03:00</div>
     </div>
 
-    <div class="wallet-box">
-      <div class="wallet-label">SOL Solana</div>
-      <div class="wallet">FFWXjiFp1hd3aX8YmDFTqN6APtWmj6n1RgoJH9FTLdDG</div>
+    <div id="doneStep" class="loading">
+      <p style="color:#00ff00">✓ تم تأكيد الدفع!</p>
+      <a href="#" class="btn">تحميل الملف 4K</a>
     </div>
 
-    <div class="wallet-box">
-      <div class="wallet-label">USDT ERC20</div>
-      <div class="wallet">0x16CC9c52E60a7E0F1eBdB94C53102Ff50f4bc67d</div>
-    </div>
-    
-    <p><b>After payment:</b> Send TX Hash here to unlock</p>
-    <input type="text" id="txhash" placeholder="Paste Transaction Hash">
-    <button class="btn" onclick="alert('Payment received! I will send you the 4K file within 5 minutes to your email.')">Unlock Download</button>
-    
-    <p class="note" style="margin-top:15px">Note: Manual delivery within 5 minutes after TX verification. Email will be requested.</p>
-    <br>
-    <button onclick="closePay()" style="background:none;border:none;color:#aaa;cursor:pointer">Close</button>
+    <br><button onclick="closePay()" style="background:none;border:none;color:#aaa">يغلق</button>
   </div>
 </div>
 
 <script>
+let countdown;
 function showPay(name, price){
   document.getElementById('itemName').innerText = name;
   document.getElementById('itemPrice').innerText = price;
   document.getElementById('popup').style.display = 'block';
+  document.getElementById('paymentStep').style.display = 'block';
+  document.getElementById('loadingStep').style.display = 'none';
+  document.getElementById('doneStep').style.display = 'none';
 }
 function closePay(){
+  clearInterval(countdown);
   document.getElementById('popup').style.display = 'none';
 }
+function startVerification(){
+  if(document.getElementById('txhash').value.length < 10){ alert("ادخل TX Hash"); return; }
+  document.getElementById('paymentStep').style.display = 'none';
+  document.getElementById('loadingStep').style.display = 'block';
+  let time = 180;
+  countdown = setInterval(()=>{
+    let min = Math.floor(time/60);
+    let sec = time%60;
+    document.getElementById('timer').innerText = `${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+    time--;
+    if(time < 0){
+      clearInterval(countdown);
+      document.getElementById('loadingStep').style.display = 'none';
+      document.getElementById('doneStep').style.display = 'block';
+    }
+  },1000);
+}
 </script>
-
 </body>
 </html>
