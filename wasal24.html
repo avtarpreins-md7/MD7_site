@@ -1,9 +1,31 @@
-    <div class="products-grid">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD3 - سوق وصل24</title>
+<link rel="stylesheet" href="style.css"> <!-- ملف الـ CSS الاساسي بتاع MD7 -->
+
+<style>
+  body{ background:#000; padding:20px; }
+  .page-title{ text-align:center; color:var(--primary); font-size:28px; margin-bottom:20px; border-bottom:2px solid var(--primary); padding-bottom:10px; }
+  .back-btn{ display:inline-block; margin-bottom:20px; color:var(--primary); text-decoration:none; border:1px solid var(--primary); padding:8px 15px; border-radius:8px; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-btn">← الرجوع للرئيسية</a>
+<h1 class="page-title">🛒 سوق وصل24 - MD3</h1>
+
+<div class="products-grid">
   
-  <!-- منتج 1: بن البرنس -->
+  <!-- ========== قالب منتج 1: بن البرنس ========== -->
   <div class="product-card">
+    <!-- غير الصورة هنا -->
     <img src="images/ban-elprins.jpg" alt="بن البرنس">
+    <!-- غير الاسم هنا -->
     <h2>بن البرنس</h2>
+    <!-- غير السعر هنا بس -->
     <p>السعر: <span class="price">126</span> جنيه / الكيس</p>
     
     <div class="calc-box">
@@ -17,10 +39,10 @@
       </select>
       <h3>الاجمالي: <span class="total">126</span> جنيه</h3>
     </div>
-    <button class="btn-gold" onclick="checkout(this, 'بن البرنس')">اطلب الآن</button>
+    <button class="btn-gold" onclick="checkout(this)">اطلب الآن</button>
   </div>
 
-  <!-- منتج 2: مثال -->
+  <!-- ========== قالب منتج 2: رز مصري ========== -->
   <div class="product-card">
     <img src="images/roz.jpg" alt="رز">
     <h2>رز مصري</h2>
@@ -36,7 +58,55 @@
       </select>
       <h3>الاجمالي: <span class="total">45</span> جنيه</h3>
     </div>
-    <button class="btn-gold" onclick="checkout(this, 'رز مصري')">اطلب الآن</button>
+    <button class="btn-gold" onclick="checkout(this)">اطلب الآن</button>
   </div>
 
+  <!-- ========== قالب منتج 3: زيت ========== -->
+  <div class="product-card">
+    <img src="images/oil.jpg" alt="زيت">
+    <h2>زيت عباد الشمس</h2>
+    <p>السعر: <span class="price">95</span> جنيه / اللتر</p>
+    <div class="calc-box">
+      <label>العدد لتر:</label>
+      <input type="number" class="qty" value="1" min="1" oninput="calcTotal(this)">
+      <label>طريقة الدفع:</label>
+      <select class="payment" onchange="calcTotal(this)">
+        <option value="0">كاش فوري - 0ج</option>
+        <option value="2">تحصيل 3 أيام - +2ج</option>
+        <option value="5">تحصيل 5 أيام - +5ج</option>
+      </select>
+      <h3>الاجمالي: <span class="total">95</span> جنيه</h3>
+    </div>
+    <button class="btn-gold" onclick="checkout(this)">اطلب الآن</button>
+  </div>
+
+  <!-- انسخ القالب ده عشان تضيف منتج جديد -->
+  
 </div>
+
+<script>
+// دالة الحسبة - بتشتغل على اي كارت لوحده
+function calcTotal(element){
+  let card = element.closest('.product-card'); // تجيب الكارت بتاع المنتج ده بس
+  let price = parseFloat(card.querySelector('.price').innerText);
+  let qty = parseInt(card.querySelector('.qty').value);
+  let fee = parseInt(card.querySelector('.payment').value);
+  
+  let total = (price * qty) + (fee * qty); // السعر*العدد + الرسوم*العدد
+  card.querySelector('.total').innerText = total;
+}
+
+// دالة الطلب
+function checkout(btn){
+  let card = btn.closest('.product-card');
+  let name = card.querySelector('h2').innerText;
+  let qty = card.querySelector('.qty').value;
+  let total = card.querySelector('.total').innerText;
+  
+  alert('تم اضافة للسلة ✅ \n' + name + '\n العدد: ' + qty + '\n الاجمالي: ' + total + ' جنيه');
+  // هنا بعدين نربطه بـ WhatsApp
+}
+</script>
+
+</body>
+</html>
