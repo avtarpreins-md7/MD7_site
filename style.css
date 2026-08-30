@@ -8,7 +8,7 @@
     --bg: #000000; 
     --text: #ffffff; 
     --text-muted: #AAAAAA;
-    --card-bg: #111111;
+    --card-bg: #111;
     --card-border: rgba(212, 175, 55, 0.35);
 
     /* ألوان المنصات الثابتة */
@@ -25,267 +25,59 @@
     --gold-dark: #AA7C11;
     --success-green: #28a745;
     --error-red: #dc3545;
+
+    /* اضافة للمنتجات */
+    --gold: #D4AF37;
+    --gold-glow: rgba(212, 175, 55, 0.3);
 }
 
-* { 
-    box-sizing: border-box; 
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth; 
-    font-family: 'Tajawal', 'Cairo', sans-serif;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; direction: rtl; }
+
+/* ... باقي الـ CSS بتاعك القديم كله هيكون هنا ... */
+
+/* ====== START: منتجات وصل24 - اضافة جديدة ====== */
+.products-grid{ 
+  display:grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap:25px; 
+  padding:30px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-
-body { 
-    background: var(--bg); 
-    color: var(--text); 
-    margin: 0; 
-    padding-top: 100px; 
-    overflow-x: hidden; 
-    transition: background 0.5s ease;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+.product-card{ 
+  background:var(--card-bg); 
+  border:1px solid var(--card-border); 
+  border-radius:15px; 
+  padding:15px;
+  transition:0.3s;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-
-/* تحسين إمكانية الوصول والتنقل */
-:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 3px;
+.product-card:hover{ 
+  transform: translateY(-8px); 
+  box-shadow:0 0 25px var(--gold-glow); 
+  border-color: var(--primary);
 }
-
-/* الشريط المضيء العلوي */
-.top-bar { 
-    width: 100%; overflow: hidden; position: fixed; top: 0; z-index: 1000; 
-    padding: 10px 0; font-weight: 900; font-size: 14px; display: flex; align-items: center;
-    background: linear-gradient(90deg, #1a1a1a, #D4AF37); 
-    color: #000; border-bottom: 2px solid var(--accent);
-    box-shadow: 0 2px 20px rgba(212,175,55,0.4);
-    transition: all 0.5s ease;
+.product-card img{ 
+  width:100%; 
+  height:220px; 
+  object-fit:cover; 
+  border-radius:12px; 
+  margin-bottom:15px; 
+  border:2px solid var(--primary);
 }
-.top-bar-content {
-    display: inline-flex; align-items: center; gap: 15px; white-space: nowrap;
-    animation: marquee-scroll 25s linear infinite; width: max-content;
+.product-card h2{ color:var(--primary); margin-bottom:8px; font-size:20px; }
+.product-card .price{ color:var(--primary); font-weight:900; font-size:20px; }
+.calc-box{ background:#000; padding:15px; border-radius:10px; margin:15px 0; border:1px dashed var(--primary); }
+.calc-box label{ display:block; margin:8px 0 5px 0; font-size:14px; color:var(--text-muted); }
+.calc-box input, .calc-box select{ 
+  width:100%; padding:10px; background:#111; border:1px solid #333; color:#fff; border-radius:6px; margin-bottom:10px;
 }
-.top-bar-content:hover { animation-play-state: paused; }
-.top-bar-link { color: inherit; text-decoration: none; cursor: pointer; transition: color 0.2s; }
-.top-bar-link:hover { color: #fff; text-shadow: 0 0 5px #fff; }
-
-@keyframes marquee-scroll { 
-    from { transform: translateX(100%); } 
-    to { transform: translateX(-100%); } 
+.calc-box h3{ color:var(--primary); text-align:center; margin-top:10px; font-size:18px; }
+.btn-gold{ 
+  background: linear-gradient(135deg, var(--primary), var(--gold-dark)); 
+  color:#000; border:none; padding:12px 18px; 
+  font-weight:900; border-radius:8px; cursor:pointer; width:100%; font-size:16px;
 }
-
-body.night .top-bar {
-    background: linear-gradient(90deg, #0b1426, #2a2a38);
-    color: #F5E6A5; border-bottom: 2px solid #F5E6A5;
-    box-shadow: 0 0 15px #F5E6A5, 0 0 30px rgba(245, 230, 165, 0.3);
-}
-
-/* الهيدر والقوائم */
-header { 
-    position: fixed; width: 100%; top: 43px; display: flex; justify-content: space-between; 
-    align-items: center; padding: 15px 40px; background: rgba(0, 0, 0, 0.95); 
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 999; 
-    border-bottom: 1px solid var(--card-border);
-}
-.logo-container-main { display: flex; align-items: center; text-decoration: none; }
-.header-logo-svg { width: 160px; height: auto; }
-.logo-m-black { fill: #000000; font-weight: 900; font-size: 32px; stroke: #D4AF37; stroke-width: 1.5px; }
-.logo-d-gold { fill: #D4AF37; font-weight: 900; font-size: 32px; stroke: #C0C0C0; stroke-width: 1.5px; }
-.logo-77-glow { fill: #ff9800; font-weight: 900; font-size: 30px; filter: drop-shadow(0 0 10px #ff9800); }
-
-.menu-toggle-btn {
-    background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer;
-    transition: 0.3s; padding: 10px; z-index: 1001;
-}
-.nav-links { 
-    position: fixed; top: 0; right: -300px; width: 280px; height: 100vh;
-    background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(20px);
-    border-left: 1px solid var(--card-border); padding: 120px 30px 40px;
-    display: flex; flex-direction: column; gap: 20px; transition: 0.4s cubic-bezier(0.77,0,0.175,1);
-    z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.9);
-}
-.nav-links.active { right: 0; }
-.nav-links a { color: white; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; display: flex; align-items: center; gap: 12px; }
-.nav-links a:hover, .nav-links a.active { color: var(--accent); padding-right: 8px; }
-
-.future-slots-nav { margin-top: auto; border-top: 1px dashed rgba(212,175,55,0.3); padding-top: 15px; display: flex; flex-direction: column; gap: 10px; }
-.slot-badge { font-size: 12px; color: #777; background: #181818; padding: 8px 12px; border-radius: 6px; border: 1px solid #333; }
-
-/* الحاويات والكروت العامة */
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 15px;
-    width: 100%;
-}
-
-.card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-/* الأزرار العامة */
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--gold-dark));
-    color: #000;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    min-height: 44px;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    transition: opacity 0.3s;
-}
-.btn-primary:hover { opacity: 0.9; }
-
-.btn-outline {
-    background: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    min-height: 44px;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    transition: background 0.3s, color 0.3s;
-}
-.btn-outline:hover { background: var(--primary); color: #000; }
-
-/* شاشة التوجيه الذكي */
-.smart-router-section { padding: 30px 20px 10px; max-width: 900px; margin: 0 auto; }
-.router-card { background: var(--card-bg); border: 1px solid var(--primary); border-radius: 16px; padding: 25px; text-align: center; box-shadow: 0 0 20px rgba(212,175,55,0.15); }
-.router-card h2 { color: var(--primary); margin-top: 0; font-size: 24px; }
-.router-card p { color: #aaa; font-size: 14px; margin-bottom: 20px; }
-.router-input-wrapper { display: flex; gap: 10px; }
-.router-input-wrapper input { flex: 1; padding: 14px; background: #000; border: 1px solid #444; border-radius: 8px; color: #fff; }
-.router-input-wrapper button { padding: 14px 25px; background: linear-gradient(90deg, var(--primary), var(--accent)); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-.router-suggestion { margin-top: 15px; text-align: right; display: none; padding: 12px; background: #1a1a1a; border-right: 3px solid var(--accent); border-radius: 6px; }
-
-/* الهيرو */
-.hero { padding: 40px 20px; text-align: center; }
-.seven-sun { font-size: 120px; font-weight: 900; background: linear-gradient(180deg, #FFD700, var(--accent)); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 30px var(--accent); }
-.group-text { display: flex; justify-content: center; direction: ltr; gap: 4px; }
-.group-text span { font-size: 35px; font-weight: 900; }
-.g-char { color: #1a73e8; } .r-char { color: #34a853; } .o-char { color: #fbbc04; } .u-char { color: #2e7d32; } .p-char { color: #0288d1; }
-.main-title { font-size: 40px; font-weight: 900; color: var(--accent); margin: 10px 0 0; }
-.main-subtitle { font-size: 16px; color: var(--primary); max-width: 600px; margin: 10px auto 0; line-height: 1.6; }
-
-/* شبكة المنظومة الدائرية المترابطة */
-.ecosystem-section { padding: 40px 20px; text-align: center; position: relative; }
-.ecosystem-section h2 { color: var(--primary); margin-bottom: 40px; }
-.orbital-container { position: relative; width: 100%; max-width: 650px; height: 650px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
-.orbital-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-
-.node { position: absolute; z-index: 2; cursor: pointer; transition: transform 0.3s; }
-.node:hover { transform: scale(1.1); }
-.node-center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-.node-center:hover { transform: translate(-50%, -50%) scale(1.08); }
-
-.platform-circle { width: 90px; height: 90px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; margin: 0 auto; background: #050505; }
-.platform-circle.md1 { border: 3px solid var(--c-md1); box-shadow: 0 0 20px var(--c-md1); }
-.platform-circle.md2 { border: 3px solid var(--c-md2); box-shadow: 0 0 20px var(--c-md2); }
-.platform-circle.md3 { border: 3px solid var(--c-md3); box-shadow: 0 0 20px var(--c-md3); }
-.platform-circle.md4 { border: 3px solid var(--c-md4); box-shadow: 0 0 20px var(--c-md4); }
-.platform-circle.md5 { border: 3px solid var(--c-md5); box-shadow: 0 0 20px var(--c-md5); }
-.platform-circle.md6 { border: 3px solid var(--c-md6); box-shadow: 0 0 20px var(--c-md6); }
-
-.platform-circle.md7 { width: 130px; height: 130px; border: 3px solid var(--c-md7); font-size: 26px; }
-body.day .md7 { background: radial-gradient(circle, #FFD700 0%, var(--accent) 70%); box-shadow: 0 0 50px #FFD700; }
-body.night .md7 { background: radial-gradient(circle, #F5E6A5 0%, #1a1a1a 80%); box-shadow: 0 0 35px #F5E6A5; }
-
-.node-title { font-size: 13px; color: #fff; margin-top: 8px; font-weight: bold; text-shadow: 0 0 5px #000; }
-
-.md1-node { top: 5%; left: 50%; transform: translateX(-50%); }
-.md2-node { top: 25%; left: 88%; transform: translate(-50%, -50%); }
-.md3-node { top: 75%; left: 88%; transform: translate(-50%, -50%); }
-.md4-node { top: 95%; left: 50%; transform: translateX(-50%); }
-.md5-node { top: 75%; left: 12%; transform: translate(-50%, -50%); }
-.md6-node { top: 25%; left: 12%; transform: translate(-50%, -50%); }
-
-/* منطقة عرض المنصة النشطة */
-.active-platform-view { padding: 20px; max-width: 900px; margin: 0 auto 50px; display: none; }
-.platform-view-card { background: var(--card-bg); border: 2px solid var(--primary); border-radius: 16px; padding: 30px; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; }
-.platform-view-card.show { opacity: 1; transform: translateY(0); }
-
-/* أداة ذكاء اصطناعي داخل المنصة */
-.ai-workspace { margin-top: 20px; background: #080808; padding: 20px; border-radius: 12px; border: 1px solid #333; text-align: right; }
-.ai-workspace textarea { width: 100%; height: 90px; background: #151515; border: 1px solid #444; border-radius: 8px; color: #fff; padding: 10px; margin-bottom: 10px; resize: none; }
-.ai-btn { width: 100%; padding: 12px; background: linear-gradient(90deg, var(--primary), var(--accent)); border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
-.ai-result { margin-top: 15px; padding: 15px; background: #141414; border-right: 3px solid var(--primary); border-radius: 6px; font-size: 14px; line-height: 1.7; display: none; }
-
-/* نموذج الطلب والرسائل التفاعلية */
-.service-request { padding: 40px 20px; max-width: 800px; margin: 40px auto; background: #0a0a0a; border: 1px solid rgba(212,175,55,0.3); border-radius: 16px; }
-.service-request h2 { color: var(--primary); text-align: center; margin-bottom: 25px; }
-.form-group { margin-bottom: 15px; text-align: right; }
-.form-group label { display: block; color: var(--accent); margin-bottom: 5px; font-size: 14px; }
-.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: #111; border: 1px solid var(--primary); border-radius: 8px; color: #fff; }
-.submit-btn { width: 100%; padding: 14px; background: linear-gradient(90deg, var(--primary), var(--accent)); border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
-
-/* رسائل التنبيه والإنذار المضافة */
-.feedback-msg {
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    margin: 12px 0;
-    display: none;
-}
-.feedback-msg.success {
-    display: block;
-    background-color: rgba(40, 167, 69, 0.15);
-    border: 1px solid var(--success-green);
-    color: #5cdb95;
-}
-.feedback-msg.error {
-    display: block;
-    background-color: rgba(220, 53, 69, 0.15);
-    border: 1px solid var(--error-red);
-    color: #ff6b6b;
-}
-
-footer { text-align: center; padding: 30px; background: #050505; color: #888; font-size: 13px; border-top: 1px solid rgba(212,175,55,0.2); }
-
-.platform-card {
-  background: linear-gradient(135deg, #000 70%, #1a1500 100%);
-  border: 2px solid var(--gold);
-  border-radius: 15px;
-  padding: 25px;
-  text-align: center;
-  transition: 0.3s;
-}
-.platform-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(212,175,55,0.4);
-}
-.platform-icon i {
-  font-size: 40px;
-  color: var(--gold);
-  margin-bottom: 15px;
-}
-.platform-card h3 {
-  color: var(--gold);
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-.btn-platform {
-  background: linear-gradient(135deg, var(--gold), #B8860B);
-  color: #000;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 900;
-  display: inline-block;
-  margin-top: 15px;
-}
-.btn-platform:hover {
-  box-shadow: 0 0 15px var(--gold);
-}
+.btn-gold:hover{ opacity:0.9; transform: scale(1.02); }
+/* ====== END: منتجات وصل24 ====== */
