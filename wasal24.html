@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>وصل24 - منصة التسوق</title>
+  <style>
+    body{
+      background:#0a0a0a; color:#fff; font-family:"Cairo", sans-serif; 
+      margin:0; padding:20px; text-align:center;
+    }
+    .header{
+      border-bottom:2px solid gold; padding:15px; margin-bottom:30px;
+    }
+    .header a{ color:gold; text-decoration:none; font-size:18px; }
+    .gold-text{ color:gold; font-size:28px; margin:20px 0; }
+    .product-card{
+      background:#111; padding:25px; border-radius:15px; 
+      border:1px solid gold; text-align:center; max-width:420px; margin:20px auto;
+    }
+    .product-card img{ width:200px; height:200px; border-radius:10px; object-fit:cover; }
+    .calc-box{ margin:20px 0; text-align:right; }
+    .calc-box label{ display:block; margin:10px 0 5px; color:gold; }
+    .calc-box input, .calc-box select{ 
+      width:100%; padding:10px; border-radius:8px; border:1px solid #333; 
+      background:#222; color:#fff; font-size:16px;
+    }
+    .btn-gold{ 
+      background:gold; color:#000; padding:12px 25px; border:none; 
+      border-radius:8px; cursor:pointer; margin:8px; font-weight:bold; font-size:16px;
+    }
+    .btn-gold:hover{ background:#e6c200; }
+    #total{ color:gold; font-size:22px; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="index.html">← الرجوع للموقع الرئيسي MD7</a>
+  </div>
+
+  <h1 class="gold-text">وصل24 - منصة التسوق</h1>
+
+  <!-- منتج: بن البرنس -->
+  <div class="product-card">
+    <img src="https://via.placeholder.com/200x200/111/gold?text=بن+البرنس" alt="بن البرنس">
+    <h2>بن البرنس</h2>
+    <p>السعر: <span id="price">126</span> جنيه / الكيس</p>
+    
+    <div class="calc-box">
+      <label>العدد:</label>
+      <input type="number" id="qty" value="1" min="1" oninput="calcTotal()">
+
+      <label>طريقة الدفع:</label>
+      <select id="payment" onchange="calcTotal()">
+        <option value="0">كاش فوري - 0ج</option>
+        <option value="2">تحصيل 3 أيام - +2ج للقطعة</option>
+        <option value="5">تحصيل 5 أيام - +5ج للقطعة</option>
+      </select>
+
+      <h3>الاجمالي: <span id="total">126</span> جنيه</h3>
+    </div>
+
+    <button class="btn-gold" onclick="checkout()">اطلب الآن</button>
+    <button class="btn-gold" onclick="printInvoice()">طباعة الفاتورة</button>
+  </div>
+
+<script>
+  function calcTotal(){
+    let price = 126;
+    let qty = document.getElementById('qty').value;
+    let extra = parseInt(document.getElementById('payment').value);
+    let total = (price + extra) * qty;
+    document.getElementById('total').innerText = total;
+  }
+
+  function checkout(){
+    let payment = document.getElementById('payment').options[document.getElementById('payment').selectedIndex].text;
+    let qty = document.getElementById('qty').value;
+    let total = document.getElementById('total').innerText;
+    
+    if(payment.includes("كاش فوري")){
+      let msg = `مرحبا اريد طلب بن البرنس%0Aالعدد: ${qty}%0Aالاجمالي: ${total} جنيه%0Aالدفع: كاش فوري`;
+      window.open("https://wa.me/201033182019?text=" + msg);
+    } else {
+      alert(`تم تسجيل طلبك\nالمنتج: بن البرنس\nالعدد: ${qty}\nالدفع: ${payment}\nالاجمالي: ${total} جنيه\nسيتم التواصل معك للتحصيل`);
+    }
+  }
+
+  function printInvoice(){
+    let qty = document.getElementById('qty').value;
+    let total = document.getElementById('total').innerText;
+    let payment = document.getElementById('payment').options[document.getElementById('payment').selectedIndex].text;
+    let invoice = `
+
+         فاتورة وصل24
+
+    المنتج: بن البرنس
+    العدد: ${qty}
+    طريقة الدفع: ${payment}
+    الاجمالي: ${total} جنيه
+
+    للاستفسار: 01033182019
+    `;
+    let w = window.open(); 
+    w.document.write("<pre style='font-size:18px;'>"+invoice+"</pre>");
+    w.print();
+  }
+</script>
+
+</body>
+</html>
