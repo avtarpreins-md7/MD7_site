@@ -3,118 +3,241 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>كن شريك في MD7 Group</title>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-  (function(){ emailjs.init("-VHvtaMeTpVBPHzIG"); })();
-</script>
+<title>رحلتك في MD7 GROUP | كن مؤس</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
 <style>
-  :root { --gold: #D4AF37; --black: #050505; --dark: #121212; }
-  body { font-family: 'Segoe UI'; background: var(--black); color: #fff; direction: rtl; padding: 20px; max-width: 700px; margin: auto; }
-  .card { background: var(--dark); border: 2px solid var(--gold); border-radius: 15px; padding: 25px; margin-bottom: 20px; }
-  h1 { color: var(--gold); text-align: center; margin-bottom: 15px; }
-  h2 { color: var(--gold); font-size: 18px; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 15px; }
-  input, textarea { width: 100%; padding: 12px; margin: 8px 0; background: #000; border: 1px solid #444; color: #fff; border-radius: 8px; }
-  .btn { background: linear-gradient(135deg, var(--gold), #aa7c11); color: #000; border: none; padding: 15px; width: 100%; font-weight: 900; font-size: 16px; border-radius: 10px; cursor: pointer; margin-top: 10px; }
-  .btn:hover { opacity: 0.9; }
-  .info-box { background: #000; border: 1px dashed var(--gold); padding: 15px; border-radius: 10px; font-size: 14px; line-height: 1.8; }
-  .highlight { color: var(--gold); font-weight: bold; }
-  #successMsg { display: none; background: #004d00; padding: 15px; border-radius: 10px; text-align: center; margin-top: 15px; }
+  :root {
+    --gold: #D4AF37;
+    --dark-gold: #B8860B;
+    --black: #050505;
+  }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--black);
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  #progress-bar {
+    position: fixed; top: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--dark-gold));
+    width: 0%; z-index: 9999; transition: width 0.3s ease;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+  .story-chapter {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    padding: 60px 20px; border-bottom: 1px solid #222;
+    opacity: 0; transform: translateY(50px); transition: 1s;
+  }
+  .story-chapter.visible { opacity: 1; transform: translateY(0); }
+  
+  h1 { font-size: 36px; color: var(--gold); margin-bottom: 20px; }
+  h2 { font-size: 26px; color: var(--gold); margin-bottom: 15px; }
+  
+  .payment-path {
+    background: #000; border: 1px solid var(--gold);
+    padding: 20px; border-radius: 12px; margin: 15px 0; width:100%; max-width:500px;
+  }
+  .cash-big { font-size: 24px; color: var(--gold); font-weight: 900; }
+  .btn-story {
+    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+    color: #000; border: none; padding: 14px 30px; border-radius: 50px;
+    font-weight: 900; font-size: 16px; cursor: pointer; margin: 10px 5px;
+  }
+  .btn-outline { background: transparent; color: var(--gold); border: 2px solid var(--gold); }
+
+  /* الكارت الجديد */
+  #memberCard {
+    display: none; width: 350px; height: 550px; margin: 30px auto;
+    background: #000; border-radius: 20px; position: relative; overflow: hidden;
+    border: 3px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.5);
+  }
+  #memberCanvas { width: 100%; height: 100%; }
+  #downloadBtn {
+    background: var(--gold); color: #000; border: none; padding: 12px 25px;
+    border-radius: 10px; font-weight: 900; cursor: pointer; margin-top: 15px;
+  }
+
+  @media print {
+    body * { visibility: hidden; }
+    #memberCard, #memberCard * { visibility: visible; }
+    #memberCard { position: absolute; left: 50%; top: 0; transform: translateX(-50%); }
+  }
 </style>
 </head>
 <body>
 
-<div class="card">
-  <h1>🤝 كن شريك في MD7 Group</h1>
-  <p style="text-align:center; color:#aaa;">مش بنجمع فلوس. احنا بنبني منظومة. وانت شريك فيها</p>
-</div>
+<div id="progress-bar"></div>
+<div class="container">
 
-<div class="card">
-  <h2>💡 ازاي راس المال بيشتغل؟ مثال: منصة "وصل"</h2>
-  <div class="info-box">
-    1.  <span class="highlight">التجميع:</span> كل المساهمين بيحطوا فلوس في صندوق واحد لراس المال.<br>
-    2.  <span class="highlight">التدوير:</span> بنستخدم الفلوس دي عشان نطلق منصة زي "وصل". بنعمل اعلانات، بنجيب اول 3 بائعين، بنشغل المنصة.<br>
-    3.  <span class="highlight">الارباح:</span> "وصل" بتجيب دخل من الخدمات والاعلانات. الارباح دي بتدخل الصندوق تاني.<br>
-    4.  <span class="highlight">التوزيع:</span> كل شهر بنحسب الارباح. ليك اختيارين: يا تسحب ارباحك، يا تخليها وتزود مشاركتك.<br>
-    <br>
-    <span class="highlight">مهم:</span> مفيش نسبة ثابتة. المكسب حسب شغل المنصات. الشفافية كاملة في تقرير شهري.
-  </div>
-</div>
+  <!-- الفصل 4 -->
+  <section class="story-chapter visible" id="chapter4">
+    <h2>بوابة الانضمام</h2>
 
-<div class="card">
-  <h2>📝 بيانات التسجيل</h2>
-  <form id="joinForm">
-    <label>الاسم الكامل</label>
-    <input type="text" id="fullName" required placeholder="مثال: محمد احمد">
+    <div class="payment-path">
+      <h3><i class="fa-solid fa-money-bill-wave"></i> فودافون كاش</h3>
+      <div class="cash-big">01033182019</div>
+    </div>
 
-    <label>رقم الواتساب</label>
-    <input type="tel" id="whatsapp" required placeholder="010xxxxxxxx">
+    <div class="payment-path">
+      <h3><i class="fa-solid fa-building-columns"></i> الحساب البنكي</h3>
+      <p>متاح يوم الحد الجاي</p>
+      <button onclick="requestBank()" class="btn-story btn-outline">اطلب بيانات الحساب</button>
+    </div>
 
-    <label>المبلغ اللي حابب تشارك بيه</label>
-    <input type="number" id="amount" required placeholder="اكتب المبلغ بالجنيه">
+    <div class="payment-path">
+      <input type="text" id="fullName" placeholder="الاسم الكامل" style="width:100%; padding:12px; margin:8px 0; background:#000; border:1px solid #444; color:#fff; border-radius:8px;">
+      <input type="tel" id="whatsapp" placeholder="رقم الواتساب" style="width:100%; padding:12px; margin:8px 0; background:#000; border:1px solid #444; color:#fff; border-radius:8px;">
+      <input type="number" id="amount" placeholder="المبلغ" style="width:100%; padding:12px; margin:8px 0; background:#000; border:1px solid #444; color:#fff; border-radius:8px;">
+      <button onclick="generateCard()" class="btn-story">اصدار كارت العضوية</button>
+    </div>
 
-    <label>ملاحظات</label>
-    <textarea id="notes" rows="3" placeholder="اختياري"></textarea>
+    <!-- الكارت -->
+    <div id="memberCard">
+      <canvas id="memberCanvas" width="350" height="550"></canvas>
+    </div>
+    <button id="downloadBtn" onclick="downloadCard()" style="display:none;">💾 حفظ الكارت كصورة</button>
+    <button id="printBtn" onclick="window.print()" style="display:none;" class="btn-story btn-outline">🖨️ طباعة الكارت</button>
 
-    <button type="submit" class="btn">تأكيد المشاركة واستلام الكارت</button>
-  </form>
-  <div id="successMsg"></div>
+  </section>
 </div>
 
 <script>
-  // بنجيب اخر رقم من localStorage عشان نكمل الترقيم من 6 ل 313
+  function requestBank(){
+    window.open(`https://wa.me/201033182019?text=عايز بيانات الحساب البنكي MD7`, '_blank');
+  }
+
   function getNextMemberNumber() {
     let lastNum = localStorage.getItem('md7_last_member') || 5;
     lastNum = parseInt(lastNum) + 1;
-    if(lastNum > 313) lastNum = 313; // اخره 313
+    if(lastNum > 313) lastNum = 313; 
     localStorage.setItem('md7_last_member', lastNum);
     return lastNum;
   }
 
   function generateUsername(name, number) {
-    let firstTwo = name.trim().substring(0,2).toLowerCase();
-    // نشيل المسافات والتشكيل
-    firstTwo = firstTwo.replace(/\s/g, '');
+    let firstTwo = name.trim().substring(0,2).toLowerCase().replace(/\s/g, '');
     return firstTwo + number;
   }
 
-  document.getElementById('joinForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    
+  function generateCard(){
     const name = document.getElementById('fullName').value;
-    const whatsapp = document.getElementById('whatsapp').value;
-    const amount = document.getElementById('amount').value;
-    const notes = document.getElementById('notes').value;
+    if(!name) return alert('اكتب الاسم');
     
     const memberNumber = getNextMemberNumber();
     const username = generateUsername(name, memberNumber);
+    const today = new Date().toLocaleDateString('ar-EG');
 
-    // بيانات الكارت اللي هتتبعت
-    const cardData = {
-      to_name: name,
-      member_number: memberNumber,
-      username: username,
-      amount: amount,
-      whatsapp: whatsapp,
-      notes: notes,
-      join_date: new Date().toLocaleDateString('ar-EG')
-    };
+    drawCard(name, memberNumber, username, today);
+    
+    document.getElementById('memberCard').style.display = 'block';
+    document.getElementById('downloadBtn').style.display = 'inline-block';
+    document.getElementById('printBtn').style.display = 'inline-block';
+    document.getElementById('memberCard').scrollIntoView({behavior: 'smooth'});
+  }
 
-    // ابعت الايميل بالكارت
-    emailjs.send('service_id', 'template_id', cardData) // غير service_id و template_id بتوعك
-    .then(function(response) {
-       document.getElementById('successMsg').style.display = 'block';
-       document.getElementById('successMsg').innerHTML = `
-        <h3>✅ تم استلام مشاركتك</h3>
-        <p>رقمك في المنظومة: <span class="highlight">#${memberNumber}</span></p>
-        <p>اليوزرنيم الخاص بيك: <span class="highlight">${username}</span></p>
-        <p>هنبعتلك الكارت على الواتساب خلال 24 ساعة</p>
-        <p>تقدر تستخدم اليوزرنيم ده للدخول على التطبيق اول ما ينزل</p>
-       `;
-       document.getElementById('joinForm').reset();
-    }, function(error) {
-       alert('حدث خطأ. حاول مرة اخرى');
+  function drawCard(name, number, username, date){
+    const canvas = document.getElementById('memberCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // الخلفية السودا
+    ctx.fillStyle = '#050505';
+    ctx.fillRect(0, 0, 350, 550);
+
+    // العلامة المائية MD7 شفافة في النص
+    ctx.font = 'bold 80px Cairo';
+    ctx.fillStyle = 'rgba(212,175,55,0.08)';
+    ctx.textAlign = 'center';
+    ctx.fillText('MD7', 175, 280);
+
+    // MD بالذهبي والفضي زي الصورة
+    ctx.font = 'bold 70px Cairo';
+    let gradientM = ctx.createLinearGradient(50, 50, 150, 100);
+    gradientM.addColorStop(0, '#D4AF37');
+    gradientM.addColorStop(1, '#B8860B');
+    ctx.fillStyle = gradientM;
+    ctx.fillText('M', 90, 120);
+    ctx.strokeStyle = '#D4AF37';
+    ctx.lineWidth = 2;
+    ctx.strokeText('M', 90, 120);
+
+    let gradientD = ctx.createLinearGradient(150, 50, 250, 100);
+    gradientD.addColorStop(0, '#C0C0C0');
+    gradientD.addColorStop(1, '#808080');
+    ctx.fillStyle = gradientD;
+    ctx.fillText('D', 160, 120);
+    ctx.strokeStyle = '#C0C0C0';
+    ctx.strokeText('D', 160, 120);
+
+    // 7 بتوهج برتقالي
+    ctx.font = 'bold 90px Cairo';
+    ctx.shadowColor = '#FF8C00';
+    ctx.shadowBlur = 25;
+    ctx.fillStyle = '#FFA500';
+    ctx.fillText('7', 175, 210);
+    ctx.shadowBlur = 0;
+
+    // MD7 GROUP
+    ctx.font = 'bold 22px Cairo';
+    ctx.fillStyle = '#fff';
+    ctx.fillText('MD7 GROUP', 175, 250);
+
+    // ادارة وتشغيل وتطوير
+    ctx.font = '16px Cairo';
+    ctx.fillStyle = '#aaa';
+    ctx.fillText('إدارة وتشغيل وتطوير المؤسسات', 175, 275);
+
+    // خط فاصل
+    ctx.strokeStyle = '#D4AF37';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(40, 320);
+    ctx.lineTo(310, 320);
+    ctx.stroke();
+
+    // بيانات العضو
+    ctx.font = 'bold 18px Cairo';
+    ctx.fillStyle = '#D4AF37';
+    ctx.textAlign = 'right';
+    ctx.fillText('الاسم:', 310, 360);
+    ctx.fillText('رقم العضوية:', 310, 390);
+    ctx.fillText('اليوزرنيم:', 310, 420);
+    ctx.fillText('تاريخ الانضمام:', 310, 450);
+
+    ctx.font = '18px Cairo';
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'left';
+    ctx.fillText(name, 40, 360);
+    ctx.fillText('#' + number, 40, 390);
+    ctx.fillText(username, 40, 420);
+    ctx.fillText(date, 40, 450);
+
+    // QR
+    QRCode.toCanvas(document.createElement('canvas'), username, {width: 80}, function(err, qrCanvas){
+      if(!err) ctx.drawImage(qrCanvas, 135, 480);
     });
+  }
+
+  function downloadCard(){
+    const canvas = document.getElementById('memberCanvas');
+    const link = document.createElement('a');
+    link.download = 'MD7-Card.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  }
+
+  // انيميشن بسيط
+  window.addEventListener('scroll', () => {
+    const progress = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('progress-bar').style.width = progress + '%';
   });
 </script>
 
