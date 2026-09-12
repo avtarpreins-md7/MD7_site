@@ -20,64 +20,196 @@
     --silver: #C0C0C0;
     --black: #050505;
     --dark-gray: #121212;
-    --card-bg: #1a1a1a;
-    --gold-glow: rgba(212, 175, 55, 0.3);
   }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden; 
+    background-color: var(--black);
+  }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--black);
     color: #fff;
-    overflow-x: hidden;
     direction: rtl;
   }
 
-  /* الزرار العائم الجديد */
+  /* الزرار العائم */
   #join-fab {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background: linear-gradient(135deg, var(--gold), #B8860B);
     color: #000;
-    padding: 14px 25px;
+    padding: 12px 20px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 900;
     z-index: 9999;
     box-shadow: 0 0 25px rgba(212,175,55,0.6);
-    font-size: 15px;
-    transition: 0.3s;
+    font-size: 14px;
   }
-  #join-fab:hover { transform: scale(1.05); }
 
-  /* الهيدر + اللوجو الجديد MD */
-  header { background: #000; border-bottom: 2px solid var(--gold); padding: 15px 30px; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; }
-  .brand-logo { display: flex; align-items: center; gap: 8px; font-size: 28px; font-weight: 900; cursor: pointer; text-decoration: none; }
-  .logo-M { color: var(--gold); text-shadow: 0 0 20px var(--gold); }
-  .logo-D { color: var(--silver); text-shadow: 0 0 20px var(--silver); }
-  .logo-G { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-  .logo-R { color: #0000ff; text-shadow: 0 0 10px #0000ff; }
-  .logo-O { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
-  .logo-U { color: #ffff00; text-shadow: 0 0 10px #ffff00; }
-  .logo-P { color: #ffa500; text-shadow: 0 0 10px #ffa500; }
-  .group-text { font-size: 16px; letter-spacing: 3px; }
+  /* الهيدر */
+  header { background: #000; border-bottom: 2px solid var(--gold); padding: 12px 20px; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; width: 100%; }
+  .brand-logo { display: flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 900; cursor: pointer; text-decoration: none; }
+  .logo-M { color: var(--gold); }
+  .logo-D { color: var(--silver); }
+  .logo-G { color: #ff0000; }
+  .logo-R { color: #0000ff; }
+  .logo-O { color: #00ff00; }
+  .logo-U { color: #ffff00; }
+  .logo-P { color: #ffa500; }
+  .group-text { font-size: 14px; letter-spacing: 3px; }
 
-  nav { display: flex; gap: 10px; flex-wrap: wrap; }
-  nav button { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; transition: 0.3s; }
-  nav button:hover, nav button.active { background: var(--gold); color: #000; font-weight: bold; }
-  .view-section { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
+  .view-section { display: none; padding: 15px; width: 100%; max-width: 1200px; margin: 0 auto; }
   .view-section.active { display: block; }
 
-  /* تعديل الدواير - اصغر + واخده عرض الشاشة */
-  .solar-system-container { position: relative; width: 100%; height: 85vh; display: flex; justify-content: center; align-items: center; overflow: visible; }
-  .center-sun-moon { width: 110px; height: 110px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; z-index: 10; cursor: pointer; transition: all 0.5s ease; text-align: center; }
-  .sun-mode { background: radial-gradient(circle, #fff7ad 0%, #ffd700 50%, #ff8c00 100%); box-shadow: 0 0 50px #ff8c00, 0 0 100px #ffd700; color: #000; }
-  .moon-mode { background: radial-gradient(circle, #ffffff 0%, #dcdcdc 50%, #708090 100%); box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(112, 128, 144, 0.6); color: #000; }
-  .orbit-ring { position: absolute; width: 90vw; max-width: 700px; height: 90vw; max-height: 700px; border: 1px dashed rgba(212, 175, 55, 0.3); border-radius: 50%; animation: rotateOrbit 35s linear infinite; }
+  /* الدواير صغيرة */
+  .solar-system-container { position: relative; width: 100%; height: 70vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+  .center-sun-moon { width: 85px; height: 85px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; z-index: 10; cursor: pointer; text-align: center; }
+  .sun-mode { background: radial-gradient(circle, #fff7ad 0%, #ffd700 50%, #ff8c00 100%); color: #000; }
+  .moon-mode { background: radial-gradient(circle, #ffffff 0%, #dcdcdc 50%, #708090 100%); color: #000; }
+  
+  .orbit-ring { 
+    position: absolute; 
+    width: 75vw; 
+    max-width: 450px;
+    height: 75vw; 
+    max-height: 450px; 
+    border: 1px dashed rgba(212, 175, 55, 0.3); 
+    border-radius: 50%; 
+    animation: rotateOrbit 35s linear infinite; 
+  }
   @keyframes rotateOrbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-  .planet { position: absolute; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; font-weight: bold; font-size: 11px; cursor: pointer; box-shadow: 0 0 15px currentColor; animation: pulsePlanet 2s infinite alternate; transition: transform 0.3s; text-align: center; line-height: 1.2; }
-  .planet:hover { transform: scale(1.2); z-index: 20; }
-  @keyframes pulsePlanet { 0% { transform: scale(0.95); } 100% { transform: scale(1.08); } }
-  .planet-1 { top: -27px; left: calc(50% - 27px); background: #ff4757; color: #fff; }
-  .planet-2 { top: 15%; right: -27px; background: #2ed573; color: #fff; }
+  
+  .planet { 
+    position: absolute; 
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: #fff; 
+    font-weight: bold; 
+    font-size: 9px;
+    cursor: pointer; 
+    text-align: center; 
+    line-height: 1.2; 
+  }
+  
+  .planet-1 { top: -20px; left: calc(50% - 20px); background: #ff4757; }
+  .planet-2 { top: 15%; right: -20px; background: #2ed573; }
+  .planet-3 { bottom: 15%; right: -20px; background: #ffa502; }
+  .planet-4 { bottom: -20px; left: calc(50% - 20px); background: #1e90ff; }
+  .planet-5 { bottom: 15%; left: -20px; background: #9b59b6; }
+  .planet-6 { top: 15%; left: -20px; background: #2acc71; }
+
+  .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
+  .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
+  .chat-input-row { display: flex; gap: 10px; }
+  .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; }
+  .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+  .card-box { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+  .card-box h2 { color: var(--gold); margin-bottom: 15px; font-size: 20px; }
+
+  .site-footer{ text-align:center; padding:30px; border-top:2px solid var(--gold); margin-top:50px; background:#000; width:100%; }
+  .site-footer h3{ color:var(--gold); font-size:22px; margin-bottom:8px; }
+  .site-footer p{ color:#aaa; margin:5px 0; }
+</style>
+</head>
+<body>
+
+<a href="join-md7.html" id="join-fab">🤝 كن شريك في MD7</a>
+
+<header>
+  <a class="brand-logo" onclick="switchTab('md7')">
+    <span class="group-text">
+      <span class="logo-G">G</span><span class="logo-R">R</span><span class="logo-O">O</span><span class="logo-U">U</span><span class="logo-P">P</span>
+    </span>
+    <span class="logo-D">D</span>
+    <span class="logo-M">M</span>
+  </a>
+</header>
+
+<section id="md7" class="view-section active">
+  <div class="solar-system-container">
+    <div id="center-node" class="center-sun-moon">
+      <strong style="font-size: 13px;">MD7 AI</strong>
+      <span id="day-night-text" style="font-size: 9px;"></span>
+    </div>
+    <div class="orbit-ring">
+      <div class="planet planet-1" onclick="switchTab('md1')">MD1<br>المشاريع</div>
+      <div class="planet planet-2" onclick="switchTab('md2')">MD2<br>المؤلفين</div>
+      <div class="planet planet-3" onclick="window.location.href='wasal24.html'">MD3<br>وصل</div>
+      <div class="planet planet-4" onclick="switchTab('md4')">MD4<br>ألم عين</div>
+      <div class="planet planet-5" onclick="switchTab('md5')">MD5<br>الأعمال</div>
+      <div class="planet planet-6" onclick="switchTab('md6')">MD6<br>الطاقة</div>
+    </div>
+  </div>
+
+  <div class="chat-widget">
+    <h3 style="color:var(--gold); margin-bottom:8px;">🤖 المساعد الذكي MD7 AI</h3>
+    <div class="chat-logs" id="chatLogs">
+      <p style="color:#aaa;">مرحباً بك! أنا المساعد الذكي للمنظومة.</p>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا...">
+      <button onclick="sendChatMessage()">إرسال</button>
+    </div>
+  </div>
+</section>
+
+<section id="md1" class="view-section"><div class="card-box"><h2>🚀 MD1: مولد خطط المشاريع</h2></div></section>
+<section id="md2" class="view-section"><div class="card-box"><h2>📚 MD2: منصة المؤلفين</h2></div></section>
+<section id="md3" class="view-section"><div class="card-box"><h2>🛒 MD3: منصة وصل</h2></div></section>
+<section id="md4" class="view-section"><div class="card-box"><h2>👁️ MD4: ألم عين</h2></div></section>
+<section id="md5" class="view-section"><div class="card-box"><h2>🎬 MD5: معرض الأعمال</h2></div></section>
+<section id="md6" class="view-section"><div class="card-box"><h2>🌱 MD6: الطاقة والزراعة</h2></div></section>
+
+<footer class="site-footer">
+  <h3>MD7 Group</h3>
+  <p>تأسست في 2026</p>
+  <p>avtarpreins@gmail.com</p>
+</footer>
+
+<script>
+  function switchTab(tabId) {
+    document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateSolarNode() {
+    const hour = new Date().getHours();
+    const node = document.getElementById('center-node');
+    const text = document.getElementById('day-night-text');
+    if (hour >= 6 && hour < 18) {
+      node.className = 'center-sun-moon sun-mode';
+      text.innerText = 'نهار';
+    } else {
+      node.className = 'center-sun-moon moon-mode';
+      text.innerText = 'ليل';
+    }
+  }
+
+  function sendChatMessage() {
+    const input = document.getElementById('chatInput');
+    const logs = document.getElementById('chatLogs');
+    const val = input.value.trim();
+    if (!val) return;
+    logs.innerHTML += `<p style="color:var(--gold);"><b>أنت:</b> ${val}</p>`;
+    logs.innerHTML += `<p style="color:#fff;"><b>MD7 AI:</b> تم الاستلام</p>`;
+    logs.scrollTop = logs.scrollHeight;
+    input.value = '';
+  }
+
+  window.onload = function() {
+    updateSolarNode();
+  };
+</script>
+
+</body>
+</html>
