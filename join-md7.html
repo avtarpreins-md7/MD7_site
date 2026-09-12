@@ -10,100 +10,32 @@
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
 <style>
-  :root {
-    --gold: #D4AF37;
-    --dark-gold: #B8860B;
-    --black: #050505;
-  }
+  :root { --gold: #D4AF37; --dark-gold: #B8860B; --black: #050505; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Cairo', sans-serif;
-    background: var(--black);
-    color: #fff;
-    overflow-x: hidden;
-    background-image: radial-gradient(circle at 50% 10%, rgba(212,175,55,0.15) 0%, transparent 60%);
-  }
-
-  #progress-bar {
-    position: fixed; top: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, var(--gold), var(--dark-gold));
-    width: 0%; z-index: 9999; transition: width 0.3s ease;
-    box-shadow: 0 0 10px var(--gold);
-  }
-
+  body { font-family: 'Cairo', sans-serif; background: var(--black); color: #fff; overflow-x: hidden; background-image: radial-gradient(circle at 50% 10%, rgba(212,175,55,0.15) 0%, transparent 60%); }
+  #progress-bar { position: fixed; top: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold), var(--dark-gold)); width: 0%; z-index: 9999; }
   .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-
-  .story-chapter {
-    min-height: 100vh; display: flex; flex-direction: column;
-    justify-content: center; align-items: center; text-align: center;
-    padding: 60px 20px; border-bottom: 1px solid #222;
-    opacity: 0; transform: translateY(50px); transition: opacity 1s ease, transform 1s ease;
-  }
+  .story-chapter { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 20px; border-bottom: 1px solid #222; opacity: 0; transform: translateY(50px); transition: 1s; }
   .story-chapter.visible { opacity: 1; transform: translateY(0); }
-  
   .chapter-num { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
   h1 { font-size: 36px; color: var(--gold); margin-bottom: 20px; animation: glow 2s infinite alternate; }
   h2 { font-size: 26px; color: var(--gold); margin-bottom: 15px; }
   p { font-size: 17px; line-height: 1.9; color: #ddd; max-width: 700px; }
-
   @keyframes glow { from {text-shadow: 0 0 5px var(--gold);} to {text-shadow: 0 0 20px var(--gold);} }
-
-  .world-map {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px; margin: 30px 0;
-  }
-  .world-node {
-    background: #000; border: 2px solid #333; padding: 20px;
-    border-radius: 12px; transition: 0.4s; opacity: 0; transform: scale(0.8);
-  }
+  .world-map { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 30px 0; }
+  .world-node { background: #000; border: 2px solid #333; padding: 20px; border-radius: 12px; transition: 0.4s; opacity: 0; transform: scale(0.8); }
   .world-node.show { opacity: 1; transform: scale(1); }
   .world-node:hover { border-color: var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.4); transform: translateY(-5px); }
   .world-node i { font-size: 28px; color: var(--gold); margin-bottom: 10px; }
-
-  .reward-box {
-    background: linear-gradient(135deg, #000 60%, #1a1500 100%);
-    border: 2px solid var(--gold); border-radius: 15px;
-    padding: 25px; margin: 30px 0; box-shadow: 0 0 25px rgba(212,175,55,0.4);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%{box-shadow:0 0 15px rgba(212,175,55,0.3);} 50%{box-shadow:0 0 30px rgba(212,175,55,0.6);} 100%{box-shadow:0 0 15px rgba(212,175,55,0.3);} }
+  .reward-box { background: linear-gradient(135deg, #000 60%, #1a1500 100%); border: 2px solid var(--gold); border-radius: 15px; padding: 25px; margin: 30px 0; }
   .profit-highlight { font-size: 20px; color: var(--gold); font-weight: 900; }
-
-  .payment-path {
-    background: #000; border: 1px solid var(--gold);
-    padding: 20px; border-radius: 12px; margin: 15px 0;
-    text-align: right; transition: 0.3s;
-  }
-  .payment-path:hover { transform: scale(1.02); border-color: var(--dark-gold); }
-  .cash-big { font-size: 24px; color: var(--gold); font-weight: 900; letter-spacing: 2px; }
-  .btn-story {
-    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
-    color: #000; border: none; padding: 14px 30px; border-radius: 50px;
-    font-weight: 900; font-size: 16px; cursor: pointer; text-decoration: none;
-    display: inline-block; margin: 10px 5px; transition: 0.3s;
-  }
-  .btn-story:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--gold); }
-  .btn-outline { background: transparent; color: var(--gold); border: 2px solid var(--gold); }
-
-  /* الكارت الجديد بنفس شكل الصورة */
-  #memberCard {
-    display: none; width: 350px; height: 550px; margin: 30px auto;
-    background: #000; border-radius: 20px; position: relative; overflow: hidden;
-    border: 3px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.5);
-  }
+  .payment-path { background: #000; border: 1px solid var(--gold); padding: 20px; border-radius: 12px; margin: 15px 0; width:100%; max-width:500px; }
+  .cash-big { font-size: 24px; color: var(--gold); font-weight: 900; }
+  .btn-story { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: #000; border: none; padding: 14px 30px; border-radius: 50px; font-weight: 900; font-size: 16px; cursor: pointer; margin: 10px 5px; }
+  #memberCard { display: none; width: 350px; height: 550px; margin: 30px auto; background: #000; border-radius: 20px; border: 3px solid var(--gold); }
   #memberCanvas { width: 100%; height: 100%; }
-  #downloadBtn, #printBtn {
-    background: var(--gold); color: #000; border: none; padding: 12px 25px;
-    border-radius: 10px; font-weight: 900; cursor: pointer; margin: 10px 5px;
-    display: none;
-  }
-
-  @media print {
-    body * { visibility: hidden; }
-    #memberCard, #memberCard * { visibility: visible; }
-    #memberCard { position: absolute; left: 50%; top: 0; transform: translateX(-50%); }
-  }
+  #downloadBtn, #printBtn { background: var(--gold); color: #000; border: none; padding: 12px 25px; border-radius: 10px; font-weight: 900; cursor: pointer; margin: 10px 5px; display: none; }
 </style>
 </head>
 <body>
@@ -111,47 +43,41 @@
 <div id="progress-bar"></div>
 <div class="container">
 
-  <!-- الفصل 1 -->
+  <!-- الفصل 1 - متعدل -->
   <section class="story-chapter" id="chapter1">
     <span class="chapter-num">الفصل الأول</span>
     <h1>النداء: كن جزء من التغيير</h1>
     <p>
-      "مرحباً بك يا مؤس" <br>
-      انت مش داخل موقع. انت داخل شركة من 6 عقول بتغير الواقع. 
-      <br>MD7 GROUP هدفها حل مشاكل الحياة اليومية بالذكاء الاصطناعي.
-      <br>وثقتك في خالقك + مساهمتك = واقع أفضل لينا كلنا.
+      "مرحباً بك يا مؤس" <br><br>
+      انت مش بتتصفح موقع. انت بتبني مستقبل. <br>
+      MD7 GROUP منظومة متكاملة هدفها تحويل الأفكار لمشاريع واقعية <br>
+      تخدم ملايين الناس وتخلق فرص حقيقية. <br><br>
+      <b style="color:var(--gold);">انضمامك النهارده هو حجر الأساس في شركة بكرة.</b>
     </p>
     <a href="#chapter2" class="btn-story">ابدأ الرحلة <i class="fa-solid fa-arrow-down"></i></a>
   </section>
 
-  <!-- الفصل 2 -->
+  <!-- الفصل 2 - MD4 متعدل -->
   <section class="story-chapter" id="chapter2">
     <span class="chapter-num">الفصل الثاني</span>
     <h2>عالمك: 6 منصات تحت قيادتك</h2>
-    <p>كل منصة هي شركة لوحدها. ولما تساهم انت بتشغلهم كلهم:</p>
-    <div class="world-map" id="nodes">
+    <div class="world-map">
       <div class="world-node"><i class="fa-solid fa-rocket"></i><b>MD1</b><br>إدارة المشاريع</div>
       <div class="world-node"><i class="fa-solid fa-book"></i><b>MD2</b><br>التأليف والنشر</div>
       <div class="world-node"><i class="fa-solid fa-store"></i><b>MD3</b><br>منصة وصل - العرض والطلب</div>
-      <div class="world-node"><i class="fa-solid fa-code"></i><b>MD4</b><br>البرمجة "ألم عين"</div>
+      <div class="world-node"><i class="fa-solid fa-code"></i><b>MD4</b><br>منصة المبرمجين - MD Code</div> <!-- اتغيرت -->
       <div class="world-node"><i class="fa-solid fa-palette"></i><b>MD5</b><br>بنك المبدعين</div>
       <div class="world-node"><i class="fa-solid fa-leaf"></i><b>MD6</b><br>الطاقة والزراعة</div>
     </div>
     <a href="#chapter3" class="btn-story"><i class="fa-solid fa-arrow-down"></i></a>
   </section>
 
-  <!-- الفصل 3 - اتعدل الشرح -->
+  <!-- الفصل 3 -->
   <section class="story-chapter" id="chapter3">
     <span class="chapter-num">الفصل الثالث</span>
     <h2>مكافأتك: ازاي راس المال بيشتغل</h2>
     <div class="reward-box">
-      <p>في MD7 احنا بنكبر سوا. مش نسبة ثابتة:</p>
-      <p style="margin:20px 0; text-align:right;">
-        1. <b class="profit-highlight">التجميع:</b> بنجمع راس المال في صندوق واحد<br>
-        2. <b class="profit-highlight">التدوير:</b> بنشغل الفلوس في منصات زي "وصل"<br>
-        3. <b class="profit-highlight">الارباح:</b> المنصة بتكسب والارباح بترجع للصندوق<br>
-        4. <b class="profit-highlight">التوزيع:</b> كل شهر تختار تسحب او تزود مشاركتك
-      </p>
+      <p>1. <b class="profit-highlight">التجميع:</b> بنجمع راس المال<br>2. <b class="profit-highlight">التدوير:</b> بنشغله في منصات زي "وصل"<br>3. <b class="profit-highlight">الارباح:</b> بتتوزع كل شهر. تسحب او تزود مشاركتك</p>
     </div>
     <a href="#chapter4" class="btn-story">بوابة الانضمام <i class="fa-solid fa-arrow-down"></i></a>
   </section>
@@ -159,46 +85,29 @@
   <!-- الفصل 4 -->
   <section class="story-chapter" id="chapter4">
     <span class="chapter-num">الفصل الرابع والاخير</span>
-    <h2>بوابة الانضمام: اختار طريقك</h2>
-
+    <h2>بوابة الانضمام</h2>
     <div class="payment-path">
-      <h3><i class="fa-solid fa-money-bill-wave"></i> طريق الكاش - فودافون كاش</h3>
+      <h3><i class="fa-solid fa-money-bill-wave"></i> فودافون كاش</h3>
       <div class="cash-big">01033182019</div>
-      <a href="https://wa.me/201033182019" target="_blank" class="btn-story"><i class="fa-brands fa-whatsapp"></i> تواصل للتفعيل</a>
     </div>
-
     <div class="payment-path">
-      <h3><i class="fa-solid fa-building-columns"></i> طريق الحساب البنكي</h3>
-      <p style="color:#aaa; margin:10px 0;">سيتم اضافة بيانات الحساب البنكي يوم الحد القادم</p>
-      <!-- مكان فاضي تحط فيه الحساب لما يجهز -->
-      <div id="bank-info" style="display:none;">
-        <b>اسم البنك:</b> <span id="bankName"></span><br>
-        <b>رقم الحساب:</b> <span id="bankNumber"></span>
-      </div>
+      <h3><i class="fa-solid fa-building-columns"></i> الحساب البنكي</h3>
+      <p style="color:#aaa;">سيتم اضافة بيانات الحساب البنكي يوم الحد القادم</p>
     </div>
-
     <div class="payment-path">
-      <h3><i class="fa-solid fa-id-card"></i> سجل بياناتك واستلم كارت العضوية</h3>
+      <h3><i class="fa-solid fa-id-card"></i> سجل بياناتك</h3>
       <input type="text" id="fullName" placeholder="الاسم الكامل" style="width:100%; padding:12px; margin:8px 0; background:#000; border:1px solid #444; color:#fff; border-radius:8px;">
       <input type="tel" id="whatsapp" placeholder="رقم الواتساب" style="width:100%; padding:12px; margin:8px 0; background:#000; border:1px solid #444; color:#fff; border-radius:8px;">
       <input type="number" id="amount" placeholder="المبلغ" style="width:100%; padding:12px; margin:8px 0; background:#000; border:1px solid #444; color:#fff; border-radius:8px;">
       <button onclick="generateCard()" class="btn-story">اصدار كارت العضوية</button>
     </div>
-
-    <!-- الكارت -->
-    <div id="memberCard">
-      <canvas id="memberCanvas" width="350" height="550"></canvas>
-    </div>
-    <button id="downloadBtn" onclick="downloadCard()">💾 حفظ الكارت كصورة</button>
-    <button id="printBtn" onclick="window.print()">🖨️ طباعة الكارت</button>
-
-    <p style="margin-top:40px; color:var(--gold); font-weight:900;">اهلاً بيك في MD7 GROUP - المؤسسين</p>
+    <div id="memberCard"><canvas id="memberCanvas" width="350" height="550"></canvas></div>
+    <button id="downloadBtn" onclick="downloadCard()">💾 حفظ الكارت</button>
+    <button id="printBtn" onclick="window.print()">🖨️ طباعة</button>
   </section>
-
 </div>
 
 <script>
-  // 1. انيميشن الظهور
   const chapters = document.querySelectorAll('.story-chapter');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -214,13 +123,11 @@
   }, { threshold: 0.3 });
   chapters.forEach(ch => observer.observe(ch));
 
-  // 2. شريط التقدم
   window.addEventListener('scroll', () => {
     const progress = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
     document.getElementById('progress-bar').style.width = progress + '%';
   });
 
-  // 3. نظام الترقيم
   function getNextMemberNumber() {
     let lastNum = localStorage.getItem('md7_last_member') || 5;
     lastNum = parseInt(lastNum) + 1;
@@ -228,80 +135,45 @@
     localStorage.setItem('md7_last_member', lastNum);
     return lastNum;
   }
-
   function generateUsername(name, number) {
     let firstTwo = name.trim().substring(0,2).toLowerCase().replace(/\s/g, '');
     return firstTwo + number;
   }
-
   function generateCard(){
     const name = document.getElementById('fullName').value;
     if(!name) return alert('اكتب الاسم');
-    
     const memberNumber = getNextMemberNumber();
     const username = generateUsername(name, memberNumber);
     const today = new Date().toLocaleDateString('ar-EG');
-
     drawCard(name, memberNumber, username, today);
-    
     document.getElementById('memberCard').style.display = 'block';
     document.getElementById('downloadBtn').style.display = 'inline-block';
     document.getElementById('printBtn').style.display = 'inline-block';
-    document.getElementById('memberCard').scrollIntoView({behavior: 'smooth'});
   }
-
   function drawCard(name, number, username, date){
     const canvas = document.getElementById('memberCanvas');
     const ctx = canvas.getContext('2d');
-
-    ctx.fillStyle = '#050505';
-    ctx.fillRect(0, 0, 350, 550);
-
-    // علامة مائية
-    ctx.font = 'bold 80px Cairo';
-    ctx.fillStyle = 'rgba(212,175,55,0.08)';
-    ctx.textAlign = 'center';
-    ctx.fillText('MD7', 175, 280);
-
-    // MD بالذهبي والفضي
+    ctx.fillStyle = '#050505'; ctx.fillRect(0, 0, 350, 550);
+    ctx.font = 'bold 80px Cairo'; ctx.fillStyle = 'rgba(212,175,55,0.08)'; ctx.textAlign = 'center'; ctx.fillText('MD7', 175, 280);
     ctx.font = 'bold 70px Cairo';
-    let gradientM = ctx.createLinearGradient(50, 50, 150, 100);
-    gradientM.addColorStop(0, '#D4AF37'); gradientM.addColorStop(1, '#B8860B');
+    let gradientM = ctx.createLinearGradient(50, 50, 150, 100); gradientM.addColorStop(0, '#D4AF37'); gradientM.addColorStop(1, '#B8860B');
     ctx.fillStyle = gradientM; ctx.fillText('M', 90, 120);
-
-    let gradientD = ctx.createLinearGradient(150, 50, 250, 100);
-    gradientD.addColorStop(0, '#C0C0C0'); gradientD.addColorStop(1, '#808080');
+    let gradientD = ctx.createLinearGradient(150, 50, 250, 100); gradientD.addColorStop(0, '#C0C0C0'); gradientD.addColorStop(1, '#808080');
     ctx.fillStyle = gradientD; ctx.fillText('D', 160, 120);
-
-    // 7 متوهج
-    ctx.font = 'bold 90px Cairo';
-    ctx.shadowColor = '#FF8C00'; ctx.shadowBlur = 25;
-    ctx.fillStyle = '#FFA500'; ctx.fillText('7', 175, 210); ctx.shadowBlur = 0;
-
+    ctx.font = 'bold 90px Cairo'; ctx.shadowColor = '#FF8C00'; ctx.shadowBlur = 25; ctx.fillStyle = '#FFA500'; ctx.fillText('7', 175, 210); ctx.shadowBlur = 0;
     ctx.font = 'bold 22px Cairo'; ctx.fillStyle = '#fff'; ctx.fillText('MD7 GROUP', 175, 250);
     ctx.font = '16px Cairo'; ctx.fillStyle = '#aaa'; ctx.fillText('إدارة وتشغيل وتطوير المؤسسات', 175, 275);
-
     ctx.strokeStyle = '#D4AF37'; ctx.beginPath(); ctx.moveTo(40, 320); ctx.lineTo(310, 320); ctx.stroke();
-
     ctx.font = 'bold 18px Cairo'; ctx.fillStyle = '#D4AF37'; ctx.textAlign = 'right';
-    ctx.fillText('الاسم:', 310, 360); ctx.fillText('رقم العضوية:', 310, 390);
-    ctx.fillText('اليوزرنيم:', 310, 420); ctx.fillText('تاريخ الانضمام:', 310, 450);
-
+    ctx.fillText('الاسم:', 310, 360); ctx.fillText('رقم العضوية:', 310, 390); ctx.fillText('اليوزرنيم:', 310, 420); ctx.fillText('تاريخ الانضمام:', 310, 450);
     ctx.font = '18px Cairo'; ctx.fillStyle = '#fff'; ctx.textAlign = 'left';
-    ctx.fillText(name, 40, 360); ctx.fillText('#' + number, 40, 390);
-    ctx.fillText(username, 40, 420); ctx.fillText(date, 40, 450);
-
-    QRCode.toCanvas(document.createElement('canvas'), username, {width: 80}, function(err, qrCanvas){
-      if(!err) ctx.drawImage(qrCanvas, 135, 480);
-    });
+    ctx.fillText(name, 40, 360); ctx.fillText('#' + number, 40, 390); ctx.fillText(username, 40, 420); ctx.fillText(date, 40, 450);
+    QRCode.toCanvas(document.createElement('canvas'), username, {width: 80}, function(err, qrCanvas){ if(!err) ctx.drawImage(qrCanvas, 135, 480); });
   }
-
   function downloadCard(){
     const canvas = document.getElementById('memberCanvas');
     const link = document.createElement('a');
-    link.download = 'MD7-Card.png';
-    link.href = canvas.toDataURL();
-    link.click();
+    link.download = 'MD7-Card.png'; link.href = canvas.toDataURL(); link.click();
   }
 </script>
 
