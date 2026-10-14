@@ -4,166 +4,582 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MD1 - إعلانات المركبات | MD7 Group</title>
+<meta name="description" content="MD1 منصة تابعة لـ MD7 Group تربط المعلنين بأصحاب الميكروباصات والتاكسي والأتوبيسات لعرض الإعلانات على المركبات.">
 <style>
-  :root{--gold:#D4AF37;--black:#050505;--dark:#121212;--card-border:rgba(212,175,55,0.35);--muted:#aaa}
-  *{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;overflow-x:hidden;background:var(--black)}body{font-family:'Segoe UI',Tahoma,sans-serif;color:#fff;direction:rtl;line-height:1.7}
-  header{background:#000;border-bottom:2px solid var(--gold);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
- .brand{display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:22px}.brand.d{color:#C0C0C0}.brand.m{color:var(--gold)}.brand.tag{font-size:12px;color:var(--muted);border-right:1px solid #333;padding-right:8px;margin-right:4px}
- .back-link{color:var(--gold);text-decoration:none;font-size:14px;border:1px solid var(--card-border);padding:6px 12px;border-radius:20px}
-  nav.sub{background:#0a0a0a;border-bottom:1px solid #1d1d1d;display:flex;gap:6px;overflow-x:auto;padding:8px 12px}nav.sub a{color:#ddd;text-decoration:none;font-size:13px;padding:5px 12px;border-radius:16px;white-space:nowrap}
-  main{max-width:1100px;margin:0 auto;padding:0 16px}section{padding:30px 0 10px;scroll-margin-top:56px}
-  h2.title{color:var(--gold);font-size:24px;margin-bottom:6px}p.lead{color:var(--muted);margin-bottom:20px;font-size:15px}
- .hero{text-align:center;padding:40px 0 20px;background:radial-gradient(ellipse at top,rgba(212,175,55,0.14),transparent 65%)}.hero.badge{border:1px solid var(--gold);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:13px;margin-bottom:14px;display:inline-block}.hero h1{font-size:32px;font-weight:900;margin-bottom:10px}.hero h1 span{color:var(--gold)}.hero p{color:#ccc;max-width:640px;margin:0 auto 18px}
- .btn-gold{background:linear-gradient(135deg,var(--gold),#AA7C11);color:#000;border:none;padding:12px 22px;font-weight:900;border-radius:8px;cursor:pointer;font-size:15px;text-decoration:none;display:inline-block}.btn-line{background:transparent;color:var(--gold);border:1px solid var(--gold);padding:12px 22px;border-radius:8px;text-decoration:none;display:inline-block}
- .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.card{background:var(--dark);border:1px solid var(--card-border);border-radius:14px;padding:18px}.card h3{color:var(--gold);margin-bottom:6px}.card p,.card li{color:#ccc;font-size:14px}
- .preview-wrap{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:860px){.preview-wrap{grid-template-columns:340px 1fr}}
- .panel{background:var(--dark);border:1px solid var(--card-border);border-radius:14px;padding:18px}.panel label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}.panel select,.panel input{width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:6px}
- .stage{background:radial-gradient(ellipse at center,#1a1a1a,#0a0a0a);border:1px solid var(--card-border);border-radius:14px;padding:10px;display:flex;flex-direction:column;justify-content:center}
-  #glcanvas{width:100%;aspect-ratio:16/10;display:block;border-radius:10px;cursor:grab;touch-action:pan-y}
- .real-img{width:100%;height:200px;object-fit:contain;background:#fff;border-radius:8px;margin-bottom:10px;display:none}
- .site-footer{text-align:center;padding:30px;border-top:2px solid var(--gold);margin-top:40px;background:#000}
-  :root{--emb:#5fd0ff;--emb-glow:rgba(95,208,255,0.85)}html[data-mode="day"]{--emb:#ff7a7a;--emb-glow:rgba(255,90,90,0.6)}.emb-star{fill:var(--emb);fill-opacity:0.2;stroke:var(--emb);stroke-width:2.6}.emb-txt{fill:var(--emb);font-weight:900;font-family:'Segoe UI',sans-serif}.emblem-sm{width:30px;height:30px;vertical-align:middle}
+  :root {
+    --gold: #D4AF37;
+    --gold-light: #F3E5AB;
+    --gold-dark: #AA7C11;
+    --black: #050505;
+    --dark-gray: #121212;
+    --card-border: rgba(212,175,55,0.35);
+    --gold-glow: rgba(212,175,55,0.3);
+    --muted: #aaa;
+    --ok: #28a745;
+    --err: #ff6b6b;
+  }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  html, body { width: 100%; overflow-x: hidden; background: var(--black); }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; direction: rtl; line-height: 1.7; }
+  a { color: inherit; }
+  header { background: #000; border-bottom: 2px solid var(--gold); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+ .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 900; font-size: 22px; }
+ .brand.d { color: #C0C0C0; }
+ .brand.m { color: var(--gold); }
+ .brand.tag { font-size: 12px; color: var(--muted); font-weight: 400; border-right: 1px solid #333; padding-right: 8px; margin-right: 4px; }
+ .back-link { color: var(--gold); text-decoration: none; font-size: 14px; border: 1px solid var(--card-border); padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
+ .back-link:hover { background: var(--gold); color: #000; }
+  nav.sub { background: #0a0a0a; border-bottom: 1px solid #1d1d1d; display: flex; gap: 6px; overflow-x: auto; padding: 8px 12px; scrollbar-width: none; }
+  nav.sub::-webkit-scrollbar { display: none; }
+  nav.sub a { color: #ddd; text-decoration: none; font-size: 13px; padding: 5px 12px; border-radius: 16px; white-space: nowrap; border: 1px solid transparent; }
+  nav.sub a:hover { border-color: var(--gold); color: var(--gold); }
+  main { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  section { padding: 38px 0 10px; scroll-margin-top: 56px; }
+  @media (max-width: 420px) {
+    header { padding: 8px 10px; }
+   .brand { font-size: 19px; }
+   .brand.tag { font-size: 11px; }
+   .back-link { font-size: 12px; padding: 5px 9px; }
+   .hero h1 { font-size: 27px; }
+  }
+  h2.title { color: var(--gold); font-size: 24px; margin-bottom: 6px; }
+  p.lead { color: var(--muted); margin-bottom: 20px; font-size: 15px; }
+ .hero { text-align: center; padding: 50px 0 30px; background: radial-gradient(ellipse at top, rgba(212,175,55,0.14), transparent 65%); }
+ .hero.badge { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 4px 14px; border-radius: 20px; font-size: 13px; margin-bottom: 14px; }
+ .hero h1 { font-size: 34px; font-weight: 900; line-height: 1.4; margin-bottom: 12px; }
+ .hero h1 span { color: var(--gold); }
+ .hero p { color: #ccc; max-width: 640px; margin: 0 auto 22px; font-size: 16px; }
+ .cta-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+ .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #000; border: none; padding: 12px 22px; font-weight: 900; border-radius: 8px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; font-family: inherit; }
+ .btn-gold:hover { opacity:.9; }
+ .btn-line { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 12px 22px; font-weight: 700; border-radius: 8px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; font-family: inherit; }
+ .btn-line:hover { background: var(--gold); color: #000; }
+ .btn-line.sm { padding: 8px 14px; font-size: 14px; }
+ .btn-link { background: none; border: none; color: var(--gold); cursor: pointer; font-size: 13px; text-decoration: underline; font-family: inherit; padding: 6px; }
+ .btn-off { background: #1a1a1a; color: #777; border: 1px dashed #444; padding: 10px 16px; border-radius: 8px; font-size: 14px; cursor: not-allowed; width: 100%; }
+ .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+ .card { background: var(--dark-gray); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; transition:.25s; }
+ .card:hover { border-color: var(--gold); box-shadow: 0 0 22px var(--gold-glow); transform: translateY(-3px); }
+ .card.ico { font-size: 28px; margin-bottom: 6px; }
+ .card h3 { color: var(--gold); font-size: 18px; margin-bottom: 6px; }
+ .card p,.card li { color: #ccc; font-size: 14px; }
+ .card ul { padding-right: 18px; margin-top: 6px; }
+ .step-num { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: #000; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+ .soon { display: inline-block; background: rgba(212,175,55,0.12); color: var(--gold); border: 1px solid var(--card-border); font-size: 11px; padding: 1px 9px; border-radius: 10px; margin-bottom: 8px; }
+ .live { display: inline-block; background: rgba(40,167,69,0.14); color: #7bd88f; border: 1px solid rgba(40,167,69,0.5); font-size: 11px; padding: 1px 9px; border-radius: 10px; margin-bottom: 8px; }
+ .preview-wrap { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 860px) {.preview-wrap { grid-template-columns: 360px 1fr; align-items: start; } }
+  @media (max-width: 859px) {.stage { order: -1; } }
+ .panel { background: var(--dark-gray); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; }
+ .panel label { display: block; font-size: 13px; color: var(--muted); margin: 12px 0 4px; }
+ .panel select,.panel input[type=text],.panel input[type=tel] { width: 100%; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 15px; font-family: inherit; }
+ .panel select:focus,.panel input:focus { outline: none; border-color: var(--gold); }
+ .panel label.radio { display: flex; align-items: flex-start; gap: 8px; color: #ddd; font-size: 14px; margin: 8px 0; cursor: pointer; }
+ .panel label.radio input { margin-top: 5px; accent-color: #D4AF37; }
+ .file-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+ .fit { font-size: 12px; color: var(--muted); margin-top: 5px; min-height: 18px; word-break: break-all; }
+ .fit.ok { color: #7bd88f; }
+ .total-box { margin-top: 14px; background: #000; border: 1px solid var(--gold); border-radius: 12px; padding: 12px 14px; text-align: center; box-shadow: 0 0 18px var(--gold-glow); }
+ .total-box.t-label { color: var(--muted); font-size: 13px; }
+ .total-box.t-main { color: var(--gold); font-size: 28px; font-weight: 900; line-height: 1.3; }
+ .total-box.t-sub { color: #ccc; font-size: 13px; min-height: 18px; }
+ .status { font-size: 13px; margin-top: 10px; min-height: 20px; }
+ .status.ok { color: #7bd88f; }
+ .status.err { color: var(--err); }
+ .status a { color: var(--gold); }
+ .privacy { font-size: 12px; color: var(--muted); margin-top: 10px; }
+ .stage { background: radial-gradient(ellipse at center, #1a1a1a, #0a0a0a); border: 1px solid var(--card-border); border-radius: 14px; padding: 10px; display: flex; flex-direction: column; justify-content: center; min-height: 320px; }
+ .canvas-wrap { position: relative; width:100%; }
+  #glcanvas { width: 100%; aspect-ratio: 16 / 10; display: block; border-radius: 10px; touch-action: pan-y; cursor: grab; background:#0e0e0e; }
+  #glcanvas:active { cursor: grabbing; }
+ .upload-box { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0,0,0,0.84); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; z-index: 5; }
+ .upload-box[hidden] { display: none!important; }
+ .drop { width: min(210px, 62%); aspect-ratio: 1; border: 2px dashed var(--gold); border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; color: var(--gold); cursor: pointer; padding: 10px; font-size: 14px; font-weight: 700; }
+ .drop small { color: var(--muted); font-weight: 400; font-size: 12px; }
+ .drop.drop-ico { font-size: 34px; }
+ .drop.over,.drop:hover,.drop:focus { background: rgba(212,175,55,0.12); outline: none; }
+ .nogl { display: none; padding: 40px 12px; text-align: center; color: var(--muted); font-size: 14px; }
+ .note { font-size: 12px; color: var(--muted); margin-top: 10px; text-align: center; }
+ .note b { color: var(--gold); }
+ .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
+ .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
+ .chat-input-row { display: flex; gap: 10px; }
+ .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-family: inherit; }
+ .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+ .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+ .flow.st { background: #000; border: 1px solid var(--card-border); border-radius: 20px; padding: 5px 14px; font-size: 13px; color: #ddd; }
+ .flow.st.ok { border-color: var(--ok); color: #7bd88f; }
+ .flow.ar { color: var(--gold); }
+ .site-footer { text-align: center; padding: 30px 16px; border-top: 2px solid var(--gold); margin-top: 50px; background: #000; }
+ .site-footer h3 { color: var(--gold); font-size: 22px; margin-bottom: 6px; }
+ .site-footer p { color: #aaa; margin: 4px 0; font-size: 14px; }
+  :root { --emb: #5fd0ff; --emb-glow: rgba(95, 208, 255, 0.85); --emb-outline: transparent; }
+  html[data-mode="day"] { --emb: #ff7a7a; --emb-glow: rgba(255, 90, 90, 0.6); }
+ .emb-star { fill: var(--emb); fill-opacity: 0.2; stroke: var(--emb); stroke-width: 2.6; stroke-linejoin: round; }
+ .emb-txt { fill: var(--emb); stroke: var(--emb-outline); stroke-width: 2.2; paint-order: stroke; stroke-linejoin: round; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-weight: 900; }
+ .emblem-sm { width: 30px; height: 30px; vertical-align: middle; margin-inline-end: 6px; filter: drop-shadow(0 0 4px var(--emb-glow)); }
 </style>
 </head>
 <body>
-<header><a class="brand" href="index.html"><span class="d">D</span><span class="m">M</span><span class="tag">MD1 · إعلانات المركبات</span></a><a class="back-link" href="index.html">← العودة إلى MD7</a></header>
-<nav class="sub"><a href="#preview">معاينة الإعلان</a><a href="#register">التسجيل</a></nav>
+<header>
+  <a class="brand" href="index.html"><span class="d">D</span><span class="m">M</span><span class="tag">MD1 · إعلانات المركبات</span></a>
+  <a class="back-link" href="index.html">← العودة إلى MD7</a>
+</header>
+<nav class="sub">
+  <a href="#about">عن المنصة</a>
+  <a href="#vehicles">أنواع المركبات</a>
+  <a href="#preview">احجز إعلانك</a>
+  <a href="#register">التسجيل</a>
+  <a href="#partners">الشركاء</a>
+  <a href="#admin">لوحة الإدارة</a>
+  <a href="#assistant">تواصل مع المؤسس</a>
+</nav>
 <main>
-<div class="hero"><span class="badge">مشروع تابع لـ MD7 Group</span><h1>إعلانك يتحرك في <span>شوارع المدينة</span></h1><p>MD1 تربط المعلنين بأصحاب الميكروباصات والتاكسي والكوستر - صورك الحقيقية بتلف 360°</p></div>
-
-<section id="preview">
-<h2 class="title">معاينة الإعلان على المركبة - 3D واقعي</h2>
-<p class="lead">اختر المركبة من صورك الحقيقية - اسحب لتدويرها - الواقعية أقرب 80% من الكرتون</p>
-<div class="preview-wrap">
-<div class="panel">
-<label>نوع المركبة (صورتك الحقيقية)</label>
-<select id="vType"></select>
-<img id="realCarImg" class="real-img" alt="صورة حقيقية">
-<label>مكان الإعلان</label>
-<select id="vZone"></select>
-<label>نص الإعلان</label>
-<input type="text" id="adText" maxlength="40" value="اعلن هنا">
-<label>لون الإعلان</label>
-<div id="swatches" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-<div style="margin-top:15px;background:#000;padding:10px;border-radius:8px;border:1px dashed var(--gold)">
-<label>بيانات الحجز السريع - واتساب @avtarmo</label>
-<input type="text" id="advName" placeholder="اسم المعلن *" style="margin-top:6px">
-<input type="tel" id="advPhone" placeholder="رقم واتساب" style="margin-top:6px">
-<button class="btn-gold" onclick="bookViaWA()" style="width:100%;margin-top:10px">📲 حجز واتساب الآن</button>
-<div id="bookStatus" style="margin-top:8px;font-size:13px;color:#7bd88f"></div>
-</div>
-</div>
-<div class="stage">
-<canvas id="glcanvas"></canvas>
-<p style="font-size:11px;color:#aaa;text-align:center;margin-top:8px">نموذج 3D مطور - مقاسات تقريبية - اسحب يمين/شمال لتلف - صورك الحقيقية في الأعلى</p>
-</div>
-</div>
-</section>
-
-<section id="register">
-<h2 class="title">التسجيل - مفعل الآن عبر واتساب</h2>
-<div class="grid">
-<div class="card">
-<h3>📣 تسجيل المعلنين</h3>
-<input type="text" id="regAdvName" placeholder="اسم الشركة" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;margin:6px 0">
-<input type="text" id="regAdvAd" placeholder="تفاصيل الإعلان" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;margin:6px 0">
-<button class="btn-gold" onclick="registerAdv()" style="width:100%;margin-top:10px">تسجيل معلن - واتساب</button>
-</div>
-<div class="card">
-<h3>🚐 تسجيل أصحاب المركبات</h3>
-<input type="text" id="regDriverName" placeholder="اسم السائق" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;margin:6px 0">
-<input type="text" id="regDriverCar" placeholder="نوع المركبة + رقمها" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;margin:6px 0">
-<button class="btn-gold" onclick="registerDriver()" style="width:100%;margin-top:10px">تسجيل مركبة - واتساب</button>
-</div>
-</div>
-</section>
+  <div class="hero">
+    <span class="badge">مشروع تابع لشركة MD7 Group</span>
+    <h1>إعلانك يتحرك في <span>شوارع المدينة</span></h1>
+    <p>MD1 منصة تربط المعلنين بأصحاب الميكروباصات والتاكسي والأتوبيسات، ليعرض المعلن إعلانه على المركبة ويصل إلى الناس أينما ذهبوا.</p>
+    <div class="cta-row">
+      <a class="btn-gold" href="#preview">احجز وشاهد إعلانك</a>
+      <a class="btn-line" href="#register">كيف أشارك؟</a>
+    </div>
+  </div>
+  <section id="about">
+    <h2 class="title">فكرة المنصة</h2>
+    <p class="lead">ثلاث خطوات بسيطة بين من يريد الإعلان ومن يملك مركبة.</p>
+    <div class="grid">
+      <div class="card"><div class="step-num">1</div><h3>المعلن يجهّز إعلانه</h3><p>يختار المركبة ومكان الإعلان ويرفع صورته ويشاهدها على المركبة مباشرة.</p></div>
+      <div class="card"><div class="step-num">2</div><h3>صاحب المركبة يعرض مركبته</h3><p>يسجّل بيانات مركبته وخط سيرها ووسائل التواصل معه.</p></div>
+      <div class="card"><div class="step-num">3</div><h3>مراجعة ثم موافقة</h3><p>يراجع فريق MD7 الطلبات والإعلانات قبل اعتمادها وعرضها.</p></div>
+    </div>
+  </section>
+  <section id="vehicles">
+    <h2 class="title">أنواع المركبات</h2>
+    <p class="lead">تدعم المنصة هذه الأنواع في المرحلة الحالية.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🚐</div><h3>الميكروباصات</h3><p>هيونداي H1 وتويوتا هاي إيس. إعلان على الجانب أو الخلف أو المركبة كاملة.</p></div>
+      <div class="card"><div class="ico">🚕</div><h3>التاكسي</h3><p>هيونداي فيرنا (تاكسي). إعلان على الجانب أو الخلف أو السيارة كاملة.</p></div>
+      <div class="card"><div class="ico">🚌</div><h3>الأتوبيسات</h3><p>تويوتا كوستر. مساحة كبيرة على الجانبين والخلف أو الأتوبيس كاملًا.</p></div>
+    </div>
+  </section>
+  <section id="preview">
+    <h2 class="title">احجز إعلانك وشاهده على المركبة</h2>
+    <p class="lead">اختر المركبة ومكان الإعلان، واضغط على المركبة لرفع صورتك، ثم اسحبها بإصبعك يمينًا ويسارًا لتدويرها.</p>
+    <form id="bookForm" class="preview-wrap" novalidate>
+      <div class="panel">
+        <label for="vType">نوع المركبة</label>
+        <select id="vType"></select>
+        <label for="vZone">مكان الإعلان</label>
+        <select id="vZone"></select>
+        <label>صورة الإعلان</label>
+        <div class="file-row">
+          <button type="button" class="btn-line sm" id="pickImg">📷 اختيار صورة</button>
+          <button type="button" class="btn-link" id="clearImg" hidden>إزالة الصورة</button>
+        </div>
+        <div id="fileName" class="fit"></div>
+        <input type="file" id="adFile" accept="image/*" hidden>
+        <label for="fitMode">ملاءمة الصورة</label>
+        <select id="fitMode">
+          <option value="cover">ملء المساحة (قد يُقصّ جزء منها)</option>
+          <option value="contain">إظهار الصورة كاملة</option>
+        </select>
+        <label>طريقة الدفع</label>
+        <label class="radio"><input type="radio" name="pay" value="cash" checked><span id="payCashTxt"></span></label>
+        <label class="radio"><input type="radio" name="pay" value="inst"><span id="payInstTxt"></span></label>
+        <div class="total-box" aria-live="polite">
+          <div class="t-label">الإجمالي</div>
+          <div class="t-main"><span id="totalVal">75,000</span> جنيه</div>
+          <div class="t-sub" id="totalSub"></div>
+        </div>
+        <label for="advName">اسم المعلن</label>
+        <input type="text" id="advName" maxlength="60" autocomplete="name">
+        <label for="advPhone">رقم التواصل (رقمك أنت)</label>
+        <input type="tel" id="advPhone" maxlength="20" inputmode="tel" autocomplete="tel">
+        <button type="submit" class="btn-gold" style="width:100%;margin-top:16px">إرسال طلب الحجز</button>
+        <div id="bookStatus" class="status" aria-live="polite"></div>
+        <p class="privacy">صورتك تبقى على جهازك ولا تُرفع إلى الموقع. بعد الإرسال يصل نص طلبك للمؤسس، وتُرفق الصورة داخل المحادثة نفسها.</p>
+      </div>
+      <div class="stage">
+        <div class="canvas-wrap">
+          <canvas id="glcanvas"></canvas>
+          <div class="upload-box" id="uploadBox" hidden>
+            <div class="drop" id="dropZone" tabindex="0" role="button" aria-label="اختيار صورة الإعلان">
+              <span class="drop-ico">📷</span>
+              <span>اضغط لاختيار صورة إعلانك</span>
+              <small>أو اسحبها وأفلتها هنا</small>
+            </div>
+            <button type="button" class="btn-link" id="closeUpload">إغلاق</button>
+          </div>
+        </div>
+        <div class="nogl" id="nogl">تعذّر تشغيل المعاينة ثلاثية الأبعاد على هذا الجهاز أو المتصفح. يمكنك مع ذلك إكمال الحجز.</div>
+        <p class="note"><b>اضغط على المركبة لرفع صورتك · اسحب يمينًا ويسارًا لتدويرها.</b><br>نماذج ثلاثية الأبعاد مبسّطة وتقريبية، والشكل النهائي والمقاسات تتحدد عند المراجعة.</p>
+      </div>
+    </form>
+  </section>
+  <section id="register">
+    <h2 class="title">التسجيل وإضافة البيانات</h2>
+    <p class="lead">حجز الإعلان متاح الآن، أما الحسابات وحفظ البيانات فتأتي في المرحلة التالية.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="live">متاح الآن</span>
+        <h3>📣 المعلنون</h3>
+        <ul><li>اختيار المركبة ومكان الإعلان</li><li>معاينة حية لصورتك على المركبة</li><li>حساب السعر تلقائيًا</li><li>إرسال طلب الحجز للمؤسس</li></ul>
+        <div style="margin-top:14px"><a class="btn-gold" href="#preview" style="width:100%;text-align:center">احجز الآن</a></div>
+      </div>
+      <div class="card">
+        <span class="soon">قريبًا</span>
+        <h3>🚐 تسجيل أصحاب المركبات</h3>
+        <ul><li>نوع المركبة وموديلها</li><li>خط السير والمناطق</li><li>صور المركبة</li><li>وسائل التواصل</li></ul>
+        <div style="margin-top:14px"><button type="button" class="btn-off" disabled>التسجيل غير متاح بعد</button></div>
+      </div>
+    </div>
+  </section>
+  <section id="partners">
+    <h2 class="title">الشركات والمستثمرون والجهات الحكومية</h2>
+    <p class="lead">فرص تعاون وشراكة لتوسيع المنصة وتنظيم الإعلان على المركبات.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🏢</div><h3>الشركات</h3><p>حملات إعلانية منظمة على أساطيل من المركبات.</p></div>
+      <div class="card"><div class="ico">📈</div><h3>المستثمرون</h3><p>المشاركة في تطوير المنصة وتوسيع نطاقها.</p></div>
+      <div class="card"><div class="ico">🏛️</div><h3>الجهات الحكومية</h3><p>التنسيق والتنظيم وحملات التوعية العامة.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:18px">
+      <a class="btn-gold" href="mailto:avtarpreins@gmail.com?subject=%D8%AA%D8%B9%D8%A7%D9%88%D9%86%20%D9%85%D8%B9%20MD1">تواصل معنا للتعاون</a>
+    </div>
+  </section>
+  <section id="admin">
+    <h2 class="title">لوحة الإدارة</h2>
+    <p class="lead">ستُضاف لاحقًا لمراجعة كل طلب وإعلان قبل ظهوره.</p>
+    <div class="card">
+      <span class="soon">قريبًا</span>
+      <h3>🛡️ مراجعة قبل الاعتماد</h3>
+      <p>لن يُعرض أي إعلان أو مركبة قبل اعتماد فريق MD7 له.</p>
+      <div class="flow">
+        <span class="st">طلب جديد</span><span class="ar">←</span>
+        <span class="st">قيد المراجعة</span><span class="ar">←</span>
+        <span class="st ok">معتمد</span>
+        <span class="st">أو مرفوض</span>
+      </div>
+    </div>
+  </section>
+  <section id="assistant">
+    <div class="chat-widget">
+      <h3 style="color:var(--gold); margin-bottom:8px;"><svg class="emblem-sm" viewBox="0 0 100 100" aria-hidden="true"><use href="#md-emblem"/></svg>تواصل مع المؤسس</h3>
+      <div class="chat-logs" id="chatLogs">
+        <p style="color:#aaa;">مرحباً بك! أنا المساعد للمنظومة.</p>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" maxlength="500" placeholder="اكتب سؤالك هنا...">
+        <button type="button" id="chatSend">إرسال</button>
+      </div>
+    </div>
+  </section>
 </main>
-<footer class="site-footer"><h3>MD1 · تابع لـ MD7 Group</h3><p>avtarpreins@gmail.com - واتساب @avtarmo</p></footer>
-
+<footer class="site-footer">
+  <h3>MD1 · مشروع تابع لـ MD7 Group</h3>
+  <p>تأسست MD7 في 2026</p>
+  <p>avtarpreins@gmail.com</p>
+  <p><a href="index.html" style="color:var(--gold)">العودة إلى الموقع الرئيسي</a></p>
+</footer>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="md-emblem" viewBox="0 0 100 100">
+      <polygon class="emb-star" points="50,4 62.93,26.2 88.04,31.64 70.92,50.8 73.51,76.36 50,66 26.49,76.36 29.08,50.8 11.96,31.64 37.07,26.2"/>
+      <text class="emb-txt" x="50" y="55" text-anchor="middle" font-size="30">7</text>
+      <text class="emb-txt" x="50" y="96" text-anchor="middle" font-size="17" letter-spacing="3">MD</text>
+    </symbol>
+  </defs>
+</svg>
 <script>
-// واتساب يوزرنيم فقط
-var WA_USERNAME='avtarmo';
-function openWA(msg){window.open('https://wa.me/'+WA_USERNAME+'?text='+encodeURIComponent(msg),'_blank');}
-function bookViaWA(){
- var name=document.getElementById('advName').value.trim();
- var phone=document.getElementById('advPhone').value.trim();
- var v=document.getElementById('vType');var vt=v.options[v.selectedIndex].text;
- var z=document.getElementById('vZone');var zt=z.options[z.selectedIndex].text;
- var ad=document.getElementById('adText').value;
- if(name.length<2){alert('اكتب اسم المعلن');return;}
- var msg=`طلب حجز إعلان MD1\nالنوع: ${vt}\nالمكان: ${zt}\nالنص: ${ad}\nالاسم: ${name}\nالهاتف: ${phone}\nالصفحة: ${location.href}`;
- openWA(msg);document.getElementById('bookStatus').textContent='تم فتح واتساب ✅';
+var WA_USERNAME = 'avtarmo';
+function openWhatsApp(text) {
+  var url = 'https://wa.me/' + WA_USERNAME + '?text=' + encodeURIComponent(text);
+  var w = window.open(url, '_blank');
+  if (w) w.opener = null;
+  return { win: w, url: url };
 }
-function registerAdv(){
- var n=document.getElementById('regAdvName').value;var a=document.getElementById('regAdvAd').value;
- openWA(`تسجيل معلن جديد MD1\nالاسم: ${n}\nالإعلان: ${a}\n${location.href}`);
-}
-function registerDriver(){
- var n=document.getElementById('regDriverName').value;var c=document.getElementById('regDriverCar').value;
- openWA(`تسجيل مركبة جديدة MD1\nالسائق: ${n}\nالمركبة: ${c}\n${location.href}`);
-}
-
-// ربط الصور الحقيقية بالـ 3D
-var VEHICLES={
- h1:{label:'ميكروباص هيونداي H1 - صورتك',img:'images/images%20(14).jpeg',L:5.15,W:1.92,roofY:1.9,wheelR:0.37,wheelX:1.6,body:[0.96,0.96,0.96],profile:[[-2.55,0.32],[2.4,0.32],[2.55,0.55],[2.55,0.95],[2.15,1.25],[1.65,1.9],[-2.5,1.9],[-2.55,1.8]],windows:[[[0.55,1.12],[1.35,1.12],[1.35,1.72],[0.55,1.72]],[[ -0.5,1.12],[0.4,1.12],[0.4,1.72],[-0.5,1.72]]],glass:[{b:[2.15,1.25],t:[1.65,1.9],hw:0.84}],zones:{side:{label:'الجانب',kind:'side',x0:-2.1,x1:1.3,y0:0.5,y1:1.05},rear:{label:'الخلف',kind:'rear',z0:-0.6,z1:0.6,y0:0.55,y1:1.6},roof:{label:'السقف',kind:'roof',x0:-2.2,x1:1.4,z0:-0.7,z1:0.7}}},
- hiace:{label:'تويوتا هاي اس - صورتك',img:'images/images%20(15).jpeg',L:5.38,W:1.88,roofY:2.15,wheelR:0.37,wheelX:1.65,body:[0.96,0.96,0.96],profile:[[-2.69,0.32],[2.5,0.32],[2.69,0.52],[2.69,0.95],[2.5,1.25],[2.05,1.98],[1.95,2.15],[-2.65,2.15],[-2.69,2.05]],windows:[[[0.8,1.35],[1.8,1.95],[0.8,1.95]]],glass:[{b:[2.5,1.25],t:[2.05,1.98],hw:0.82}],zones:{side:{label:'الجانب',kind:'side',x0:-2.4,x1:1.5,y0:0.5,y1:1.25},rear:{label:'الخلف',kind:'rear',z0:-0.62,z1:0.62,y0:0.6,y1:1.85},roof:{label:'السقف',kind:'roof',x0:-2.4,x1:1.6,z0:-0.7,z1:0.7}}},
- taxi:{label:'تاكسي فيرنا - صورتك',img:'images/images%20(21).jpeg',L:4.4,W:1.7,roofY:1.42,wheelR:0.32,wheelX:1.3,body:[0.96,0.96,0.96],profile:[[-2.2,0.3],[2.1,0.3],[2.2,0.5],[2.2,0.85],[1.35,0.95],[0.55,1.42],[-0.8,1.42],[-1.5,1.0],[-2.2,1.0]],windows:[[[1.0,1.02],[0.0,1.02],[0.0,1.34],[0.58,1.34]]],glass:[{b:[1.35,0.95],t:[0.55,1.42],hw:0.7}],zones:{side:{label:'الجانب',kind:'side',x0:-1.3,x1:1.05,y0:0.45,y1:0.9},rear:{label:'الخلف',kind:'rear',z0:-0.6,z1:0.6,y0:0.55,y1:0.95},roof:{label:'السقف',kind:'side',zs:0.166,x0:-0.4,x1:0.4,y0:1.46,y1:1.6}}},
- coaster:{label:'كوستر 26 راكب - صورتك',img:'images/images%20(17).jpeg',L:7.0,W:2.08,roofY:2.62,wheelR:0.45,wheelX:2.25,body:[0.96,0.96,0.96],profile:[[-3.5,0.42],[3.3,0.42],[3.5,0.65],[3.5,1.15],[3.38,1.4],[3.18,2.5],[3.05,2.62],[-3.45,2.62],[-3.5,2.5]],windows:[[[2.05,1.5],[2.95,1.5],[2.95,2.35],[2.05,2.35]]],glass:[{b:[3.38,1.4],t:[3.18,2.5],hw:0.95}],zones:{side:{label:'الجانب',kind:'side',x0:-3.2,x1:2.9,y0:0.65,y1:1.4},rear:{label:'الخلف',kind:'rear',z0:-0.8,z1:0.8,y0:0.7,y1:2.3},roof:{label:'السقف',kind:'roof',x0:-3.0,x1:2.8,z0:-0.8,z1:0.8}}},
- dababa:{label:'دبابة صندوق - صورتك',img:'images/images%20(20).jpeg',L:5.5,W:1.9,roofY:2.0,wheelR:0.38,wheelX:1.7,body:[0.9,0.15,0.15],profile:[[-2.7,0.35],[2.6,0.35],[2.7,0.6],[2.7,1.8],[1.8,2.0],[-2.7,2.0]],windows:[[[0.5,1.0],[1.5,1.0],[1.5,1.6],[0.5,1.6]]],glass:[{b:[1.8,1.0],t:[1.2,1.8],hw:0.7}],zones:{side:{label:'الصندوق الجانبي',kind:'side',x0:-2.0,x1:1.0,y0:0.6,y1:1.6},rear:{label:'خلف الصندوق',kind:'rear',z0:-0.7,z1:0.7,y0:0.6,y1:1.7}}},
- vip:{label:'هاي اس VIP - صورتك',img:'images/images%20(22).jpeg',L:5.38,W:1.88,roofY:2.15,wheelR:0.37,wheelX:1.65,body:[0.1,0.1,0.1],profile:[[-2.69,0.32],[2.5,0.32],[2.69,0.52],[2.69,0.95],[2.5,1.25],[2.05,1.98],[1.95,2.15],[-2.65,2.15],[-2.69,2.05]],windows:[[[0.8,1.35],[1.8,1.35],[1.8,1.95],[0.8,1.95]]],glass:[{b:[2.5,1.25],t:[2.05,1.98],hw:0.82}],zones:{side:{label:'الجانب VIP',kind:'side',x0:-2.4,x1:1.5,y0:0.5,y1:1.25},rear:{label:'الخلف',kind:'rear',z0:-0.62,z1:0.62,y0:0.6,y1:1.85}}}
-};
-var VIEWS={side:{yaw:0.55,pitch:0.20},rear:{yaw:-1.12,pitch:0.20},roof:{yaw:0.5,pitch:0.85}};
-var ZONE_KEYS=['side','rear','roof'];
-var COLORS=[{bg:'#D4AF37',fg:'#000'},{bg:'#0b0b0b',fg:'#D4AF37'},{bg:'#fff',fg:'#111'},{bg:'#c62828',fg:'#fff'},{bg:'#1565c0',fg:'#fff'}];
-var canvas=document.getElementById('glcanvas'),selV=document.getElementById('vType'),selZ=document.getElementById('vZone'),txt=document.getElementById('adText'),sw=document.getElementById('swatches'),realImg=document.getElementById('realCarImg');
-var colorIdx=0;
-Object.keys(VEHICLES).forEach(k=>{var o=document.createElement('option');o.value=k;o.textContent=VEHICLES[k].label;selV.appendChild(o);});
-function fillZones(){var zones=VEHICLES[selV.value].zones,prev=selZ.value;selZ.innerHTML='';Object.keys(zones).forEach(k=>{var o=document.createElement('option');o.value=k;o.textContent=zones[k].label;selZ.appendChild(o);});if(zones[prev])selZ.value=prev;var img=VEHICLES[selV.value].img;if(img){realImg.src=img;realImg.style.display='block';} }
-COLORS.forEach((c,i)=>{var b=document.createElement('button');b.style.cssText=`width:34px;height:34px;border-radius:50%;background:${c.bg};border:2px solid #333;cursor:pointer`;b.onclick=()=>{colorIdx=i;refresh(false);};sw.appendChild(b);});
-var gl=canvas.getContext('webgl')||canvas.getContext('experimental-webgl');
-if(!gl){canvas.style.display='none';}
-else{
-// WebGL setup (مختصر ومطور - نفس منطقك القديم لكن بألوان واقعية)
-function rect(x0,x1,y0,y1){return [[x0,y0],[x1,y0],[x1,y1],[x0,y1]];}
-function ccw(poly){var a=0,n=poly.length;for(var i=0;i<n;i++){var j=(i+1)%n;a+=poly[i][0]*poly[j][1]-poly[j][0]*poly[i][1];}return a>0?poly:poly.slice().reverse();}
-function triangulate(poly){var idx=poly.map((_,i)=>i),tris=[],g=0;while(idx.length>3&&g++<1000){var cl=false;for(var i=0;i<idx.length;i++){var a=idx[(i+idx.length-1)%idx.length],b=idx[i],c=idx[(i+1)%idx.length];var A=poly[a],B=poly[b],C=poly[c];var cr=(B[0]-A[0])*(C[1]-A[1])-(B[1]-A[1])*(C[0]-A[0]);if(cr<=1e-9)continue;var inside=false;for(var k=0;k<idx.length;k++){var j=idx[k];if(j===a||j===b||j===c)continue;var p=poly[j];var d1=(p[0]-B[0])*(A[1]-B[1])-(A[0]-B[0])*(p[1]-B[1]);var d2=(p[0]-C[0])*(B[1]-C[1])-(B[0]-C[0])*(p[1]-C[1]);var d3=(p[0]-A[0])*(C[1]-A[1])-(C[0]-A[0])*(p[1]-A[1]);var neg=d1<0||d2<0||d3<0,pos=d1>0||d2>0||d3>0;if(!(neg&&pos)){inside=true;break;}}if(inside)continue;tris.push([a,b,c]);idx.splice(i,1);cl=true;break;}if(!cl)break;}if(idx.length===3)tris.push([idx[0],idx[1],idx[2]]);return tris;}
-function Mesh(){this.d=[];}Mesh.prototype.v=function(p,n,c,uv){this.d.push(p[0],p[1],p[2],n[0],n[1],n[2],c[0],c[1],c[2],uv?uv[0]:0,uv?uv[1]:0);};Mesh.prototype.count=function(){return this.d.length/11;};
-function extrude(m,prof,z0,z1,col){var p=ccw(prof),t=triangulate(p);t.forEach(tr=>{tr.forEach(k=>{m.v([p[k][0],p[k][1],z1],[0,0,1],col);});[tr[0],tr[2],tr[1]].forEach(k=>{m.v([p[k][0],p[k][1],z0],[0,0,-1],col);});for(var i=0;i<p.length;i++){var a=p[i],b=p[(i+1)%p.length],dx=b[0]-a[0],dy=b[1]-a[1],len=Math.sqrt(dx*dx+dy*dy)||1,n=[dy/len,-dx/len,0];var A0=[a[0],a[1],z0],A1=[a[0],a[1],z1],B0=[b[0],b[1],z0],B1=[b[0],b[1],z1];[A0,B0,B1,A0,B1,A1].forEach(q=>m.v(q,n,col));}}
-function box(m,c,s,col){extrude(m,rect(c[0]-s[0]/2,c[0]+s[0]/2,c[1]-s[1]/2,c[1]+s[1]/2),c[2]-s[2]/2,c[2]+s[2]/2,col);}
-function cylZ(m,cx,cy,z0,z1,r,col,n){var pts=[];for(var i=0;i<n;i++){var a=i/n*Math.PI*2;pts.push([cx+Math.cos(a)*r,cy+Math.sin(a)*r]);}extrude(m,pts,z0,z1,col);}
-function quad(m,p0,p1,p2,p3,col){var n=[0,0,1];var u=[[0,0],[1,0],[1,1],[0,1]];[[p0,0],[p1,1],[p2,2],[p0,0],[p2,2],[p3,3]].forEach(e=>m.v(e[0],n,col,u[e[1]]));}
-function discY(m,r,y,col,n,rx,rz){for(var i=0;i<n;i++){var a0=i/n*Math.PI*2,a1=(i+1)/n*Math.PI*2;m.v([0,y,0],[0,1,0],col);m.v([Math.cos(a1)*(rx||r),y,Math.sin(a1)*(rz||r)],[0,1,0],col);m.v([Math.cos(a0)*(rx||r),y,Math.sin(a0)*(rz||r)],[0,1,0],col);}}
-var C_GLASS=[0.15,0.2,0.25],C_TIRE=[0.07,0.07,0.07],C_HUB=[0.62,0.62,0.62],C_GOLD=[0.83,0.69,0.22],C_GROUND=[0.11,0.11,0.11],C_SHADOW=[0.03,0.03,0.03];
-function buildVehicle(v){var m=new Mesh(),W=v.W,L=v.L,hz=W/2;discY(m,L*0.85,0,C_GROUND,56);discY(m,1,0.006,C_SHADOW,40,L*0.58,W*0.66);extrude(m,v.profile,-hz,hz,v.body);v.windows.forEach(w=>extrude(m,w,-hz-0.008,hz+0.008,C_GLASS));v.glass.forEach(g=>{var n=[0,0,0];var b0=[g.b[0],g.b[1],-g.hw],b1=[g.b[0],g.b[1],g.hw],t1=[g.t[0],g.t[1],g.hw],t0=[g.t[0],g.t[1],-g.hw];quad(m,b0,b1,t1,t0,C_GLASS);});[v.wheelX,-v.wheelX].forEach(wx=>{[-1,1].forEach(s=>{var zin=s*(hz-0.24),zout=s*(hz+0.04),a=Math.min(zin,zout),b=Math.max(zin,zout);cylZ(m,wx,v.wheelR,s>0?hz:-hz-0.012,s>0?hz+0.012:-hz,v.wheelR+0.06,[0.04,0.04,0.04],24);cylZ(m,wx,v.wheelR,a,b,v.wheelR,C_TIRE,24);cylZ(m,wx,v.wheelR,s>0?hz+0.035:-hz-0.047,s>0?hz+0.047:-hz-0.035,v.wheelR*0.55,C_HUB,16);});});return m;}
-function zonePlanes(v,z){var out=[];if(z.kind==='side'){var zs=v.W/2+0.006;out.push({o:[z.x0,z.y0,zs],u:[1,0,0],v:[0,1,0],w:z.x1-z.x0,h:z.y1-z.y0});out.push({o:[z.x1,z.y0,-zs],u:[-1,0,0],v:[0,1,0],w:z.x1-z.x0,h:z.y1-z.y0});}else if(z.kind==='rear'){out.push({o:[-v.L/2-0.006,z.y0,z.z0],u:[0,0,1],v:[0,1,0],w:z.z1-z.z0,h:z.y1-z.y0});}else if(z.kind==='roof'){out.push({o:[z.x0,v.roofY+0.006,z.z1],u:[1,0,0],v:[0,0,-1],w:z.x1-z.x0,h:z.z1-z.z0});}return out;}
-var VS='attribute vec3 aPos;attribute vec3 aNor;attribute vec3 aCol;attribute vec2 aUV;uniform mat4 uVP;varying vec3 vN;varying vec3 vC;varying vec2 vUV;void main(){vN=aNor;vC=aCol;vUV=aUV;gl_Position=uVP*vec4(aPos,1.0);}';
-var FS='precision mediump float;varying vec3 vN;varying vec3 vC;varying vec2 vUV;uniform float uTexOn;uniform sampler2D uTex;void main(){vec3 n=normalize(vN);float l=0.40+0.60*max(dot(n,normalize(vec3(0.45,0.85,0.55))),0.0)+0.18*max(dot(n,normalize(vec3(-0.6,0.25,-0.5))),0.0);vec3 base=uTexOn>0.5?texture2D(uTex,vUV).rgb:vC;gl_FragColor=vec4(base*min(l,1.12),1.0);}';
-function shader(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return sh;}
-var prog=gl.createProgram();gl.attachShader(prog,shader(gl.VERTEX_SHADER,VS));gl.attachShader(prog,shader(gl.FRAGMENT_SHADER,FS));gl.bindAttribLocation(prog,0,'aPos');gl.bindAttribLocation(prog,1,'aNor');gl.bindAttribLocation(prog,2,'aCol');gl.bindAttribLocation(prog,3,'aUV');gl.linkProgram(prog);gl.useProgram(prog);
-var uVP=gl.getUniformLocation(prog,'uVP'),uTexOn=gl.getUniformLocation(prog,'uTexOn'),uTex=gl.getUniformLocation(prog,'uTex');gl.uniform1i(uTex,0);gl.enable(gl.DEPTH_TEST);
-var bufBody=gl.createBuffer(),bufAd=gl.createBuffer(),bodyCount=0,adCount=0,tex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tex);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
-function upload(buf,mesh){gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh.d),gl.STATIC_DRAW);return mesh.count();}
-function bindAttribs(buf){gl.bindBuffer(gl.ARRAY_BUFFER,buf);var S=44;gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,S,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,S,12);gl.enableVertexAttribArray(2);gl.vertexAttribPointer(2,3,gl.FLOAT,false,S,24);gl.enableVertexAttribArray(3);gl.vertexAttribPointer(3,2,gl.FLOAT,false,S,36);}
-function perspective(fovy,aspect,n,f){var t=1/Math.tan(fovy/2);return [t/aspect,0,0,0,0,t,0,0,0,0,(f+n)/(n-f),-1,0,0,2*f*n/(n-f),0];}
-function sub(a,b){return [a[0]-b[0],a[1]-b[1],a[2]-b[2]];}function cross(a,b){return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];}function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];}function norm(a){var l=Math.sqrt(dot(a,a))||1;return [a[0]/l,a[1]/l,a[2]/l];}
-function lookAt(eye,c,up){var z=norm(sub(eye,c)),x=norm(cross(up,z)),y=cross(z,x);return [x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,eye),-dot(y,eye),-dot(z,eye),1];}
-function mul(a,b){var o=new Array(16);for(var c=0;c<4;c++)for(var r=0;r<4;r++){var s=0;for(var k=0;k<4;k++)s+=a[k*4+r]*b[c*4+k];o[c*4+r]=s;}return o;}
-var cur={yaw:0.55,pitch:0.20},tgt={yaw:0.55,pitch:0.20},dist=9,targetY=1,raf=0;
-function render(){var w=canvas.width,h=canvas.height;if(!w||!h)return;gl.viewport(0,0,w,h);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);var cp=Math.cos(cur.pitch),eye=[Math.sin(cur.yaw)*cp*dist,targetY+Math.sin(cur.pitch)*dist,Math.cos(cur.yaw)*cp*dist];var vp=mul(perspective(34*Math.PI/180,w/h,1,80),lookAt(eye,[0,targetY,0],[0,1,0]));gl.uniformMatrix4fv(uVP,false,new Float32Array(vp));gl.uniform1f(uTexOn,0);bindAttribs(bufBody);gl.drawArrays(gl.TRIANGLES,0,bodyCount);if(adCount){gl.uniform1f(uTexOn,1);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,tex);bindAttribs(bufAd);gl.drawArrays(gl.TRIANGLES,0,adCount);}}
-function frame(){raf=0;var dy=tgt.yaw-cur.yaw,dp=tgt.pitch-cur.pitch;if(Math.abs(dy)>0.0008||Math.abs(dp)>0.0008){cur.yaw+=dy*0.14;cur.pitch+=dp*0.14;request();}else{cur.yaw=tgt.yaw;cur.pitch=tgt.pitch;}render();}
-function request(){if(!raf)raf=requestAnimationFrame(frame);}
-function nearest(f,t){while(t-f>Math.PI)t-=Math.PI*2;while(t-f<-Math.PI)t+=Math.PI*2;return t;}
-function aim(){var vw=VIEWS[selZ.value]||VIEWS.side;tgt.yaw=nearest(cur.yaw,vw.yaw);tgt.pitch=vw.pitch;request();}
-function resize(){var r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);var w=Math.max(1,Math.round(r.width*d)),h=Math.max(1,Math.round(r.height*d));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}request();}
-if(window.ResizeObserver)new ResizeObserver(resize).observe(canvas);else window.addEventListener('resize',resize);
-var drag=null;canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX};try{canvas.setPointerCapture(e.pointerId);}catch(x){}});canvas.addEventListener('pointermove',e=>{if(!drag)return;var dx=e.clientX-drag.x;drag.x=e.clientX;cur.yaw-=dx*0.008;tgt.yaw=cur.yaw;render();});canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('pointercancel',()=>drag=null);
-var adCanvas=document.createElement('canvas'),adCtx=adCanvas.getContext('2d');
-function updateAd(){var v=VEHICLES[selV.value],z=v.zones[selZ.value],planes=zonePlanes(v,z);var w=planes[0].w,h=planes[0].h,S=1024/Math.max(w,h);adCanvas.width=Math.max(64,Math.round(w*S));adCanvas.height=Math.max(64,Math.round(h*S));var W=adCanvas.width,H=adCanvas.height,c=adCtx,col=COLORS[colorIdx];c.fillStyle=col.bg;c.fillRect(0,0,W,H);var lw=Math.max(4,Math.min(W,H)*0.035);c.strokeStyle=col.fg;c.lineWidth=lw;c.strokeRect(lw,lw,W-2*lw,H-2*lw);var label=txt.value.trim()||'اعلن هنا';var size=H*0.6,min=H*0.26,fam=' "Segoe UI", Tahoma, Arial, sans-serif';c.textAlign='center';c.textBaseline='middle';c.font='800 '+size+'px'+fam;while(size>min&&c.measureText(label).width>W*0.86){size*=0.93;c.font='800 '+size+'px'+fam;}c.fillStyle=col.fg;c.fillText(label,W/2,H/2+size*0.04);gl.bindTexture(gl.TEXTURE_2D,tex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,adCanvas);var m=new Mesh();planes.forEach(p=>{var o=p.o,a=[o[0]+p.u[0]*p.w,o[1]+p.u[1]*p.w,o[2]+p.u[2]*p.w],d=[o[0]+p.v[0]*p.h,o[1]+p.v[1]*p.h,o[2]+p.v[2]*p.h],c2=[a[0]+p.v[0]*p.h,a[1]+p.v[1]*p.h,a[2]+p.v[2]*p.h];quad(m,o,a,c2,d,[1,1,1]);});adCount=upload(bufAd,m);}
-function loadVehicle(){var v=VEHICLES[selV.value];bodyCount=upload(bufBody,buildVehicle(v));dist=v.L*1.25+2;targetY=v.roofY*0.48;}
-function refresh(ch){if(ch)loadVehicle();updateAd();request();}
-selV.addEventListener('change',()=>{fillZones();refresh(true);aim();});selZ.addEventListener('change',()=>{refresh(false);aim();});txt.addEventListener('input',()=>refresh(false));
-fillZones();resize();refresh(true);
-}
+(function () {
+  var logs = document.getElementById('chatLogs');
+  var input = document.getElementById('chatInput');
+  function cairoHour() {
+    try {
+      return parseInt(new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Cairo', hourCycle: 'h23', hour: 'numeric' }).format(new Date()), 10);
+    } catch (e) { return new Date().getHours(); }
+  }
+  function setMode() {
+    var h = cairoHour();
+    document.documentElement.setAttribute('data-mode', (h >= 6 && h < 18)? 'day' : 'night');
+  }
+  setMode();
+  setInterval(setMode, 60000);
+  function addLine(who, text, color) {
+    var p = document.createElement('p');
+    p.style.color = color;
+    var b = document.createElement('b');
+    b.textContent = who;
+    p.appendChild(b);
+    p.appendChild(document.createTextNode(' ' + text));
+    logs.appendChild(p);
+    return p;
+  }
+  function send() {
+    var val = input.value.trim();
+    if (!val) return;
+    var msg = 'مرحبا استاذ محمد - سؤال من منصة MD7: ' + val + ' - الصفحة: ' + window.location.href;
+    addLine('أنت:', val, 'var(--gold)');
+    var r = openWhatsApp(msg);
+    if (r.win) {
+      addLine('MD7:', 'تم تحويل سؤالك للمؤسس على واتساب @' + WA_USERNAME + ' ✅', '#fff');
+      addLine('', 'اضغط إرسال داخل واتساب لإتمام الإرسال.', '#aaa');
+    } else {
+      var p = addLine('MD7:', 'تعذّر فتح واتساب تلقائيًا. ', '#fff');
+      var a = document.createElement('a');
+      a.href = r.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'اضغط هنا للمتابعة';
+      a.style.color = 'var(--gold)';
+      p.appendChild(a);
+    }
+    logs.scrollTop = logs.scrollHeight;
+    input.value = '';
+  }
+  document.getElementById('chatSend').addEventListener('click', send);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' &&!e.isComposing) { e.preventDefault(); send(); }
+  });
+})();
+(function () {
+  'use strict';
+  var BOOKING_TITLE = 'طلب حجز إعلان جديد - MD7 Group - عرض الشركات 70 إعلان فترة محدودة';
+  var PRICES = {
+    side: { cash: 75000, inst: 80000, n: 4 },
+    rear: { cash: 75000, inst: 80000, n: 4 },
+    full: { cash: 190000, inst: 190000, n: 4 }
+  };
+  var ZONES = { side: 'الجانب', rear: 'الخلف', full: 'السيارة كاملة' };
+  var ZONE_KEYS = ['side', 'rear', 'full'];
+  function rect(x0, x1, y0, y1) { return [[x0, y0], [x1, y0], [x1, y1], [x0, y1]]; }
+  var BODY = [0.94, 0.94, 0.94];
+  var VEHICLES = {
+    h1: { label: 'ميكروباص هيونداي H1', L: 5.15, W: 1.92, roofY: 1.9, wheelR: 0.37, wheelX: 1.6, lightY: 0.8, tailY: 1.0, body: BODY,
+      profile: [[-2.55, 0.32], [2.40, 0.32], [2.55, 0.55], [2.55, 0.95], [2.15, 1.25], [1.65, 1.9], [-2.5, 1.9], [-2.55, 1.8]],
+      windows: [rect(0.55, 1.35, 1.12, 1.72), rect(-0.5, 0.4, 1.12, 1.72), rect(-1.55, -0.65, 1.12, 1.72), rect(-2.3, -1.7, 1.12, 1.72)],
+      glass: [{ b: [2.15, 1.25], t: [1.65, 1.9], hw: 0.84 }], side: { x0: -2.1, x1: 1.3, y0: 0.5, y1: 1.05 }, rear: { z0: -0.6, z1: 0.6, y0: 0.55, y1: 1.6 }, rearFull: { z0: -0.88, z1: 0.88, y0: 0.45, y1: 1.75 }, roofFull: { x0: -2.4, x1: 1.55, z0: -0.88, z1: 0.88 } },
+    hiace: { label: 'ميكروباص تويوتا هاي إيس', L: 5.38, W: 1.88, roofY: 2.15, wheelR: 0.37, wheelX: 1.65, lightY: 0.8, tailY: 1.05, body: BODY,
+      profile: [[-2.69, 0.32], [2.5, 0.32], [2.69, 0.52], [2.69, 0.95], [2.5, 1.25], [2.05, 1.98], [1.95, 2.15], [-2.65, 2.15], [-2.69, 2.05]],
+      windows: [rect(0.8, 1.8, 1.35, 1.95), rect(-0.35, 0.65, 1.35, 1.95), rect(-1.5, -0.5, 1.35, 1.95), rect(-2.5, -1.65, 1.35, 1.95)],
+      glass: [{ b: [2.5, 1.25], t: [2.05, 1.98], hw: 0.82 }], side: { x0: -2.4, x1: 1.5, y0: 0.5, y1: 1.25 }, rear: { z0: -0.62, z1: 0.62, y0: 0.6, y1: 1.85 }, rearFull: { z0: -0.85, z1: 0.85, y0: 0.45, y1: 2.0 }, roofFull: { x0: -2.5, x1: 1.85, z0: -0.85, z1: 0.85 } },
+    taxi: { label: 'تاكسي هيونداي فيرنا', L: 4.4, W: 1.7, roofY: 1.42, wheelR: 0.32, wheelX: 1.3, lightY: 0.68, tailY: 0.75, body: BODY,
+      profile: [[-2.2, 0.3], [2.1, 0.3], [2.2, 0.5], [2.2, 0.85], [1.35, 0.95], [0.55, 1.42], [-0.8, 1.42], [-1.5, 1.0], [-2.2, 1.0]],
+      windows: [[[1.0, 1.02], [0.0, 1.02], [0.0, 1.34], [0.58, 1.34]], [[-0.15, 1.02], [-1.2, 1.02], [-0.72, 1.34], [-0.15, 1.34]]],
+      glass: [{ b: [1.35, 0.95], t: [0.55, 1.42], hw: 0.7 }, { b: [-1.5, 1.0], t: [-0.8, 1.42], hw: 0.68 }],
+      extras: [{ c: [0.0, 1.52, 0], s: [0.9, 0.2, 0.32], col: [0.95, 0.77, 0.07] }], side: { x0: -1.3, x1: 1.05, y0: 0.45, y1: 0.9 }, rear: { z0: -0.6, z1: 0.6, y0: 0.55, y1: 0.95 }, rearFull: { z0: -0.75, z1: 0.75, y0: 0.4, y1: 0.98 }, roofFull: { x0: -0.75, x1: 0.5, z0: -0.65, z1: 0.65 } },
+    coaster: { label: 'أتوبيس تويوتا كوستر', L: 7.0, W: 2.08, roofY: 2.62, wheelR: 0.45, wheelX: 2.25, lightY: 0.9, tailY: 1.2, body: BODY,
+      profile: [[-3.5, 0.42], [3.3, 0.42], [3.5, 0.65], [3.5, 1.15], [3.38, 1.4], [3.18, 2.5], [3.05, 2.62], [-3.45, 2.62], [-3.5, 2.5]],
+      windows: [rect(2.05, 2.95, 1.5, 2.35), rect(0.75, 1.95, 1.5, 2.35), rect(-0.55, 0.65, 1.5, 2.35), rect(-1.85, -0.65, 1.5, 2.35), rect(-3.15, -1.95, 1.5, 2.35)],
+      glass: [{ b: [3.38, 1.4], t: [3.18, 2.5], hw: 0.95 }], side: { x0: -3.2, x1: 2.9, y0: 0.65, y1: 1.4 }, rear: { z0: -0.8, z1: 0.8, y0: 0.7, y1: 2.3 }, rearFull: { z0: -0.95, z1: 0.95, y0: 0.5, y1: 2.45 }, roofFull: { x0: -3.3, x1: 2.9, z0: -0.95, z1: 0.95 } }
+  };
+  var VIEWS = { side: { yaw: 0.55, pitch: 0.20 }, rear: { yaw: -1.12, pitch: 0.20 }, full: { yaw: 0.60, pitch: 0.42 } };
+  var form = document.getElementById('bookForm');
+  var selV = document.getElementById('vType');
+  var selZ = document.getElementById('vZone');
+  var selFit = document.getElementById('fitMode');
+  var fileInput = document.getElementById('adFile');
+  var fileNameEl = document.getElementById('fileName');
+  var clearBtn = document.getElementById('clearImg');
+  var uploadBox = document.getElementById('uploadBox');
+  var dropZone = document.getElementById('dropZone');
+  var canvas = document.getElementById('glcanvas');
+  var noGl = document.getElementById('nogl');
+  var statusEl = document.getElementById('bookStatus');
+  var nameEl = document.getElementById('advName');
+  var phoneEl = document.getElementById('advPhone');
+  var state = { img: null, name: '', size: 0, url: '' };
+  var view = null;
+  Object.keys(VEHICLES).forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = VEHICLES[k].label; selV.appendChild(o); });
+  ZONE_KEYS.forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = ZONES[k]; selZ.appendChild(o); });
+  function fmt(n) { return n.toLocaleString('en-US'); }
+  function payValue() { return form.querySelector('input[name="pay"]:checked').value; }
+  function updatePrice() {
+    var z = selZ.value, p = PRICES[z], pay = payValue(), per = p.inst / p.n, fixed = p.cash === p.inst;
+    document.getElementById('payCashTxt').textContent = 'كاش — ' + fmt(p.cash) + ' جنيه';
+    document.getElementById('payInstTxt').textContent = 'تقسيط على ' + p.n + ' دفعات — ' + fmt(p.inst) + ' جنيه (' + fmt(per) + ' × ' + p.n + (fixed? '، بدون أي زيادة' : '') + ')';
+    document.getElementById('totalVal').textContent = fmt(pay === 'cash'? p.cash : p.inst);
+    document.getElementById('totalSub').textContent = pay === 'cash'? 'دفع كاش' : 'تقسيط ' + fmt(per) + ' جنيه × ' + p.n + ' دفعات' + (fixed? ' (بدون زيادة)' : '');
+  }
+  function showUpload() { uploadBox.hidden = false; dropZone.focus(); }
+  function hideUpload() { uploadBox.hidden = true; }
+  function setStatus(msg, cls) { statusEl.className = 'status' + (cls? ' ' + cls : ''); statusEl.textContent = msg; }
+  function clearImage() {
+    if (state.url) URL.revokeObjectURL(state.url);
+    state = { img: null, name: '', size: 0, url: '' };
+    fileInput.value = '';
+    fileNameEl.textContent = ''; fileNameEl.className = 'fit';
+    clearBtn.hidden = true;
+    if (view) view.refreshAd();
+  }
+  function setImageFile(file) {
+    if (!file) return;
+    if (!/^image\//.test(file.type)) { setStatus('الملف المختار ليس صورة. اختر ملف صورة (JPG أو PNG).', 'err'); return; }
+    if (file.size > 10 * 1024 * 1024) { setStatus('حجم الصورة كبير (أكثر من 10 ميجا). اختر صورة أصغر.', 'err'); return; }
+    var url = URL.createObjectURL(file), img = new Image();
+    img.onload = function () {
+      if (state.url) URL.revokeObjectURL(state.url);
+      state = { img: img, name: file.name.replace(/[\u0000-\u001f]/g, '').slice(0, 60), size: file.size, url: url };
+      fileNameEl.textContent = '✓ ' + state.name + ' (' + Math.max(1, Math.round(file.size / 1024)) + ' KB)';
+      fileNameEl.className = 'fit ok';
+      clearBtn.hidden = false;
+      setStatus('', '');
+      hideUpload();
+      if (view) view.refreshAd();
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); setStatus('تعذّر قراءة الصورة. جرّب صورة أخرى.', 'err'); };
+    img.src = url;
+  }
+  document.getElementById('pickImg').addEventListener('click', function () { fileInput.click(); });
+  dropZone.addEventListener('click', function () { fileInput.click(); });
+  dropZone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
+  ['dragenter', 'dragover'].forEach(function (ev) { dropZone.addEventListener(ev, function (e) { e.preventDefault(); dropZone.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { dropZone.addEventListener(ev, function (e) { e.preventDefault(); dropZone.classList.remove('over'); }); });
+  dropZone.addEventListener('drop', function (e) { if (e.dataTransfer && e.dataTransfer.files[0]) setImageFile(e.dataTransfer.files[0]); });
+  fileInput.addEventListener('change', function () { setImageFile(fileInput.files[0]); });
+  clearBtn.addEventListener('click', clearImage);
+  document.getElementById('closeUpload').addEventListener('click', hideUpload);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideUpload(); });
+  function digitsToLatin(s) { return s.replace(/[٠-٩]/g, function (d) { return String(d.charCodeAt(0) - 1632); }); }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = nameEl.value.trim();
+    var phone = digitsToLatin(phoneEl.value).replace(/[\s\-()]/g, '');
+    if (!state.img) { setStatus('ارفع صورة الإعلان أولًا: اضغط على المركبة أو على زر «اختيار صورة».', 'err'); return; }
+    if (name.length < 2) { setStatus('اكتب اسم المعلن.', 'err'); nameEl.focus(); return; }
+    if (!/^\+?\d{8,15}$/.test(phone)) { setStatus('اكتب رقم تواصل صحيحًا (أرقام فقط، من 8 إلى 15 رقمًا).', 'err'); phoneEl.focus(); return; }
+    var z = selZ.value, p = PRICES[z], pay = payValue(), total = pay === 'cash'? p.cash : p.inst;
+    var payText = pay === 'cash'? 'كاش' : 'تقسيط على ' + p.n + ' دفعات (' + fmt(p.inst / p.n) + ' جنيه للدفعة)';
+    var msg = [ BOOKING_TITLE, '', 'نوع المركبة: ' + VEHICLES[selV.value].label, 'مكان الإعلان: ' + ZONES[z], 'الصورة: ' + state.name + ' (سأرفقها في هذه المحادثة)', 'طريقة الدفع: ' + payText, 'الإجمالي: ' + fmt(total) + ' جنيه', 'اسم المعلن: ' + name, 'رقم التواصل: ' + phone, 'الصفحة: ' + window.location.href ].join('\n');
+    var r = openWhatsApp(msg);
+    statusEl.className = 'status ok';
+    statusEl.textContent = '';
+    if (r.win) {
+      statusEl.textContent = 'تم تحويل طلبك للمؤسس على واتساب @' + WA_USERNAME + ' ✅ اضغط إرسال داخل واتساب، وأرفق صورة الإعلان في المحادثة.';
+    } else {
+      statusEl.appendChild(document.createTextNode('تعذّر فتح واتساب تلقائيًا. '));
+      var a = document.createElement('a'); a.href = r.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'اضغط هنا للمتابعة'; statusEl.appendChild(a);
+    }
+  });
+  selZ.addEventListener('change', function () { updatePrice(); if (view) { view.refreshAd(); view.aim(); } });
+  selV.addEventListener('change', function () { if (view) { view.refreshVehicle(); view.refreshAd(); view.aim(); } });
+  selFit.addEventListener('change', function () { if (view) view.refreshAd(); });
+  Array.prototype.forEach.call(form.querySelectorAll('input[name="pay"]'), function (r) { r.addEventListener('change', updatePrice); });
+  updatePrice();
+  function initGL() {
+    var gl = null;
+    try { gl = canvas.getContext('webgl', { antialias: true, alpha: false }) || canvas.getContext('experimental-webgl'); } catch (e) { gl = null; }
+    if (!gl) { canvas.style.display = 'none'; noGl.style.display = 'block'; return null; }
+    function perspective(fovy, aspect, n, f) { var t = 1 / Math.tan(fovy / 2); return [t / aspect, 0, 0, 0, 0, t, 0, 0, 0, 0, (f + n) / (n - f), -1, 0, 0, 2 * f * n / (n - f), 0]; }
+    function sub(a, b) { return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }
+    function cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
+    function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+    function norm(a) { var l = Math.sqrt(dot(a, a)) || 1; return [a[0] / l, a[1] / l, a[2] / l]; }
+    function lookAt(eye, c, up) { var z = norm(sub(eye, c)), x = norm(cross(up, z)), y = cross(z, x); return [x[0], y[0], z[0], 0, x[1], y[1], z[1], 0, x[2], y[2], z[2], 0, -dot(x, eye), -dot(y, eye), -dot(z, eye), 1]; }
+    function mul(a, b) { var o = new Array(16); for (var c = 0; c < 4; c++) for (var r = 0; r < 4; r++) { var s = 0; for (var k = 0; k < 4; k++) s += a[k * 4 + r] * b[c * 4 + k]; o[c * 4 + r] = s; } return o; }
+    function Mesh() { this.d = []; }
+    Mesh.prototype.v = function (p, n, c, uv) { this.d.push(p[0], p[1], p[2], n[0], n[1], n[2], c[0], c[1], c[2], uv? uv[0] : 0, uv? uv[1] : 0); };
+    Mesh.prototype.count = function () { return this.d.length / 11; };
+    function ccw(poly) { var a = 0, n = poly.length; for (var i = 0; i < n; i++) { var j = (i + 1) % n; a += poly[i][0] * poly[j][1] - poly[j][0] * poly[i][1]; } return a > 0? poly : poly.slice().reverse(); }
+    function pointInTri(p, a, b, c) { var d1 = (p[0] - b[0]) * (a[1] - b[1]) - (a[0] - b[0]) * (p[1] - b[1]); var d2 = (p[0] - c[0]) * (b[1] - c[1]) - (b[0] - c[0]) * (p[1] - c[1]); var d3 = (p[0] - a[0]) * (c[1] - a[1]) - (c[0] - a[0]) * (p[1] - a[1]); return!((d1 < 0 || d2 < 0 || d3 < 0) && (d1 > 0 || d2 > 0 || d3 > 0)); }
+    function triangulate(poly) { var idx = poly.map(function (_, i) { return i; }), tris = [], guard = 0; while (idx.length > 3 && guard++ < 1000) { var clipped = false; for (var i = 0; i < idx.length; i++) { var a = idx[(i + idx.length - 1) % idx.length], b = idx[i], c = idx[(i + 1) % idx.length]; var A = poly[a], B = poly[b], C = poly[c]; if ((B[0] - A[0]) * (C[1] - A[1]) - (B[1] - A[1]) * (C[0] - A[0]) <= 1e-9) continue; var inside = false; for (var k = 0; k < idx.length; k++) { var j = idx[k]; if (j === a || j === b || j === c) continue; if (pointInTri(poly[j], A, B, C)) { inside = true; break; } } if (inside) continue; tris.push([a, b, c]); idx.splice(i, 1); clipped = true; break; } if (!clipped) break; } if (idx.length === 3) tris.push([idx[0], idx[1], idx[2]]); return tris; }
+    function extrude(m, prof, z0, z1, col) { var p = ccw(prof), t = triangulate(p), i; t.forEach(function (tr) { tr.forEach(function (k) { m.v([p[k][0], p[k][1], z1], [0, 0, 1], col); }); [tr[0], tr[2], tr[1]].forEach(function (k) { m.v([p[k][0], p[k][1], z0], [0, 0, -1], col); }); for (i = 0; i < p.length; i++) { var a = p[i], b = p[(i + 1) % p.length], dx = b[0] - a[0], dy = b[1] - a[1]; var len = Math.sqrt(dx * dx + dy * dy) || 1, n = [dy / len, -dx / len, 0]; var A0 = [a[0], a[1], z0], A1 = [a[0], a[1], z1], B0 = [b[0], b[1], z0], B1 = [b[0], b[1], z1]; [A0, B0, B1, A0, B1, A1].forEach(function (q) { m.v(q, n, col); }); } }
+    function box(m, c, s, col) { extrude(m, rect(c[0] - s[0] / 2, c[0] + s[0] / 2, c[1] - s[1] / 2, c[1] + s[1] / 2), c[2] - s[2] / 2, c[2] + s[2] / 2, col); }
+    function cylZ(m, cx, cy, z0, z1, r, col, n) { var pts = []; for (var i = 0; i < n; i++) { var a = i / n * Math.PI * 2; pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); } extrude(m, pts, z0, z1, col); }
+    function quad(m, p0, p1, p2, p3, col) { var n = norm(cross(sub(p1, p0), sub(p3, p0))), u = [[0, 0], [1, 0], [1, 1], [0, 1]]; [[p0, 0], [p1, 1], [p2, 2], [p0, 0], [p2, 2], [p3, 3]].forEach(function (e) { m.v(e[0], n, col, u[e[1]]); }); }
+    function discY(m, y, col, n, rx, rz) { for (var i = 0; i < n; i++) { var a0 = i / n * Math.PI * 2, a1 = (i + 1) / n * Math.PI * 2; m.v([0, y, 0], [0, 1, 0], col); m.v([Math.cos(a1) * rx, y, Math.sin(a1) * rz], [0, 1, 0], col); m.v([Math.cos(a0) * rx, y, Math.sin(a0) * rz], [0, 1, 0], col); } }
+    function ringY(m, r0, r1, y, col, n) { for (var i = 0; i < n; i++) { var a0 = i / n * Math.PI * 2, a1 = (i + 1) / n * Math.PI * 2; var p = function (r, a) { return [Math.cos(a) * r, y, Math.sin(a) * r]; }; [p(r0, a0), p(r1, a0), p(r1, a1), p(r0, a0), p(r1, a1), p(r0, a1)].forEach(function (q) { m.v(q, [0, 1, 0], col); }); } }
+    var C_GLASS = [0.15, 0.2, 0.25], C_TIRE = [0.07, 0.07, 0.07], C_HUB = [0.62, 0.62, 0.62], C_ARCH = [0.04, 0.04, 0.04], C_DARK = [0.16, 0.16, 0.16], C_LIGHT = [1.0, 0.92, 0.65], C_RED = [0.75, 0.15, 0.12], C_GOLD = [0.83, 0.69, 0.22], C_GROUND = [0.11, 0.11, 0.11], C_SHADOW = [0.03, 0.03, 0.03], WHITE = [1, 1, 1];
+    function buildVehicle(v) { var m = new Mesh(), W = v.W, L = v.L, hz = W / 2; discY(m, 0, C_GROUND, 56, L * 0.85, L * 0.85); ringY(m, L * 0.85, L * 0.85 + 0.07, 0.003, C_GOLD, 72); discY(m, 0.006, C_SHADOW, 40, L * 0.58, W * 0.66); extrude(m, v.profile, -hz, hz, v.body); v.windows.forEach(function (w) { extrude(m, w, -hz - 0.008, hz + 0.008, C_GLASS); }); var cy = v.roofY / 2; v.glass.forEach(function (g) { var s = [g.t[0] - g.b[0], g.t[1] - g.b[1]], n = norm([s[1], -s[0], 0]); var mid = [(g.b[0] + g.t[0]) / 2, (g.b[1] + g.t[1]) / 2]; if (n[0] * mid[0] + n[1] * (mid[1] - cy) < 0) n = [-n[0], -n[1], 0]; var o = 0.008, bx = g.b[0] + n[0] * o, by = g.b[1] + n[1] * o, tx = g.t[0] + n[0] * o, ty = g.t[1] + n[1] * o; quad(m, [bx, by, -g.hw], [bx, by, g.hw], [tx, ty, g.hw], [tx, ty, -g.hw], C_GLASS); }); box(m, [L / 2 + 0.01, 0.46, 0], [0.1, 0.24, W * 0.96], C_DARK); box(m, [-L / 2 - 0.01, 0.46, 0], [0.1, 0.24, W * 0.96], C_DARK); [-1, 1].forEach(function (s) { box(m, [L / 2 + 0.008, v.lightY, s * W * 0.36], [0.04, 0.14, 0.3], C_LIGHT); box(m, [-L / 2 - 0.008, v.tailY, s * W * 0.38], [0.04, 0.22, 0.12], C_RED); }); (v.extras || []).forEach(function (e) { box(m, e.c, e.s, e.col); }); [v.wheelX, -v.wheelX].forEach(function (wx) { [-1, 1].forEach(function (s) { var zin = s * (hz - 0.24), zout = s * (hz + 0.04); cylZ(m, wx, v.wheelR, s > 0? hz : -hz - 0.012, s > 0? hz + 0.012 : -hz, v.wheelR + 0.06, C_ARCH, 24); cylZ(m, wx, v.wheelR, Math.min(zin, zout), Math.max(zin, zout), v.wheelR, C_TIRE, 24); cylZ(m, wx, v.wheelR, s > 0? hz + 0.035 : -hz - 0.047, s > 0? hz + 0.047 : -hz - 0.035, v.wheelR * 0.55, C_HUB, 16); }); }); return m; }
+    function planeQuad(o, u, vv, w, h) { return function (m) { var a = [o[0] + u[0] * w, o[1] + u[1] * w, o[2] + u[2] * w], d = [o[0] + vv[0] * h, o[1] + vv[1] * h, o[2] + vv[2] * h]; quad(m, o, a, [a[0] + vv[0] * h, a[1] + vv[1] * h, a[2] + vv[2] * h], d, WHITE); }; }
+    function sidePlanes(v, r, zs) { var w = r.x1 - r.x0, h = r.y1 - r.y0; return [planeQuad([r.x0, r.y0, zs], [1, 0, 0], [0, 1, 0], w, h), planeQuad([r.x1, r.y0, -zs], [-1, 0, 0], [0, 1, 0], w, h)]; }
+    function rearPlane(v, r) { return planeQuad([-v.L / 2 - 0.006, r.y0, r.z0], [0, 0, 1], [0, 1, 0], r.z1 - r.z0, r.y1 - r.y0); }
+    function roofPlane(v, r) { return planeQuad([r.x0, v.roofY + 0.006, r.z1], [1, 0, 0], [0, 0, -1], r.x1 - r.x0, r.z1 - r.z0); }
+    function silhouette(v, sign) { var p = ccw(v.profile), tr = triangulate(p), i, minx = 1e9, maxx = -1e9, miny = 1e9, maxy = -1e9; for (i = 0; i < p.length; i++) { minx = Math.min(minx, p[i][0]); maxx = Math.max(maxx, p[i][0]); miny = Math.min(miny, p[i][1]); maxy = Math.max(maxy, p[i][1]); } var zs = sign * (v.W / 2 + 0.014); return { w: maxx - minx, h: maxy - miny, build: function (m) { tr.forEach(function (t) { t.forEach(function (k) { var x = p[k][0], y = p[k][1], u = (x - minx) / (maxx - minx); m.v([x, y, zs], [0, 0, sign], WHITE, [sign < 0? 1 - u : u, (y - miny) / (maxy - miny)]); }); }); } }; }
+    function surfaceGroups(v, zone) { if (zone === 'side') { var s = v.side; return [{ w: s.x1 - s.x0, h: s.y1 - s.y0, parts: sidePlanes(v, s, v.W / 2 + 0.006) }]; } if (zone === 'rear') { var r = v.rear; return [{ w: r.z1 - r.z0, h: r.y1 - r.y0, parts: [rearPlane(v, r)] }]; } var a = silhouette(v, 1), b = silhouette(v, -1), rf = v.rearFull, tf = v.roofFull; return [ { w: a.w, h: a.h, parts: [a.build, b.build] }, { w: rf.z1 - rf.z0, h: rf.y1 - rf.y0, parts: [rearPlane(v, rf)] }, { w: tf.x1 - tf.x0, h: tf.z1 - tf.z0, parts: [roofPlane(v, tf)] } ]; }
+    var VS = 'attribute vec3 aPos;attribute vec3 aNor;attribute vec3 aCol;attribute vec2 aUV;uniform mat4 uVP;varying vec3 vN;varying vec3 vC;varying vec2 vUV;void main(){vN=aNor;vC=aCol;vUV=aUV;gl_Position=uVP*vec4(aPos,1.0);}';
+    var FS = 'precision mediump float;varying vec3 vN;varying vec3 vC;varying vec2 vUV;uniform float uTexOn;uniform sampler2D uTex;void main(){vec3 n=normalize(vN);float l=0.40+0.60*max(dot(n,normalize(vec3(0.45,0.85,0.55))),0.0)+0.18*max(dot(n,normalize(vec3(-0.6,0.25,-0.5))),0.0);vec3 base=uTexOn>0.5?texture2D(uTex,vUV).rgb:vC;gl_FragColor=vec4(base*min(l,1.12),1.0);}';
+    function shader(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error('shader: ' + gl.getShaderInfoLog(s)); return s; }
+    var prog = gl.createProgram(); gl.attachShader(prog, shader(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, FS)); gl.bindAttribLocation(prog, 0, 'aPos'); gl.bindAttribLocation(prog, 1, 'aNor'); gl.bindAttribLocation(prog, 2, 'aCol'); gl.bindAttribLocation(prog, 3, 'aUV'); gl.linkProgram(prog); if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) console.error('link: ' + gl.getProgramInfoLog(prog)); gl.useProgram(prog); var uVP = gl.getUniformLocation(prog, 'uVP'), uTexOn = gl.getUniformLocation(prog, 'uTexOn'); gl.uniform1i(gl.getUniformLocation(prog, 'uTex'), 0); gl.enable(gl.DEPTH_TEST);
+    var bufBody = gl.createBuffer(), bodyCount = 0, slots = [], drawList = [];
+    function upload(buf, mesh) { gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(mesh.d), gl.STATIC_DRAW); return mesh.count(); }
+    function bindAttribs(buf) { gl.bindBuffer(gl.ARRAY_BUFFER, buf); var S = 44; gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 3, gl.FLOAT, false, S, 0); gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1, 3, gl.FLOAT, false, S, 12); gl.enableVertexAttribArray(2); gl.vertexAttribPointer(2, 3, gl.FLOAT, false, S, 24); gl.enableVertexAttribArray(3); gl.vertexAttribPointer(3, 2, gl.FLOAT, false, S, 36); }
+    function newSlot() { var t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE); return { tex: t, buf: gl.createBuffer(), count: 0 }; }
+    var cur = { yaw: VIEWS.side.yaw, pitch: VIEWS.side.pitch }, tgt = { yaw: cur.yaw, pitch: cur.pitch };
+    var raf = 0, dist = 9, targetY = 1;
+    function render() { var w = canvas.width, h = canvas.height; if (!w ||!h) return; gl.viewport(0, 0, w, h); gl.clearColor(0.07,0.07,0.07,1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); var cp = Math.cos(cur.pitch), eye = [Math.sin(cur.yaw) * cp * dist, targetY + Math.sin(cur.pitch) * dist, Math.cos(cur.yaw) * cp * dist]; var vp = mul(perspective(34 * Math.PI / 180, w / h, 1, 80), lookAt(eye, [0, targetY, 0], [0, 1, 0])); gl.uniformMatrix4fv(uVP, false, new Float32Array(vp)); gl.uniform1f(uTexOn, 0); bindAttribs(bufBody); gl.drawArrays(gl.TRIANGLES, 0, bodyCount); gl.uniform1f(uTexOn, 1); gl.activeTexture(gl.TEXTURE0); drawList.forEach(function (s) { gl.bindTexture(gl.TEXTURE_2D, s.tex); bindAttribs(s.buf); gl.drawArrays(gl.TRIANGLES, 0, s.count); }); }
+    function frame() { raf = 0; var dy = tgt.yaw - cur.yaw, dp = tgt.pitch - cur.pitch; if (Math.abs(dy) > 0.0008 || Math.abs(dp) > 0.0008) { cur.yaw += dy * 0.14; cur.pitch += dp * 0.14; request(); } else { cur.yaw = tgt.yaw; cur.pitch = tgt.pitch; } render(); }
+    function request() { if (!raf) raf = requestAnimationFrame(frame); }
+    function nearest(from, to) { while (to - from > Math.PI) to -= Math.PI * 2; while (to - from < -Math.PI) to += Math.PI * 2; return to; }
+    function resize() {
+      var r = canvas.parentElement.getBoundingClientRect();
+      var d = Math.min(window.devicePixelRatio || 1, 2);
+      var w = Math.max(100, Math.round(r.width * d));
+      var h = Math.max(100, Math.round(r.width * 0.625 * d));
+      if (canvas.width!== w || canvas.height!== h) { canvas.width = w; canvas.height = h; }
+      request();
+    }
+    if (window.ResizeObserver) new ResizeObserver(resize).observe(canvas.parentElement); else window.addEventListener('resize', resize);
+    var drag = null;
+    canvas.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, x0: e.clientX, y0: e.clientY, t: Date.now(), moved: false }; try { canvas.setPointerCapture(e.pointerId); } catch (x) {} });
+    canvas.addEventListener('pointermove', function (e) { if (!drag) return; if (Math.abs(e.clientX - drag.x0) > 6 || Math.abs(e.clientY - drag.y0) > 6) drag.moved = true; var dx = e.clientX - drag.x; drag.x = e.clientX; cur.yaw -= dx * 0.008; tgt.yaw = cur.yaw; render(); });
+    canvas.addEventListener('pointerup', function () { var d = drag; drag = null; if (d &&!d.moved && Date.now() - d.t < 600) showUpload(); });
+    canvas.addEventListener('pointercancel', function () { drag = null; });
+    var adCanvas = document.createElement('canvas'), adCtx = adCanvas.getContext('2d');
+    function paint(g) {
+      var S = 1024 / Math.max(g.w, g.h), W = Math.max(64, Math.round(g.w * S)), H = Math.max(64, Math.round(g.h * S)), c = adCtx;
+      adCanvas.width = W; adCanvas.height = H;
+      if (state.img) {
+        var iw = state.img.naturalWidth, ih = state.img.naturalHeight, contain = selFit.value === 'contain';
+        c.fillStyle = '#111'; c.fillRect(0, 0, W, H);
+        var k = contain? Math.min(W / iw, H / ih) : Math.max(W / iw, H / ih);
+        c.drawImage(state.img, (W - iw * k) / 2, (H - ih * k) / 2, iw * k, ih * k);
+      } else {
+        c.fillStyle = '#D4AF37'; c.fillRect(0, 0, W, H);
+        var lw = Math.max(4, Math.min(W, H) * 0.035);
+        c.strokeStyle = '#000'; c.lineWidth = lw; c.strokeRect(lw, lw, W - 2 * lw, H - 2 * lw);
+        var label = 'ارفع صورتك هنا', size = H * 0.5, fam = ' "Segoe UI", Tahoma, Arial, sans-serif';
+        c.textAlign = 'center'; c.textBaseline = 'middle'; c.font = '800 ' + size + 'px' + fam;
+        while (size > 12 && c.measureText(label).width > W * 0.84) { size *= 0.93; c.font = '800 ' + size + 'px' + fam; }
+        c.fillStyle = '#000'; c.fillText(label, W / 2, H / 2 + size * 0.04);
+      }
+      return adCanvas;
+    }
+    function refreshAd() {
+      var v = VEHICLES[selV.value], groups = surfaceGroups(v, selZ.value);
+      drawList = groups.map(function (g, i) {
+        var slot = slots[i] || (slots[i] = newSlot()), m = new Mesh();
+        gl.bindTexture(gl.TEXTURE_2D, slot.tex);
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, paint(g));
+        g.parts.forEach(function (p) { p(m); });
+        slot.count = upload(slot.buf, m);
+        return slot;
+      });
+      request();
+    }
+    function refreshVehicle() {
+      var v = VEHICLES[selV.value];
+      bodyCount = upload(bufBody, buildVehicle(v));
+      dist = v.L * 1.25 + 2; targetY = v.roofY * 0.48;
+    }
+    function aim() {
+      var vw = VIEWS[selZ.value];
+      tgt.yaw = nearest(cur.yaw, vw.yaw); tgt.pitch = vw.pitch;
+      request();
+    }
+    // مهم: نستنى الصفحة تحمل تماما قبل الرسم
+    function start() { resize(); refreshVehicle(); refreshAd(); aim(); setTimeout(function(){ resize(); render(); }, 300); }
+    if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
+    return { refreshAd: refreshAd, refreshVehicle: refreshVehicle, aim: aim };
+  }
+  view = initGL();
+  if (!view) { setTimeout(function(){ view = initGL(); }, 500); }
+})();
 </script>
 </body>
 </html>
