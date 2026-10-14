@@ -4,63 +4,63 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MD7 Group - الحاضر هو المستقبل & MD7 AI</title>
-<script src="cdn.jsdelivr.net"></script>
-<script src="cdn.jsdelivr.net"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script type="text/javascript">(function(){ emailjs.init("-VHvtaMeTpVBPHzIG"); })();</script>
 <style>
   :root { --gold: #D4AF37; --silver: #C0C0C0; --black: #050505; --dark-gray: #121212; }
-{ box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 100%; min-height: 100vh; overflow-x: hidden; background-color: var(--black); }
   body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; direction: rtl; }
   #join-fab { display:none; }
   header { background: #000; border-bottom: 2px solid var(--gold); padding: 14px 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; width: 100%; gap:8px; }
-  .brand-logo { display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; text-decoration: none; }
-  .md-line { display:flex; align-items:center; gap:6px; font-size:28px; font-weight:900; }
-  .logo-M { color: var(--gold); } .logo-D { color: var(--silver); }
-  .group-line { display:flex; gap:2px; font-size:15px; letter-spacing:4px; font-weight:900; margin-top:2px; }
-  .logo-G { color: #ff0000; } .logo-R { color: #0000ff; } .logo-O { color: #00ff00; } .logo-U { color: #ffff00; } .logo-P { color: #ffa500; }
-  .header-actions { display:flex; gap:0; justify-content:center; margin-top:10px; width:100%; max-width:340px; }
-  .btn-share-right { flex:1; background:transparent; border:1px solid var(--gold); color:var(--gold); padding:9px 10px; border-radius:0 20px 20px 0; font-weight:700; cursor:pointer; font-size:14px; }
-  .btn-contrib-left { flex:1; background:linear-gradient(135deg, var(--gold), #B8860B); color:#000; border:1px solid var(--gold); padding:9px 10px; border-radius:20px 0 0 20px; font-weight:900; cursor:pointer; font-size:14px; }
-  .view-section { display: none; padding: 15px; width: 100%; max-width: 1200px; margin: 0 auto; }
-  .view-section.active { display: block; }
-  .solar-system-container { --R: min(37.5vw, 225px); position: relative; width: 100%; height: 70vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-  .center-sun-moon { width: calc(var(--R) _ 1.1); height: calc(var(--R) _ 1.1); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; z-index: 10; cursor: pointer; text-align: center; overflow:hidden; }
-  .sun-mode { background: radial-gradient(circle, #fff7ad 0%, #ffd700 50%, #ff8c00 100%); box-shadow: 0 0 50px 8px rgba(255, 183, 40, 0.65); color: #000; }
-  .moon-mode { background: radial-gradient(circle, #0f2038 0%, #07101c 100%); color: #fff; }
-  .moon-phase { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; pointer-events: none; }
-  .moon-mode .moon-phase { display: block; }
+ .brand-logo { display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; text-decoration: none; }
+ .md-line { display:flex; align-items:center; gap:6px; font-size:28px; font-weight:900; }
+ .logo-M { color: var(--gold); }.logo-D { color: var(--silver); }
+ .group-line { display:flex; gap:2px; font-size:15px; letter-spacing:4px; font-weight:900; margin-top:2px; }
+ .logo-G { color: #ff0000; }.logo-R { color: #0000ff; }.logo-O { color: #00ff00; }.logo-U { color: #ffff00; }.logo-P { color: #ffa500; }
+ .header-actions { display:flex; gap:0; justify-content:center; margin-top:10px; width:100%; max-width:340px; }
+ .btn-share-right { flex:1; background:transparent; border:1px solid var(--gold); color:var(--gold); padding:9px 10px; border-radius:0 20px 20px 0; font-weight:700; cursor:pointer; font-size:14px; }
+ .btn-contrib-left { flex:1; background:linear-gradient(135deg, var(--gold), #B8860B); color:#000; border:1px solid var(--gold); padding:9px 10px; border-radius:20px 0 0 20px; font-weight:900; cursor:pointer; font-size:14px; }
+ .view-section { display: none; padding: 15px; width: 100%; max-width: 1200px; margin: 0 auto; }
+ .view-section.active { display: block; }
+ .solar-system-container { --R: min(37.5vw, 225px); position: relative; width: 100%; height: 70vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+ .center-sun-moon { width: calc(var(--R) * 1.1); height: calc(var(--R) * 1.1); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; z-index: 10; cursor: pointer; text-align: center; overflow:hidden; }
+ .sun-mode { background: radial-gradient(circle, #fff7ad 0%, #ffd700 50%, #ff8c00 100%); box-shadow: 0 0 50px 8px rgba(255, 183, 40, 0.65); color: #000; }
+ .moon-mode { background: radial-gradient(circle, #0f2038 0%, #07101c 100%); color: #fff; }
+ .moon-phase { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; pointer-events: none; }
+ .moon-mode.moon-phase { display: block; }
   :root { --emb: #5fd0ff; --emb-glow: rgba(95, 208, 255, 0.85); --emb-outline: #04202f; }
   html[data-mode="day"] { --emb: #8e1212; --emb-glow: rgba(255, 70, 70, 0.55); --emb-outline: rgba(255, 244, 200, 0.6); }
-  .emb-star { fill: var(--emb); fill-opacity: 0.2; stroke: var(--emb); stroke-width: 2.6; stroke-linejoin: round; }
-  .emb-txt { fill: var(--emb); stroke: var(--emb-outline); stroke-width: 2.2; paint-order: stroke; stroke-linejoin: round; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-weight: 900; }
-  .emblem { position: relative; z-index: 2; width: 58%; height: 58%; overflow: visible; filter: drop-shadow(0 0 5px var(--emb-glow)); }
-  .emblem-sm { width: 30px; height: 30px; vertical-align: middle; margin-inline-end: 6px; --emb-outline: transparent; filter: drop-shadow(0 0 4px var(--emb-glow)); }
-  html[data-mode="day"] .emblem-sm { --emb: #ff7a7a; --emb-glow: rgba(255, 90, 90, 0.6); }
-  .orbit-ring { position: absolute; width: 75vw; max-width: 450px; height: 75vw; max-height: 450px; border: 1px dashed rgba(212, 175, 55, 0.3); border-radius: 50%; animation: rotateOrbit 35s linear infinite; }
+ .emb-star { fill: var(--emb); fill-opacity: 0.2; stroke: var(--emb); stroke-width: 2.6; stroke-linejoin: round; }
+ .emb-txt { fill: var(--emb); stroke: var(--emb-outline); stroke-width: 2.2; paint-order: stroke; stroke-linejoin: round; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-weight: 900; }
+ .emblem { position: relative; z-index: 2; width: 58%; height: 58%; overflow: visible; filter: drop-shadow(0 0 5px var(--emb-glow)); }
+ .emblem-sm { width: 30px; height: 30px; vertical-align: middle; margin-inline-end: 6px; --emb-outline: transparent; filter: drop-shadow(0 0 4px var(--emb-glow)); }
+  html[data-mode="day"].emblem-sm { --emb: #ff7a7a; --emb-glow: rgba(255, 90, 90, 0.6); }
+ .orbit-ring { position: absolute; width: 75vw; max-width: 450px; height: 75vw; max-height: 450px; border: 1px dashed rgba(212, 175, 55, 0.3); border-radius: 50%; animation: rotateOrbit 35s linear infinite; }
   @keyframes rotateOrbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-  .planet { position: absolute; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; font-weight: bold; font-size: 9px; cursor: pointer; text-align: center; line-height: 1.2; animation: drift 6s ease-in-out infinite; }
-  @keyframes drift { 0%, 100% { translate: 0 0; } 50% { translate: calc(var(--R) _ var(--ix, 0)) calc(var(--R) _ var(--iy, 0)); } }
-  .planet-1 { top: -20px; left: calc(50% - 20px); background: #ff4757; --ix: 0; --iy: 0.16; }
-  .planet-2 { top: 15%; right: -20px; background: #2ed573; --ix: -0.16; --iy: 0.10; }
-  .planet-3 { bottom: 15%; right: -20px; background: #ffa502; --ix: -0.16; --iy: -0.10; }
-  .planet-4 { bottom: -20px; left: calc(50% - 20px); background: #1e90ff; --ix: 0; --iy: -0.16; }
-  .planet-5 { bottom: 15%; left: -20px; background: #9b59b6; --ix: 0.16; --iy: -0.10; }
-  .planet-6 { top: 15%; left: -20px; background: #2acc71; --ix: 0.16; --iy: 0.10; }
-  .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
-  .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
-  .chat-input-row { display: flex; gap: 10px; }
-  .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; }
-  .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
-  .card-box { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
-  .card-box h2 { color: var(--gold); margin-bottom: 15px; font-size: 20px; }
-  .site-footer{ text-align:center; padding:30px; border-top:2px solid var(--gold); margin-top:50px; background:#000; width:100%; }
-  .site-footer h3{ color:var(--gold); font-size:22px; margin-bottom:8px; }
-  .site-footer p{ color:#aaa; margin:5px 0; }
+ .planet { position: absolute; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; font-weight: bold; font-size: 9px; cursor: pointer; text-align: center; line-height: 1.2; animation: drift 6s ease-in-out infinite; }
+  @keyframes drift { 0%, 100% { translate: 0 0; } 50% { translate: calc(var(--R) * var(--ix, 0)) calc(var(--R) * var(--iy, 0)); } }
+ .planet-1 { top: -20px; left: calc(50% - 20px); background: #ff4757; --ix: 0; --iy: 0.16; }
+ .planet-2 { top: 15%; right: -20px; background: #2ed573; --ix: -0.16; --iy: 0.10; }
+ .planet-3 { bottom: 15%; right: -20px; background: #ffa502; --ix: -0.16; --iy: -0.10; }
+ .planet-4 { bottom: -20px; left: calc(50% - 20px); background: #1e90ff; --ix: 0; --iy: -0.16; }
+ .planet-5 { bottom: 15%; left: -20px; background: #9b59b6; --ix: 0.16; --iy: -0.10; }
+ .planet-6 { top: 15%; left: -20px; background: #2acc71; --ix: 0.16; --iy: 0.10; }
+ .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
+ .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
+ .chat-input-row { display: flex; gap: 10px; }
+ .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; }
+ .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+ .card-box { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+ .card-box h2 { color: var(--gold); margin-bottom: 15px; font-size: 20px; }
+ .site-footer{ text-align:center; padding:30px; border-top:2px solid var(--gold); margin-top:50px; background:#000; width:100%; }
+ .site-footer h3{ color:var(--gold); font-size:22px; margin-bottom:8px; }
+ .site-footer p{ color:#aaa; margin:5px 0; }
   #founderModal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:10000; overflow-y:auto; padding:16px; }
-  #founderModal .modal-box{ max-width:620px; margin:20px auto; background:#121212; border:2px solid var(--gold); border-radius:16px; padding:20px; position:relative; box-shadow:0 0 30px rgba(212,175,55,0.25); }
-  #founderModal .close-btn{ position:absolute; left:12px; top:12px; background:#000; border:1px solid var(--gold); color:var(--gold); border-radius:50%; width:32px; height:32px; cursor:pointer; font-size:16px; }
-  #founderModal .founder-img{ width:140px; height:140px; border-radius:50%; border:3px solid var(--gold); object-fit:cover; box-shadow:0 0 20px rgba(212,175,55,0.4); }
+  #founderModal.modal-box{ max-width:620px; margin:20px auto; background:#121212; border:2px solid var(--gold); border-radius:16px; padding:20px; position:relative; box-shadow:0 0 30px rgba(212,175,55,0.25); }
+  #founderModal.close-btn{ position:absolute; left:12px; top:12px; background:#000; border:1px solid var(--gold); color:var(--gold); border-radius:50%; width:32px; height:32px; cursor:pointer; font-size:16px; }
+  #founderModal.founder-img{ width:140px; height:140px; border-radius:50%; border:3px solid var(--gold); object-fit:cover; box-shadow:0 0 20px rgba(212,175,55,0.4); }
 </style>
 </head>
 <body>
@@ -107,7 +107,7 @@
   <div class="modal-box">
     <button class="close-btn" onclick="closeFounder()">✕</button>
     <div style="text-align:center">
-      <img src="صور/IMG_20240419_233122.jpg" onerror="this.onerror=null; this.src='images/IMG_20240419_233122.jpg'; this.onerror=function(){this.onerror=null; this.src='Images/IMG_20240419_233122.jpg'; this.onerror=function(){this.onerror=null; this.src='صور/founder.jpg'; this.onerror=function(){this.onerror=null; this.src='images/founder.jpg'; this.onerror=function(){this.onerror=null; this.src='Images/founder.jpg'; this.onerror=function(){this.src='Images/IMG-20261013-WA1041.jpg'}}}}}" class="founder-img" alt="محمد رضوان الهمام">
+      <img id="founderImgFix" src="صور/IMG_20240419_233122.jpg" class="founder-img" alt="محمد رضوان الهمام">
       <h2 style="color:var(--gold); margin-top:12px; font-size:22px">محمد رضوان الهمام</h2>
       <p style="color:#aaa; font-size:13px">المؤسس - MD7 Group</p>
     </div>
@@ -123,7 +123,7 @@
       <b style="color:var(--gold)">تطوير المشاريع:</b> تحليل وضع المشروع، كشف نقاط الضعف، إعادة تصميم دورة العمل، وتدريب الفريق حتى يصبح المشروع يدار بنظام يعتمد على نفسه.
     </div>
     <div style="text-align:center; margin-top:20px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap">
-      <a href="wa.me استاذ محمد رضوان - عايز اعرف اكتر عن MD7" target="_blank" style="display:inline-block; background:linear-gradient(135deg,var(--gold),#B8860B); color:#000; padding:10px 20px; border-radius:8px; font-weight:900; text-decoration:none">💬 واتساب</a>
+      <a href="https://wa.me/avtarmo?text=مرحبا استاذ محمد رضوان - عايز اعرف اكتر عن MD7" target="_blank" style="display:inline-block; background:linear-gradient(135deg,var(--gold),#B8860B); color:#000; padding:10px 20px; border-radius:8px; font-weight:900; text-decoration:none">💬 واتساب</a>
       <button onclick="closeFounder()" style="background:transparent; border:1px solid var(--gold); color:var(--gold); padding:10px 20px; border-radius:8px; cursor:pointer">إغلاق</button>
     </div>
   </div>
@@ -137,7 +137,7 @@
   function cairoClock(){try{const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Cairo',hourCycle:'h23',hour:'numeric',minute:'numeric',second:'numeric'}).formatToParts(new Date());const get=t=>parseInt(parts.find(p=>p.type===t).value,10);return{h:get('hour'),m:get('minute'),s:get('second')};}catch(e){const d=new Date();return{h:d.getHours(),m:d.getMinutes(),s:d.getSeconds()};}}
   const SYNODIC=29.530588853;
   function moonAgeDays(d){const epoch=Date.UTC(2000,0,6,18,14);const age=((d.getTime()-epoch)/86400000)%SYNODIC;return age<0?age+SYNODIC:age;}
-  function moonShape(age){const R=50,f=age/SYNODIC,k=Math.cos(2_Math.PI_f),rx=Math.abs(k)_R;return{d:'M0,'+(-R)+' A'+R+','+R+' 0 0 1 0,'+R+' A'+rx.toFixed(2)+','+R+' 0 0 '+(k>0?0:1)+' 0,'+(-R)+' Z',waning:f>0.5,illum:(1-k)/2};}
+  function moonShape(age){const R=50,f=age/SYNODIC,k=Math.cos(2*Math.PI*f),rx=Math.abs(k)*R;return{d:'M0,'+(-R)+' A'+R+','+R+' 0 0 1 0,'+R+' A'+rx.toFixed(2)+','+R+' 0 0 '+(k>0?0:1)+' 0,'+(-R)+' Z',waning:f>0.5,illum:(1-k)/2};}
   function updateSolarNode(){
     const t=cairoClock(); const isDay=t.h>=6&&t.h<18; const node=document.getElementById('center-node');
     document.documentElement.setAttribute('data-mode',isDay?'day':'night');
@@ -146,18 +146,41 @@
     const lit=document.getElementById('moon-lit');
     lit.setAttribute('d',moon.d);
     lit.setAttribute('transform',moon.waning?'scale(-1,1)':'');
-    node.style.boxShadow=isDay?'':'0 0 '+Math.round(14+moon.illum_46)+'px '+Math.round(2+moon.illum_8)+'px rgba(190,220,255,'+(0.18+0.5_moon.illum).toFixed(2)+')';
+    node.style.boxShadow=isDay?'':'0 0 '+Math.round(14+moon.illum*46)+'px '+Math.round(2+moon.illum*8)+'px rgba(190,220,255,'+(0.18+0.5*moon.illum).toFixed(2)+')';
   }
-  function syncOrbitToCairo(){const t=cairoClock();const sec=t.h_3600+t.m_60+t.s;const ring=document.querySelector('.orbit-ring');if(ring)ring.style.animationDelay='-'+(sec%35)+'s';document.querySelectorAll('.planet').forEach((p,i)=>{p.style.animationDelay='-'+((sec+i)%6)+'s';});}
+  function syncOrbitToCairo(){const t=cairoClock();const sec=t.h*3600+t.m*60+t.s;const ring=document.querySelector('.orbit-ring');if(ring)ring.style.animationDelay='-'+(sec%35)+'s';document.querySelectorAll('.planet').forEach((p,i)=>{p.style.animationDelay='-'+((sec+i)%6)+'s';});}
   function addChatLine(logs,who,text,color){const p=document.createElement('p');p.style.color=color;const b=document.createElement('b');b.textContent=who;p.appendChild(b);p.appendChild(document.createTextNode(' '+text));logs.appendChild(p);return p;}
-  function sendChatMessage(){const input=document.getElementById('chatInput');const logs=document.getElementById('chatLogs');const val=input.value.trim();if(!val)return;const msg='مرحبا استاذ محمد - سؤال من منصة MD7: '+val+' - الصفحة: '+window.location.href;const url='wa.me'+WA_USERNAME+'?text='+encodeURIComponent(msg);addChatLine(logs,'أنت:',val,'var(--gold)');const w=window.open(url,'_blank');if(w){w.opener=null;addChatLine(logs,'MD7:','تم تحويل سؤالك للمؤسس على واتساب @'+WA_USERNAME+' ✅','#fff');}else{const p=addChatLine(logs,'MD7:','تعذّر فتح واتساب تلقائيًا. ','#fff');const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent='اضغط هنا لفتح واتساب';a.style.color='var(--gold)';p.appendChild(a);}logs.scrollTop=logs.scrollHeight;input.value='';}
+  function sendChatMessage(){const input=document.getElementById('chatInput');const logs=document.getElementById('chatLogs');const val=input.value.trim();if(!val)return;const msg='مرحبا استاذ محمد - سؤال من منصة MD7: '+val+' - الصفحة: '+window.location.href;const url='https://wa.me/'+WA_USERNAME+'?text='+encodeURIComponent(msg);addChatLine(logs,'أنت:',val,'var(--gold)');const w=window.open(url,'_blank');if(w){w.opener=null;addChatLine(logs,'MD7:','تم تحويل سؤالك للمؤسس على واتساب @'+WA_USERNAME+' ✅','#fff');}else{const p=addChatLine(logs,'MD7:','تعذّر فتح واتساب تلقائيًا. ','#fff');const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent='اضغط هنا لفتح واتساب';a.style.color='var(--gold)';p.appendChild(a);}logs.scrollTop=logs.scrollHeight;input.value='';}
   document.getElementById('chatInput').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.isComposing){e.preventDefault();sendChatMessage();}});
   function openFounder(){document.getElementById('founderModal').style.display='block'; document.body.style.overflow='hidden';}
   function closeFounder(){document.getElementById('founderModal').style.display='none'; document.body.style.overflow='';}
-  function shareMD7(){var text='MD7 Group - الحاضر هو المستقبل'; var url=location.href; if(navigator.share){navigator.share({title:'MD7 Group', text:text, url:url})}else{window.open('wa.me'+encodeURIComponent(text+' - '+url),'_blank')}}
+  function shareMD7(){var text='MD7 Group - الحاضر هو المستقبل'; var url=location.href; if(navigator.share){navigator.share({title:'MD7 Group', text:text, url:url})}else{window.open('https://wa.me/?text='+encodeURIComponent(text+' - '+url),'_blank')}}
   function contributeMD7(){window.location.href='join-md7.html';}
   document.getElementById('founderModal').addEventListener('click',function(e){if(e.target===this)closeFounder()});
   window.onload=function(){updateSolarNode();syncOrbitToCairo();setInterval(updateSolarNode,60000);};
+
+  // إصلاح صورة المؤسس - يجرب كل المسارات
+  (function(){
+    var paths = [
+      "صور/IMG_20240419_233122.jpg",
+      "images/IMG_20240419_233122.jpg",
+      "Images/IMG_20240419_233122.jpg",
+      "صور/founder.jpg",
+      "images/founder.jpg",
+      "Images/founder.jpg",
+      "Images/IMG-20261013-WA1041.jpg"
+    ];
+    var idx = 0;
+    var img = document.getElementById('founderImgFix');
+    if(img){
+      img.addEventListener('error', function(){
+        idx++;
+        if(idx < paths.length){
+          this.src = paths[idx];
+        }
+      });
+    }
+  })();
 </script>
 </body>
 </html>
