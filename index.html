@@ -3,213 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD7 Group - الحاضر هو المستقبل & MD7 AI</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-
-<script type="text/javascript">
-  (function(){
-    emailjs.init("-VHvtaMeTpVBPHzIG");
-  })();
-</script>
-
+<title>MD7 GROUP - النهائي المربوط | MD1 واقعي</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-  :root {
-    --gold: #D4AF37;
-    --silver: #C0C0C0;
-    --black: #050505;
-    --dark-gray: #121212;
-  }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden; 
-    background-color: var(--black);
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
-    direction: rtl;
-  }
-
-  /* الزرار العائم */
-  #join-fab {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, var(--gold), #B8860B);
-    color: #000;
-    padding: 12px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 900;
-    z-index: 9999;
-    box-shadow: 0 0 25px rgba(212,175,55,0.6);
-    font-size: 14px;
-  }
-
-  /* الهيدر */
-  header { background: #000; border-bottom: 2px solid var(--gold); padding: 12px 20px; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; width: 100%; }
-  .brand-logo { display: flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 900; cursor: pointer; text-decoration: none; }
-  .logo-M { color: var(--gold); }
-  .logo-D { color: var(--silver); }
-  .logo-G { color: #ff0000; }
-  .logo-R { color: #0000ff; }
-  .logo-O { color: #00ff00; }
-  .logo-U { color: #ffff00; }
-  .logo-P { color: #ffa500; }
-  .group-text { font-size: 14px; letter-spacing: 3px; }
-
-  .view-section { display: none; padding: 15px; width: 100%; max-width: 1200px; margin: 0 auto; }
-  .view-section.active { display: block; }
-
-  /* الدواير صغيرة */
-  .solar-system-container { position: relative; width: 100%; height: 70vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-  .center-sun-moon { width: 85px; height: 85px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; z-index: 10; cursor: pointer; text-align: center; }
-  .sun-mode { background: radial-gradient(circle, #fff7ad 0%, #ffd700 50%, #ff8c00 100%); color: #000; }
-  .moon-mode { background: radial-gradient(circle, #ffffff 0%, #dcdcdc 50%, #708090 100%); color: #000; }
-  
-  .orbit-ring { 
-    position: absolute; 
-    width: 75vw; 
-    max-width: 450px;
-    height: 75vw; 
-    max-height: 450px; 
-    border: 1px dashed rgba(212, 175, 55, 0.3); 
-    border-radius: 50%; 
-    animation: rotateOrbit 35s linear infinite; 
-  }
-  @keyframes rotateOrbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-  
-  .planet { 
-    position: absolute; 
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    color: #fff; 
-    font-weight: bold; 
-    font-size: 9px;
-    cursor: pointer; 
-    text-align: center; 
-    line-height: 1.2; 
-  }
-  
-  .planet-1 { top: -20px; left: calc(50% - 20px); background: #ff4757; }
-  .planet-2 { top: 15%; right: -20px; background: #2ed573; }
-  .planet-3 { bottom: 15%; right: -20px; background: #ffa502; }
-  .planet-4 { bottom: -20px; left: calc(50% - 20px); background: #1e90ff; }
-  .planet-5 { bottom: 15%; left: -20px; background: #9b59b6; }
-  .planet-6 { top: 15%; left: -20px; background: #2acc71; }
-
-  .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
-  .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
-  .chat-input-row { display: flex; gap: 10px; }
-  .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; }
-  .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
-  .card-box { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
-  .card-box h2 { color: var(--gold); margin-bottom: 15px; font-size: 20px; }
-
-  .site-footer{ text-align:center; padding:30px; border-top:2px solid var(--gold); margin-top:50px; background:#000; width:100%; }
-  .site-footer h3{ color:var(--gold); font-size:22px; margin-bottom:8px; }
-  .site-footer p{ color:#aaa; margin:5px 0; }
+:root{--c-md1:#D4AF37;--c-md2:#3498db;--c-md3:#e74c3c;--c-md4:#2ecc71;--c-md5:#9b59b6;--c-md6:#f39c12;--c-md7:#D4AF37;--gold:#D4AF37;--black:#050505;--dark:#121212;--card-border:rgba(212,175,55,0.35);--muted:#aaa;--bg:#050505;--card:#121212;--accent:#D4AF37;}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;line-height:1.7;overflow-x:hidden}
+header{background:#000;border-bottom:2px solid var(--gold);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
+.brand{display:flex;align-items:center;gap:8px;font-weight:900;font-size:22px;user-select:none}
+.brand.md-click{color:#C0C0C0;cursor:pointer}.brand.md-click:hover{color:var(--gold);text-shadow:0 0 10px var(--gold)}
+.brand.seven{color:var(--gold)}.brand.group-click{color:#aaa;font-size:14px;font-weight:400;border-right:1px solid #333;padding-right:8px;margin-right:4px;cursor:pointer}
+.brand.group-click:hover{color:var(--gold)}.share-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;margin:0 6px;transition:0.2s}.share-btn:hover{background:var(--gold);color:#000}
+#themeToggleBtn,#menuToggle{background:#111;border:1px solid #333;color:var(--gold);padding:6px 10px;border-radius:6px;cursor:pointer;font-size:12px}
+.side-nav{position:fixed;top:60px;right:-260px;width:240px;height:calc(100% - 60px);background:#0a0a0a;border-left:2px solid var(--gold);padding:16px;transition:0.3s;z-index:999}.side-nav.active{right:0}.side-nav a{display:block;color:#ccc;text-decoration:none;padding:8px 0;border-bottom:1px solid #222;font-size:13px}.side-nav a:hover{color:var(--gold)}
+.hero{text-align:center;padding:30px 16px;background:radial-gradient(ellipse at top,rgba(212,175,55,0.15),transparent 70%)}.hero h1{font-size:28px;font-weight:900;margin-bottom:8px}.hero h1 span{color:var(--gold)}.hero p{color:var(--muted);max-width:600px;margin:0 auto 16px;font-size:14px}
+.router-box{max-width:500px;margin:0 auto;background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:12px;display:flex;gap:8px}.router-box input{flex:1;background:#000;border:1px solid #333;color:#fff;padding:10px;border-radius:6px}.btn-primary{background:linear-gradient(135deg,var(--gold),#AA7C11);color:#000;border:none;padding:10px 16px;font-weight:900;border-radius:6px;cursor:pointer}#routerSuggestion{display:none;background:#000;border:1px solid var(--gold);border-radius:8px;padding:12px;margin-top:12px;max-width:500px;margin-left:auto;margin-right:auto;font-size:13px}
+.orbital-container{position:relative;width:100%;max-width:800px;height:520px;margin:20px auto;border:1px solid #1a1a1a;border-radius:20px;background:radial-gradient(ellipse at center,#151515,#050505);overflow:hidden}
+.node{position:absolute;width:110px;height:110px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;font-size:13px;cursor:pointer;transition:0.3s;border:2px solid #333;text-align:center;line-height:1.2;box-shadow:0 0 0 transparent}.node:hover{transform:scale(1.08);box-shadow:0 0 20px currentColor;border-color:currentColor}
+#node-md7{width:140px;height:140px;left:50%;top:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#000,#222);border-color:var(--gold);color:var(--gold);font-size:18px;box-shadow:0 0 30px rgba(212,175,55,0.4);z-index:10}
+#node-md7:hover{transform:translate(-50%,-50%) scale(1.05)}
+#node-md1{left:12%;top:15%;color:var(--c-md1);background:#0f0e08}#node-md2{left:42%;top:5%;color:var(--c-md2);background:#080e13}#node-md3{left:72%;top:15%;color:var(--c-md3);background:#130808}#node-md4{left:12%;top:68%;color:var(--c-md4);background:#08110a}#node-md5{left:42%;top:78%;color:var(--c-md5);background:#0f0813}#node-md6{left:72%;top:68%;color:var(--c-md6);background:#130f08}
+.orbital-line{stroke:rgba(212,175,55,0.15);stroke-width:1;stroke-dasharray:4 4}
+#activePlatformView{display:none;max-width:1100px;margin:20px auto;padding:0 16px}#platformViewContent{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:18px;transition:0.3s;opacity:0;transform:translateY(15px)}#platformViewContent.show{opacity:1;transform:translateY(0)}
+.ai-workspace{margin-top:16px;background:#000;border:1px solid #222;border-radius:10px;padding:12px}.ai-workspace textarea{width:100%;background:#0a0a0a;border:1px solid #333;color:#fff;padding:10px;border-radius:6px;min-height:80px;font-family:inherit}.ai-btn{background:var(--gold);color:#000;border:none;padding:10px 16px;font-weight:900;border-radius:6px;cursor:pointer;margin-top:8px}.ai-result{display:none;background:#0f0f0f;border:1px dashed var(--gold);border-radius:8px;padding:12px;margin-top:10px;white-space:pre-wrap;font-size:13px;line-height:1.8;color:#ddd}
+.preview-wrap{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:860px){.preview-wrap{grid-template-columns:360px 1fr;align-items:start}}@media(max-width:859px){.stage{order:-1}}
+.panel{background:var(--dark);border:1px solid var(--card-border);border-radius:14px;padding:16px}.panel label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}.panel select,.panel input{width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;font-size:14px}.panel label.radio{display:flex;gap:8px;color:#ddd;font-size:13px;margin:6px 0;cursor:pointer}.panel label.radio input{accent-color:#D4AF37}.file-row{display:flex;gap:8px;flex-wrap:wrap}.fit{font-size:12px;color:var(--muted);margin-top:4px}.fit.ok{color:#7bd88f}.total-box{margin-top:12px;background:#000;border:1px solid var(--gold);border-radius:12px;padding:10px 12px;text-align:center;box-shadow:0 0 18px rgba(212,175,55,0.3)}.total-box.t-main{color:var(--gold);font-size:22px;font-weight:900}.total-box.t-sub{color:#ccc;font-size:12px}.status{font-size:13px;margin-top:8px;min-height:18px}.status.ok{color:#7bd88f}.status.err{color:#ff6b6b}.stage{background:radial-gradient(ellipse at center,#1a1a1a,#0a0a0a);border:1px solid var(--card-border);border-radius:14px;padding:10px}.btn-gold{background:linear-gradient(135deg,var(--gold),#AA7C11);color:#000;border:none;padding:12px 18px;font-weight:900;border-radius:8px;cursor:pointer;font-size:14px;width:100%;margin-top:10px}.note{font-size:11px;color:var(--muted);margin-top:8px;text-align:center}.note b{color:var(--gold)}
+.paper-section{background:#111;border:1px solid var(--card-border);border-radius:14px;padding:16px;margin-top:20px}.paper-preview{background:#fff;color:#000;width:100%;max-width:800px;margin:16px auto;padding:25px;border-radius:8px;position:relative}.paper-header{display:flex;justify-content:space-between;align-items:flex-start;border:2px solid var(--gold);padding:12px;border-radius:8px;margin-bottom:12px}.paper-logo{width:70px;height:70px;background:#000;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900;font-size:16px;clip-path:polygon(50% 0%,0% 100%,100% 100%);padding-top:12px}.paper-meta{font-size:11px;text-align:right;line-height:1.8}.paper-title{text-align:center;margin:15px 0}.paper-body{border-top:1px solid #ddd;padding-top:12px;min-height:250px;line-height:2;font-size:12px}.paper-row{display:flex;gap:8px;margin:6px 0;flex-wrap:wrap}.paper-row span{flex:1;min-width:180px;border-bottom:1px dotted #999;padding:3px 0}.paper-footer{display:flex;justify-content:space-between;margin-top:20px;gap:8px;flex-wrap:wrap}.paper-footer div{border:1px solid var(--gold);padding:10px;text-align:center;flex:1;min-width:130px;font-size:11px;border-radius:4px}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:2000;padding:16px}.modal.show{display:flex}.modal-box{background:#121212;border:2px solid var(--gold);border-radius:14px;padding:20px;max-width:500px;width:100%;text-align:center;box-shadow:0 0 30px rgba(212,175,55,0.4)}.modal-box h3{color:var(--gold);margin-bottom:10px}.modal-box p{color:#ccc;font-size:14px;line-height:1.9}.modal-box button{margin-top:15px}
 </style>
 </head>
 <body>
-
-<a href="join-md7.html" id="join-fab">🤝 كن شريك في MD7</a>
-
 <header>
-  <a class="brand-logo" onclick="switchTab('md7')">
-    <span class="group-text">
-      <span class="logo-G">G</span><span class="logo-R">R</span><span class="logo-O">O</span><span class="logo-U">U</span><span class="logo-P">P</span>
-    </span>
-    <span class="logo-D">D</span>
-    <span class="logo-M">M</span>
-  </a>
+<div class="brand">
+<button class="share-btn" onclick="shareSite()">📤 شارك</button>
+<span class="md-click" onclick="showCompanyInfo()">MD</span><span class="seven">7</span>
+<span class="group-click" onclick="showCompanyInfo()">Group</span>
+<button class="share-btn" onclick="shareSite()">شارك</button>
+</div>
+<div style="display:flex;gap:6px"><button id="themeToggleBtn">🌙 / ☀️</button><button id="menuToggle">☰</button></div>
 </header>
-
-<section id="md7" class="view-section active">
-  <div class="solar-system-container">
-    <div id="center-node" class="center-sun-moon">
-      <strong style="font-size: 13px;">MD7 AI</strong>
-      <span id="day-night-text" style="font-size: 9px;"></span>
-    </div>
-    <div class="orbit-ring">
-      <div class="planet planet-1" onclick="switchTab('md1')">MD1<br>المشاريع</div>
-      <div class="planet planet-2" onclick="switchTab('md2')">MD2<br>المؤلفين</div>
-      <div class="planet planet-3" onclick="window.location.href='wasal24.html'">MD3<br>وصل</div>
-      <div class="planet planet-4" onclick="switchTab('md4')">MD4<br>ألم عين</div>
-      <div class="planet planet-5" onclick="switchTab('md5')">MD5<br>الأعمال</div>
-      <div class="planet planet-6" onclick="switchTab('md6')">MD6<br>الطاقة</div>
-    </div>
-  </div>
-
-  <div class="chat-widget">
-    <h3 style="color:var(--gold); margin-bottom:8px;">🤖 المساعد الذكي MD7 AI</h3>
-    <div class="chat-logs" id="chatLogs">
-      <p style="color:#aaa;">مرحباً بك! أنا المساعد  للمنظومة.</p>
-    </div>
-    <div class="chat-input-row">
-      <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا...">
-      <button onclick="sendChatMessage()">إرسال</button>
-    </div>
-  </div>
-</section>
-
-<section id="md1" class="view-section"><div class="card-box"><h2>🚀 MD1: مولد خطط المشاريع</h2></div></section>
-<section id="md2" class="view-section"><div class="card-box"><h2>📚 MD2:تطوير الإدراة  </h2></div></section>
-<section id="md3" class="view-section"><div class="card-box"><h2>🛒 MD3: منصة وصل</h2></div></section>
-<section id="md4" class="view-section"><div class="card-box"><h2>👁️ MD4: تقديم الخدمات </h2></div></section>
-<section id="md5" class="view-section"><div class="card-box"><h2>🎬 MD5:تعليم وصحه </h2></div></section>
-<section id="md6" class="view-section"><div class="card-box"><h2>🌱 MD6:  الطاقة واعادة التدوير </h2></div></section>
-
-<footer class="site-footer">
-  <h3>MD7 Group</h3>
-  <p>تأسست في 2026</p>
-  <p>avtarpreins@gmail.com</p>
-</footer>
-
+<div class="side-nav" id="sideNav">
+<a href="#" onclick="showDashboard();return false">🏠 الرئيسية - الخريطة المدارية</a>
+<a href="#" onclick="switchPlatform('md1');return false">🚐 MD1 - إعلانات المركبات (واقعي)</a>
+<a href="#" onclick="switchPlatform('md2');return false">📚 MD2 - التأليف</a>
+<a href="#" onclick="switchPlatform('md3');return false">🛒 MD3 - السوق</a>
+<a href="#" onclick="switchPlatform('md4');return false">💻 MD4 - البرمجة</a>
+<a href="#" onclick="switchPlatform('md5');return false">🎨 MD5 - المبدعين</a>
+<a href="#" onclick="switchPlatform('md6');return false">🎬 MD6 - السينما</a>
+<a href="#" onclick="switchPlatform('md7');return false">🧠 MD7 - العقل المركزي</a>
+</div>
+<div class="hero">
+<h1>مجموعة <span>MD7</span> لتطوير المشاريع والمؤسسات</h1>
+<p>منظومة ذكية من 7 منصات - اضغط على MD لمعرفة معنى إدارة المشاريع وتطويرها</p>
+<div class="router-box">
+<input id="userGoalInput" placeholder="ماذا تريد أن تنجز اليوم؟ مثال: إعلان على ميكروباص">
+<button class="btn-primary" onclick="routeUserGoal()">توجيه</button>
+</div>
+<div id="routerSuggestion"></div>
+</div>
+<div class="orbital-container" id="orbital">
+<svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none">
+<line id="line-md1" class="orbital-line"></line><line id="line-md2" class="orbital-line"></line><line id="line-md3" class="orbital-line"></line><line id="line-md4" class="orbital-line"></line><line id="line-md5" class="orbital-line"></line><line id="line-md6" class="orbital-line"></line>
+</svg>
+<div class="node" id="node-md7" onclick="switchPlatform('md1')">MD7<br><small style="font-size:10px">العقل المركزي</small></div>
+<div class="node" id="node-md1" onclick="switchPlatform('md1')">MD1<br><small>إدارة المشاريع</small></div>
+<div class="node" id="node-md2" onclick="switchPlatform('md2')">MD2<br><small>التأليف</small></div>
+<div class="node" id="node-md3" onclick="switchPlatform('md3')">MD3<br><small>السوق</small></div>
+<div class="node" id="node-md4" onclick="switchPlatform('md4')">MD4<br><small>البرمجة</small></div>
+<div class="node" id="node-md5" onclick="switchPlatform('md5')">MD5<br><small>المبدعين</small></div>
+<div class="node" id="node-md6" onclick="switchPlatform('md6')">MD6<br><small>السينما</small></div>
+</div>
+<div id="activePlatformView"><div id="platformViewContent"></div></div>
+<div class="modal" id="companyModal" onclick="if(event.target===this)hideCompanyInfo()"><div class="modal-box"><h3>MD7 Group - معنى إدارة المشاريع وتطويرها</h3><p><strong>MD</strong> = <strong>M</strong>anagement <strong>D</strong>evelopment<br><br>نتعاون للاستفادة من مؤسستك على أعلى مستوى ونوفيك أعلى خدمه مقدمه وتنال رضي العامل قبل العميل ورضاك كصاحب مؤسسة بدا من المحلات مرور بالمؤسسات والشركات.<br><br><strong>رؤيتنا:</strong> تطوير المشاريع من الفكرة إلى التنفيذ بأحدث تقنيات الذكاء الاصطناعي عبر 7 منصات.<br><strong>المؤسس:</strong> أ. محمد رضوان - 01033182019</p><button class="btn-primary" onclick="hideCompanyInfo()">فهمت</button><br><button class="share-btn" onclick="shareSite();hideCompanyInfo()" style="margin-top:10px">📤 شارك المجموعة</button></div></div>
 <script>
-  function switchTab(tabId) {
-    document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function updateSolarNode() {
-    const hour = new Date().getHours();
-    const node = document.getElementById('center-node');
-    const text = document.getElementById('day-night-text');
-    if (hour >= 6 && hour < 18) {
-      node.className = 'center-sun-moon sun-mode';
-      text.innerText = 'نهار';
-    } else {
-      node.className = 'center-sun-moon moon-mode';
-      text.innerText = 'ليل';
-    }
-  }
-
-  function sendChatMessage() {
-    const input = document.getElementById('chatInput');
-    const logs = document.getElementById('chatLogs');
-    const val = input.value.trim();
-    if (!val) return;
-    logs.innerHTML += `<p style="color:var(--gold);"><b>أنت:</b> ${val}</p>`;
-    logs.innerHTML += `<p style="color:#fff;"><b>MD7 AI:</b> تم الاستلام</p>`;
-    logs.scrollTop = logs.scrollHeight;
-    input.value = '';
-  }
-
-  window.onload = function() {
-    updateSolarNode();
-  };
+const platformData = {
+    md1: {title: "MD1. إعلانات المركبات - النموذج الواقعي", color: "var(--c-md1)", desc: "منظومة إعلانات الميكروباص والتاكسي بنماذج واقعية من صورك الحقيقية - حجز وشاهد إعلانك لايف مع ورقة طباعة PDF.", placeholder: "اكتب تفاصيل إعلانك...", actionText: "فتح واجهة إعلانات المركبات الواقعية", promptEngine: (q) => `فتح واجهة MD1 الواقعية`},
+    md2: {title: "MD2. التأليف والنشر", color: "var(--c-md2)", desc: "صناعة المحتوى وتأليف الكتب.", placeholder: "اكتب فكرة الكتاب...", actionText: "إنشاء الفهرس", promptEngine: (q) => `[MD2] كتاب حول: ${q}`},
+    md3: {title: "MD3. سوق العرض والطلب", color: "var(--c-md3)", desc: "منصة عرض وطلب المنتجات.", placeholder: "تفاصيل المنتج...", actionText: "إنشاء بطاقة منتج", promptEngine: (q) => `[MD3] منتج: ${q}`},
+    md4: {title: "MD4. البرمجة", color: "var(--c-md4)", desc: "مساعد تطوير ويب وتطبيقات.", placeholder: "اكتب الكود المطلوب...", actionText: "توليد الكود", promptEngine: (q) => `// MD4: ${q}`},
+    md5: {title: "MD5. بنك المبدعين", color: "var(--c-md5)", desc: "دليل المستقلين والمبدعين.", placeholder: "اكتب المهارة...", actionText: "إنشاء كارت مبدع", promptEngine: (q) => `[MD5] تخصص: ${q}`},
+    md6: {title: "MD6. الإنتاج السينمائي", color: "var(--c-md6)", desc: "إنشاء سيناريوهات الأفلام.", placeholder: "اكتب المشهد...", actionText: "صياغة البرومبت", promptEngine: (q) => `[MD6] مشهد: ${q}`},
+    md7: {title: "MD7. العقل المركزي", color: "var(--c-md7)", desc: "المحرك الرئيس للمنظومة.", placeholder: "اسأل MD7...", actionText: "معالجة بالذكاء الاصطناعي", promptEngine: (q) => `[MD7] تحليل: ${q}`}
+};
+document.addEventListener("DOMContentLoaded", () => { initNavigation(); initThemeToggle(); drawConnectingLines(); window.addEventListener("resize", drawConnectingLines); });
+function initNavigation(){const btn=document.getElementById("menuToggle"),nav=document.getElementById("sideNav");if(btn&&nav){btn.addEventListener("click",()=>{nav.classList.toggle("active");});}}
+function initThemeToggle(){const t=document.getElementById("themeToggleBtn");if(t){t.addEventListener("click",()=>{document.body.classList.toggle("night");document.body.classList.toggle("day");});}}
+function drawConnectingLines(){const c=document.getElementById("node-md7"),co=document.querySelector(".orbital-container");if(!c||!co)return;const cr=c.getBoundingClientRect(),cor=co.getBoundingClientRect(),cX=cr.left+cr.width/2-cor.left,cY=cr.top+cr.height/2-cor.top;["md1","md2","md3","md4","md5","md6"].forEach(id=>{const n=document.getElementById(`node-${id}`),l=document.getElementById(`line-${id}`);if(n&&l){const r=n.getBoundingClientRect(),nX=r.left+r.width/2-cor.left,nY=r.top+r.height/2-cor.top;l.setAttribute("x1",cX);l.setAttribute("y1",cY);l.setAttribute("x2",nX);l.setAttribute("y2",nY);}});}
+function routeUserGoal(){const i=document.getElementById("userGoalInput"),b=document.getElementById("routerSuggestion");if(!i||!b)return;const t=i.value.trim().toLowerCase();if(!t)return;b.style.display="block";let target="md7",g="";if(t.includes("كود")||t.includes("برمجة")){target="md4";g="تم التوجيه إلى **MD4 (البرمجة)**";}else if(t.includes("اعلان")||t.includes("ميكروباص")||t.includes("تاكسي")||t.includes("سوق")||t.includes("بيع")){target="md1";g="تم التوجيه إلى **MD1 (إعلانات المركبات الواقعية)** - صورك الحقيقية";}else if(t.includes("كتاب")||t.includes("مقال")){target="md2";g="تم التوجيه إلى **MD2 (التأليف)**";}else{g="تم التوجيه إلى **MD7 (العقل المركزي)**";}b.innerHTML=`<div>${g.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>")}</div><button onclick="switchPlatform('${target}')" class="btn-primary" style="margin-top:10px">الانتقال الآن</button>`;}
+function getMD1RealHTML(){return `<div class="md1-embedded"><h2 style="color:var(--gold);margin-bottom:6px">🚐 MD1 - إعلانات المركبات - النموذج الواقعي من صورك</h2><p style="color:#aaa;font-size:13px;margin-bottom:12px">الميكروباص الأبيض في الشارع + التاكسي على الكورنيش - واقعي 100%</p><div class="preview-wrap"><div class="panel"><label>نوع المركبة</label><select id="vTypeMD1"><option value="microbus">ميكروباص تويوتا / هيونداي (صورتك)</option><option value="taxi">تاكسي فيرنا (صورتك)</option><option value="coaster">أتوبيس كوستر</option><option value="hiace">هاي اس الجديد</option></select><label>مكان الإعلان</label><select id="vZoneMD1"><option value="side">الجانب - 75,000 ج</option><option value="rear">الخلف - 75,000 ج</option><option value="full">السيارة كاملة - 190,000 ج</option></select><label>صورة الإعلان</label><div class="file-row"><button type="button" class="btn-gold" id="pickImgMD1" style="padding:8px;width:auto">📷 اختيار صورة</button><button type="button" id="clearImgMD1" hidden style="background:none;border:none;color:var(--gold);cursor:pointer;text-decoration:underline;font-size:12px">إزالة</button></div><div id="fileNameMD1" class="fit"></div><input type="file" id="adFileMD1" accept="image/*" hidden><label>طريقة الدفع</label><label class="radio"><input type="radio" name="payMD1" value="cash" checked><span id="payCashTxtMD1"></span></label><label class="radio"><input type="radio" name="payMD1" value="inst"><span id="payInstTxtMD1"></span></label><div class="total-box"><div style="color:#aaa;font-size:11px">الإجمالي</div><div class="t-main"><span id="totalValMD1">75,000</span> جنيه</div><div class="t-sub" id="totalSubMD1"></div></div><label>اسم المعلن</label><input type="text" id="advNameMD1" maxlength="60" placeholder="اسم الشركة *"><label>رقم التواصل</label><input type="tel" id="advPhoneMD1" maxlength="20" placeholder="رقم واتساب"><button type="button" class="btn-gold" id="bookMD1">إرسال طلب الحجز لـ @avtarmo</button><div id="bookStatusMD1" class="status"></div></div><div class="stage"><div class="canvas-wrap" id="viewerMD1"><img id="realCarMD1" src="" alt="real car" style="width:100%;height:100%;object-fit:contain;transition:transform 0.08s linear;filter:drop-shadow(0 15px 25px rgba(0,0,0,0.8));cursor:grab"><div id="adOverlayMD1" style="position:absolute;top:58%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#D4AF37,#AA7C11);color:#000;font-weight:900;padding:4px 10px;border-radius:5px;font-size:11px;min-width:80px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.6);pointer-events:none;max-width:45%">اعلن هنا</div><div class="upload-box" id="uploadBoxMD1" hidden><div class="drop" id="dropZoneMD1"><span style="font-size:28px">📷</span><span>اضغط لرفع إعلانك</span><small>أو اسحبه هنا</small></div><button type="button" id="closeUploadMD1" style="background:none;border:none;color:var(--gold);text-decoration:underline;cursor:pointer;margin-top:8px">إغلاق</button></div></div><p class="note"><b>واقعي من صورك - اسحب يمين وشمال لتلف العربية</b><br>الجانب 75,000 كاش / 80,000 تقسيط (20,000 × 4) - الكاملة 190,000 بدون زيادة - عرض 70 إعلان</p></div></div><div class="paper-section" style="margin-top:20px"><h3 style="color:var(--gold);margin-bottom:8px">📄 ورقة الطباعة - تحميل PDF</h3><div class="panel"><label>الجهة</label><select id="paperTypeMD1" onchange="updatePaperMD1()"><option value="driver">سائق الميكروباص / التاكسي</option><option value="advertiser">المعلن</option><option value="owner">صاحب السيارة</option><option value="maintenance">مركز صيانة MD7</option></select><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"><div><label>التاريخ</label><input type="date" id="pDateMD1"></div><div><label>القسم</label><input type="text" id="pDeptMD1" value="إدارة الصيانة والتشغيل"></div><div><label>اسم الجهة</label><input type="text" id="pNameMD1" placeholder="محمد أحمد"></div><div><label>رقم المركبة</label><input type="text" id="pIdMD1" placeholder="س ج د 1234"></div><div><label>نوع المركبة</label><input type="text" id="pVehicleMD1" placeholder="ميكروباص تويوتا"></div><div><label>قيمة التعاقد</label><input type="text" id="pPriceMD1" placeholder="75,000 جنيه"></div></div><button class="btn-gold" onclick="updatePaperMD1()">تحديث المعاينة</button><button class="btn-gold" onclick="downloadPDFMD1()" style="background:#fff;color:#000;margin-top:8px">📄 تحميل الورقة PDF</button><button class="btn-gold" onclick="sendPaperWAMD1()" style="background:#25D366;color:#fff;margin-top:8px">📲 إرسال واتساب @avtarmo</button></div><div class="paper-preview" id="paperPreviewMD1" style="background:#fff;color:#000;padding:20px;border-radius:8px;margin-top:12px"><div style="display:flex;justify-content:space-between;border:2px solid #D4AF37;padding:10px;border-radius:8px"><div style="font-size:11px">التاريخ: <span id="ppDateMD1">2024 / __ / __</span><br>القسم: <span id="ppDeptMD1">إدارة الصيانة</span><br>الجهة: <span id="ppTypeMD1">سائق</span></div><div style="width:60px;height:60px;background:#000;color:#D4AF37;display:flex;align-items:center;justify-content:center;font-weight:900;clip-path:polygon(50% 0%,0% 100%,100% 100%)">MD7</div></div><h3 style="text-align:center;margin:12px 0" id="ppTitleMD1">عقد تشغيل مركبة للإعلان</h3><div style="font-size:11px;line-height:2"><p>الاسم: <span id="ppNameMD1">__________</span> - رقم المركبة: <span id="ppIdMD1">__________</span></p><p>نوع المركبة: <span id="ppVehicleMD1">ميكروباص</span> - القيمة: <span id="ppPriceMD1">75,000</span></p><p>الشروط: الحفاظ على الإعلان - الالتزام بخط السير - عدم الإزالة إلا بموافقة MD7</p></div><div style="display:flex;justify-content:space-between;margin-top:15px;gap:6px"><div style="border:1px solid #D4AF37;padding:8px;flex:1;text-align:center;font-size:10px">مدير المركز<br><br>____</div><div style="border:1px solid #D4AF37;padding:8px;flex:1;text-align:center;font-size:10px">مدير التشغيل<br><br>____</div><div style="border:1px solid #D4AF37;padding:8px;flex:1;text-align:center;font-size:10px">مدير المالية<br><br>____</div></div></div></div></div>`;}
+function switchPlatform(id){const data=platformData[id],view=document.getElementById("activePlatformView"),card=document.getElementById("platformViewContent");if(!data||!view||!card)return;view.style.display="block";card.classList.remove("show");setTimeout(()=>{if(id==='md1'){card.innerHTML=`<h2 style="color:${data.color}; margin-top:0;">${data.title}</h2><p style="color:#ccc; font-size:14px; line-height:1.6;">${data.desc}</p>${getMD1RealHTML()}`;card.classList.add("show");view.scrollIntoView({behavior:"smooth"});setTimeout(initMD1Real,200);}else{card.innerHTML=`<h2 style="color:${data.color}; margin-top:0;">${data.title}</h2><p style="color:#ccc; font-size:14px; line-height:1.6;">${data.desc}</p><div class="ai-workspace"><label style="color:var(--accent); font-size:13px; font-weight:bold; display:block; margin-bottom:8px;">🤖 أداة ${data.title} المباشرة:</label><textarea id="platformAiInput" placeholder="${data.placeholder}"></textarea><button class="ai-btn" onclick="runPlatformAi('${id}')">${data.actionText}</button><div class="ai-result" id="platformAiResult"></div></div>`;card.classList.add("show");view.scrollIntoView({behavior:"smooth"});}},200);}
+function initMD1Real(){const WA='avtarmo';function openWA(t){var u='https://wa.me/'+WA+'?text='+encodeURIComponent(t);var w=window.open(u,'_blank');if(w)w.opener=null;return{win:w,url:u}}window.MD1_WA=openWA;var PR={side:{cash:75000,inst:80000,n:4},rear:{cash:75000,inst:80000,n:4},full:{cash:190000,inst:190000,n:4}};var selV=document.getElementById('vTypeMD1'),selZ=document.getElementById('vZoneMD1'),fileI=document.getElementById('adFileMD1'),fileN=document.getElementById('fileNameMD1'),clearB=document.getElementById('clearImgMD1'),upBox=document.getElementById('uploadBoxMD1'),dropZ=document.getElementById('dropZoneMD1'),realC=document.getElementById('realCarMD1'),adO=document.getElementById('adOverlayMD1'),stat=document.getElementById('bookStatusMD1'),nameE=document.getElementById('advNameMD1'),phoneE=document.getElementById('advPhoneMD1'),state={img:null,name:''},rot=0,drag=false,lx=0,adPos={x:50,y:58};var RI={microbus:'microbus_real.jpg',taxi:'taxi_real.jpg',coaster:'coaster.png',hiace:'hiace.png'};function fmt(n){return n.toLocaleString('en-US')}function payV(){var e=document.querySelector('input[name="payMD1"]:checked');return e?e.value:'cash'}function updPrice(){var z=selZ.value,p=PR[z],pay=payV(),per=p.inst/p.n,fixed=p.cash===p.inst;document.getElementById('payCashTxtMD1').textContent='كاش — '+fmt(p.cash)+' جنيه';document.getElementById('payInstTxtMD1').textContent='تقسيط على '+p.n+' دفعات — '+fmt(p.inst)+' جنيه ('+fmt(per)+' × '+p.n+(fixed?'، بدون زيادة':'')+')';document.getElementById('totalValMD1').textContent=fmt(pay==='cash'?p.cash:p.inst);document.getElementById('totalSubMD1').textContent=pay==='cash'?'دفع كاش':'تقسيط '+fmt(per)+' × '+p.n+(fixed?' (بدون زيادة)':'');}function showU(){upBox.hidden=false}function hideU(){upBox.hidden=true}function setS(m,c){stat.className='status'+(c?' '+c:'');stat.textContent=m}if(selV)selV.addEventListener('change',()=>{realC.src=RI[selV.value]||RI.microbus;rot=0;realC.style.transform='rotateY(0deg)';});if(selZ)selZ.addEventListener('change',()=>{updPrice();});document.querySelectorAll('input[name="payMD1"]').forEach(r=>{r.addEventListener('change',updPrice)});var viewer=document.getElementById('viewerMD1');if(viewer){viewer.addEventListener('mousedown',e=>{drag=true;lx=e.clientX;});viewer.addEventListener('mousemove',e=>{if(!drag)return;var d=e.clientX-lx;rot+=d*0.7;var s=1-Math.abs(Math.sin(rot*Math.PI/180))*0.12;realC.style.transform='rotateY('+rot+'deg) scale('+s+')';lx=e.clientX;});viewer.addEventListener('mouseup',()=>{drag=false});viewer.addEventListener('mouseleave',()=>{drag=false});viewer.addEventListener('touchstart',e=>{drag=true;lx=e.touches[0].clientX},{passive:false});viewer.addEventListener('touchmove',e=>{if(!drag)return;e.preventDefault();var x=e.touches[0].clientX,d=x-lx;rot+=d*0.7;var s=1-Math.abs(Math.sin(rot*Math.PI/180))*0.12;realC.style.transform='rotateY('+rot+'deg) scale('+s+')';lx=x;},{passive:false});viewer.addEventListener('touchend',()=>{drag=false});viewer.addEventListener('click',e=>{if(e.target.id==='closeUploadMD1'||e.target.closest('#uploadBoxMD1'))return;if(Math.abs(rot)>8)return;var rect=viewer.getBoundingClientRect(),x=e.clientX,y=e.clientY;if(x&&y){adPos.x=((x-rect.left)/rect.width*100);adPos.y=((y-rect.top)/rect.height*100);adO.style.left=adPos.x+'%';adO.style.top=adPos.y+'%';}showU();});}function setFile(file){if(!file)return;var url=URL.createObjectURL(file);var img=new Image();img.onload=()=>{state={img:img,name:file.name};fileN.textContent='✓ '+file.name+' ('+Math.round(file.size/1024)+' KB)';fileN.className='fit ok';clearB.hidden=false;adO.innerHTML='<img src="'+url+'" style="width:100%;height:100%;object-fit:cover">';adO.classList.add('has-img');hideU();};img.src=url;}var pick=document.getElementById('pickImgMD1');if(pick)pick.addEventListener('click',()=>{fileI.click();});if(dropZ)dropZ.addEventListener('click',()=>{fileI.click();});if(fileI)fileI.addEventListener('change',()=>{setFile(fileI.files[0])});if(clearB)clearB.addEventListener('click',()=>{state={img:null,name:''};fileI.value='';fileN.textContent='';adO.innerHTML='اعلن هنا';adO.classList.remove('has-img');clearB.hidden=true;});var closeB=document.getElementById('closeUploadMD1');if(closeB)closeB.addEventListener('click',hideU);var book=document.getElementById('bookMD1');if(book)book.addEventListener('click',()=>{var name=nameE.value.trim(),phone=phoneE.value.trim();if(!state.img){setS('ارفع صورة الإعلان أولا.','err');showU();return}if(name.length<2){setS('اكتب اسم المعلن.','err');nameE.focus();return}var z=selZ.value,p=PR[z],pay=payV(),total=pay==='cash'?p.cash:p.inst;var payText=pay==='cash'?'كاش':'تقسيط على '+p.n+' دفعات';var msg=['طلب حجز إعلان جديد - MD7 Group - عرض الشركات 70 إعلان فترة محدودة','','نوع المركبة: '+selV.options[selV.selectedIndex].text,'مكان الإعلان: '+z,'الصورة: '+state.name+' (سأرفقها في هذه المحادثة)','طريقة الدفع: '+payText,'الإجمالي: '+fmt(total)+' جنيه','اسم المعلن: '+name,'رقم التواصل: '+phone,'الصفحة: '+window.location.href].join('\n');var r=openWA(msg);stat.className='status ok';if(r.win){stat.textContent='تم تحويل طلبك للمؤسس على واتساب @avtarmo ✅'}else{stat.textContent='افتح واتساب: '+r.url}});realC.src=RI.microbus;realC.onerror=function(){if(this.src.includes('microbus_real')){this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=900';}};updPrice();var d=document.getElementById('pDateMD1');if(d)d.valueAsDate=new Date();}
+function updatePaperMD1(){var type=document.getElementById('paperTypeMD1').value,map={driver:'سائق الميكروباص / التاكسي',advertiser:'المعلن',owner:'صاحب السيارة / الشركة',maintenance:'مركز صيانة MD7'},titleMap={driver:'عقد تشغيل مركبة للإعلان - سائق',advertiser:'عقد إعلان على مركبة - معلن',owner:'عقد إيجار مساحة إعلانية - مالك السيارة',maintenance:'مركز صيانة السيارات MD7'};document.getElementById('ppTypeMD1').textContent=map[type]||type;document.getElementById('ppTitleMD1').textContent=titleMap[type]||'عقد';document.getElementById('ppDateMD1').textContent=document.getElementById('pDateMD1').value||'2024 / __ / __';document.getElementById('ppNameMD1').textContent=document.getElementById('pNameMD1').value||'__________';document.getElementById('ppIdMD1').textContent=document.getElementById('pIdMD1').value||'__________';document.getElementById('ppVehicleMD1').textContent=document.getElementById('pVehicleMD1').value||'ميكروباص';document.getElementById('ppPriceMD1').textContent=document.getElementById('pPriceMD1').value||'75,000 جنيه';}
+function downloadPDFMD1(){updatePaperMD1();var el=document.getElementById('paperPreviewMD1');html2canvas(el,{scale:2,useCORS:true}).then(canvas=>{var img=canvas.toDataURL('image/png');var pdf=new jspdf.jsPDF('p','mm','a4');var w=pdf.internal.pageSize.getWidth();var h=(canvas.height*w)/canvas.width;pdf.addImage(img,'PNG',0,0,w,h);var fn='MD7_'+document.getElementById('paperTypeMD1').value+'_'+(document.getElementById('pNameMD1').value||'contract')+'.pdf';pdf.save(fn);});}
+function sendPaperWAMD1(){updatePaperMD1();var n=document.getElementById('pNameMD1').value||'غير محدد',t=document.getElementById('paperTypeMD1').options[document.getElementById('paperTypeMD1').selectedIndex].text,v=document.getElementById('pVehicleMD1').value,p=document.getElementById('pPriceMD1').value,msg='طلب ورقة MD7 - '+t+'%0Aالاسم: '+n+'%0Aالمركبة: '+v+'%0Aالقيمة: '+p+'%0A%0Aتم تجهيز الورقة للطباعة PDF - الصفحة: '+window.location.href;window.MD1_WA(msg);}
+function runPlatformAi(id){const i=document.getElementById("platformAiInput"),r=document.getElementById("platformAiResult");if(!i||!r)return;const q=i.value.trim(),e=platformData[id]?.promptEngine;if(!q){alert("برجاء كتابة البيانات أولاً.");return;}r.style.display="block";r.innerHTML='⚡ جاري التوليد بواسطة عقل MD7...';setTimeout(()=>{if(e){r.innerHTML=escapeHTML(e(q)).replace(/\n/g,"<br>");}},800);}
+function escapeHTML(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
+function showDashboard(){const v=document.getElementById("activePlatformView");if(v)v.style.display="none";window.scrollTo({top:0,behavior:'smooth'});}
+function showCompanyInfo(){document.getElementById('companyModal').classList.add('show');}
+function hideCompanyInfo(){document.getElementById('companyModal').classList.remove('show');}
+function shareSite(){var u=window.location.href,t='مجموعة MD7 لتطوير المشاريع والمؤسسات - MD تعني إدارة المشاريع وتطويرها';if(navigator.share){navigator.share({title:'MD7 Group',text:t,url:u}).catch(()=>{});}else if(navigator.clipboard){navigator.clipboard.writeText(u).then(()=>{alert('تم نسخ رابط الموقع: '+u);});}else{prompt('انسخ رابط المجموعة:',u);}}
 </script>
-
 </body>
 </html>
