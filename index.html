@@ -3,114 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD7 GROUP - النهائي المربوط | MD1 واقعي</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<title>MD7 Group - الحاضر هو المستقبل & MD7 AI</title>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script type="text/javascript">
+  (function(){ emailjs.init("-VHvtaMeTpVBPHzIG"); })();
+</script>
 <style>
-:root{--c-md1:#D4AF37;--c-md2:#3498db;--c-md3:#e74c3c;--c-md4:#2ecc71;--c-md5:#9b59b6;--c-md6:#f39c12;--c-md7:#D4AF37;--gold:#D4AF37;--bg:#050505;--card:#121212;--card-border:rgba(212,175,55,0.35);--muted:#aaa}
-*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;line-height:1.7;overflow-x:hidden}
-header{background:#000;border-bottom:2px solid var(--gold);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
-.brand{display:flex;align-items:center;gap:8px;font-weight:900;font-size:22px}.brand.md-click{color:#C0C0C0;cursor:pointer}.brand.seven{color:var(--gold)}.brand.group-click{color:#aaa;font-size:14px;border-right:1px solid #333;padding-right:8px;margin-right:4px;cursor:pointer}
-.share-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;margin:0 6px}
-#themeToggleBtn,#menuToggle{background:#111;border:1px solid #333;color:var(--gold);padding:6px 10px;border-radius:6px;cursor:pointer;font-size:12px}
-.side-nav{position:fixed;top:60px;right:-260px;width:240px;height:calc(100% - 60px);background:#0a0a0a;border-left:2px solid var(--gold);padding:16px;transition:0.3s;z-index:999}.side-nav.active{right:0}.side-nav a{display:block;color:#ccc;text-decoration:none;padding:8px 0;border-bottom:1px solid #222;font-size:13px}.side-nav a:hover{color:var(--gold)}
-.hero{text-align:center;padding:30px 16px;background:radial-gradient(ellipse at top,rgba(212,175,55,0.15),transparent 70%)}.hero h1{font-size:28px;font-weight:900;margin-bottom:8px}.hero h1 span{color:var(--gold)}.hero p{color:var(--muted);max-width:600px;margin:0 auto 16px;font-size:14px}
-.router-box{max-width:500px;margin:0 auto;background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:12px;display:flex;gap:8px}.router-box input{flex:1;background:#000;border:1px solid #333;color:#fff;padding:10px;border-radius:6px}.btn-primary{background:linear-gradient(135deg,var(--gold),#AA7C11);color:#000;border:none;padding:10px 16px;font-weight:900;border-radius:6px;cursor:pointer}#routerSuggestion{display:none;background:#000;border:1px solid var(--gold);border-radius:8px;padding:12px;margin-top:12px;max-width:500px;margin:0 auto;font-size:13px}
-.orbital-container{position:relative;width:100%;max-width:800px;height:520px;margin:20px auto;border:1px solid #1a1a1a;border-radius:20px;background:radial-gradient(ellipse at center,#151515,#050505);overflow:hidden}
-.node{position:absolute;width:110px;height:110px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;font-size:13px;cursor:pointer;transition:0.3s;border:2px solid #333;text-align:center;line-height:1.2}.node:hover{transform:scale(1.08);box-shadow:0 0 20px currentColor}
-#node-md7{width:140px;height:140px;left:50%;top:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#000,#222);border-color:var(--gold);color:var(--gold);font-size:18px;box-shadow:0 0 30px rgba(212,175,55,0.4);z-index:10}
-#node-md1{left:12%;top:15%;color:var(--c-md1);background:#0f0e08}#node-md2{left:42%;top:5%;color:var(--c-md2);background:#080e13}#node-md3{left:72%;top:15%;color:var(--c-md3);background:#130808}#node-md4{left:12%;top:68%;color:var(--c-md4);background:#08110a}#node-md5{left:42%;top:78%;color:var(--c-md5);background:#0f0813}#node-md6{left:72%;top:68%;color:var(--c-md6);background:#130f08}
-.orbital-line{stroke:rgba(212,175,55,0.15);stroke-width:1;stroke-dasharray:4 4}
-#activePlatformView{display:none;max-width:1100px;margin:20px auto;padding:0 16px}#platformViewContent{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:18px}
-.showroom3d{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;padding:20px;background:#080808;border-top:2px solid var(--gold);margin-top:20px}
-.car3d{background:#111;border:1px solid #333;border-radius:14px;padding:8px;text-align:center;transition:.3s}.car3d:hover{border-color:var(--gold);box-shadow:0 0 15px rgba(212,175,55,.3)}
-.car3d img{width:100%;height:120px;object-fit:contain;transition:.7s}.car3d:hover img{transform:rotateY(25deg) scale(1.12)}
-.car3d p{margin:6px 0 0;color:#fff;font-size:13px}
-.panel{background:#121212;border:1px solid var(--card-border);border-radius:14px;padding:16px}.panel label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}.panel select,.panel input{width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:6px}
-.panel label.radio{display:flex;gap:8px;color:#ddd;font-size:13px;margin:6px 0;cursor:pointer}.panel label.radio input{accent-color:#D4AF37}
-.total-box{margin-top:12px;background:#000;border:1px solid var(--gold);border-radius:12px;padding:10px;text-align:center}.total-box.t-main{color:var(--gold);font-size:22px;font-weight:900}
-.stage{background:radial-gradient(ellipse at center,#1a1a1a,#0a0a0a);border:1px solid var(--card-border);border-radius:14px;padding:10px;position:relative;min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.btn-gold{background:linear-gradient(135deg,var(--gold),#AA7C11);color:#000;border:none;padding:12px 18px;font-weight:900;border-radius:8px;cursor:pointer;width:100%;margin-top:10px}
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:2000;padding:16px}.modal.show{display:flex}.modal-box{background:#121212;border:2px solid var(--gold);border-radius:14px;padding:20px;max-width:500px;width:100%;text-align:center}
-.preview-wrap{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:860px){.preview-wrap{grid-template-columns:360px 1fr}}
-.paper-section{background:#111;border:1px solid var(--card-border);border-radius:14px;padding:16px;margin-top:20px}.paper-preview{background:#fff;color:#000;padding:20px;border-radius:8px;margin-top:12px}
+  :root { --gold: #D4AF37; --silver: #C0C0C0; --black: #050505; --dark-gray: #121212; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; min-height: 100vh; overflow-x: hidden; background-color: var(--black); }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; direction: rtl; }
+  #join-fab { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, var(--gold), #B8860B); color: #000; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: 900; z-index: 9999; box-shadow: 0 0 25px rgba(212,175,55,0.6); font-size: 14px; }
+  header { background: #000; border-bottom: 2px solid var(--gold); padding: 12px 20px; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; width: 100%; }
+  .brand-logo { display: flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 900; cursor: pointer; text-decoration: none; }
+  .logo-M { color: var(--gold); } .logo-D { color: var(--silver); } .logo-G { color: #ff0000; } .logo-R { color: #0000ff; } .logo-O { color: #00ff00; } .logo-U { color: #ffff00; } .logo-P { color: #ffa500; }
+  .group-text { font-size: 14px; letter-spacing: 3px; }
+  .view-section { display: none; padding: 15px; width: 100%; max-width: 1200px; margin: 0 auto; }
+  .view-section.active { display: block; }
+  .solar-system-container { --R: min(37.5vw, 225px); position: relative; width: 100%; height: 70vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+  .center-sun-moon { width: calc(var(--R) * 1.1); height: calc(var(--R) * 1.1); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; z-index: 10; cursor: pointer; text-align: center; }
+  .sun-mode { background: radial-gradient(circle, #fff7ad 0%, #ffd700 50%, #ff8c00 100%); box-shadow: 0 0 50px 8px rgba(255, 183, 40, 0.65); color: #000; }
+  .moon-mode { background: radial-gradient(circle, #0f2038 0%, #07101c 100%); color: #fff; }
+  .moon-phase { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; pointer-events: none; }
+  .moon-mode .moon-phase { display: block; }
+  :root { --emb: #5fd0ff; --emb-glow: rgba(95, 208, 255, 0.85); --emb-outline: #04202f; }
+  html[data-mode="day"] { --emb: #8e1212; --emb-glow: rgba(255, 70, 70, 0.55); --emb-outline: rgba(255, 244, 200, 0.6); }
+  .emb-star { fill: var(--emb); fill-opacity: 0.2; stroke: var(--emb); stroke-width: 2.6; stroke-linejoin: round; }
+  .emb-txt { fill: var(--emb); stroke: var(--emb-outline); stroke-width: 2.2; paint-order: stroke; stroke-linejoin: round; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-weight: 900; }
+  .emblem { position: relative; z-index: 1; width: 74%; height: 74%; overflow: visible; filter: drop-shadow(0 0 5px var(--emb-glow)); }
+  .emblem-sm { width: 30px; height: 30px; vertical-align: middle; margin-inline-end: 6px; --emb-outline: transparent; filter: drop-shadow(0 0 4px var(--emb-glow)); }
+  html[data-mode="day"] .emblem-sm { --emb: #ff7a7a; --emb-glow: rgba(255, 90, 90, 0.6); }
+  .orbit-ring { position: absolute; width: 75vw; max-width: 450px; height: 75vw; max-height: 450px; border: 1px dashed rgba(212, 175, 55, 0.3); border-radius: 50%; animation: rotateOrbit 35s linear infinite; }
+  @keyframes rotateOrbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .planet { position: absolute; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; font-weight: bold; font-size: 9px; cursor: pointer; text-align: center; line-height: 1.2; animation: drift 6s ease-in-out infinite; }
+  @keyframes drift { 0%, 100% { translate: 0 0; } 50% { translate: calc(var(--R) * var(--ix, 0)) calc(var(--R) * var(--iy, 0)); } }
+  .planet-1 { top: -20px; left: calc(50% - 20px); background: #ff4757; --ix: 0; --iy: 0.16; }
+  .planet-2 { top: 15%; right: -20px; background: #2ed573; --ix: -0.16; --iy: 0.10; }
+  .planet-3 { bottom: 15%; right: -20px; background: #ffa502; --ix: -0.16; --iy: -0.10; }
+  .planet-4 { bottom: -20px; left: calc(50% - 20px); background: #1e90ff; --ix: 0; --iy: -0.16; }
+  .planet-5 { bottom: 15%; left: -20px; background: #9b59b6; --ix: 0.16; --iy: -0.10; }
+  .planet-6 { top: 15%; left: -20px; background: #2acc71; --ix: 0.16; --iy: 0.10; }
+  .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
+  .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
+  .chat-input-row { display: flex; gap: 10px; }
+  .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; }
+  .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+  .card-box { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+  .card-box h2 { color: var(--gold); margin-bottom: 15px; font-size: 20px; }
+  .site-footer{ text-align:center; padding:30px; border-top:2px solid var(--gold); margin-top:50px; background:#000; width:100%; }
+  .site-footer h3{ color:var(--gold); font-size:22px; margin-bottom:8px; }
+  .site-footer p{ color:#aaa; margin:5px 0; }
 </style>
 </head>
 <body>
-<header>
-<div class="brand"><button class="share-btn" onclick="shareSite()">📤 شارك</button><span class="md-click" onclick="showCompanyInfo()">MD</span><span class="seven">7</span><span class="group-click" onclick="showCompanyInfo()">Group</span></div>
-<div style="display:flex;gap:6px"><button id="themeToggleBtn">🌙</button><button id="menuToggle">☰</button></div>
-</header>
-<div class="side-nav" id="sideNav">
-<a href="#" onclick="showDashboard();return false">🏠 الرئيسية</a>
-<a href="#" onclick="switchPlatform('md1');return false">🚐 MD1 - إعلانات المركبات</a>
-<a href="#" onclick="switchPlatform('md2');return false">📚 MD2 - التأليف والنشر</a>
-<a href="#" onclick="switchPlatform('md3');return false">🛒 MD3 - سوق العرض والطلب</a>
-<a href="#" onclick="switchPlatform('md4');return false">💻 MD4 - البرمجة</a>
-<a href="#" onclick="switchPlatform('md5');return false">🎨 MD5 - إدارة المشاريع</a>
-<a href="#" onclick="switchPlatform('md6');return false">⚡ MD6 - الطاقة النظيفة</a>
-<a href="#" onclick="switchPlatform('md7');return false">🧠 MD7 - MD المؤسس</a>
-</div>
-<div class="hero"><h1>مجموعة <span>MD7</span> لتطوير المشاريع</h1><p>7 منصات ذكية - اضغط على MD لمعرفة معنى إدارة المشاريع</p><div class="router-box"><input id="userGoalInput" placeholder="ماذا تريد أن تنجز اليوم؟"><button class="btn-primary" onclick="routeUserGoal()">توجيه</button></div><div id="routerSuggestion"></div></div>
-<div class="orbital-container" id="orbital"><svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none"><line id="line-md1" class="orbital-line"></line><line id="line-md2" class="orbital-line"></line><line id="line-md3" class="orbital-line"></line><line id="line-md4" class="orbital-line"></line><line id="line-md5" class="orbital-line"></line><line id="line-md6" class="orbital-line"></line></svg>
-<div class="node" id="node-md7" onclick="switchPlatform('md1')">MD7<br><small style="font-size:10px">العقل المركزي</small></div>
-<div class="node" id="node-md1" onclick="switchPlatform('md1')">MD1<br><small>إعلانات المركبات</small></div>
-<div class="node" id="node-md2" onclick="switchPlatform('md2')">MD2<br><small>التأليف والنشر</small></div>
-<div class="node" id="node-md3" onclick="switchPlatform('md3')">MD3<br><small>سوق العرض والطلب</small></div>
-<div class="node" id="node-md4" onclick="switchPlatform('md4')">MD4<br><small>البرمجة</small></div>
-<div class="node" id="node-md5" onclick="switchPlatform('md5')">MD5<br><small>إدارة المشاريع</small></div>
-<div class="node" id="node-md6" onclick="switchPlatform('md6')">MD6<br><small>الطاقة النظيفة</small></div>
-</div>
-<div id="activePlatformView"><div id="platformViewContent"></div></div>
-<div class="showroom3d">
-<div class="car3d"><img src="images/images%20(14).jpeg" alt="هاي اس"><p>🚐 هاي اس جديد 2024</p></div>
-<div class="car3d"><img src="images/images%20(15).jpeg" alt="هاي اس"><p>🚐 هاي اس</p></div>
-<div class="car3d"><img src="images/images%20(17).jpeg" alt="كوستر"><p>🚌 كوستر 26 راكب</p></div>
-<div class="car3d"><img src="images/images%20(20).jpeg" alt="دبابة"><p>🚛 دبابة صندوق</p></div>
-<div class="car3d"><img src="images/images%20(21).jpeg" alt="فيرنا"><p>🚕 تاكسي فيرنا</p></div>
-<div class="car3d"><img src="images/images%20(22).jpeg" alt="VIP"><p>✨ هاي اس VIP</p></div>
-</div>
-<div class="modal" id="companyModal" onclick="if(event.target===this)hideCompanyInfo()"><div class="modal-box"><h3>MD7 Group - إدارة المشاريع وتطويرها</h3><p><strong>MD</strong> = Management Development<br><br>نطور مؤسستك من المحلات للمؤسسات والشركات.<br><br><strong>المؤسس:</strong> أ. محمد رضوان - 01033182019</p><button class="btn-primary" onclick="hideCompanyInfo()">فهمت</button></div></div>
+<a href="join-md7.html" id="join-fab">🤝 كن شريك في MD7</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="moonGrad" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#cfd9e6"/></radialGradient><symbol id="md-emblem" viewBox="0 0 100 100"><polygon class="emb-star" points="50,4 62.93,26.2 88.04,31.64 70.92,50.8 73.51,76.36 50,66 26.49,76.36 29.08,50.8 11.96,31.64 37.07,26.2"/><text class="emb-txt" x="50" y="55" text-anchor="middle" font-size="30">7</text><text class="emb-txt" x="50" y="96" text-anchor="middle" font-size="17" letter-spacing="3">MD</text></symbol></defs></svg>
+<header><a class="brand-logo" onclick="switchTab('md7')"><span class="group-text"><span class="logo-G">G</span><span class="logo-R">R</span><span class="logo-O">O</span><span class="logo-U">U</span><span class="logo-P">P</span></span><span class="logo-D">D</span><span class="logo-M">M</span></a></header>
+<section id="md7" class="view-section active"><div class="solar-system-container"><div id="center-node" class="center-sun-moon" onclick="switchTab('md8')" title="MD8: مولد خطط المشاريع"><svg class="moon-phase" viewBox="-50 -50 100 100" aria-hidden="true"><path id="moon-lit" fill="url(#moonGrad)"/></svg><svg class="emblem" viewBox="0 0 100 100"><use href="#md-emblem"/></svg></div><div class="orbit-ring"><div class="planet planet-1" onclick="window.location.href='md1.html'">MD1<br>إعلانات</div><div class="planet planet-2" onclick="switchTab('md2')">MD2<br>المؤلفين</div><div class="planet planet-3" onclick="window.location.href='wasal24.html'">MD3<br>وصل</div><div class="planet planet-4" onclick="switchTab('md4')">MD4<br>ألم عين</div><div class="planet planet-5" onclick="switchTab('md5')">MD5<br>الأعمال</div><div class="planet planet-6" onclick="switchTab('md6')">MD6<br>الطاقة</div></div></div><div class="chat-widget"><h3 style="color:var(--gold); margin-bottom:8px;"><svg class="emblem-sm" viewBox="0 0 100 100"><use href="#md-emblem"/></svg>تواصل مع المؤسس</h3><div class="chat-logs" id="chatLogs"><p style="color:#aaa;">مرحباً بك! أنا المساعد للمنظومة.</p></div><div class="chat-input-row"><input type="text" id="chatInput" placeholder="اكتب سؤالك هنا..."><button onclick="sendChatMessage()">إرسال</button></div></div></section>
+<section id="md8" class="view-section"><div class="card-box"><h2>🚀 MD8: مولد خطط المشاريع</h2></div></section>
+<section id="md2" class="view-section"><div class="card-box"><h2>📚 MD2:تطوير الإدراة</h2></div></section>
+<section id="md3" class="view-section"><div class="card-box"><h2>🛒 MD3: منصة وصل</h2></div></section>
+<section id="md4" class="view-section"><div class="card-box"><h2>👁️ MD4: تقديم الخدمات</h2></div></section>
+<section id="md5" class="view-section"><div class="card-box"><h2>🎬 MD5:تعليم وصحه</h2></div></section>
+<section id="md6" class="view-section"><div class="card-box"><h2>🌱 MD6: الطاقة واعادة التدوير</h2></div></section>
+<footer class="site-footer"><h3>MD7 Group</h3><p>تأسست في 2026</p><p>avtarpreins@gmail.com</p></footer>
 <script>
-const platformData={md1:{title:"MD1. إعلانات المركبات - النموذج الواقعي",color:"var(--c-md1)",desc:"منظومة إعلانات الميكروباص والتاكسي بصورك الحقيقية - حجز وشاهد إعلانك لايف مع ورقة طباعة PDF."},md2:{title:"MD2. التأليف والنشر",color:"var(--c-md2)",desc:"صناعة المحتوى وتأليف الكتب."},md3:{title:"MD3. سوق العرض والطلب",color:"var(--c-md3)",desc:"منصة عرض وطلب المنتجات."},md4:{title:"MD4. البرمجة",color:"var(--c-md4)",desc:"مساعد تطوير ويب وتطبيقات."},md5:{title:"MD5. إدارة المشاريع",color:"var(--c-md5)",desc:"إدارة المشاريع وتطويرها."},md6:{title:"MD6. الطاقة النظيفة",color:"var(--c-md6)",desc:"حلول الطاقة النظيفة."},md7:{title:"MD7. MD المؤسس - العقل المركزي",color:"var(--c-md7)",desc:"المحرك الرئيس للمنظومة."}};
-document.addEventListener("DOMContentLoaded",()=>{initNavigation();initThemeToggle();drawConnectingLines();window.addEventListener("resize",drawConnectingLines);});
-function initNavigation(){const b=document.getElementById("menuToggle"),n=document.getElementById("sideNav");if(b&&n){b.addEventListener("click",()=>n.classList.toggle("active"));}}
-function initThemeToggle(){const t=document.getElementById("themeToggleBtn");if(t){t.addEventListener("click",()=>document.body.classList.toggle("night"));}}
-function drawConnectingLines(){const c=document.getElementById("node-md7"),co=document.querySelector(".orbital-container");if(!c||!co)return;const cr=c.getBoundingClientRect(),cor=co.getBoundingClientRect(),cX=cr.left+cr.width/2-cor.left,cY=cr.top+cr.height/2-cor.top;["md1","md2","md3","md4","md5","md6"].forEach(id=>{const n=document.getElementById(`node-${id}`),l=document.getElementById(`line-${id}`);if(n&&l){const r=n.getBoundingClientRect(),nX=r.left+r.width/2-cor.left,nY=r.top+r.height/2-cor.top;l.setAttribute("x1",cX);l.setAttribute("y1",cY);l.setAttribute("x2",nX);l.setAttribute("y2",nY);}});}
-function routeUserGoal(){const i=document.getElementById("userGoalInput"),b=document.getElementById("routerSuggestion");if(!i||!b)return;const t=i.value.trim().toLowerCase();if(!t)return;b.style.display="block";let target="md7",g="العقل المركزي";if(t.includes("اعلان")||t.includes("ميكروباص")||t.includes("تاكسي")){target="md1";g="MD1 إعلانات المركبات";}else if(t.includes("كتاب")){target="md2";g="MD2 التأليف";}else if(t.includes("سوق")||t.includes("بيع")){target="md3";g="MD3 السوق";}b.innerHTML=`<div>تم التوجيه إلى <strong>${g}</strong></div><button onclick="switchPlatform('${target}')" class="btn-primary" style="margin-top:10px">الانتقال الآن</button>`;}
-function getMD1RealHTML(){return `<div style="color:var(--gold)"><h2>🚐 MD1 - إعلانات المركبات - واقعي</h2><p style="color:#aaa;font-size:13px">اسحب العربية يمين وشمال لتلف 360° - صورك الحقيقية</p><div class="preview-wrap"><div class="panel"><label>نوع المركبة</label><select id="vTypeMD1"><option value="microbus">ميكروباص (صورتك)</option><option value="taxi">تاكسي فيرنا (صورتك)</option><option value="coaster">كوستر</option><option value="hiace">هاي اس الجديد</option></select><label>مكان الإعلان</label><select id="vZoneMD1"><option value="side">الجانب - 75,000 ج</option><option value="rear">الخلف - 75,000 ج</option><option value="full">الكاملة - 190,000 ج</option></select><label>اسم المعلن</label><input type="text" id="advNameMD1" placeholder="اسم الشركة *"><label>رقم واتساب</label><input type="tel" id="advPhoneMD1" placeholder="010..."><button class="btn-gold" id="bookMD1">إرسال طلب الحجز واتساب</button><div id="bookStatusMD1" style="margin-top:8px;font-size:13px"></div></div><div class="stage"><div id="viewerMD1" style="width:100%;height:300px;position:relative;display:flex;align-items:center;justify-content:center"><img id="realCarMD1" src="images/images%20(20).jpeg" style="width:100%;height:100%;object-fit:contain;transition:transform 0.08s linear;cursor:grab;filter:drop-shadow(0 15px 25px rgba(0,0,0,0.8))"><div id="adOverlayMD1" style="position:absolute;top:58%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#D4AF37,#AA7C11);color:#000;font-weight:900;padding:4px 10px;border-radius:5px;font-size:11px">اعلن هنا</div></div><p style="font-size:11px;color:#aaa;margin-top:8px;text-align:center">الجانب 75,000 كاش / 80,000 تقسيط (20,000 × 4) - الكاملة 190,000</p></div></div></div>`;}
-function switchPlatform(id){const d=platformData[id],v=document.getElementById("activePlatformView"),c=document.getElementById("platformViewContent");if(!d||!v||!c)return;v.style.display="block";c.innerHTML=`<h2 style="color:${d.color}">${d.title}</h2><p style="color:#ccc;font-size:14px">${d.desc}</p>${id==='md1'?getMD1RealHTML():`<div style="background:#000;padding:12px;border-radius:8px;margin-top:10px"><p style="color:#aaa">أداة ${d.title} جاهزة - تواصل مع المؤسس 01033182019</p></div>`}`;v.scrollIntoView({behavior:"smooth"});if(id==='md1')setTimeout(initMD1Real,200);}
-function initMD1Real(){const WA='201033182019';function openWA(t){window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(t),'_blank');}
-var RI={microbus:'images/images%20(20).jpeg',taxi:'images/images%20(21).jpeg',coaster:'images/images%20(17).jpeg',hiace:'images/images%20(14).jpeg'};
-var selV=document.getElementById('vTypeMD1'),realC=document.getElementById('realCarMD1');var rot=0,drag=false,lx=0;
-if(selV)selV.addEventListener('change',()=>{realC.src=RI[selV.value]||RI.microbus;rot=0;realC.style.transform='rotateY(0deg)';});
-var viewer=document.getElementById('viewerMD1');
-if(viewer){
-viewer.addEventListener('mousedown',e=>{drag=true;lx=e.clientX;});
-viewer.addEventListener('mousemove',e=>{if(!drag)return;var d=e.clientX-lx;rot+=d*0.7;realC.style.transform='rotateY('+rot+'deg)';lx=e.clientX;});
-viewer.addEventListener('mouseup',()=>drag=false);viewer.addEventListener('mouseleave',()=>drag=false);
-viewer.addEventListener('touchstart',e=>{drag=true;lx=e.touches[0].clientX;},{passive:false});
-viewer.addEventListener('touchmove',e=>{if(!drag)return;e.preventDefault();var d=e.touches[0].clientX-lx;rot+=d*0.7;realC.style.transform='rotateY('+rot+'deg)';lx=e.touches[0].clientX;},{passive:false});
-viewer.addEventListener('touchend',()=>drag=false);
-}
-var book=document.getElementById('bookMD1');
-if(book)book.addEventListener('click',()=>{
-var name=document.getElementById('advNameMD1').value.trim();
-var phone=document.getElementById('advPhoneMD1').value.trim();
-if(name.length<2){alert('اكتب اسم المعلن');return;}
-var msg=`طلب حجز إعلان MD7
-النوع: ${selV.options[selV.selectedIndex].text}
-الاسم: ${name}
-الهاتف: ${phone}
-الصفحة: ${window.location.href}`;
-openWA(msg);
-document.getElementById('bookStatusMD1').textContent='تم فتح واتساب ✅';
-});
-}
-function showDashboard(){document.getElementById("activePlatformView").style.display="none";window.scrollTo({top:0,behavior:'smooth'});}
-function showCompanyInfo(){document.getElementById('companyModal').classList.add('show');}
-function hideCompanyInfo(){document.getElementById('companyModal').classList.remove('show');}
-function shareSite(){var u=window.location.href;if(navigator.share){navigator.share({title:'MD7 Group',url:u}).catch(()=>{});}else if(navigator.clipboard){navigator.clipboard.writeText(u).then(()=>alert('تم نسخ الرابط: '+u));}else{prompt('انسخ الرابط:',u);}}
+  function switchTab(tabId){document.querySelectorAll('.view-section').forEach(el=>el.classList.remove('active'));document.getElementById(tabId).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+  const WA_USERNAME='avtarmo';
+  function cairoClock(){try{const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Cairo',hourCycle:'h23',hour:'numeric',minute:'numeric',second:'numeric'}).formatToParts(new Date());const get=t=>parseInt(parts.find(p=>p.type===t).value,10);return{h:get('hour'),m:get('minute'),s:get('second')};}catch(e){const d=new Date();return{h:d.getHours(),m:d.getMinutes(),s:d.getSeconds()};}}
+  const SYNODIC=29.530588853;
+  function moonAgeDays(d){const epoch=Date.UTC(2000,0,6,18,14);const age=((d.getTime()-epoch)/86400000)%SYNODIC;return age<0?age+SYNODIC:age;}
+  function moonShape(age){const R=50,f=age/SYNODIC,k=Math.cos(2*Math.PI*f),rx=Math.abs(k)*R;return{d:'M0,'+(-R)+' A'+R+','+R+' 0 0 1 0,'+R+' A'+rx.toFixed(2)+','+R+' 0 0 '+(k>0?0:1)+' 0,'+(-R)+' Z',waning:f>0.5,illum:(1-k)/2};}
+  function updateSolarNode(){const t=cairoClock();const isDay=t.h>=6&&t.h<18;const node=document.getElementById('center-node');document.documentElement.setAttribute('data-mode',isDay?'day':'night');node.className=isDay?'center-sun-moon sun-mode':'center-sun-moon moon-mode';const moon=moonShape(moonAgeDays(new Date()));const lit=document.getElementById('moon-lit');lit.setAttribute('d',moon.d);lit.setAttribute('transform',moon.waning?'scale(-1,1)':'');node.style.boxShadow=isDay?'':'0 0 '+Math.round(14+moon.illum*46)+'px '+Math.round(2+moon.illum*8)+'px rgba(190,220,255,'+(0.18+0.5*moon.illum).toFixed(2)+')';}
+  function syncOrbitToCairo(){const t=cairoClock();const sec=t.h*3600+t.m*60+t.s;const ring=document.querySelector('.orbit-ring');if(ring)ring.style.animationDelay='-'+(sec%35)+'s';document.querySelectorAll('.planet').forEach((p,i)=>{p.style.animationDelay='-'+((sec+i)%6)+'s';});}
+  function addChatLine(logs,who,text,color){const p=document.createElement('p');p.style.color=color;const b=document.createElement('b');b.textContent=who;p.appendChild(b);p.appendChild(document.createTextNode(' '+text));logs.appendChild(p);return p;}
+  function sendChatMessage(){const input=document.getElementById('chatInput');const logs=document.getElementById('chatLogs');const val=input.value.trim();if(!val)return;const msg='مرحبا استاذ محمد - سؤال من منصة MD7: '+val+' - الصفحة: '+window.location.href;const url='https://wa.me/'+WA_USERNAME+'?text='+encodeURIComponent(msg);addChatLine(logs,'أنت:',val,'var(--gold)');const w=window.open(url,'_blank');if(w){w.opener=null;addChatLine(logs,'MD7:','تم تحويل سؤالك للمؤسس على واتساب @'+WA_USERNAME+' ✅','#fff');}else{const p=addChatLine(logs,'MD7:','تعذّر فتح واتساب تلقائيًا. ','#fff');const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent='اضغط هنا لفتح واتساب';a.style.color='var(--gold)';p.appendChild(a);}logs.scrollTop=logs.scrollHeight;input.value='';}
+  document.getElementById('chatInput').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.isComposing){e.preventDefault();sendChatMessage();}});
+  window.onload=function(){updateSolarNode();syncOrbitToCairo();setInterval(updateSolarNode,60000);};
 </script>
 </body>
 </html>
