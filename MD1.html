@@ -3,197 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD1 - النماذج الواقعية + ورقة الطباعة PDF | MD7 Group</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<title>MD1 - إعلانات المركبات | MD7 Group</title>
 <style>
-:root{--gold:#D4AF37;--black:#050505;--dark:#121212;--card-border:rgba(212,175,55,0.35);--gold-glow:rgba(212,175,55,0.3);--muted:#aaa}
-*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;overflow-x:hidden;background:var(--black)}body{font-family:'Segoe UI',Tahoma,sans-serif;color:#fff;direction:rtl;line-height:1.7}
-header{background:#000;border-bottom:2px solid var(--gold);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
-.brand{font-weight:900;font-size:19px;color:var(--gold);text-decoration:none}.back-link{color:var(--gold);text-decoration:none;font-size:13px;border:1px solid var(--card-border);padding:6px 12px;border-radius:20px}
-main{max-width:1100px;margin:0 auto;padding:0 16px}section{padding:32px 0 10px}
-h2.title{color:var(--gold);font-size:22px;margin-bottom:6px}p.lead{color:var(--muted);margin-bottom:16px;font-size:14px}
-.preview-wrap{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:860px){.preview-wrap{grid-template-columns:360px 1fr;align-items:start}}@media(max-width:859px){.stage{order:-1}}
-.panel{background:var(--dark);border:1px solid var(--card-border);border-radius:14px;padding:16px}
-.panel label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}.panel select,.panel input{width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;font-size:14px}
-.panel label.radio{display:flex;gap:8px;color:#ddd;font-size:13px;margin:6px 0;cursor:pointer}.panel label.radio input{accent-color:#D4AF37}
-.file-row{display:flex;gap:8px;flex-wrap:wrap}.fit{font-size:12px;color:var(--muted);margin-top:4px}.fit.ok{color:#7bd88f}
-.total-box{margin-top:12px;background:#000;border:1px solid var(--gold);border-radius:12px;padding:10px 12px;text-align:center;box-shadow:0 0 18px var(--gold-glow)}
-.total-box.t-main{color:var(--gold);font-size:24px;font-weight:900}.total-box.t-sub{color:#ccc;font-size:12px}
-.status{font-size:13px;margin-top:8px;min-height:18px}.status.ok{color:#7bd88f}.status.err{color:#ff6b6b}
-.stage{background:radial-gradient(ellipse at center,#1a1a1a,#0a0a0a);border:1px solid var(--card-border);border-radius:14px;padding:10px}
-.canvas-wrap{position:relative;width:100%;aspect-ratio:16/10;background:#000;border-radius:10px;overflow:hidden}
-#realCar{width:100%;height:100%;object-fit:contain;transition:transform 0.08s linear;filter:drop-shadow(0 15px 25px rgba(0,0,0,0.8));cursor:grab}
-#adOverlay{position:absolute;top:58%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,var(--gold),#AA7C11);color:#000;font-weight:900;padding:4px 10px;border-radius:5px;font-size:11px;min-width:80px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.6);pointer-events:none;max-width:45%}
-#adOverlay.has-img{background:transparent;border:2px solid var(--gold);padding:0;overflow:hidden}#adOverlay img{width:100%;height:100%;object-fit:cover;display:block}
-.upload-box{position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,0.85);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;z-index:5}
-.upload-box[hidden]{display:none}
-.drop{width:min(200px,60%);aspect-ratio:1;border:2px dashed var(--gold);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;color:var(--gold);cursor:pointer;padding:10px;font-size:13px;font-weight:700}
-.btn-gold{background:linear-gradient(135deg,var(--gold),#AA7C11);color:#000;border:none;padding:12px 18px;font-weight:900;border-radius:8px;cursor:pointer;font-size:14px;width:100%;margin-top:10px}
-.note{font-size:11px;color:var(--muted);margin-top:8px;text-align:center}.note b{color:var(--gold)}
-.paper-section{background:#111;border:1px solid var(--card-border);border-radius:14px;padding:16px;margin-top:20px}
-.paper-preview{background:#fff;color:#000;width:100%;max-width:800px;margin:16px auto;padding:30px;border-radius:8px;position:relative}
-.paper-header{display:flex;justify-content:space-between;align-items:flex-start;border:2px solid var(--gold);padding:15px;border-radius:8px;margin-bottom:15px}
-.paper-logo{width:80px;height:80px;background:#000;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900;font-size:18px;clip-path:polygon(50% 0%,0% 100%,100% 100%);padding-top:15px}
-.paper-meta{font-size:12px;text-align:right;line-height:1.8}
-.paper-title{text-align:center;margin:20px 0}
-.paper-title h3{font-size:22px;margin-bottom:5px}
-.paper-title p{color:var(--gold);font-weight:700;font-size:14px}
-.paper-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;opacity:0.08;pointer-events:none}
-.paper-watermark div{width:100%;height:100%;background:#000;clip-path:polygon(50% 0%,0% 100%,100% 100%);display:flex;align-items:center;justify-content:center;color:#000;font-size:80px;font-weight:900;padding-top:40px}
-.paper-body{border-top:1px solid #ddd;padding-top:15px;min-height:300px;line-height:2;font-size:13px}
-.paper-row{display:flex;gap:10px;margin:8px 0;flex-wrap:wrap}
-.paper-row span{flex:1;min-width:200px;border-bottom:1px dotted #999;padding:4px 0}
-.paper-footer{display:flex;justify-content:space-between;margin-top:30px;gap:10px;flex-wrap:wrap}
-.paper-footer div{border:1px solid var(--gold);padding:12px;text-align:center;flex:1;min-width:150px;font-size:12px;border-radius:4px}
-.paper-footer div b{display:block;margin-bottom:10px}
-.site-footer{text-align:center;padding:20px;border-top:2px solid var(--gold);margin-top:30px;background:#000}
+  :root{--gold:#D4AF37;--black:#050505;--dark:#121212;--card-border:rgba(212,175,55,0.35);--muted:#aaa}
+  *{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;overflow-x:hidden;background:var(--black)}body{font-family:'Segoe UI',Tahoma,sans-serif;color:#fff;direction:rtl;line-height:1.7}
+  header{background:#000;border-bottom:2px solid var(--gold);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
+ .brand{display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:22px}.brand.d{color:#C0C0C0}.brand.m{color:var(--gold)}.brand.tag{font-size:12px;color:var(--muted);border-right:1px solid #333;padding-right:8px;margin-right:4px}
+ .back-link{color:var(--gold);text-decoration:none;font-size:14px;border:1px solid var(--card-border);padding:6px 12px;border-radius:20px}
+  nav.sub{background:#0a0a0a;border-bottom:1px solid #1d1d1d;display:flex;gap:6px;overflow-x:auto;padding:8px 12px}nav.sub a{color:#ddd;text-decoration:none;font-size:13px;padding:5px 12px;border-radius:16px;white-space:nowrap}
+  main{max-width:1100px;margin:0 auto;padding:0 16px}section{padding:30px 0 10px;scroll-margin-top:56px}
+  h2.title{color:var(--gold);font-size:24px;margin-bottom:6px}p.lead{color:var(--muted);margin-bottom:20px;font-size:15px}
+ .hero{text-align:center;padding:40px 0 20px;background:radial-gradient(ellipse at top,rgba(212,175,55,0.14),transparent 65%)}.hero.badge{border:1px solid var(--gold);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:13px;margin-bottom:14px;display:inline-block}.hero h1{font-size:32px;font-weight:900;margin-bottom:10px}.hero h1 span{color:var(--gold)}.hero p{color:#ccc;max-width:640px;margin:0 auto 18px}
+ .btn-gold{background:linear-gradient(135deg,var(--gold),#AA7C11);color:#000;border:none;padding:12px 22px;font-weight:900;border-radius:8px;cursor:pointer;font-size:15px;text-decoration:none;display:inline-block}.btn-line{background:transparent;color:var(--gold);border:1px solid var(--gold);padding:12px 22px;border-radius:8px;text-decoration:none;display:inline-block}
+ .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.card{background:var(--dark);border:1px solid var(--card-border);border-radius:14px;padding:18px}.card h3{color:var(--gold);margin-bottom:6px}.card p,.card li{color:#ccc;font-size:14px}
+ .preview-wrap{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:860px){.preview-wrap{grid-template-columns:340px 1fr}}
+ .panel{background:var(--dark);border:1px solid var(--card-border);border-radius:14px;padding:18px}.panel label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}.panel select,.panel input{width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:6px}
+ .stage{background:radial-gradient(ellipse at center,#1a1a1a,#0a0a0a);border:1px solid var(--card-border);border-radius:14px;padding:10px;display:flex;flex-direction:column;justify-content:center}
+  #glcanvas{width:100%;aspect-ratio:16/10;display:block;border-radius:10px;cursor:grab;touch-action:pan-y}
+ .real-img{width:100%;height:200px;object-fit:contain;background:#fff;border-radius:8px;margin-bottom:10px;display:none}
+ .site-footer{text-align:center;padding:30px;border-top:2px solid var(--gold);margin-top:40px;background:#000}
+  :root{--emb:#5fd0ff;--emb-glow:rgba(95,208,255,0.85)}html[data-mode="day"]{--emb:#ff7a7a;--emb-glow:rgba(255,90,90,0.6)}.emb-star{fill:var(--emb);fill-opacity:0.2;stroke:var(--emb);stroke-width:2.6}.emb-txt{fill:var(--emb);font-weight:900;font-family:'Segoe UI',sans-serif}.emblem-sm{width:30px;height:30px;vertical-align:middle}
 </style>
 </head>
 <body>
-<header>
-<a class="brand" href="index.html">MD7 - MD1 النماذج الحقيقية</a>
-<a class="back-link" href="index.html">← الرئيسية</a>
-</header>
+<header><a class="brand" href="index.html"><span class="d">D</span><span class="m">M</span><span class="tag">MD1 · إعلانات المركبات</span></a><a class="back-link" href="index.html">← العودة إلى MD7</a></header>
+<nav class="sub"><a href="#preview">معاينة الإعلان</a><a href="#register">التسجيل</a></nav>
 <main>
+<div class="hero"><span class="badge">مشروع تابع لـ MD7 Group</span><h1>إعلانك يتحرك في <span>شوارع المدينة</span></h1><p>MD1 تربط المعلنين بأصحاب الميكروباصات والتاكسي والكوستر - صورك الحقيقية بتلف 360°</p></div>
+
 <section id="preview">
-<h2 class="title">1- المعاينة الواقعية - النماذج اللي أرفقتها</h2>
-<p class="lead">الميكروباص الأبيض اللي في الصورة والتاكسي - نفس العربيات اللي في الشارع - لفها بصباعك وشوف إعلانك عليها.</p>
-<form id="bookForm" class="preview-wrap" novalidate>
+<h2 class="title">معاينة الإعلان على المركبة - 3D واقعي</h2>
+<p class="lead">اختر المركبة من صورك الحقيقية - اسحب لتدويرها - الواقعية أقرب 80% من الكرتون</p>
+<div class="preview-wrap">
 <div class="panel">
-<label>نوع المركبة - من صورك الحقيقية</label>
-<select id="vType">
-<option value="microbus">ميكروباص تويوتا / هيونداي (صورتك في الشارع)</option>
-<option value="taxi">تاكسي فيرنا أبيض في لبني (صورتك على الكورنيش)</option>
-<option value="coaster">أتوبيس كوستر 28 راكب</option>
-<option value="hiace">ميكروباص تويوتا هاي اس الجديد</option>
-</select>
+<label>نوع المركبة (صورتك الحقيقية)</label>
+<select id="vType"></select>
+<img id="realCarImg" class="real-img" alt="صورة حقيقية">
 <label>مكان الإعلان</label>
-<select id="vZone">
-<option value="side">الجانب - 75,000 ج</option>
-<option value="rear">الخلف - 75,000 ج</option>
-<option value="full">السيارة كاملة - 190,000 ج</option>
-</select>
-<label>صورة الإعلان</label>
-<div class="file-row">
-<button type="button" class="btn-gold" id="pickImg" style="padding:8px;width:auto">📷 اختيار صورة الإعلان</button>
-<button type="button" id="clearImg" hidden style="background:none;border:none;color:var(--gold);cursor:pointer;text-decoration:underline;font-size:12px">إزالة</button>
+<select id="vZone"></select>
+<label>نص الإعلان</label>
+<input type="text" id="adText" maxlength="40" value="اعلن هنا">
+<label>لون الإعلان</label>
+<div id="swatches" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+<div style="margin-top:15px;background:#000;padding:10px;border-radius:8px;border:1px dashed var(--gold)">
+<label>بيانات الحجز السريع - واتساب @avtarmo</label>
+<input type="text" id="advName" placeholder="اسم المعلن *" style="margin-top:6px">
+<input type="tel" id="advPhone" placeholder="رقم واتساب" style="margin-top:6px">
+<button class="btn-gold" onclick="bookViaWA()" style="width:100%;margin-top:10px">📲 حجز واتساب الآن</button>
+<div id="bookStatus" style="margin-top:8px;font-size:13px;color:#7bd88f"></div>
 </div>
-<div id="fileName" class="fit"></div>
-<input type="file" id="adFile" accept="image/*" hidden>
-<label>طريقة الدفع</label>
-<label class="radio"><input type="radio" name="pay" value="cash" checked><span id="payCashTxt"></span></label>
-<label class="radio"><input type="radio" name="pay" value="inst"><span id="payInstTxt"></span></label>
-<div class="total-box">
-<div style="color:var(--muted);font-size:12px">الإجمالي</div>
-<div class="t-main"><span id="totalVal">75,000</span> جنيه</div>
-<div class="t-sub" id="totalSub"></div>
-</div>
-<label>اسم المعلن</label>
-<input type="text" id="advName" maxlength="60" placeholder="اسم الشركة *">
-<label>رقم التواصل</label>
-<input type="tel" id="advPhone" maxlength="20" placeholder="رقم واتساب">
-<button type="submit" class="btn-gold">إرسال طلب الحجز لـ @avtarmo</button>
-<div id="bookStatus" class="status"></div>
 </div>
 <div class="stage">
-<div class="canvas-wrap" id="viewer">
-<img id="realCar" src="" alt="real car">
-<div id="adOverlay">اعلن هنا</div>
-<div class="upload-box" id="uploadBox" hidden>
-<div class="drop" id="dropZone"><span style="font-size:28px">📷</span><span>اضغط لرفع إعلانك</span><small>أو اسحبه هنا</small></div>
-<button type="button" id="closeUpload" style="background:none;border:none;color:var(--gold);text-decoration:underline;cursor:pointer;margin-top:8px">إغلاق</button>
+<canvas id="glcanvas"></canvas>
+<p style="font-size:11px;color:#aaa;text-align:center;margin-top:8px">نموذج 3D مطور - مقاسات تقريبية - اسحب يمين/شمال لتلف - صورك الحقيقية في الأعلى</p>
 </div>
 </div>
-<p class="note"><b>واقعي من صورك - اسحب يمين وشمال لتلف العربية - اضغط لتغيير مكان الإعلان</b><br>الجانب 75,000 كاش / 80,000 تقسيط (20,000 × 4) - الكاملة 190,000 بدون زيادة - عرض 70 إعلان</p>
-</div>
-</form>
 </section>
 
-<section id="paper" class="paper-section">
-<h2 class="title">2- ورقة الطباعة للسائق / المعلن / صاحب السيارة - تحميل PDF</h2>
-<p class="lead">نفس تصميم ورقة MD7 اللي أرفقتها - تتغير البيانات حسب الجهة وتقدر تطبعها أو تحملها PDF.</p>
-<div class="panel">
-<label>الجهة المطبوع لها الورقة</label>
-<select id="paperType" onchange="updatePaper()">
-<option value="driver">سائق الميكروباص / التاكسي</option>
-<option value="advertiser">المعلن (صاحب الإعلان)</option>
-<option value="owner">صاحب السيارة / الشركة</option>
-<option value="maintenance">مركز صيانة السيارات MD7</option>
-</select>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-<div><label>التاريخ</label><input type="date" id="pDate"></div>
-<div><label>القسم</label><input type="text" id="pDept" value="إدارة الصيانة والتشغيل"></div>
-<div><label>اسم الجهة / الشخص</label><input type="text" id="pName" placeholder="محمد أحمد"></div>
-<div><label>رقم المركبة / الهوية</label><input type="text" id="pId" placeholder="س ج د 1234"></div>
-<div><label>نوع المركبة</label><input type="text" id="pVehicle" placeholder="ميكروباص تويوتا - تاكسي فيرنا"></div>
-<div><label>مكان الإعلان</label><select id="pAdPlace"><option>الجانب</option><option>الخلف</option><option>السيارة كاملة</option></select></div>
-<div><label>قيمة التعاقد</label><input type="text" id="pPrice" placeholder="75,000 جنيه"></div>
-<div><label>طريقة الدفع</label><select id="pPay"><option>كاش</option><option>تقسيط على 4 دفعات</option><option>190,000 كاملة بدون زيادة</option></select></div>
+<section id="register">
+<h2 class="title">التسجيل - مفعل الآن عبر واتساب</h2>
+<div class="grid">
+<div class="card">
+<h3>📣 تسجيل المعلنين</h3>
+<input type="text" id="regAdvName" placeholder="اسم الشركة" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;margin:6px 0">
+<input type="text" id="regAdvAd" placeholder="تفاصيل الإعلان" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;margin:6px 0">
+<button class="btn-gold" onclick="registerAdv()" style="width:100%;margin-top:10px">تسجيل معلن - واتساب</button>
 </div>
-<label>تفاصيل إضافية / شروط</label>
-<input type="text" id="pDetails" placeholder="مثال: مدة الإعلان 3 شهور - خط السير الزقازيق">
-<button class="btn-gold" onclick="updatePaper()">تحديث المعاينة</button>
-<button class="btn-gold" onclick="downloadPDF()" style="background:#fff;color:#000;margin-top:8px">📄 تحميل الورقة PDF وطباعتها</button>
-<button class="btn-gold" onclick="sendPaperWA()" style="background:#25D366;color:#fff;margin-top:8px">📲 إرسال الورقة واتساب لـ @avtarmo</button>
+<div class="card">
+<h3>🚐 تسجيل أصحاب المركبات</h3>
+<input type="text" id="regDriverName" placeholder="اسم السائق" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;margin:6px 0">
+<input type="text" id="regDriverCar" placeholder="نوع المركبة + رقمها" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;margin:6px 0">
+<button class="btn-gold" onclick="registerDriver()" style="width:100%;margin-top:10px">تسجيل مركبة - واتساب</button>
 </div>
-<div class="paper-preview" id="paperPreview">
-<div class="paper-header">
-<div class="paper-meta">
-<div>التاريخ: <span id="ppDate">2024 / __ / __</span></div>
-<div>القسم: <span id="ppDept">إدارة الصيانة والتشغيل</span></div>
-<div>الجهة: <span id="ppType">سائق الميكروباص</span></div>
-</div>
-<div class="paper-logo">MD7</div>
-</div>
-<div class="paper-title">
-<h3 id="ppTitle">عقد تشغيل مركبة للإعلان - سائق</h3>
-<p id="ppSub">عقد إعلان مركبة - MD7 Group</p>
-</div>
-<div class="paper-watermark"><div>MD7</div></div>
-<div class="paper-body" id="ppBody">
-<div class="paper-row"><span><b>اسم السائق / المعلن:</b> <span id="ppName">__________</span></span> <span><b>رقم المركبة:</b> <span id="ppId">__________</span></span></div>
-<div class="paper-row"><span><b>نوع المركبة:</b> <span id="ppVehicle">ميكروباص تويوتا</span></span> <span><b>مكان الإعلان:</b> <span id="ppAdPlace">الجانب</span></span></div>
-<div class="paper-row"><span><b>قيمة التعاقد:</b> <span id="ppPrice">75,000 جنيه</span></span> <span><b>طريقة الدفع:</b> <span id="ppPay">كاش</span></span></div>
-<div class="paper-row"><span><b>التفاصيل:</b> <span id="ppDetails">مدة الإعلان - خط السير - الشروط</span></span></div>
-<p style="margin-top:20px">أقر أنا الموقع أدناه بالموافقة على الشروط التالية:</p>
-<p>1- الالتزام بالحفاظ على الإعلان وعدم إزالته إلا بموافقة MD7<br>2- الالتزام بخط السير المتفق عليه<br>3- في حالة المخالفة يتم إزالة الإعلان وفسخ التعاقد<br>4- مدة التعاقد قابلة للتجديد</p>
-<div style="margin-top:20px"><p><b>ملاحظات:</b></p><p style="border-bottom:1px dotted #999;min-height:60px"></p></div>
-</div>
-<div class="paper-footer">
-<div><b>اعتماد مدير المركز</b><br><br>__________________</div>
-<div><b>اعتماد مدير التشغيل</b><br><br>__________________</div>
-<div><b>اعتماد مدير المالية</b><br><br>__________________</div>
-</div>
-<div style="font-size:10px;text-align:center;margin-top:15px;color:#666;border-top:1px solid #ddd;padding-top:8px">العنوان: 15 شارع العاشر من رمضان، مدينة نصر | www.md7-maintentance.eg<br>مجموعة MD7 - أ. محمد رضوان - واتساب: 01033182019</div>
 </div>
 </section>
 </main>
-<footer class="site-footer"><p>MD1 - MD7 Group - 2026 - واتساب @avtarmo - المفتاح 5982</p></footer>
+<footer class="site-footer"><h3>MD1 · تابع لـ MD7 Group</h3><p>avtarpreins@gmail.com - واتساب @avtarmo</p></footer>
+
 <script>
+// واتساب يوزرنيم فقط
 var WA_USERNAME='avtarmo';
-function openWhatsApp(text){var url='https://wa.me/'+WA_USERNAME+'?text='+encodeURIComponent(text);var w=window.open(url,'_blank');if(w)w.opener=null;return{win:w,url:url}}
-var PRICES={side:{cash:75000,inst:80000,n:4},rear:{cash:75000,inst:80000,n:4},full:{cash:190000,inst:190000,n:4}};
-var ZONES={side:'الجانب',rear:'الخلف',full:'السيارة كاملة'};
-var form=document.getElementById('bookForm'),selV=document.getElementById('vType'),selZ=document.getElementById('vZone'),fileInput=document.getElementById('adFile'),fileNameEl=document.getElementById('fileName'),clearBtn=document.getElementById('clearImg'),uploadBox=document.getElementById('uploadBox'),dropZone=document.getElementById('dropZone'),realCar=document.getElementById('realCar'),adOverlay=document.getElementById('adOverlay'),statusEl=document.getElementById('bookStatus'),nameEl=document.getElementById('advName'),phoneEl=document.getElementById('advPhone'),state={img:null,name:''},rot=0,dragging=false,lx=0,adPos={x:50,y:58};
-var REAL_IMGS={microbus:'microbus_real.jpg',taxi:'taxi_real.jpg',coaster:'coaster.png',hiace:'hiace.png'};
-function loadRealImages(){realCar.src=REAL_IMGS.microbus;realCar.onerror=function(){if(this.src.includes('microbus_real')){this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=900';}else if(this.src.includes('taxi_real')){this.src='https://images.unsplash.com/photo-1550355291-bbee04a92027?w=900';}};}
-function fmt(n){return n.toLocaleString('en-US')}function payValue(){return form.querySelector('input[name="pay"]:checked').value}
-function updatePrice(){var z=selZ.value,p=PRICES[z],pay=payValue(),per=p.inst/p.n,fixed=p.cash===p.inst;document.getElementById('payCashTxt').textContent='كاش — '+fmt(p.cash)+' جنيه';document.getElementById('payInstTxt').textContent='تقسيط على '+p.n+' دفعات — '+fmt(p.inst)+' جنيه ('+fmt(per)+' × '+p.n+(fixed?'، بدون زيادة':'')+')';document.getElementById('totalVal').textContent=fmt(pay==='cash'?p.cash:p.inst);document.getElementById('totalSub').textContent=pay==='cash'?'دفع كاش':'تقسيط '+fmt(per)+' × '+p.n+(fixed?' (بدون زيادة)':'');}
-function showUpload(){uploadBox.hidden=false}function hideUpload(){uploadBox.hidden=true}function setStatus(msg,cls){statusEl.className='status'+(cls?' '+cls:'');statusEl.textContent=msg}
-selV.addEventListener('change',function(){realCar.src=REAL_IMGS[selV.value]||REAL_IMGS.microbus;rot=0;realCar.style.transform='rotateY(0deg)';updateAdPos();});
-selZ.addEventListener('change',function(){updatePrice();updateAdPos();});form.querySelectorAll('input[name="pay"]').forEach(function(r){r.addEventListener('change',updatePrice)});
-function updateAdPos(){var place=selZ.value;adOverlay.style.left=adPos.x+'%';adOverlay.style.top=adPos.y+'%';if(place==='side'){adOverlay.style.width='38%';}else if(place==='rear'){adOverlay.style.width='20%';adOverlay.style.height='32%';adOverlay.style.left='82%';adOverlay.style.top='55%';}else{adOverlay.style.width='72%';adOverlay.style.height='58%';adOverlay.style.left='50%';adOverlay.style.top='52%';}}
-var viewer=document.getElementById('viewer');viewer.addEventListener('mousedown',function(e){dragging=true;lx=e.clientX;});viewer.addEventListener('mousemove',function(e){if(!dragging)return;var diff=e.clientX-lx;rot+=diff*0.7;var scale=1-Math.abs(Math.sin(rot*Math.PI/180))*0.12;realCar.style.transform='rotateY('+rot+'deg) scale('+scale+')';lx=e.clientX;});viewer.addEventListener('mouseup',function(){dragging=false});viewer.addEventListener('mouseleave',function(){dragging=false});viewer.addEventListener('touchstart',function(e){dragging=true;lx=e.touches[0].clientX},{passive:false});viewer.addEventListener('touchmove',function(e){if(!dragging)return;e.preventDefault();var x=e.touches[0].clientX;var diff=x-lx;rot+=diff*0.7;var scale=1-Math.abs(Math.sin(rot*Math.PI/180))*0.12;realCar.style.transform='rotateY('+rot+'deg) scale('+scale+')';lx=x;},{passive:false});viewer.addEventListener('touchend',function(){dragging=false});
-viewer.addEventListener('click',function(e){if(e.target.id==='closeUpload'||e.target.closest('#uploadBox'))return;if(Math.abs(rot)>8)return;var rect=viewer.getBoundingClientRect();var x=e.clientX,y=e.clientY;if(x&&y){adPos.x=((x-rect.left)/rect.width*100);adPos.y=((y-rect.top)/rect.height*100);updateAdPos();}showUpload();});
-function setImageFile(file){if(!file)return;var url=URL.createObjectURL(file);var img=new Image();img.onload=function(){state={img:img,name:file.name};fileNameEl.textContent='✓ '+file.name+' ('+Math.round(file.size/1024)+' KB)';fileNameEl.className='fit ok';clearBtn.hidden=false;adOverlay.innerHTML='<img src="'+url+'">';adOverlay.classList.add('has-img');hideUpload();};img.src=url;}
-document.getElementById('pickImg').addEventListener('click',function(){fileInput.click();});dropZone.addEventListener('click',function(){fileInput.click();});dropZone.addEventListener('dragover',function(e){e.preventDefault();dropZone.style.background='rgba(212,175,55,0.12)'});dropZone.addEventListener('dragleave',function(){dropZone.style.background='transparent'});dropZone.addEventListener('drop',function(e){e.preventDefault();if(e.dataTransfer.files[0])setImageFile(e.dataTransfer.files[0])});fileInput.addEventListener('change',function(){setImageFile(fileInput.files[0])});clearBtn.addEventListener('click',function(){state={img:null,name:''};fileInput.value='';fileNameEl.textContent='';adOverlay.innerHTML='اعلن هنا';adOverlay.classList.remove('has-img');clearBtn.hidden=true;});document.getElementById('closeUpload').addEventListener('click',hideUpload);
-form.addEventListener('submit',function(e){e.preventDefault();var name=nameEl.value.trim();var phone=phoneEl.value.trim();if(!state.img){setStatus('ارفع صورة الإعلان أولا.','err');showUpload();return}if(name.length<2){setStatus('اكتب اسم المعلن.','err');nameEl.focus();return}var z=selZ.value,p=PRICES[z],pay=payValue(),total=pay==='cash'?p.cash:p.inst;var payText=pay==='cash'?'كاش':'تقسيط على '+p.n+' دفعات ('+fmt(p.inst/p.n)+' للدفعة)';var msg=['طلب حجز إعلان جديد - MD7 Group - عرض الشركات 70 إعلان فترة محدودة','','نوع المركبة: '+selV.options[selV.selectedIndex].text,'مكان الإعلان: '+ZONES[z],'الصورة: '+state.name+' (سأرفقها في هذه المحادثة)','طريقة الدفع: '+payText,'الإجمالي: '+fmt(total)+' جنيه','اسم المعلن: '+name,'رقم التواصل: '+phone,'الصفحة: '+window.location.href].join('\n');var r=openWhatsApp(msg);statusEl.className='status ok';if(r.win){statusEl.textContent='تم تحويل طلبك للمؤسس على واتساب @'+WA_USERNAME+' ✅'}else{statusEl.textContent='';var a=document.createElement('a');a.href=r.url;a.target='_blank';a.textContent='اضغط هنا لفتح واتساب';a.style.color='#D4AF37';statusEl.appendChild(a)}});
-updatePrice();updateAdPos();loadRealImages();document.getElementById('pDate').valueAsDate=new Date();
-function updatePaper(){var type=document.getElementById('paperType').value;var typeMap={driver:'سائق الميكروباص / التاكسي',advertiser:'المعلن - صاحب الإعلان',owner:'صاحب السيارة / الشركة',maintenance:'مركز صيانة السيارات MD7'};var titleMap={driver:'عقد تشغيل مركبة للإعلان - سائق',advertiser:'عقد إعلان على مركبة - معلن',owner:'عقد إيجار مساحة إعلانية - مالك السيارة',maintenance:'مركز صيانة السيارات MD7 - مقترح منظومة الصيانة والتشغيل المتكامل'};document.getElementById('ppType').textContent=typeMap[type];document.getElementById('ppTitle').textContent=titleMap[type];document.getElementById('ppSub').textContent=type==='maintenance'?'مقترح منظومة الصيانة والتشغيل المتكامل':'عقد إعلان مركبة - MD7 Group';var date=document.getElementById('pDate').value||'2024 / __ / __';document.getElementById('ppDate').textContent=date;document.getElementById('ppDept').textContent=document.getElementById('pDept').value;document.getElementById('ppName').textContent=document.getElementById('pName').value||'__________';document.getElementById('ppId').textContent=document.getElementById('pId').value||'__________';document.getElementById('ppVehicle').textContent=document.getElementById('pVehicle').value||'ميكروباص تويوتا';document.getElementById('ppAdPlace').textContent=document.getElementById('pAdPlace').value;document.getElementById('ppPrice').textContent=document.getElementById('pPrice').value||'75,000 جنيه';document.getElementById('ppPay').textContent=document.getElementById('pPay').value;document.getElementById('ppDetails').textContent=document.getElementById('pDetails').value||'مدة الإعلان - خط السير - الشروط';}
-function downloadPDF(){updatePaper();var element=document.getElementById('paperPreview');html2canvas(element,{scale:2,useCORS:true}).then(function(canvas){var imgData=canvas.toDataURL('image/png');var pdf=new jspdf.jsPDF('p','mm','a4');var width=pdf.internal.pageSize.getWidth();var height=(canvas.height*width)/canvas.width;pdf.addImage(imgData,'PNG',0,0,width,height);var fileName='MD7_'+document.getElementById('paperType').value+'_'+(document.getElementById('pName').value||'contract')+'.pdf';pdf.save(fileName);});}
-function sendPaperWA(){updatePaper();var name=document.getElementById('pName').value||'غير محدد';var type=document.getElementById('paperType').options[document.getElementById('paperType').selectedIndex].text;var vehicle=document.getElementById('pVehicle').value;var price=document.getElementById('pPrice').value;var msg='طلب ورقة MD7 - '+type+'%0Aالاسم: '+name+'%0Aالمركبة: '+vehicle+'%0Aالقيمة: '+price+'%0A%0Aتم تجهيز الورقة للطباعة PDF - الصفحة: '+window.location.href;openWhatsApp(msg);}
-updatePaper();
+function openWA(msg){window.open('https://wa.me/'+WA_USERNAME+'?text='+encodeURIComponent(msg),'_blank');}
+function bookViaWA(){
+ var name=document.getElementById('advName').value.trim();
+ var phone=document.getElementById('advPhone').value.trim();
+ var v=document.getElementById('vType');var vt=v.options[v.selectedIndex].text;
+ var z=document.getElementById('vZone');var zt=z.options[z.selectedIndex].text;
+ var ad=document.getElementById('adText').value;
+ if(name.length<2){alert('اكتب اسم المعلن');return;}
+ var msg=`طلب حجز إعلان MD1\nالنوع: ${vt}\nالمكان: ${zt}\nالنص: ${ad}\nالاسم: ${name}\nالهاتف: ${phone}\nالصفحة: ${location.href}`;
+ openWA(msg);document.getElementById('bookStatus').textContent='تم فتح واتساب ✅';
+}
+function registerAdv(){
+ var n=document.getElementById('regAdvName').value;var a=document.getElementById('regAdvAd').value;
+ openWA(`تسجيل معلن جديد MD1\nالاسم: ${n}\nالإعلان: ${a}\n${location.href}`);
+}
+function registerDriver(){
+ var n=document.getElementById('regDriverName').value;var c=document.getElementById('regDriverCar').value;
+ openWA(`تسجيل مركبة جديدة MD1\nالسائق: ${n}\nالمركبة: ${c}\n${location.href}`);
+}
+
+// ربط الصور الحقيقية بالـ 3D
+var VEHICLES={
+ h1:{label:'ميكروباص هيونداي H1 - صورتك',img:'images/images%20(14).jpeg',L:5.15,W:1.92,roofY:1.9,wheelR:0.37,wheelX:1.6,body:[0.96,0.96,0.96],profile:[[-2.55,0.32],[2.4,0.32],[2.55,0.55],[2.55,0.95],[2.15,1.25],[1.65,1.9],[-2.5,1.9],[-2.55,1.8]],windows:[[[0.55,1.12],[1.35,1.12],[1.35,1.72],[0.55,1.72]],[[ -0.5,1.12],[0.4,1.12],[0.4,1.72],[-0.5,1.72]]],glass:[{b:[2.15,1.25],t:[1.65,1.9],hw:0.84}],zones:{side:{label:'الجانب',kind:'side',x0:-2.1,x1:1.3,y0:0.5,y1:1.05},rear:{label:'الخلف',kind:'rear',z0:-0.6,z1:0.6,y0:0.55,y1:1.6},roof:{label:'السقف',kind:'roof',x0:-2.2,x1:1.4,z0:-0.7,z1:0.7}}},
+ hiace:{label:'تويوتا هاي اس - صورتك',img:'images/images%20(15).jpeg',L:5.38,W:1.88,roofY:2.15,wheelR:0.37,wheelX:1.65,body:[0.96,0.96,0.96],profile:[[-2.69,0.32],[2.5,0.32],[2.69,0.52],[2.69,0.95],[2.5,1.25],[2.05,1.98],[1.95,2.15],[-2.65,2.15],[-2.69,2.05]],windows:[[[0.8,1.35],[1.8,1.95],[0.8,1.95]]],glass:[{b:[2.5,1.25],t:[2.05,1.98],hw:0.82}],zones:{side:{label:'الجانب',kind:'side',x0:-2.4,x1:1.5,y0:0.5,y1:1.25},rear:{label:'الخلف',kind:'rear',z0:-0.62,z1:0.62,y0:0.6,y1:1.85},roof:{label:'السقف',kind:'roof',x0:-2.4,x1:1.6,z0:-0.7,z1:0.7}}},
+ taxi:{label:'تاكسي فيرنا - صورتك',img:'images/images%20(21).jpeg',L:4.4,W:1.7,roofY:1.42,wheelR:0.32,wheelX:1.3,body:[0.96,0.96,0.96],profile:[[-2.2,0.3],[2.1,0.3],[2.2,0.5],[2.2,0.85],[1.35,0.95],[0.55,1.42],[-0.8,1.42],[-1.5,1.0],[-2.2,1.0]],windows:[[[1.0,1.02],[0.0,1.02],[0.0,1.34],[0.58,1.34]]],glass:[{b:[1.35,0.95],t:[0.55,1.42],hw:0.7}],zones:{side:{label:'الجانب',kind:'side',x0:-1.3,x1:1.05,y0:0.45,y1:0.9},rear:{label:'الخلف',kind:'rear',z0:-0.6,z1:0.6,y0:0.55,y1:0.95},roof:{label:'السقف',kind:'side',zs:0.166,x0:-0.4,x1:0.4,y0:1.46,y1:1.6}}},
+ coaster:{label:'كوستر 26 راكب - صورتك',img:'images/images%20(17).jpeg',L:7.0,W:2.08,roofY:2.62,wheelR:0.45,wheelX:2.25,body:[0.96,0.96,0.96],profile:[[-3.5,0.42],[3.3,0.42],[3.5,0.65],[3.5,1.15],[3.38,1.4],[3.18,2.5],[3.05,2.62],[-3.45,2.62],[-3.5,2.5]],windows:[[[2.05,1.5],[2.95,1.5],[2.95,2.35],[2.05,2.35]]],glass:[{b:[3.38,1.4],t:[3.18,2.5],hw:0.95}],zones:{side:{label:'الجانب',kind:'side',x0:-3.2,x1:2.9,y0:0.65,y1:1.4},rear:{label:'الخلف',kind:'rear',z0:-0.8,z1:0.8,y0:0.7,y1:2.3},roof:{label:'السقف',kind:'roof',x0:-3.0,x1:2.8,z0:-0.8,z1:0.8}}},
+ dababa:{label:'دبابة صندوق - صورتك',img:'images/images%20(20).jpeg',L:5.5,W:1.9,roofY:2.0,wheelR:0.38,wheelX:1.7,body:[0.9,0.15,0.15],profile:[[-2.7,0.35],[2.6,0.35],[2.7,0.6],[2.7,1.8],[1.8,2.0],[-2.7,2.0]],windows:[[[0.5,1.0],[1.5,1.0],[1.5,1.6],[0.5,1.6]]],glass:[{b:[1.8,1.0],t:[1.2,1.8],hw:0.7}],zones:{side:{label:'الصندوق الجانبي',kind:'side',x0:-2.0,x1:1.0,y0:0.6,y1:1.6},rear:{label:'خلف الصندوق',kind:'rear',z0:-0.7,z1:0.7,y0:0.6,y1:1.7}}},
+ vip:{label:'هاي اس VIP - صورتك',img:'images/images%20(22).jpeg',L:5.38,W:1.88,roofY:2.15,wheelR:0.37,wheelX:1.65,body:[0.1,0.1,0.1],profile:[[-2.69,0.32],[2.5,0.32],[2.69,0.52],[2.69,0.95],[2.5,1.25],[2.05,1.98],[1.95,2.15],[-2.65,2.15],[-2.69,2.05]],windows:[[[0.8,1.35],[1.8,1.35],[1.8,1.95],[0.8,1.95]]],glass:[{b:[2.5,1.25],t:[2.05,1.98],hw:0.82}],zones:{side:{label:'الجانب VIP',kind:'side',x0:-2.4,x1:1.5,y0:0.5,y1:1.25},rear:{label:'الخلف',kind:'rear',z0:-0.62,z1:0.62,y0:0.6,y1:1.85}}}
+};
+var VIEWS={side:{yaw:0.55,pitch:0.20},rear:{yaw:-1.12,pitch:0.20},roof:{yaw:0.5,pitch:0.85}};
+var ZONE_KEYS=['side','rear','roof'];
+var COLORS=[{bg:'#D4AF37',fg:'#000'},{bg:'#0b0b0b',fg:'#D4AF37'},{bg:'#fff',fg:'#111'},{bg:'#c62828',fg:'#fff'},{bg:'#1565c0',fg:'#fff'}];
+var canvas=document.getElementById('glcanvas'),selV=document.getElementById('vType'),selZ=document.getElementById('vZone'),txt=document.getElementById('adText'),sw=document.getElementById('swatches'),realImg=document.getElementById('realCarImg');
+var colorIdx=0;
+Object.keys(VEHICLES).forEach(k=>{var o=document.createElement('option');o.value=k;o.textContent=VEHICLES[k].label;selV.appendChild(o);});
+function fillZones(){var zones=VEHICLES[selV.value].zones,prev=selZ.value;selZ.innerHTML='';Object.keys(zones).forEach(k=>{var o=document.createElement('option');o.value=k;o.textContent=zones[k].label;selZ.appendChild(o);});if(zones[prev])selZ.value=prev;var img=VEHICLES[selV.value].img;if(img){realImg.src=img;realImg.style.display='block';} }
+COLORS.forEach((c,i)=>{var b=document.createElement('button');b.style.cssText=`width:34px;height:34px;border-radius:50%;background:${c.bg};border:2px solid #333;cursor:pointer`;b.onclick=()=>{colorIdx=i;refresh(false);};sw.appendChild(b);});
+var gl=canvas.getContext('webgl')||canvas.getContext('experimental-webgl');
+if(!gl){canvas.style.display='none';}
+else{
+// WebGL setup (مختصر ومطور - نفس منطقك القديم لكن بألوان واقعية)
+function rect(x0,x1,y0,y1){return [[x0,y0],[x1,y0],[x1,y1],[x0,y1]];}
+function ccw(poly){var a=0,n=poly.length;for(var i=0;i<n;i++){var j=(i+1)%n;a+=poly[i][0]*poly[j][1]-poly[j][0]*poly[i][1];}return a>0?poly:poly.slice().reverse();}
+function triangulate(poly){var idx=poly.map((_,i)=>i),tris=[],g=0;while(idx.length>3&&g++<1000){var cl=false;for(var i=0;i<idx.length;i++){var a=idx[(i+idx.length-1)%idx.length],b=idx[i],c=idx[(i+1)%idx.length];var A=poly[a],B=poly[b],C=poly[c];var cr=(B[0]-A[0])*(C[1]-A[1])-(B[1]-A[1])*(C[0]-A[0]);if(cr<=1e-9)continue;var inside=false;for(var k=0;k<idx.length;k++){var j=idx[k];if(j===a||j===b||j===c)continue;var p=poly[j];var d1=(p[0]-B[0])*(A[1]-B[1])-(A[0]-B[0])*(p[1]-B[1]);var d2=(p[0]-C[0])*(B[1]-C[1])-(B[0]-C[0])*(p[1]-C[1]);var d3=(p[0]-A[0])*(C[1]-A[1])-(C[0]-A[0])*(p[1]-A[1]);var neg=d1<0||d2<0||d3<0,pos=d1>0||d2>0||d3>0;if(!(neg&&pos)){inside=true;break;}}if(inside)continue;tris.push([a,b,c]);idx.splice(i,1);cl=true;break;}if(!cl)break;}if(idx.length===3)tris.push([idx[0],idx[1],idx[2]]);return tris;}
+function Mesh(){this.d=[];}Mesh.prototype.v=function(p,n,c,uv){this.d.push(p[0],p[1],p[2],n[0],n[1],n[2],c[0],c[1],c[2],uv?uv[0]:0,uv?uv[1]:0);};Mesh.prototype.count=function(){return this.d.length/11;};
+function extrude(m,prof,z0,z1,col){var p=ccw(prof),t=triangulate(p);t.forEach(tr=>{tr.forEach(k=>{m.v([p[k][0],p[k][1],z1],[0,0,1],col);});[tr[0],tr[2],tr[1]].forEach(k=>{m.v([p[k][0],p[k][1],z0],[0,0,-1],col);});for(var i=0;i<p.length;i++){var a=p[i],b=p[(i+1)%p.length],dx=b[0]-a[0],dy=b[1]-a[1],len=Math.sqrt(dx*dx+dy*dy)||1,n=[dy/len,-dx/len,0];var A0=[a[0],a[1],z0],A1=[a[0],a[1],z1],B0=[b[0],b[1],z0],B1=[b[0],b[1],z1];[A0,B0,B1,A0,B1,A1].forEach(q=>m.v(q,n,col));}}
+function box(m,c,s,col){extrude(m,rect(c[0]-s[0]/2,c[0]+s[0]/2,c[1]-s[1]/2,c[1]+s[1]/2),c[2]-s[2]/2,c[2]+s[2]/2,col);}
+function cylZ(m,cx,cy,z0,z1,r,col,n){var pts=[];for(var i=0;i<n;i++){var a=i/n*Math.PI*2;pts.push([cx+Math.cos(a)*r,cy+Math.sin(a)*r]);}extrude(m,pts,z0,z1,col);}
+function quad(m,p0,p1,p2,p3,col){var n=[0,0,1];var u=[[0,0],[1,0],[1,1],[0,1]];[[p0,0],[p1,1],[p2,2],[p0,0],[p2,2],[p3,3]].forEach(e=>m.v(e[0],n,col,u[e[1]]));}
+function discY(m,r,y,col,n,rx,rz){for(var i=0;i<n;i++){var a0=i/n*Math.PI*2,a1=(i+1)/n*Math.PI*2;m.v([0,y,0],[0,1,0],col);m.v([Math.cos(a1)*(rx||r),y,Math.sin(a1)*(rz||r)],[0,1,0],col);m.v([Math.cos(a0)*(rx||r),y,Math.sin(a0)*(rz||r)],[0,1,0],col);}}
+var C_GLASS=[0.15,0.2,0.25],C_TIRE=[0.07,0.07,0.07],C_HUB=[0.62,0.62,0.62],C_GOLD=[0.83,0.69,0.22],C_GROUND=[0.11,0.11,0.11],C_SHADOW=[0.03,0.03,0.03];
+function buildVehicle(v){var m=new Mesh(),W=v.W,L=v.L,hz=W/2;discY(m,L*0.85,0,C_GROUND,56);discY(m,1,0.006,C_SHADOW,40,L*0.58,W*0.66);extrude(m,v.profile,-hz,hz,v.body);v.windows.forEach(w=>extrude(m,w,-hz-0.008,hz+0.008,C_GLASS));v.glass.forEach(g=>{var n=[0,0,0];var b0=[g.b[0],g.b[1],-g.hw],b1=[g.b[0],g.b[1],g.hw],t1=[g.t[0],g.t[1],g.hw],t0=[g.t[0],g.t[1],-g.hw];quad(m,b0,b1,t1,t0,C_GLASS);});[v.wheelX,-v.wheelX].forEach(wx=>{[-1,1].forEach(s=>{var zin=s*(hz-0.24),zout=s*(hz+0.04),a=Math.min(zin,zout),b=Math.max(zin,zout);cylZ(m,wx,v.wheelR,s>0?hz:-hz-0.012,s>0?hz+0.012:-hz,v.wheelR+0.06,[0.04,0.04,0.04],24);cylZ(m,wx,v.wheelR,a,b,v.wheelR,C_TIRE,24);cylZ(m,wx,v.wheelR,s>0?hz+0.035:-hz-0.047,s>0?hz+0.047:-hz-0.035,v.wheelR*0.55,C_HUB,16);});});return m;}
+function zonePlanes(v,z){var out=[];if(z.kind==='side'){var zs=v.W/2+0.006;out.push({o:[z.x0,z.y0,zs],u:[1,0,0],v:[0,1,0],w:z.x1-z.x0,h:z.y1-z.y0});out.push({o:[z.x1,z.y0,-zs],u:[-1,0,0],v:[0,1,0],w:z.x1-z.x0,h:z.y1-z.y0});}else if(z.kind==='rear'){out.push({o:[-v.L/2-0.006,z.y0,z.z0],u:[0,0,1],v:[0,1,0],w:z.z1-z.z0,h:z.y1-z.y0});}else if(z.kind==='roof'){out.push({o:[z.x0,v.roofY+0.006,z.z1],u:[1,0,0],v:[0,0,-1],w:z.x1-z.x0,h:z.z1-z.z0});}return out;}
+var VS='attribute vec3 aPos;attribute vec3 aNor;attribute vec3 aCol;attribute vec2 aUV;uniform mat4 uVP;varying vec3 vN;varying vec3 vC;varying vec2 vUV;void main(){vN=aNor;vC=aCol;vUV=aUV;gl_Position=uVP*vec4(aPos,1.0);}';
+var FS='precision mediump float;varying vec3 vN;varying vec3 vC;varying vec2 vUV;uniform float uTexOn;uniform sampler2D uTex;void main(){vec3 n=normalize(vN);float l=0.40+0.60*max(dot(n,normalize(vec3(0.45,0.85,0.55))),0.0)+0.18*max(dot(n,normalize(vec3(-0.6,0.25,-0.5))),0.0);vec3 base=uTexOn>0.5?texture2D(uTex,vUV).rgb:vC;gl_FragColor=vec4(base*min(l,1.12),1.0);}';
+function shader(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return sh;}
+var prog=gl.createProgram();gl.attachShader(prog,shader(gl.VERTEX_SHADER,VS));gl.attachShader(prog,shader(gl.FRAGMENT_SHADER,FS));gl.bindAttribLocation(prog,0,'aPos');gl.bindAttribLocation(prog,1,'aNor');gl.bindAttribLocation(prog,2,'aCol');gl.bindAttribLocation(prog,3,'aUV');gl.linkProgram(prog);gl.useProgram(prog);
+var uVP=gl.getUniformLocation(prog,'uVP'),uTexOn=gl.getUniformLocation(prog,'uTexOn'),uTex=gl.getUniformLocation(prog,'uTex');gl.uniform1i(uTex,0);gl.enable(gl.DEPTH_TEST);
+var bufBody=gl.createBuffer(),bufAd=gl.createBuffer(),bodyCount=0,adCount=0,tex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tex);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+function upload(buf,mesh){gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh.d),gl.STATIC_DRAW);return mesh.count();}
+function bindAttribs(buf){gl.bindBuffer(gl.ARRAY_BUFFER,buf);var S=44;gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,S,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,S,12);gl.enableVertexAttribArray(2);gl.vertexAttribPointer(2,3,gl.FLOAT,false,S,24);gl.enableVertexAttribArray(3);gl.vertexAttribPointer(3,2,gl.FLOAT,false,S,36);}
+function perspective(fovy,aspect,n,f){var t=1/Math.tan(fovy/2);return [t/aspect,0,0,0,0,t,0,0,0,0,(f+n)/(n-f),-1,0,0,2*f*n/(n-f),0];}
+function sub(a,b){return [a[0]-b[0],a[1]-b[1],a[2]-b[2]];}function cross(a,b){return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];}function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];}function norm(a){var l=Math.sqrt(dot(a,a))||1;return [a[0]/l,a[1]/l,a[2]/l];}
+function lookAt(eye,c,up){var z=norm(sub(eye,c)),x=norm(cross(up,z)),y=cross(z,x);return [x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,eye),-dot(y,eye),-dot(z,eye),1];}
+function mul(a,b){var o=new Array(16);for(var c=0;c<4;c++)for(var r=0;r<4;r++){var s=0;for(var k=0;k<4;k++)s+=a[k*4+r]*b[c*4+k];o[c*4+r]=s;}return o;}
+var cur={yaw:0.55,pitch:0.20},tgt={yaw:0.55,pitch:0.20},dist=9,targetY=1,raf=0;
+function render(){var w=canvas.width,h=canvas.height;if(!w||!h)return;gl.viewport(0,0,w,h);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);var cp=Math.cos(cur.pitch),eye=[Math.sin(cur.yaw)*cp*dist,targetY+Math.sin(cur.pitch)*dist,Math.cos(cur.yaw)*cp*dist];var vp=mul(perspective(34*Math.PI/180,w/h,1,80),lookAt(eye,[0,targetY,0],[0,1,0]));gl.uniformMatrix4fv(uVP,false,new Float32Array(vp));gl.uniform1f(uTexOn,0);bindAttribs(bufBody);gl.drawArrays(gl.TRIANGLES,0,bodyCount);if(adCount){gl.uniform1f(uTexOn,1);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,tex);bindAttribs(bufAd);gl.drawArrays(gl.TRIANGLES,0,adCount);}}
+function frame(){raf=0;var dy=tgt.yaw-cur.yaw,dp=tgt.pitch-cur.pitch;if(Math.abs(dy)>0.0008||Math.abs(dp)>0.0008){cur.yaw+=dy*0.14;cur.pitch+=dp*0.14;request();}else{cur.yaw=tgt.yaw;cur.pitch=tgt.pitch;}render();}
+function request(){if(!raf)raf=requestAnimationFrame(frame);}
+function nearest(f,t){while(t-f>Math.PI)t-=Math.PI*2;while(t-f<-Math.PI)t+=Math.PI*2;return t;}
+function aim(){var vw=VIEWS[selZ.value]||VIEWS.side;tgt.yaw=nearest(cur.yaw,vw.yaw);tgt.pitch=vw.pitch;request();}
+function resize(){var r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);var w=Math.max(1,Math.round(r.width*d)),h=Math.max(1,Math.round(r.height*d));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}request();}
+if(window.ResizeObserver)new ResizeObserver(resize).observe(canvas);else window.addEventListener('resize',resize);
+var drag=null;canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX};try{canvas.setPointerCapture(e.pointerId);}catch(x){}});canvas.addEventListener('pointermove',e=>{if(!drag)return;var dx=e.clientX-drag.x;drag.x=e.clientX;cur.yaw-=dx*0.008;tgt.yaw=cur.yaw;render();});canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('pointercancel',()=>drag=null);
+var adCanvas=document.createElement('canvas'),adCtx=adCanvas.getContext('2d');
+function updateAd(){var v=VEHICLES[selV.value],z=v.zones[selZ.value],planes=zonePlanes(v,z);var w=planes[0].w,h=planes[0].h,S=1024/Math.max(w,h);adCanvas.width=Math.max(64,Math.round(w*S));adCanvas.height=Math.max(64,Math.round(h*S));var W=adCanvas.width,H=adCanvas.height,c=adCtx,col=COLORS[colorIdx];c.fillStyle=col.bg;c.fillRect(0,0,W,H);var lw=Math.max(4,Math.min(W,H)*0.035);c.strokeStyle=col.fg;c.lineWidth=lw;c.strokeRect(lw,lw,W-2*lw,H-2*lw);var label=txt.value.trim()||'اعلن هنا';var size=H*0.6,min=H*0.26,fam=' "Segoe UI", Tahoma, Arial, sans-serif';c.textAlign='center';c.textBaseline='middle';c.font='800 '+size+'px'+fam;while(size>min&&c.measureText(label).width>W*0.86){size*=0.93;c.font='800 '+size+'px'+fam;}c.fillStyle=col.fg;c.fillText(label,W/2,H/2+size*0.04);gl.bindTexture(gl.TEXTURE_2D,tex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,adCanvas);var m=new Mesh();planes.forEach(p=>{var o=p.o,a=[o[0]+p.u[0]*p.w,o[1]+p.u[1]*p.w,o[2]+p.u[2]*p.w],d=[o[0]+p.v[0]*p.h,o[1]+p.v[1]*p.h,o[2]+p.v[2]*p.h],c2=[a[0]+p.v[0]*p.h,a[1]+p.v[1]*p.h,a[2]+p.v[2]*p.h];quad(m,o,a,c2,d,[1,1,1]);});adCount=upload(bufAd,m);}
+function loadVehicle(){var v=VEHICLES[selV.value];bodyCount=upload(bufBody,buildVehicle(v));dist=v.L*1.25+2;targetY=v.roofY*0.48;}
+function refresh(ch){if(ch)loadVehicle();updateAd();request();}
+selV.addEventListener('change',()=>{fillZones();refresh(true);aim();});selZ.addEventListener('change',()=>{refresh(false);aim();});txt.addEventListener('input',()=>refresh(false));
+fillZones();resize();refresh(true);
+}
 </script>
 </body>
 </html>
