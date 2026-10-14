@@ -1,89 +1,199 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>محول النص لـ HTML</title>
-  <style>
-    body {background:#0a0a0a; color:#f5deb3; font-family:'Cairo'; padding:20px;}
-    .container {max-width:1000px; margin:auto; display:flex; gap:20px; flex-wrap:wrap;}
-    textarea, iframe {width:48%; height:500px; background:#1a1a1a; color:#fff; border:2px solid #d4af37; border-radius:10px; padding:15px; font-size:16px;}
-    h1 {text-align:center; color:#d4af37;}
-    button {background:#d4af37; color:#000; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; margin:5px;}
-    button:hover {background:#ffcc00;}
-    .controls {text-align:center; margin:15px;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD1 - النماذج الواقعية + ورقة الطباعة PDF | MD7 Group</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root{--gold:#D4AF37;--black:#050505;--dark:#121212;--card-border:rgba(212,175,55,0.35);--gold-glow:rgba(212,175,55,0.3);--muted:#aaa}
+*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;overflow-x:hidden;background:var(--black)}body{font-family:'Segoe UI',Tahoma,sans-serif;color:#fff;direction:rtl;line-height:1.7}
+header{background:#000;border-bottom:2px solid var(--gold);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
+.brand{font-weight:900;font-size:19px;color:var(--gold);text-decoration:none}.back-link{color:var(--gold);text-decoration:none;font-size:13px;border:1px solid var(--card-border);padding:6px 12px;border-radius:20px}
+main{max-width:1100px;margin:0 auto;padding:0 16px}section{padding:32px 0 10px}
+h2.title{color:var(--gold);font-size:22px;margin-bottom:6px}p.lead{color:var(--muted);margin-bottom:16px;font-size:14px}
+.preview-wrap{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:860px){.preview-wrap{grid-template-columns:360px 1fr;align-items:start}}@media(max-width:859px){.stage{order:-1}}
+.panel{background:var(--dark);border:1px solid var(--card-border);border-radius:14px;padding:16px}
+.panel label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}.panel select,.panel input{width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;font-size:14px}
+.panel label.radio{display:flex;gap:8px;color:#ddd;font-size:13px;margin:6px 0;cursor:pointer}.panel label.radio input{accent-color:#D4AF37}
+.file-row{display:flex;gap:8px;flex-wrap:wrap}.fit{font-size:12px;color:var(--muted);margin-top:4px}.fit.ok{color:#7bd88f}
+.total-box{margin-top:12px;background:#000;border:1px solid var(--gold);border-radius:12px;padding:10px 12px;text-align:center;box-shadow:0 0 18px var(--gold-glow)}
+.total-box.t-main{color:var(--gold);font-size:24px;font-weight:900}.total-box.t-sub{color:#ccc;font-size:12px}
+.status{font-size:13px;margin-top:8px;min-height:18px}.status.ok{color:#7bd88f}.status.err{color:#ff6b6b}
+.stage{background:radial-gradient(ellipse at center,#1a1a1a,#0a0a0a);border:1px solid var(--card-border);border-radius:14px;padding:10px}
+.canvas-wrap{position:relative;width:100%;aspect-ratio:16/10;background:#000;border-radius:10px;overflow:hidden}
+#realCar{width:100%;height:100%;object-fit:contain;transition:transform 0.08s linear;filter:drop-shadow(0 15px 25px rgba(0,0,0,0.8));cursor:grab}
+#adOverlay{position:absolute;top:58%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,var(--gold),#AA7C11);color:#000;font-weight:900;padding:4px 10px;border-radius:5px;font-size:11px;min-width:80px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.6);pointer-events:none;max-width:45%}
+#adOverlay.has-img{background:transparent;border:2px solid var(--gold);padding:0;overflow:hidden}#adOverlay img{width:100%;height:100%;object-fit:cover;display:block}
+.upload-box{position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,0.85);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;z-index:5}
+.upload-box[hidden]{display:none}
+.drop{width:min(200px,60%);aspect-ratio:1;border:2px dashed var(--gold);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;color:var(--gold);cursor:pointer;padding:10px;font-size:13px;font-weight:700}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#AA7C11);color:#000;border:none;padding:12px 18px;font-weight:900;border-radius:8px;cursor:pointer;font-size:14px;width:100%;margin-top:10px}
+.note{font-size:11px;color:var(--muted);margin-top:8px;text-align:center}.note b{color:var(--gold)}
+.paper-section{background:#111;border:1px solid var(--card-border);border-radius:14px;padding:16px;margin-top:20px}
+.paper-preview{background:#fff;color:#000;width:100%;max-width:800px;margin:16px auto;padding:30px;border-radius:8px;position:relative}
+.paper-header{display:flex;justify-content:space-between;align-items:flex-start;border:2px solid var(--gold);padding:15px;border-radius:8px;margin-bottom:15px}
+.paper-logo{width:80px;height:80px;background:#000;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900;font-size:18px;clip-path:polygon(50% 0%,0% 100%,100% 100%);padding-top:15px}
+.paper-meta{font-size:12px;text-align:right;line-height:1.8}
+.paper-title{text-align:center;margin:20px 0}
+.paper-title h3{font-size:22px;margin-bottom:5px}
+.paper-title p{color:var(--gold);font-weight:700;font-size:14px}
+.paper-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;opacity:0.08;pointer-events:none}
+.paper-watermark div{width:100%;height:100%;background:#000;clip-path:polygon(50% 0%,0% 100%,100% 100%);display:flex;align-items:center;justify-content:center;color:#000;font-size:80px;font-weight:900;padding-top:40px}
+.paper-body{border-top:1px solid #ddd;padding-top:15px;min-height:300px;line-height:2;font-size:13px}
+.paper-row{display:flex;gap:10px;margin:8px 0;flex-wrap:wrap}
+.paper-row span{flex:1;min-width:200px;border-bottom:1px dotted #999;padding:4px 0}
+.paper-footer{display:flex;justify-content:space-between;margin-top:30px;gap:10px;flex-wrap:wrap}
+.paper-footer div{border:1px solid var(--gold);padding:12px;text-align:center;flex:1;min-width:150px;font-size:12px;border-radius:4px}
+.paper-footer div b{display:block;margin-bottom:10px}
+.site-footer{text-align:center;padding:20px;border-top:2px solid var(--gold);margin-top:30px;background:#000}
+</style>
 </head>
 <body>
-  <h1>✍️ محول النص لـ HTML</h1>
-  <p style="text-align:center">اكتب النص هنا وهيتحول تلقائي لكود HTML</p>
+<header>
+<a class="brand" href="index.html">MD7 - MD1 النماذج الحقيقية</a>
+<a class="back-link" href="index.html">← الرئيسية</a>
+</header>
+<main>
+<section id="preview">
+<h2 class="title">1- المعاينة الواقعية - النماذج اللي أرفقتها</h2>
+<p class="lead">الميكروباص الأبيض اللي في الصورة والتاكسي - نفس العربيات اللي في الشارع - لفها بصباعك وشوف إعلانك عليها.</p>
+<form id="bookForm" class="preview-wrap" novalidate>
+<div class="panel">
+<label>نوع المركبة - من صورك الحقيقية</label>
+<select id="vType">
+<option value="microbus">ميكروباص تويوتا / هيونداي (صورتك في الشارع)</option>
+<option value="taxi">تاكسي فيرنا أبيض في لبني (صورتك على الكورنيش)</option>
+<option value="coaster">أتوبيس كوستر 28 راكب</option>
+<option value="hiace">ميكروباص تويوتا هاي اس الجديد</option>
+</select>
+<label>مكان الإعلان</label>
+<select id="vZone">
+<option value="side">الجانب - 75,000 ج</option>
+<option value="rear">الخلف - 75,000 ج</option>
+<option value="full">السيارة كاملة - 190,000 ج</option>
+</select>
+<label>صورة الإعلان</label>
+<div class="file-row">
+<button type="button" class="btn-gold" id="pickImg" style="padding:8px;width:auto">📷 اختيار صورة الإعلان</button>
+<button type="button" id="clearImg" hidden style="background:none;border:none;color:var(--gold);cursor:pointer;text-decoration:underline;font-size:12px">إزالة</button>
+</div>
+<div id="fileName" class="fit"></div>
+<input type="file" id="adFile" accept="image/*" hidden>
+<label>طريقة الدفع</label>
+<label class="radio"><input type="radio" name="pay" value="cash" checked><span id="payCashTxt"></span></label>
+<label class="radio"><input type="radio" name="pay" value="inst"><span id="payInstTxt"></span></label>
+<div class="total-box">
+<div style="color:var(--muted);font-size:12px">الإجمالي</div>
+<div class="t-main"><span id="totalVal">75,000</span> جنيه</div>
+<div class="t-sub" id="totalSub"></div>
+</div>
+<label>اسم المعلن</label>
+<input type="text" id="advName" maxlength="60" placeholder="اسم الشركة *">
+<label>رقم التواصل</label>
+<input type="tel" id="advPhone" maxlength="20" placeholder="رقم واتساب">
+<button type="submit" class="btn-gold">إرسال طلب الحجز لـ @avtarmo</button>
+<div id="bookStatus" class="status"></div>
+</div>
+<div class="stage">
+<div class="canvas-wrap" id="viewer">
+<img id="realCar" src="" alt="real car">
+<div id="adOverlay">اعلن هنا</div>
+<div class="upload-box" id="uploadBox" hidden>
+<div class="drop" id="dropZone"><span style="font-size:28px">📷</span><span>اضغط لرفع إعلانك</span><small>أو اسحبه هنا</small></div>
+<button type="button" id="closeUpload" style="background:none;border:none;color:var(--gold);text-decoration:underline;cursor:pointer;margin-top:8px">إغلاق</button>
+</div>
+</div>
+<p class="note"><b>واقعي من صورك - اسحب يمين وشمال لتلف العربية - اضغط لتغيير مكان الإعلان</b><br>الجانب 75,000 كاش / 80,000 تقسيط (20,000 × 4) - الكاملة 190,000 بدون زيادة - عرض 70 إعلان</p>
+</div>
+</form>
+</section>
 
-  <div class="controls">
-    <button onclick="makeBold()">عريض</button>
-    <button onclick="makeTitle()">عنوان</button>
-    <button onclick="makeList()">قائمة</button>
-    <button onclick="copyCode()">نسخ الكود</button>
-  </div>
-
-  <div class="container">
-    <textarea id="inputText" placeholder="اكتب النص هنا...
-مثال:
-مرحبا بك في وصل 24
-بن البرنس الأصلي"></textarea>
-    
-    <iframe id="outputHTML"></iframe>
-  </div>
-
-  <textarea id="codeOutput" placeholder="الكود HTML هيظهر هنا" style="width:100%; height:200px; margin-top:20px;"></textarea>
-
+<section id="paper" class="paper-section">
+<h2 class="title">2- ورقة الطباعة للسائق / المعلن / صاحب السيارة - تحميل PDF</h2>
+<p class="lead">نفس تصميم ورقة MD7 اللي أرفقتها - تتغير البيانات حسب الجهة وتقدر تطبعها أو تحملها PDF.</p>
+<div class="panel">
+<label>الجهة المطبوع لها الورقة</label>
+<select id="paperType" onchange="updatePaper()">
+<option value="driver">سائق الميكروباص / التاكسي</option>
+<option value="advertiser">المعلن (صاحب الإعلان)</option>
+<option value="owner">صاحب السيارة / الشركة</option>
+<option value="maintenance">مركز صيانة السيارات MD7</option>
+</select>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+<div><label>التاريخ</label><input type="date" id="pDate"></div>
+<div><label>القسم</label><input type="text" id="pDept" value="إدارة الصيانة والتشغيل"></div>
+<div><label>اسم الجهة / الشخص</label><input type="text" id="pName" placeholder="محمد أحمد"></div>
+<div><label>رقم المركبة / الهوية</label><input type="text" id="pId" placeholder="س ج د 1234"></div>
+<div><label>نوع المركبة</label><input type="text" id="pVehicle" placeholder="ميكروباص تويوتا - تاكسي فيرنا"></div>
+<div><label>مكان الإعلان</label><select id="pAdPlace"><option>الجانب</option><option>الخلف</option><option>السيارة كاملة</option></select></div>
+<div><label>قيمة التعاقد</label><input type="text" id="pPrice" placeholder="75,000 جنيه"></div>
+<div><label>طريقة الدفع</label><select id="pPay"><option>كاش</option><option>تقسيط على 4 دفعات</option><option>190,000 كاملة بدون زيادة</option></select></div>
+</div>
+<label>تفاصيل إضافية / شروط</label>
+<input type="text" id="pDetails" placeholder="مثال: مدة الإعلان 3 شهور - خط السير الزقازيق">
+<button class="btn-gold" onclick="updatePaper()">تحديث المعاينة</button>
+<button class="btn-gold" onclick="downloadPDF()" style="background:#fff;color:#000;margin-top:8px">📄 تحميل الورقة PDF وطباعتها</button>
+<button class="btn-gold" onclick="sendPaperWA()" style="background:#25D366;color:#fff;margin-top:8px">📲 إرسال الورقة واتساب لـ @avtarmo</button>
+</div>
+<div class="paper-preview" id="paperPreview">
+<div class="paper-header">
+<div class="paper-meta">
+<div>التاريخ: <span id="ppDate">2024 / __ / __</span></div>
+<div>القسم: <span id="ppDept">إدارة الصيانة والتشغيل</span></div>
+<div>الجهة: <span id="ppType">سائق الميكروباص</span></div>
+</div>
+<div class="paper-logo">MD7</div>
+</div>
+<div class="paper-title">
+<h3 id="ppTitle">عقد تشغيل مركبة للإعلان - سائق</h3>
+<p id="ppSub">عقد إعلان مركبة - MD7 Group</p>
+</div>
+<div class="paper-watermark"><div>MD7</div></div>
+<div class="paper-body" id="ppBody">
+<div class="paper-row"><span><b>اسم السائق / المعلن:</b> <span id="ppName">__________</span></span> <span><b>رقم المركبة:</b> <span id="ppId">__________</span></span></div>
+<div class="paper-row"><span><b>نوع المركبة:</b> <span id="ppVehicle">ميكروباص تويوتا</span></span> <span><b>مكان الإعلان:</b> <span id="ppAdPlace">الجانب</span></span></div>
+<div class="paper-row"><span><b>قيمة التعاقد:</b> <span id="ppPrice">75,000 جنيه</span></span> <span><b>طريقة الدفع:</b> <span id="ppPay">كاش</span></span></div>
+<div class="paper-row"><span><b>التفاصيل:</b> <span id="ppDetails">مدة الإعلان - خط السير - الشروط</span></span></div>
+<p style="margin-top:20px">أقر أنا الموقع أدناه بالموافقة على الشروط التالية:</p>
+<p>1- الالتزام بالحفاظ على الإعلان وعدم إزالته إلا بموافقة MD7<br>2- الالتزام بخط السير المتفق عليه<br>3- في حالة المخالفة يتم إزالة الإعلان وفسخ التعاقد<br>4- مدة التعاقد قابلة للتجديد</p>
+<div style="margin-top:20px"><p><b>ملاحظات:</b></p><p style="border-bottom:1px dotted #999;min-height:60px"></p></div>
+</div>
+<div class="paper-footer">
+<div><b>اعتماد مدير المركز</b><br><br>__________________</div>
+<div><b>اعتماد مدير التشغيل</b><br><br>__________________</div>
+<div><b>اعتماد مدير المالية</b><br><br>__________________</div>
+</div>
+<div style="font-size:10px;text-align:center;margin-top:15px;color:#666;border-top:1px solid #ddd;padding-top:8px">العنوان: 15 شارع العاشر من رمضان، مدينة نصر | www.md7-maintentance.eg<br>مجموعة MD7 - أ. محمد رضوان - واتساب: 01033182019</div>
+</div>
+</section>
+</main>
+<footer class="site-footer"><p>MD1 - MD7 Group - 2026 - واتساب @avtarmo - المفتاح 5982</p></footer>
 <script>
-const input = document.getElementById('inputText');
-const outputFrame = document.getElementById('outputHTML');
-const codeOutput = document.getElementById('codeOutput');
-
-function convertToHTML(text) {
-  // يحول السطور لـ <p> والـ ** لعريض
-  let html = text
-    .split('\n')
-    .map(line => {
-      if(line.startsWith('# ')) return `<h1>${line.replace('# ', '')}</h1>`;
-      if(line.startsWith('## ')) return `<h2>${line.replace('## ', '')}</h2>`;
-      if(line.startsWith('- ')) return `<li>${line.replace('- ', '')}</li>`;
-      if(line.includes('**')) line = line.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-      return `<p>${line}</p>`;
-    }).join('');
-  
-  return `
-    <style>body{background:#1a1a1a;color:#f5deb3;font-family:Cairo;padding:20px;}</style>
-    ${html}
-  `;
-}
-
-function update() {
-  const text = input.value;
-  const html = convertToHTML(text);
-  outputFrame.srcdoc = html;
-  codeOutput.value = html;
-}
-
-function makeBold() {
-  input.value += '**نص عريض**';
-  update();
-}
-function makeTitle() {
-  input.value += '\n# عنوان كبير';
-  update();
-}
-function makeList() {
-  input.value += '\n- بند 1\n- بند 2';
-  update();
-}
-function copyCode() {
-  navigator.clipboard.writeText(codeOutput.value);
-  alert('تم نسخ الكود!');
-}
-
-input.addEventListener('input', update);
-update(); // اول تحميل
+var WA_USERNAME='avtarmo';
+function openWhatsApp(text){var url='https://wa.me/'+WA_USERNAME+'?text='+encodeURIComponent(text);var w=window.open(url,'_blank');if(w)w.opener=null;return{win:w,url:url}}
+var PRICES={side:{cash:75000,inst:80000,n:4},rear:{cash:75000,inst:80000,n:4},full:{cash:190000,inst:190000,n:4}};
+var ZONES={side:'الجانب',rear:'الخلف',full:'السيارة كاملة'};
+var form=document.getElementById('bookForm'),selV=document.getElementById('vType'),selZ=document.getElementById('vZone'),fileInput=document.getElementById('adFile'),fileNameEl=document.getElementById('fileName'),clearBtn=document.getElementById('clearImg'),uploadBox=document.getElementById('uploadBox'),dropZone=document.getElementById('dropZone'),realCar=document.getElementById('realCar'),adOverlay=document.getElementById('adOverlay'),statusEl=document.getElementById('bookStatus'),nameEl=document.getElementById('advName'),phoneEl=document.getElementById('advPhone'),state={img:null,name:''},rot=0,dragging=false,lx=0,adPos={x:50,y:58};
+var REAL_IMGS={microbus:'microbus_real.jpg',taxi:'taxi_real.jpg',coaster:'coaster.png',hiace:'hiace.png'};
+function loadRealImages(){realCar.src=REAL_IMGS.microbus;realCar.onerror=function(){if(this.src.includes('microbus_real')){this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=900';}else if(this.src.includes('taxi_real')){this.src='https://images.unsplash.com/photo-1550355291-bbee04a92027?w=900';}};}
+function fmt(n){return n.toLocaleString('en-US')}function payValue(){return form.querySelector('input[name="pay"]:checked').value}
+function updatePrice(){var z=selZ.value,p=PRICES[z],pay=payValue(),per=p.inst/p.n,fixed=p.cash===p.inst;document.getElementById('payCashTxt').textContent='كاش — '+fmt(p.cash)+' جنيه';document.getElementById('payInstTxt').textContent='تقسيط على '+p.n+' دفعات — '+fmt(p.inst)+' جنيه ('+fmt(per)+' × '+p.n+(fixed?'، بدون زيادة':'')+')';document.getElementById('totalVal').textContent=fmt(pay==='cash'?p.cash:p.inst);document.getElementById('totalSub').textContent=pay==='cash'?'دفع كاش':'تقسيط '+fmt(per)+' × '+p.n+(fixed?' (بدون زيادة)':'');}
+function showUpload(){uploadBox.hidden=false}function hideUpload(){uploadBox.hidden=true}function setStatus(msg,cls){statusEl.className='status'+(cls?' '+cls:'');statusEl.textContent=msg}
+selV.addEventListener('change',function(){realCar.src=REAL_IMGS[selV.value]||REAL_IMGS.microbus;rot=0;realCar.style.transform='rotateY(0deg)';updateAdPos();});
+selZ.addEventListener('change',function(){updatePrice();updateAdPos();});form.querySelectorAll('input[name="pay"]').forEach(function(r){r.addEventListener('change',updatePrice)});
+function updateAdPos(){var place=selZ.value;adOverlay.style.left=adPos.x+'%';adOverlay.style.top=adPos.y+'%';if(place==='side'){adOverlay.style.width='38%';}else if(place==='rear'){adOverlay.style.width='20%';adOverlay.style.height='32%';adOverlay.style.left='82%';adOverlay.style.top='55%';}else{adOverlay.style.width='72%';adOverlay.style.height='58%';adOverlay.style.left='50%';adOverlay.style.top='52%';}}
+var viewer=document.getElementById('viewer');viewer.addEventListener('mousedown',function(e){dragging=true;lx=e.clientX;});viewer.addEventListener('mousemove',function(e){if(!dragging)return;var diff=e.clientX-lx;rot+=diff*0.7;var scale=1-Math.abs(Math.sin(rot*Math.PI/180))*0.12;realCar.style.transform='rotateY('+rot+'deg) scale('+scale+')';lx=e.clientX;});viewer.addEventListener('mouseup',function(){dragging=false});viewer.addEventListener('mouseleave',function(){dragging=false});viewer.addEventListener('touchstart',function(e){dragging=true;lx=e.touches[0].clientX},{passive:false});viewer.addEventListener('touchmove',function(e){if(!dragging)return;e.preventDefault();var x=e.touches[0].clientX;var diff=x-lx;rot+=diff*0.7;var scale=1-Math.abs(Math.sin(rot*Math.PI/180))*0.12;realCar.style.transform='rotateY('+rot+'deg) scale('+scale+')';lx=x;},{passive:false});viewer.addEventListener('touchend',function(){dragging=false});
+viewer.addEventListener('click',function(e){if(e.target.id==='closeUpload'||e.target.closest('#uploadBox'))return;if(Math.abs(rot)>8)return;var rect=viewer.getBoundingClientRect();var x=e.clientX,y=e.clientY;if(x&&y){adPos.x=((x-rect.left)/rect.width*100);adPos.y=((y-rect.top)/rect.height*100);updateAdPos();}showUpload();});
+function setImageFile(file){if(!file)return;var url=URL.createObjectURL(file);var img=new Image();img.onload=function(){state={img:img,name:file.name};fileNameEl.textContent='✓ '+file.name+' ('+Math.round(file.size/1024)+' KB)';fileNameEl.className='fit ok';clearBtn.hidden=false;adOverlay.innerHTML='<img src="'+url+'">';adOverlay.classList.add('has-img');hideUpload();};img.src=url;}
+document.getElementById('pickImg').addEventListener('click',function(){fileInput.click();});dropZone.addEventListener('click',function(){fileInput.click();});dropZone.addEventListener('dragover',function(e){e.preventDefault();dropZone.style.background='rgba(212,175,55,0.12)'});dropZone.addEventListener('dragleave',function(){dropZone.style.background='transparent'});dropZone.addEventListener('drop',function(e){e.preventDefault();if(e.dataTransfer.files[0])setImageFile(e.dataTransfer.files[0])});fileInput.addEventListener('change',function(){setImageFile(fileInput.files[0])});clearBtn.addEventListener('click',function(){state={img:null,name:''};fileInput.value='';fileNameEl.textContent='';adOverlay.innerHTML='اعلن هنا';adOverlay.classList.remove('has-img');clearBtn.hidden=true;});document.getElementById('closeUpload').addEventListener('click',hideUpload);
+form.addEventListener('submit',function(e){e.preventDefault();var name=nameEl.value.trim();var phone=phoneEl.value.trim();if(!state.img){setStatus('ارفع صورة الإعلان أولا.','err');showUpload();return}if(name.length<2){setStatus('اكتب اسم المعلن.','err');nameEl.focus();return}var z=selZ.value,p=PRICES[z],pay=payValue(),total=pay==='cash'?p.cash:p.inst;var payText=pay==='cash'?'كاش':'تقسيط على '+p.n+' دفعات ('+fmt(p.inst/p.n)+' للدفعة)';var msg=['طلب حجز إعلان جديد - MD7 Group - عرض الشركات 70 إعلان فترة محدودة','','نوع المركبة: '+selV.options[selV.selectedIndex].text,'مكان الإعلان: '+ZONES[z],'الصورة: '+state.name+' (سأرفقها في هذه المحادثة)','طريقة الدفع: '+payText,'الإجمالي: '+fmt(total)+' جنيه','اسم المعلن: '+name,'رقم التواصل: '+phone,'الصفحة: '+window.location.href].join('\n');var r=openWhatsApp(msg);statusEl.className='status ok';if(r.win){statusEl.textContent='تم تحويل طلبك للمؤسس على واتساب @'+WA_USERNAME+' ✅'}else{statusEl.textContent='';var a=document.createElement('a');a.href=r.url;a.target='_blank';a.textContent='اضغط هنا لفتح واتساب';a.style.color='#D4AF37';statusEl.appendChild(a)}});
+updatePrice();updateAdPos();loadRealImages();document.getElementById('pDate').valueAsDate=new Date();
+function updatePaper(){var type=document.getElementById('paperType').value;var typeMap={driver:'سائق الميكروباص / التاكسي',advertiser:'المعلن - صاحب الإعلان',owner:'صاحب السيارة / الشركة',maintenance:'مركز صيانة السيارات MD7'};var titleMap={driver:'عقد تشغيل مركبة للإعلان - سائق',advertiser:'عقد إعلان على مركبة - معلن',owner:'عقد إيجار مساحة إعلانية - مالك السيارة',maintenance:'مركز صيانة السيارات MD7 - مقترح منظومة الصيانة والتشغيل المتكامل'};document.getElementById('ppType').textContent=typeMap[type];document.getElementById('ppTitle').textContent=titleMap[type];document.getElementById('ppSub').textContent=type==='maintenance'?'مقترح منظومة الصيانة والتشغيل المتكامل':'عقد إعلان مركبة - MD7 Group';var date=document.getElementById('pDate').value||'2024 / __ / __';document.getElementById('ppDate').textContent=date;document.getElementById('ppDept').textContent=document.getElementById('pDept').value;document.getElementById('ppName').textContent=document.getElementById('pName').value||'__________';document.getElementById('ppId').textContent=document.getElementById('pId').value||'__________';document.getElementById('ppVehicle').textContent=document.getElementById('pVehicle').value||'ميكروباص تويوتا';document.getElementById('ppAdPlace').textContent=document.getElementById('pAdPlace').value;document.getElementById('ppPrice').textContent=document.getElementById('pPrice').value||'75,000 جنيه';document.getElementById('ppPay').textContent=document.getElementById('pPay').value;document.getElementById('ppDetails').textContent=document.getElementById('pDetails').value||'مدة الإعلان - خط السير - الشروط';}
+function downloadPDF(){updatePaper();var element=document.getElementById('paperPreview');html2canvas(element,{scale:2,useCORS:true}).then(function(canvas){var imgData=canvas.toDataURL('image/png');var pdf=new jspdf.jsPDF('p','mm','a4');var width=pdf.internal.pageSize.getWidth();var height=(canvas.height*width)/canvas.width;pdf.addImage(imgData,'PNG',0,0,width,height);var fileName='MD7_'+document.getElementById('paperType').value+'_'+(document.getElementById('pName').value||'contract')+'.pdf';pdf.save(fileName);});}
+function sendPaperWA(){updatePaper();var name=document.getElementById('pName').value||'غير محدد';var type=document.getElementById('paperType').options[document.getElementById('paperType').selectedIndex].text;var vehicle=document.getElementById('pVehicle').value;var price=document.getElementById('pPrice').value;var msg='طلب ورقة MD7 - '+type+'%0Aالاسم: '+name+'%0Aالمركبة: '+vehicle+'%0Aالقيمة: '+price+'%0A%0Aتم تجهيز الورقة للطباعة PDF - الصفحة: '+window.location.href;openWhatsApp(msg);}
+updatePaper();
 </script>
 </body>
 </html>
