@@ -4,85 +4,249 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MD7 Group - الحاضر هو المستقبل & MD7 AI</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-<script type="text/javascript">(function(){ emailjs.init("-VHvtaMeTpVBPHzIG"); })();</script>
+
+<script type="text/javascript">
+  (function(){
+    emailjs.init("-VHvtaMeTpVBPHzIG");
+  })();
+</script>
+
 <style>
-  :root { --gold: #D4AF37; --silver: #C0C0C0; --black: #050505; --dark-gray: #121212; }
+  :root {
+    --gold: #D4AF37;
+    --silver: #C0C0C0;
+    --black: #050505;
+    --dark-gray: #121212;
+  }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 100%; min-height: 100vh; overflow-x: hidden; background-color: var(--black); }
-  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; direction: rtl; }
-  #join-fab { display:none; }
-  header { background: #000; border-bottom: 2px solid var(--gold); padding: 14px 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; width: 100%; gap:8px; }
- .brand-logo { display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; text-decoration: none; }
- .md-line { display:flex; align-items:center; gap:6px; font-size:28px; font-weight:900; }
- .logo-M { color: var(--gold); }.logo-D { color: var(--silver); }
- .group-line { display:flex; gap:2px; font-size:15px; letter-spacing:4px; font-weight:900; margin-top:2px; }
- .logo-G { color: #ff0000; }.logo-R { color: #0000ff; }.logo-O { color: #00ff00; }.logo-U { color: #ffff00; }.logo-P { color: #ffa500; }
- .header-actions { display:flex; gap:0; justify-content:center; margin-top:10px; width:100%; max-width:340px; }
- .btn-share-right { flex:1; background:transparent; border:1px solid var(--gold); color:var(--gold); padding:9px 10px; border-radius:0 20px 20px 0; font-weight:700; cursor:pointer; font-size:14px; }
- .btn-contrib-left { flex:1; background:linear-gradient(135deg, var(--gold), #B8860B); color:#000; border:1px solid var(--gold); padding:9px 10px; border-radius:20px 0 0 20px; font-weight:900; cursor:pointer; font-size:14px; }
- .view-section { display: none; padding: 15px; width: 100%; max-width: 1200px; margin: 0 auto; }
- .view-section.active { display: block; }
- .solar-system-container { --R: min(37.5vw, 225px); position: relative; width: 100%; height: 70vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
- .center-sun-moon { width: calc(var(--R) * 1.1); height: calc(var(--R) * 1.1); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; z-index: 10; cursor: pointer; text-align: center; overflow:hidden; }
- .sun-mode { background: radial-gradient(circle, #fff7ad 0%, #ffd700 50%, #ff8c00 100%); box-shadow: 0 0 50px 8px rgba(255, 183, 40, 0.65); color: #000; }
- .moon-mode { background: radial-gradient(circle, #0f2038 0%, #07101c 100%); color: #fff; }
- .moon-phase { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; pointer-events: none; }
- .moon-mode.moon-phase { display: block; }
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden; 
+    background-color: var(--black);
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    direction: rtl;
+  }
+
+  /* الهيدر */
+  header { background: #000; border-bottom: 2px solid var(--gold); padding: 12px 20px; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; width: 100%; }
+  .logo-M { color: var(--gold); }
+  .logo-D { color: var(--silver); }
+  .logo-G { color: #ff0000; }
+  .logo-R { color: #0000ff; }
+  .logo-O { color: #00ff00; }
+  .logo-U { color: #ffff00; }
+  .logo-P { color: #ffa500; }
+  .group-text { font-size: 14px; letter-spacing: 3px; }
+
+
+  /* الهيدر: شارك | GROUP | MD | شارك */
+  header { gap: 10px; }
+  .brand-logo, .md-btn { background: none; border: 0; font: inherit; color: inherit; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 900; text-decoration: none; padding: 4px; }
+  .md-btn { border-bottom: 1px dotted rgba(212,175,55,.6); }
+  .share-btn { background: linear-gradient(135deg, var(--gold), #B8860B); color: #000; font-weight: 900; font-size: 12px; text-decoration: none; padding: 7px 10px; border-radius: 30px; white-space: nowrap; }
+  @media (max-width: 380px) { .brand-logo, .md-btn { font-size: 20px; gap: 5px; } .share-btn { font-size: 11px; padding: 6px 8px; } header { padding: 10px 8px; gap: 6px; } }
+
+  /* شريط التنقل */
+  .site-nav { display: flex; justify-content: center; gap: 8px; padding: 10px 12px; background: #0a0a0a; border-bottom: 1px solid #222; flex-wrap: wrap; }
+  .site-nav button { background: transparent; color: var(--gold); border: 1px solid rgba(212,175,55,.5); border-radius: 20px; padding: 7px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+  .site-nav button.on { background: var(--gold); color: #000; }
+
+  /* نافذة تعريف MD */
+  .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.82); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 16px; }
+  .modal-bg.open { display: flex; }
+  .modal-box { background: #0d0d0d; border: 2px solid var(--gold); border-radius: 14px; max-width: 520px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 22px 20px; line-height: 1.9; box-shadow: 0 0 30px rgba(212,175,55,.35); }
+  .modal-box h2 { color: var(--gold); margin-bottom: 10px; font-size: 20px; }
+  .modal-box p { color: #ddd; font-size: 15px; margin-bottom: 8px; }
+  .modal-box .close { background: var(--gold); color: #000; border: 0; border-radius: 8px; padding: 9px 22px; font-weight: 900; cursor: pointer; margin-top: 8px; font-family: inherit; }
+
+  /* واجهة مصر الافتتاحية */
+  #intro { position: fixed; inset: 0; z-index: 30000; background: radial-gradient(ellipse at 50% 40%, #1a1405 0%, #050505 70%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 16px; }
+  #intro.gone { display: none; }
+  #intro h1 { color: var(--gold); font-size: 26px; letter-spacing: 2px; margin-bottom: 4px; }
+  #intro p { color: #ccc; font-size: 14px; margin: 6px 0; }
+  #egyptBtn { background: none; border: 0; cursor: pointer; width: min(78vw, 340px); padding: 0; margin: 10px 0; animation: pulseMap 2.6s ease-in-out infinite; }
+  #egyptBtn svg { width: 100%; height: auto; display: block; }
+  #egyptBtn:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
+  @keyframes pulseMap { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+  .tap-hint { color: var(--gold); font-weight: 700; font-size: 15px; }
+  #introSkip { background: transparent; color: #aaa; border: 1px solid #444; border-radius: 20px; padding: 7px 18px; margin-top: 14px; cursor: pointer; font-family: inherit; }
+  @media (prefers-reduced-motion: reduce) { #egyptBtn { animation: none; } }
+
+  /* من نحن + المشاريع */
+  .about-p { color: #ddd; line-height: 2; font-size: 15px; }
+  .about-p b { color: var(--gold); }
+  .vals { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 16px 0; }
+  .val { border: 1px solid rgba(212,175,55,.35); border-radius: 10px; padding: 12px 8px; text-align: center; background: #0a0a0a; }
+  .val b { display: block; color: var(--gold); margin-bottom: 4px; }
+  .val span { color: #bbb; font-size: 12px; }
+  .two { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .proj { background: var(--dark-gray); border: 1px solid rgba(212,175,55,.5); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .proj.feat { border-color: var(--gold); box-shadow: 0 0 18px rgba(212,175,55,.3); }
+  .proj .tag { color: var(--gold); font-weight: 900; font-size: 13px; }
+  .proj h3 { font-size: 17px; }
+  .proj p { color: #bbb; font-size: 13px; line-height: 1.8; flex: 1; }
+  .proj a, .proj button { background: var(--gold); color: #000; border: 0; border-radius: 8px; padding: 10px; font-weight: 900; text-align: center; text-decoration: none; cursor: pointer; font-size: 14px; font-family: inherit; }
+  .proj .soon { background: #222; color: #888; }
+
+  .view-section { display: none; padding: 15px; width: 100%; max-width: 1200px; margin: 0 auto; }
+  .view-section.active { display: block; }
+
+  /* الدواير صغيرة */
+  .solar-system-container { --R: min(37.5vw, 225px); position: relative; width: 100%; height: 70vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+  /* الدائرة المركزية = MD8 (نصف قطرها 0.55 من نصف قطر المدار حتى لا تلمس الكواكب) */
+  .center-sun-moon { width: calc(var(--R) * 1.1); height: calc(var(--R) * 1.1); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; z-index: 10; cursor: pointer; text-align: center; }
+  /* نهارًا: وهج شمس. ليلًا: قمر يتبع طور القمر الحقيقي (هلال ← نصف ← كامل) */
+  .sun-mode { background: radial-gradient(circle, #fff7ad 0%, #ffd700 50%, #ff8c00 100%); box-shadow: 0 0 50px 8px rgba(255, 183, 40, 0.65); color: #000; }
+  .moon-mode { background: radial-gradient(circle, #0f2038 0%, #07101c 100%); color: #fff; }
+  .moon-phase { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; pointer-events: none; }
+  .moon-mode .moon-phase { display: block; }
+
+  /* شعار المؤسس: نجمة + 7 + MD (سماوي ليلًا، وهج أحمر خفيف نهارًا) */
   :root { --emb: #5fd0ff; --emb-glow: rgba(95, 208, 255, 0.85); --emb-outline: #04202f; }
   html[data-mode="day"] { --emb: #8e1212; --emb-glow: rgba(255, 70, 70, 0.55); --emb-outline: rgba(255, 244, 200, 0.6); }
- .emb-star { fill: var(--emb); fill-opacity: 0.2; stroke: var(--emb); stroke-width: 2.6; stroke-linejoin: round; }
- .emb-txt { fill: var(--emb); stroke: var(--emb-outline); stroke-width: 2.2; paint-order: stroke; stroke-linejoin: round; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-weight: 900; }
- .emblem { position: relative; z-index: 2; width: 58%; height: 58%; overflow: visible; filter: drop-shadow(0 0 5px var(--emb-glow)); }
- .emblem-sm { width: 30px; height: 30px; vertical-align: middle; margin-inline-end: 6px; --emb-outline: transparent; filter: drop-shadow(0 0 4px var(--emb-glow)); }
-  html[data-mode="day"].emblem-sm { --emb: #ff7a7a; --emb-glow: rgba(255, 90, 90, 0.6); }
- .orbit-ring { position: absolute; width: 75vw; max-width: 450px; height: 75vw; max-height: 450px; border: 1px dashed rgba(212, 175, 55, 0.3); border-radius: 50%; animation: rotateOrbit 35s linear infinite; }
+  .emb-star { fill: var(--emb); fill-opacity: 0.2; stroke: var(--emb); stroke-width: 2.6; stroke-linejoin: round; }
+  .emb-txt { fill: var(--emb); stroke: var(--emb-outline); stroke-width: 2.2; paint-order: stroke; stroke-linejoin: round; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-weight: 900; }
+  .emblem { position: relative; z-index: 1; width: 74%; height: 74%; overflow: visible; filter: drop-shadow(0 0 5px var(--emb-glow)); }
+  .emblem-sm { width: 30px; height: 30px; vertical-align: middle; margin-inline-end: 6px; --emb-outline: transparent; filter: drop-shadow(0 0 4px var(--emb-glow)); }
+  html[data-mode="day"] .emblem-sm { --emb: #ff7a7a; --emb-glow: rgba(255, 90, 90, 0.6); }
+  
+  .orbit-ring { 
+    position: absolute; 
+    width: 75vw; 
+    max-width: 450px;
+    height: 75vw; 
+    max-height: 450px; 
+    border: 1px dashed rgba(212, 175, 55, 0.3); 
+    border-radius: 50%; 
+    animation: rotateOrbit 35s linear infinite; 
+  }
   @keyframes rotateOrbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
- .planet { position: absolute; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; font-weight: bold; font-size: 9px; cursor: pointer; text-align: center; line-height: 1.2; animation: drift 6s ease-in-out infinite; }
-  @keyframes drift { 0%, 100% { translate: 0 0; } 50% { translate: calc(var(--R) * var(--ix, 0)) calc(var(--R) * var(--iy, 0)); } }
- .planet-1 { top: -20px; left: calc(50% - 20px); background: #ff4757; --ix: 0; --iy: 0.16; }
- .planet-2 { top: 15%; right: -20px; background: #2ed573; --ix: -0.16; --iy: 0.10; }
- .planet-3 { bottom: 15%; right: -20px; background: #ffa502; --ix: -0.16; --iy: -0.10; }
- .planet-4 { bottom: -20px; left: calc(50% - 20px); background: #1e90ff; --ix: 0; --iy: -0.16; }
- .planet-5 { bottom: 15%; left: -20px; background: #9b59b6; --ix: 0.16; --iy: -0.10; }
- .planet-6 { top: 15%; left: -20px; background: #2acc71; --ix: 0.16; --iy: 0.10; }
- .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
- .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
- .chat-input-row { display: flex; gap: 10px; }
- .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; }
- .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
- .card-box { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
- .card-box h2 { color: var(--gold); margin-bottom: 15px; font-size: 20px; }
- .site-footer{ text-align:center; padding:30px; border-top:2px solid var(--gold); margin-top:50px; background:#000; width:100%; }
- .site-footer h3{ color:var(--gold); font-size:22px; margin-bottom:8px; }
- .site-footer p{ color:#aaa; margin:5px 0; }
-  #founderModal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:10000; overflow-y:auto; padding:16px; }
-  #founderModal.modal-box{ max-width:620px; margin:20px auto; background:#121212; border:2px solid var(--gold); border-radius:16px; padding:20px; position:relative; box-shadow:0 0 30px rgba(212,175,55,0.25); }
-  #founderModal.close-btn{ position:absolute; left:12px; top:12px; background:#000; border:1px solid var(--gold); color:var(--gold); border-radius:50%; width:32px; height:32px; cursor:pointer; font-size:16px; }
-  #founderModal.founder-img{ width:140px; height:140px; border-radius:50%; border:3px solid var(--gold); object-fit:cover; box-shadow:0 0 20px rgba(212,175,55,0.4); }
+  
+  .planet { 
+    position: absolute; 
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: #fff; 
+    font-weight: bold; 
+    font-size: 9px;
+    cursor: pointer; 
+    text-align: center; 
+    line-height: 1.2;
+    animation: drift 6s ease-in-out infinite;
+  }
+
+  /* الكواكب تقترب من المركز وتبتعد (--ix/--iy اتجاه الاقتراب كنسبة من نصف قطر المدار) */
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(calc(var(--R) * var(--ix, 0)), calc(var(--R) * var(--iy, 0))); }
+  }
+  @media (prefers-reduced-motion: reduce) { .orbit-ring, .planet { animation: none; } }
+
+  .planet-1 { top: -20px; left: calc(50% - 20px); background: #ff4757; --ix: 0; --iy: 0.16; animation-delay: 0s; }
+  .planet-2 { top: 15%; right: -20px; background: #2ed573; --ix: -0.16; --iy: 0.10; animation-delay: -1s; }
+  .planet-3 { bottom: 15%; right: -20px; background: #ffa502; --ix: -0.16; --iy: -0.10; animation-delay: -2s; }
+  .planet-4 { bottom: -20px; left: calc(50% - 20px); background: #1e90ff; --ix: 0; --iy: -0.16; animation-delay: -3s; }
+  .planet-5 { bottom: 15%; left: -20px; background: #9b59b6; --ix: 0.16; --iy: -0.10; animation-delay: -4s; }
+  .planet-6 { top: 15%; left: -20px; background: #2acc71; --ix: 0.16; --iy: 0.10; animation-delay: -5s; }
+
+
+  .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
+  .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
+  .chat-input-row { display: flex; gap: 10px; }
+  .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; }
+  .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+  .card-box { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+  .card-box h2 { color: var(--gold); margin-bottom: 15px; font-size: 20px; }
+
+  .site-footer{ text-align:center; padding:30px; border-top:2px solid var(--gold); margin-top:50px; background:#000; width:100%; }
+  .site-footer h3{ color:var(--gold); font-size:22px; margin-bottom:8px; }
+  .site-footer p{ color:#aaa; margin:5px 0; }
 </style>
 </head>
 <body>
-<a href="join-md7.html" id="join-fab">🤝 كن شريك في MD7</a>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="moonGrad" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#cfd9e6"/></radialGradient><symbol id="md-emblem" viewBox="0 0 100 100"><polygon class="emb-star" points="50,4 62.93,26.2 88.04,31.64 70.92,50.8 73.51,76.36 50,66 26.49,76.36 29.08,50.8 11.96,31.64 37.07,26.2"/><text class="emb-txt" x="50" y="55" text-anchor="middle" font-size="30">7</text><text class="emb-txt" x="50" y="96" text-anchor="middle" font-size="17" letter-spacing="3">MD</text></symbol></defs></svg>
+
+<!-- شعار المؤسس: نجمة + 7 + MD (يُستخدم في الدائرة الرئيسية وفي عنوان التواصل) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="moonGrad" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#cfd9e6"/>
+    </radialGradient>
+    <symbol id="md-emblem" viewBox="0 0 100 100">
+      <polygon class="emb-star" points="50,4 62.93,26.2 88.04,31.64 70.92,50.8 73.51,76.36 50,66 26.49,76.36 29.08,50.8 11.96,31.64 37.07,26.2"/>
+      <text class="emb-txt" x="50" y="55" text-anchor="middle" font-size="30">7</text>
+      <text class="emb-txt" x="50" y="96" text-anchor="middle" font-size="17" letter-spacing="3">MD</text>
+    </symbol>
+  </defs>
+</svg>
 
 <header>
-  <div class="brand-logo" onclick="openFounder()" title="اضغط لمعرفة المؤسس">
-    <div class="md-line"><span class="logo-D">D</span><span class="logo-M">M</span></div>
-    <div class="group-line"><span class="logo-G">G</span><span class="logo-R">R</span><span class="logo-O">O</span><span class="logo-U">U</span><span class="logo-P">P</span></div>
-  </div>
-  <div class="header-actions">
-    <button class="btn-share-right" onclick="shareMD7()">شارك 🤝</button>
-    <button class="btn-contrib-left" onclick="contributeMD7()">كن شريك في MD7 ✨</button>
-  </div>
+  <a class="share-btn" href="join-md7.html" id="shareR" title="شارك مع MD7">🤝 شارك</a>
+  <a class="brand-logo" href="#" onclick="switchTab('md7'); return false;" aria-label="MD7 GROUP - الرئيسية">
+    <span class="group-text">
+      <span class="logo-G">G</span><span class="logo-R">R</span><span class="logo-O">O</span><span class="logo-U">U</span><span class="logo-P">P</span>
+    </span>
+  </a>
+  <button type="button" class="md-btn" id="mdBtn" aria-haspopup="dialog" title="تعريف MD">
+    <span class="logo-D">D</span><span class="logo-M">M</span>
+  </button>
+  <a class="share-btn" href="join-md7.html" id="shareL" title="شارك مع MD7">🤝 شارك</a>
 </header>
+<nav class="site-nav" aria-label="التنقل">
+  <button type="button" data-go="md7" class="on">الرئيسية</button>
+  <button type="button" data-go="about">من نحن؟</button>
+  <button type="button" data-go="projects">المشاريع</button>
+</nav>
+
+<div class="modal-bg" id="mdModal" role="dialog" aria-modal="true" aria-labelledby="mdTitle">
+  <div class="modal-box">
+    <h2 id="mdTitle">MD = إدارة المشاريع وتطويرها</h2>
+    <p>نتعاون للاستفادة من مؤسستك على أعلى مستوى، ووفق أعلى خدمة مقدّمة، وننال رضا العامل قبل العميل، ورضاك كصاحب مؤسسة.</p>
+    <p>نبدأ من المحلات، مرورًا بالمؤسسات، وصولًا إلى الشركات.</p>
+    <button type="button" class="close" id="mdClose">إغلاق</button>
+  </div>
+</div>
+
+<div id="intro" role="dialog" aria-label="واجهة افتتاحية">
+  <h1>MD7 GROUP</h1>
+  <p>من مصر تبدأ رؤيتنا .. نحو عالم جديد</p>
+  <button type="button" id="egyptBtn" aria-label="اضغط على خريطة مصر لتعرف من نحن">
+    <svg viewBox="0 0 380 350" aria-hidden="true">
+      <defs>
+        <clipPath id="egClip"><path id="egPath" d="M6.1,10.2 L66.6,17.0 L127.1,34.0 L187.6,13.6 L226.9,20.4 L286.0,20.4 L305.6,81.6 L293.5,129.2 L286.0,141.1 L266.3,129.2 L251.2,102.0 L239.1,78.2 L234.5,64.6 L228.5,78.2 L237.5,95.2 L251.2,120.7 L272.3,158.1 L278.4,176.8 L305.6,232.9 L323.8,272.0 L366.1,336.6 L6.1,336.6 Z"/></clipPath>
+      </defs>
+      <g clip-path="url(#egClip)">
+        <rect x="0" y="0" width="380" height="120" fill="#ce1126"/>
+        <rect x="0" y="120" width="380" height="110" fill="#ffffff"/>
+        <rect x="0" y="230" width="380" height="120" fill="#111111"/>
+      </g>
+      <path d="M6.1,10.2 L66.6,17.0 L127.1,34.0 L187.6,13.6 L226.9,20.4 L286.0,20.4 L305.6,81.6 L293.5,129.2 L286.0,141.1 L266.3,129.2 L251.2,102.0 L239.1,78.2 L234.5,64.6 L228.5,78.2 L237.5,95.2 L251.2,120.7 L272.3,158.1 L278.4,176.8 L305.6,232.9 L323.8,272.0 L366.1,336.6 L6.1,336.6 Z" fill="none" stroke="#D4AF37" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="170" cy="175" r="26" fill="none" stroke="#D4AF37" stroke-width="3"/>
+      <text x="170" y="184" text-anchor="middle" font-size="26" font-weight="900" fill="#D4AF37" font-family="Segoe UI, Tahoma, Arial, sans-serif">7</text>
+    </svg>
+  </button>
+  <div class="tap-hint">👆 اضغط على خريطة مصر لتعرف من نحن</div>
+  <button type="button" id="introSkip">تخطي</button>
+</div>
+
 
 <section id="md7" class="view-section active">
   <div class="solar-system-container">
-    <div id="center-node" class="center-sun-moon" onclick="window.location.href='md1.html'" title="MD7 - اضغط للذهاب للإعلانات">
+    <div id="center-node" class="center-sun-moon" onclick="switchTab('md8')" title="MD8: مولد خطط المشاريع">
       <svg class="moon-phase" viewBox="-50 -50 100 100" aria-hidden="true"><path id="moon-lit" fill="url(#moonGrad)"/></svg>
-      <svg class="emblem" viewBox="0 0 100 100"><use href="#md-emblem"/></svg>
+      <svg class="emblem" viewBox="0 0 100 100" role="img" aria-label="MD7"><use href="#md-emblem"/></svg>
     </div>
     <div class="orbit-ring">
       <div class="planet planet-1" onclick="window.location.href='md1.html'">MD1<br>إعلانات</div>
@@ -93,94 +257,229 @@
       <div class="planet planet-6" onclick="switchTab('md6')">MD6<br>الطاقة</div>
     </div>
   </div>
-  <div class="chat-widget"><h3 style="color:var(--gold); margin-bottom:8px;"><svg class="emblem-sm" viewBox="0 0 100 100"><use href="#md-emblem"/></svg>تواصل مع المؤسس</h3><div class="chat-logs" id="chatLogs"><p style="color:#aaa;">مرحباً بك! أنا المساعد للمنظومة.</p></div><div class="chat-input-row"><input type="text" id="chatInput" placeholder="اكتب سؤالك هنا..."><button onclick="sendChatMessage()">إرسال</button></div></div>
+
+  <div class="chat-widget">
+    <h3 style="color:var(--gold); margin-bottom:8px;"><svg class="emblem-sm" viewBox="0 0 100 100" aria-hidden="true"><use href="#md-emblem"/></svg>تواصل مع المؤسس</h3>
+    <div class="chat-logs" id="chatLogs">
+      <p style="color:#aaa;">مرحباً بك! أنا المساعد  للمنظومة.</p>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا...">
+      <button onclick="sendChatMessage()">إرسال</button>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="view-section">
+  <div class="card-box">
+    <h2>من نحن؟</h2>
+    <p class="about-p"><b>MD7 Group</b> هي مجموعة متخصصة في تقديم أفكار وحلول مبتكرة لتطوير المؤسسات والمشروعات، والمساهمة في تحسين إدارة الموارد والاستفادة من الإمكانات المتاحة، من خلال دراسة الواقع، وتحليل التحديات، وتقديم المقترحات القابلة للتطبيق بالتعاون مع الجهات المعنية.</p>
+    <div class="vals">
+      <div class="val"><b>الرؤية</b><span>نحو مجتمع أكثر تنظيمًا وتقدمًا</span></div>
+      <div class="val"><b>التطوير</b><span>للمؤسسات والمشروعات</span></div>
+      <div class="val"><b>الابتكار</b><span>في تقديم الحلول</span></div>
+      <div class="val"><b>الشراكة</b><span>مع الجهات والمؤسسات المعنية</span></div>
+    </div>
+    <div class="two">
+      <div class="val"><b>رسالتنا</b><span>تحويل الأفكار المدروسة إلى فرص حقيقية للتطوير والنمو.</span></div>
+      <div class="val"><b>رؤيتنا</b><span>المساهمة في بناء مجتمع أكثر تنظيمًا وتطورًا.</span></div>
+    </div>
+    <div class="val" style="margin-top:12px"><b>🇪🇬 نبدأ رحلتنا من مصر ...</b><span>باعتبارها نقطة الانطلاق نحو مستقبل أكبر، ولأنها تستحق أن تكون في مقدمة الدول التي تشهد التنمية والتطوير.</span></div>
+    <p style="margin-top:14px"><button type="button" class="share-btn" style="border:0;cursor:pointer;font-family:inherit;font-size:14px;padding:10px 20px" data-go="projects">استعرض المشاريع ←</button></p>
+  </div>
+</section>
+
+<section id="projects" class="view-section">
+  <div class="card-box">
+    <h2>المشاريع</h2>
+    <div class="proj-grid">
+      <div class="proj feat">
+        <span class="tag">MD1</span>
+        <h3>🚐 إعلانات المركبات</h3>
+        <p>منصة لإعلانات المركبات والميكروباصات والأتوبيسات، وخدمات الملاك والسائقين والمعلنين ومركز الصيانة.</p>
+        <a href="md1.html" id="discoverMd1">اكتشف المشروع</a>
+      </div>
+      <div class="proj"><span class="tag">MD2</span><h3>📚 تطوير الإدارة</h3><p>المؤلفون وتطوير الإدارة.</p><button type="button" data-go="md2">فتح</button></div>
+      <div class="proj"><span class="tag">MD3</span><h3>🛒 وصل</h3><p>منصة وصل.</p><a href="wasal24.html">فتح</a></div>
+      <div class="proj"><span class="tag">MD4</span><h3>👁️ تقديم الخدمات</h3><p>ألم عين.</p><button type="button" data-go="md4">فتح</button></div>
+      <div class="proj"><span class="tag">MD5</span><h3>🎬 تعليم وصحة</h3><p>الأعمال والتعليم والصحة.</p><button type="button" data-go="md5">فتح</button></div>
+      <div class="proj"><span class="tag">MD6</span><h3>🌱 الطاقة وإعادة التدوير</h3><p>مشروعات الطاقة وإعادة التدوير.</p><button type="button" data-go="md6">فتح</button></div>
+      <div class="proj"><span class="tag">MD8</span><h3>🚀 مولد خطط المشاريع</h3><p>أداة إعداد خطط المشاريع.</p><button type="button" data-go="md8">فتح</button></div>
+    </div>
+  </div>
 </section>
 
 <section id="md8" class="view-section"><div class="card-box"><h2>🚀 MD8: مولد خطط المشاريع</h2></div></section>
-<section id="md2" class="view-section"><div class="card-box"><h2>📚 MD2:تطوير الإدراة</h2></div></section>
+<section id="md2" class="view-section"><div class="card-box"><h2>📚 MD2:تطوير الإدراة  </h2></div></section>
 <section id="md3" class="view-section"><div class="card-box"><h2>🛒 MD3: منصة وصل</h2></div></section>
-<section id="md4" class="view-section"><div class="card-box"><h2>👁️ MD4: تقديم الخدمات</h2></div></section>
-<section id="md5" class="view-section"><div class="card-box"><h2>🎬 MD5:تعليم وصحه</h2></div></section>
-<section id="md6" class="view-section"><div class="card-box"><h2>🌱 MD6: الطاقة واعادة التدوير</h2></div></section>
+<section id="md4" class="view-section"><div class="card-box"><h2>👁️ MD4: تقديم الخدمات </h2></div></section>
+<section id="md5" class="view-section"><div class="card-box"><h2>🎬 MD5:تعليم وصحه </h2></div></section>
+<section id="md6" class="view-section"><div class="card-box"><h2>🌱 MD6:  الطاقة واعادة التدوير </h2></div></section>
 
-<div id="founderModal">
-  <div class="modal-box">
-    <button class="close-btn" onclick="closeFounder()">✕</button>
-    <div style="text-align:center">
-      <img id="founderImgFix" src="صور/IMG_20240419_233122.jpg" class="founder-img" alt="محمد رضوان الهمام">
-      <h2 style="color:var(--gold); margin-top:12px; font-size:22px">محمد رضوان الهمام</h2>
-      <p style="color:#aaa; font-size:13px">المؤسس - MD7 Group</p>
-    </div>
-    <h3 style="color:var(--gold); margin-top:20px; font-size:18px">🎯 هدف MD ومالها</h3>
-    <p style="color:#ddd; font-size:14px; line-height:1.9; margin-top:8px; background:#0a0a0a; padding:12px; border-radius:8px; border-right:3px solid var(--gold)">
-      MD7 منظومة هدفها <b style="color:var(--gold)">تطوير المؤسسات والمشاريع وإدارة تشغيلها</b>، واقتراح حلول لمشاكل من خلال حل المشكلة نفسها وتغيير طريقة تقديم الخدمات على أعلى درجة.
-      <br><br>
-      نسعى للحصول على <b>راحة المالك للمؤسسة والمدير والعمال والمستخدمين للخدمة</b>، وضمان شعورهم بتحسن حقيقي في إعادة نظام التشغيل.
-    </p>
-    <h3 style="color:var(--gold); margin-top:18px; font-size:18px">📖 إدارة وتطوير المشاريع</h3>
-    <div style="color:#ddd; font-size:14px; line-height:1.9; margin-top:8px; background:#0a0a0a; padding:12px; border-radius:8px">
-      <b style="color:var(--gold)">الإدارة:</b> فن تنظيم الموارد لتحقيق هدف واضح بأقل تكلفة وأعلى جودة.<br><br>
-      <b style="color:var(--gold)">تطوير المشاريع:</b> تحليل وضع المشروع، كشف نقاط الضعف، إعادة تصميم دورة العمل، وتدريب الفريق حتى يصبح المشروع يدار بنظام يعتمد على نفسه.
-    </div>
-    <div style="text-align:center; margin-top:20px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap">
-      <a href="https://wa.me/avtarmo?text=مرحبا استاذ محمد رضوان - عايز اعرف اكتر عن MD7" target="_blank" style="display:inline-block; background:linear-gradient(135deg,var(--gold),#B8860B); color:#000; padding:10px 20px; border-radius:8px; font-weight:900; text-decoration:none">💬 واتساب</a>
-      <button onclick="closeFounder()" style="background:transparent; border:1px solid var(--gold); color:var(--gold); padding:10px 20px; border-radius:8px; cursor:pointer">إغلاق</button>
-    </div>
-  </div>
-</div>
-
-<footer class="site-footer"><h3>MD7 Group</h3><p>تأسست في 2026</p><p>avtarpreins@gmail.com</p></footer>
+<footer class="site-footer">
+  <h3>MD7 Group</h3>
+  <p>تأسست في 2026</p>
+  <p>avtarpreins@gmail.com</p>
+</footer>
 
 <script>
-  function switchTab(tabId){document.querySelectorAll('.view-section').forEach(el=>el.classList.remove('active'));document.getElementById(tabId).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
-  const WA_USERNAME='avtarmo';
-  function cairoClock(){try{const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Cairo',hourCycle:'h23',hour:'numeric',minute:'numeric',second:'numeric'}).formatToParts(new Date());const get=t=>parseInt(parts.find(p=>p.type===t).value,10);return{h:get('hour'),m:get('minute'),s:get('second')};}catch(e){const d=new Date();return{h:d.getHours(),m:d.getMinutes(),s:d.getSeconds()};}}
-  const SYNODIC=29.530588853;
-  function moonAgeDays(d){const epoch=Date.UTC(2000,0,6,18,14);const age=((d.getTime()-epoch)/86400000)%SYNODIC;return age<0?age+SYNODIC:age;}
-  function moonShape(age){const R=50,f=age/SYNODIC,k=Math.cos(2*Math.PI*f),rx=Math.abs(k)*R;return{d:'M0,'+(-R)+' A'+R+','+R+' 0 0 1 0,'+R+' A'+rx.toFixed(2)+','+R+' 0 0 '+(k>0?0:1)+' 0,'+(-R)+' Z',waning:f>0.5,illum:(1-k)/2};}
-  function updateSolarNode(){
-    const t=cairoClock(); const isDay=t.h>=6&&t.h<18; const node=document.getElementById('center-node');
-    document.documentElement.setAttribute('data-mode',isDay?'day':'night');
-    node.className=isDay?'center-sun-moon sun-mode':'center-sun-moon moon-mode';
-    const moon=moonShape(moonAgeDays(new Date()));
-    const lit=document.getElementById('moon-lit');
-    lit.setAttribute('d',moon.d);
-    lit.setAttribute('transform',moon.waning?'scale(-1,1)':'');
-    node.style.boxShadow=isDay?'':'0 0 '+Math.round(14+moon.illum*46)+'px '+Math.round(2+moon.illum*8)+'px rgba(190,220,255,'+(0.18+0.5*moon.illum).toFixed(2)+')';
+  function switchTab(tabId) {
+    document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    document.querySelectorAll('.site-nav button').forEach(b => b.classList.toggle('on', b.getAttribute('data-go') === tabId));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  function syncOrbitToCairo(){const t=cairoClock();const sec=t.h*3600+t.m*60+t.s;const ring=document.querySelector('.orbit-ring');if(ring)ring.style.animationDelay='-'+(sec%35)+'s';document.querySelectorAll('.planet').forEach((p,i)=>{p.style.animationDelay='-'+((sec+i)%6)+'s';});}
-  function addChatLine(logs,who,text,color){const p=document.createElement('p');p.style.color=color;const b=document.createElement('b');b.textContent=who;p.appendChild(b);p.appendChild(document.createTextNode(' '+text));logs.appendChild(p);return p;}
-  function sendChatMessage(){const input=document.getElementById('chatInput');const logs=document.getElementById('chatLogs');const val=input.value.trim();if(!val)return;const msg='مرحبا استاذ محمد - سؤال من منصة MD7: '+val+' - الصفحة: '+window.location.href;const url='https://wa.me/'+WA_USERNAME+'?text='+encodeURIComponent(msg);addChatLine(logs,'أنت:',val,'var(--gold)');const w=window.open(url,'_blank');if(w){w.opener=null;addChatLine(logs,'MD7:','تم تحويل سؤالك للمؤسس على واتساب @'+WA_USERNAME+' ✅','#fff');}else{const p=addChatLine(logs,'MD7:','تعذّر فتح واتساب تلقائيًا. ','#fff');const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent='اضغط هنا لفتح واتساب';a.style.color='var(--gold)';p.appendChild(a);}logs.scrollTop=logs.scrollHeight;input.value='';}
-  document.getElementById('chatInput').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.isComposing){e.preventDefault();sendChatMessage();}});
-  function openFounder(){document.getElementById('founderModal').style.display='block'; document.body.style.overflow='hidden';}
-  function closeFounder(){document.getElementById('founderModal').style.display='none'; document.body.style.overflow='';}
-  function shareMD7(){var text='MD7 Group - الحاضر هو المستقبل'; var url=location.href; if(navigator.share){navigator.share({title:'MD7 Group', text:text, url:url})}else{window.open('https://wa.me/?text='+encodeURIComponent(text+' - '+url),'_blank')}}
-  function contributeMD7(){window.location.href='join-md7.html';}
-  document.getElementById('founderModal').addEventListener('click',function(e){if(e.target===this)closeFounder()});
-  window.onload=function(){updateSolarNode();syncOrbitToCairo();setInterval(updateSolarNode,60000);};
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-go]') : null;
+    if (t) switchTab(t.getAttribute('data-go'));
+  });
 
-  // إصلاح صورة المؤسس - يجرب كل المسارات
-  (function(){
-    var paths = [
-      "صور/IMG_20240419_233122.jpg",
-      "images/IMG_20240419_233122.jpg",
-      "Images/IMG_20240419_233122.jpg",
-      "صور/founder.jpg",
-      "images/founder.jpg",
-      "Images/founder.jpg",
-      "Images/IMG-20261013-WA1041.jpg"
-    ];
-    var idx = 0;
-    var img = document.getElementById('founderImgFix');
-    if(img){
-      img.addEventListener('error', function(){
-        idx++;
-        if(idx < paths.length){
-          this.src = paths[idx];
-        }
-      });
-    }
+  // نافذة تعريف MD
+  (function () {
+    var m = document.getElementById('mdModal'), btn = document.getElementById('mdBtn'), last = null;
+    function open() { last = document.activeElement; m.classList.add('open'); document.getElementById('mdClose').focus(); }
+    function close() { m.classList.remove('open'); if (last && last.focus) last.focus(); }
+    btn.addEventListener('click', open);
+    document.getElementById('mdClose').addEventListener('click', close);
+    m.addEventListener('click', function (e) { if (e.target === m) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && m.classList.contains('open')) close(); });
   })();
+
+  // واجهة مصر الافتتاحية: تظهر مرة لكل جلسة، والضغط على الخريطة يفتح "من نحن؟"
+  (function () {
+    var intro = document.getElementById('intro');
+    var seen = false;
+    try { seen = sessionStorage.getItem('md7_intro') === '1'; } catch (e) {}
+    var h = (location.hash || '').replace('#', '');
+    function done(go) {
+      intro.classList.add('gone');
+      try { sessionStorage.setItem('md7_intro', '1'); } catch (e) {}
+      if (go) switchTab(go);
+    }
+    if (seen || h) { intro.classList.add('gone'); if (h && document.getElementById(h) && document.getElementById(h).classList.contains('view-section')) switchTab(h); }
+    document.getElementById('egyptBtn').addEventListener('click', function () { done('about'); });
+    document.getElementById('introSkip').addEventListener('click', function () { done(null); });
+  })();
+
+  // رقم واتساب الدولي (أرقام فقط بدون + أو أصفار، مثال: 20xxxxxxxxxx). اتركه فارغًا إلى أن تضع رقمك أنت.
+  // وهو فارغ لا يُفتح واتساب: تُنسخ الرسالة ويُعرض رابط بريد بديل.
+  const MD7_WA_NUMBER = '';
+  const MD7_EMAIL = 'avtarpreins@gmail.com';
+
+  // الوقت الحالي بتوقيت القاهرة (يتعامل مع التوقيت الصيفي تلقائيًا)، وإن لم يتوفر يُستخدم وقت الجهاز
+  function cairoClock() {
+    try {
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Africa/Cairo', hourCycle: 'h23', hour: 'numeric', minute: 'numeric', second: 'numeric'
+      }).formatToParts(new Date());
+      const get = t => parseInt(parts.find(p => p.type === t).value, 10);
+      return { h: get('hour'), m: get('minute'), s: get('second') };
+    } catch (e) {
+      const d = new Date();
+      return { h: d.getHours(), m: d.getMinutes(), s: d.getSeconds() };
+    }
+  }
+
+  // عمر القمر بالأيام منذ آخر محاق (تقريبي، من دورة القمر الاقترانية 29.53 يومًا)
+  const SYNODIC = 29.530588853;
+  function moonAgeDays(d) {
+    const epoch = Date.UTC(2000, 0, 6, 18, 14); // محاق معروف
+    const age = ((d.getTime() - epoch) / 86400000) % SYNODIC;
+    return age < 0 ? age + SYNODIC : age;
+  }
+  // شكل الجزء المضيء: يبدأ هلالًا، ثم نصفًا، ثم بدرًا، ثم يتناقص (مضيء من اليمين أثناء التزايد)
+  function moonShape(age) {
+    const R = 50, f = age / SYNODIC, k = Math.cos(2 * Math.PI * f), rx = Math.abs(k) * R;
+    return {
+      d: 'M0,' + (-R) + ' A' + R + ',' + R + ' 0 0 1 0,' + R + ' A' + rx.toFixed(2) + ',' + R + ' 0 0 ' + (k > 0 ? 0 : 1) + ' 0,' + (-R) + ' Z',
+      waning: f > 0.5,
+      illum: (1 - k) / 2
+    };
+  }
+
+  // نهار (وهج شمس) / ليل (قمر بطوره الحالي) بتوقيت القاهرة
+  function updateSolarNode() {
+    const t = cairoClock();
+    const isDay = t.h >= 6 && t.h < 18;
+    const node = document.getElementById('center-node');
+    document.documentElement.setAttribute('data-mode', isDay ? 'day' : 'night');
+    node.className = isDay ? 'center-sun-moon sun-mode' : 'center-sun-moon moon-mode';
+    const moon = moonShape(moonAgeDays(new Date()));
+    const lit = document.getElementById('moon-lit');
+    lit.setAttribute('d', moon.d);
+    lit.setAttribute('transform', moon.waning ? 'scale(-1,1)' : '');
+    // وهج القمر يقوى كلما اكتمل
+    node.style.boxShadow = isDay ? '' :
+      '0 0 ' + Math.round(14 + moon.illum * 46) + 'px ' + Math.round(2 + moon.illum * 8) + 'px rgba(190,220,255,' + (0.18 + 0.5 * moon.illum).toFixed(2) + ')';
+    node.setAttribute('data-moon-illum', moon.illum.toFixed(2));
+  }
+
+  function syncOrbitToCairo() {
+    const t = cairoClock();
+    const sec = t.h * 3600 + t.m * 60 + t.s;
+    const ring = document.querySelector('.orbit-ring');
+    if (ring) ring.style.animationDelay = '-' + (sec % 35) + 's';
+    document.querySelectorAll('.planet').forEach((p, i) => {
+      p.style.animationDelay = '-' + ((sec + i) % 6) + 's';
+    });
+  }
+
+  function addChatLine(logs, who, text, color) {
+    const p = document.createElement('p');
+    p.style.color = color;
+    const b = document.createElement('b');
+    b.textContent = who;
+    p.appendChild(b);
+    p.appendChild(document.createTextNode(' ' + text));
+    logs.appendChild(p);
+    return p;
+  }
+
+  // يحوّل سؤال العميل إلى واتساب المؤسس عبر اليوزرنيم فقط
+  function sendChatMessage() {
+    const input = document.getElementById('chatInput');
+    const logs = document.getElementById('chatLogs');
+    const val = input.value.trim();
+    if (!val) return;
+    const msg = 'مرحبا استاذ محمد - سؤال من منصة MD7: ' + val + ' - الصفحة: ' + window.location.href;
+    addChatLine(logs, 'أنت:', val, 'var(--gold)');
+    if (/^\d{8,15}$/.test(MD7_WA_NUMBER)) {
+      const url = 'https://wa.me/' + MD7_WA_NUMBER + '?text=' + encodeURIComponent(msg);
+      const w = window.open(url, '_blank');
+      if (w) {
+        w.opener = null;
+        addChatLine(logs, 'MD7:', 'تم فتح واتساب بالرسالة جاهزة. اضغط إرسال داخل واتساب لإتمام الإرسال.', '#fff');
+      } else {
+        const p = addChatLine(logs, 'MD7:', 'تعذّر فتح واتساب تلقائيًا. ', '#fff');
+        const a = document.createElement('a');
+        a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'اضغط هنا لفتح واتساب';
+        a.style.color = 'var(--gold)';
+        p.appendChild(a);
+      }
+    } else {
+      // لا يوجد رقم واتساب مضبوط: لم يُرسل شيء. ننسخ الرسالة ونعرض بريدًا بديلًا.
+      try { if (navigator.clipboard) navigator.clipboard.writeText(msg).catch(function () {}); } catch (e) {}
+      const p = addChatLine(logs, 'MD7:', 'لم يتم إرسال سؤالك بعد (واتساب غير مفعّل حاليًا). نسخنا الرسالة، ويمكنك إرسالها بالبريد: ', '#fff');
+      const a = document.createElement('a');
+      a.href = 'mailto:' + MD7_EMAIL + '?subject=' + encodeURIComponent('سؤال من منصة MD7') + '&body=' + encodeURIComponent(msg);
+      a.textContent = 'إرسال بالبريد';
+      a.style.color = 'var(--gold)';
+      p.appendChild(a);
+    }
+    logs.scrollTop = logs.scrollHeight;
+    input.value = '';
+  }
+
+  document.getElementById('chatInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); sendChatMessage(); }
+  });
+
+  window.onload = function() {
+    updateSolarNode();
+    syncOrbitToCairo();
+    setInterval(updateSolarNode, 60000);
+  };
 </script>
+
 </body>
 </html>
