@@ -1,25 +1,84 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>MD6 | الطاقة والزراعة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-      body { font-family: 'Cairo', sans-serif; background: #050505; color: #fff; direction: rtl; padding: 20px; }
-      .container { max-width: 800px; margin: 30px auto; background: #121212; border: 1px solid #D4AF37; padding: 25px; border-radius: 12px; }
-      .btn { background: #D4AF37; color: #000; border: none; padding: 10px 18px; font-weight: bold; border-radius: 6px; text-decoration: none; display: inline-block; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إعادة التدوير من القمامة ليدك - MD7 Group</title>
+<style>
+:root{--gold:#D4AF37;--gold2:#B8860B;--bg:#050505;--card:#121212;--txt:#f2f2f2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Tahoma,sans-serif;line-height:1.9}
+header{background:#000;border-bottom:2px solid var(--gold);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50}
+header b{color:var(--gold)}
+header a{color:var(--gold);border:1px solid var(--gold);border-radius:20px;padding:6px 14px;text-decoration:none;font-size:13px}
+main{max-width:800px;margin:0 auto;padding:16px 14px 50px}
+.hero{text-align:center;padding:30px 10px 20px}
+.badge{border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:4px 16px;font-size:12px;display:inline-block;margin-bottom:12px}
+.hero h1{color:var(--gold);font-size:28px}
+.card{background:var(--card);border:1px solid rgba(212,175,55,.4);border-radius:14px;padding:18px;margin-bottom:16px}
+.card h2{color:var(--gold);font-size:20px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+.tile{border:1px solid rgba(212,175,55,.35);border-radius:10px;padding:12px;background:#0a0a0a}
+.tile b{display:block;color:var(--gold)}
+.form{background:#0a0a0a;border:1px solid var(--gold);border-radius:12px;padding:16px;margin-top:20px}
+.form label{display:block;color:var(--gold);font-size:13px;margin:10px 0 4px}
+.form input,.form select,.form textarea{width:100%;background:#121212;border:1px solid #333;border-radius:8px;padding:10px;color:#fff}
+.btn{display:block;width:100%;background:linear-gradient(90deg,#D4AF37,#B8860B);color:#000;border:none;border-radius:10px;padding:12px;font-weight:700;font-size:16px;margin-top:14px;cursor:pointer}
+</style>
 </head>
 <body>
-<div class="container">
-    <a href="index.html" class="btn" style="margin-bottom:20px;">← العودة للرئيسية</a>
-    <h2 style="color:#D4AF37;">🌱 MD6: حلول الطاقة والزراعة الاستدامة</h2>
-    <p style="color:#aaa; margin-top:10px;">تقنيات الطاقة النظيفة والمشاريع الزراعية الحديثة والبنية التحتية الذكية.</p>
-    
-    <a href="https://wa.me/201033182019" target="_blank" class="btn" style="background:#25D366; color:#fff; margin-top:20px;">
-        <i class="fa-brands fa-whatsapp"></i> طلب استشارة هندسية أو زراعية
-    </a>
-</div>
+<header><b>MD7 Group | إعادة التدوير</b><a href="/">الرئيسية</a></header>
+<main>
+  <div class="hero">
+    <div class="badge">MD6 • مشروع بيئي استثماري</div>
+    <h1>إعادة التدوير من القمامة ليدك</h1>
+    <p>نحول المخلفات لنظام أرباح مستدام - شراكة بين شركات النظافة وشركات إعادة التدوير بإدارة وتشغيل من MD7</p>
+  </div>
+  <div class="card">
+    <h2>فكرة المشروع</h2>
+    <div class="grid">
+      <div class="tile"><b>1. التجميع</b><span>شركات النظافة تجمع مفروز من المصدر</span></div>
+      <div class="tile"><b>2. الفرز الذكي</b><span>سيستم MD7 لفرز بلاستيك / ورق / معدن</span></div>
+      <div class="tile"><b>3. التحويل</b><span>شركات التدوير تحول لمنتج نهائي</span></div>
+      <div class="tile"><b>4. البيع</b><span>منصة MD7 تبيع المنتج</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>صياغة اقتراح لشركة بيئية</h2>
+    <p><b style="color:var(--gold)">لمن العرض؟</b><br>• شركات النظافة<br>• شركات إعادة التدوير<br>• هيئات وبلديات<br>• مستثمري الاقتصاد الأخضر</p>
+    <br>
+    <p><b style="color:var(--gold)">ماذا نقدم؟</b><br>• نظام تتبع GPS + QR<br>• تطبيق للمواطن بنظام نقاط<br>• لوحة تحكم أرباح<br>• عقود وتسويق</p>
+  </div>
+  <div class="card">
+    <h2>نموذج الربح</h2>
+    <div class="grid">
+      <div class="tile"><b>شركة النظافة 40%</b><span>قيمة بيع + تقليل دفن</span></div>
+      <div class="tile"><b>شركة التدوير 40%</b><span>خامات رخيصة ومستمرة</span></div>
+      <div class="tile"><b>MD7 النظام 20%</b><span>تشغيل ومنصة وتسويق</span></div>
+    </div>
+  </div>
+  <div class="form">
+    <h2 style="color:var(--gold);text-align:center">طلب شراكة</h2>
+    <label>اسم الشركة</label><input id="cname">
+    <label>نوع الجهة</label><select id="ctype"><option>شركة نظافة</option><option>شركة إعادة تدوير</option><option>هيئة حكومية</option><option>مستثمر</option></select>
+    <label>المدينة</label><input id="city">
+    <label>حجم المخلفات اليومي</label><select id="vol"><option>أقل من 1 طن</option><option>1-5 طن</option><option>5-20 طن</option><option>أكثر من 20 طن</option></select>
+    <label>رقم واتساب</label><input id="phone">
+    <label>ماذا تريد من الشراكة؟</label><textarea id="msg"></textarea>
+    <button class="btn" onclick="sendWA()">إرسال طلب الشراكة - واتساب MD7</button>
+  </div>
+</main>
+<script>
+function sendWA(){
+  const c=document.getElementById('cname').value||'-';
+  const t=document.getElementById('ctype').value;
+  const ci=document.getElementById('city').value||'-';
+  const v=document.getElementById('vol').value;
+  const p=document.getElementById('phone').value||'-';
+  const m=document.getElementById('msg').value||'-';
+  const text=`طلب شراكة - إعادة التدوير MD7%0A🏢${c}%0A📌${t}%0A📍${ci}%0A♻️${v}%0A📱${p}%0A💬${m}`;
+  window.open(`https://wa.me/201000000000?text=${text}`,'_blank');
+}
+</script>
 </body>
 </html>
