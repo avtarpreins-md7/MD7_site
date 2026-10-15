@@ -1,238 +1,1508 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD1 - إعلانات المركبات | MD7 Group</title>
-<meta name="description" content="MD1 منصة تابعة لـ MD7 Group تربط المعلنين بأصحاب المركبات">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD1 - منظومة تشغيل وإعلانات المركبات | MD7 Group</title>
+<meta name="description" content="MD1 منظومة تابعة لـ MD7 Group تربط أصحاب السيارات والسائقين والمعلنين ومركز الصيانة المخطط في منظومة تشغيل واحدة.">
 <style>
-:root{--gold:#D4AF37;--gold-dark:#AA7C11;--black:#050505;--dark-gray:#121212;--card-border:rgba(212,175,55,0.35);--gold-glow:rgba(212,175,55,0.3);--muted:#aaa;--ok:#28a745;--err:#ff6b6b}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}html,body{width:100%;overflow-x:hidden;background:var(--black)}
-body{font-family:'Segoe UI',Tahoma,sans-serif;color:#fff;direction:rtl;line-height:1.7}
-a{color:inherit}header{background:#000;border-bottom:2px solid var(--gold);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
-.brand{display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:22px}.tag{font-size:12px;color:var(--muted);border-right:1px solid #333;padding-right:8px;margin-right:4px}
-.back-link{color:var(--gold);text-decoration:none;font-size:14px;border:1px solid var(--card-border);padding:6px 12px;border-radius:20px;white-space:nowrap}.back-link:hover{background:var(--gold);color:#000}
-nav.sub{background:#0a0a0a;border-bottom:1px solid #1d1d1d;display:flex;gap:6px;overflow-x:auto;padding:8px 12px}nav.sub::-webkit-scrollbar{display:none}nav.sub a{color:#ddd;text-decoration:none;font-size:13px;padding:5px 12px;border-radius:16px;border:1px solid transparent;white-space:nowrap}nav.sub a:hover{border-color:var(--gold);color:var(--gold)}
-main{max-width:1100px;margin:0 auto;padding:0 16px}section{padding:38px 0 10px;scroll-margin-top:56px}
-h2.title{color:var(--gold);font-size:24px;margin-bottom:6px}p.lead{color:var(--muted);margin-bottom:20px;font-size:15px}
-.offer-banner{background:linear-gradient(135deg,#1a1200,#2a1e00);border:2px solid var(--gold);border-radius:14px;padding:14px 16px;text-align:center;margin:18px 0 0;box-shadow:0 0 25px var(--gold-glow)}
-.count{background:var(--gold);color:#000;padding:2px 10px;border-radius:20px;font-weight:900}
-.hero{text-align:center;padding:30px 0 30px;background:radial-gradient(ellipse at top,rgba(212,175,55,0.14),transparent 65%)}.badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:13px;margin-bottom:14px}
-.hero h1{font-size:34px;font-weight:900;line-height:1.4;margin-bottom:12px}.hero h1 span{color:var(--gold)}.hero p{color:#ccc;max-width:640px;margin:0 auto 22px;font-size:16px}
-.cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#000;border:none;padding:12px 22px;font-weight:900;border-radius:8px;cursor:pointer;font-size:15px;text-decoration:none;display:inline-block}.btn-line{background:transparent;color:var(--gold);border:1px solid var(--gold);padding:12px 22px;font-weight:700;border-radius:8px;cursor:pointer;font-size:15px;text-decoration:none;display:inline-block}.btn-line.sm{padding:8px 14px;font-size:14px}.btn-link{background:none;border:none;color:var(--gold);cursor:pointer;font-size:13px;text-decoration:underline;padding:6px}.btn-off{background:#1a1a1a;color:#777;border:1px dashed #444;padding:10px 16px;border-radius:8px;font-size:14px;cursor:not-allowed;width:100%}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.card{background:var(--dark-gray);border:1px solid var(--card-border);border-radius:14px;padding:18px;transition:.25s}.card:hover{border-color:var(--gold);box-shadow:0 0 22px var(--gold-glow);transform:translateY(-3px)}.card h3{color:var(--gold);font-size:18px;margin-bottom:6px}.card p,.card li{color:#ccc;font-size:14px}.card ul{padding-right:18px;margin-top:6px}.step-num{width:34px;height:34px;border-radius:50%;background:var(--gold);color:#000;font-weight:900;display:flex;align-items:center;justify-content:center;margin-bottom:8px}.soon{display:inline-block;background:rgba(212,175,55,0.12);color:var(--gold);border:1px solid var(--card-border);font-size:11px;padding:1px 9px;border-radius:10px;margin-bottom:8px}.live{display:inline-block;background:rgba(40,167,69,0.14);color:#7bd88f;border:1px solid rgba(40,167,69,0.5);font-size:11px;padding:1px 9px;border-radius:10px;margin-bottom:8px}
-.preview-wrap{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:860px){.preview-wrap{grid-template-columns:360px 1fr;align-items:start}}@media(max-width:859px){.stage{order:-1}}
-.panel{background:var(--dark-gray);border:1px solid var(--card-border);border-radius:14px;padding:18px}.panel label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}.panel select,.panel input[type=text],.panel input[type=tel]{width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;font-size:15px}.panel select:focus,.panel input:focus{outline:none;border-color:var(--gold)}.panel label.radio{display:flex;align-items:flex-start;gap:8px;color:#ddd;font-size:14px;margin:8px 0;cursor:pointer}.panel label.radio input{margin-top:5px;accent-color:#D4AF37}.file-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.fit{font-size:12px;color:var(--muted);margin-top:5px;min-height:18px;word-break:break-all}.fit.ok{color:#7bd88f}
-.total-box{margin-top:14px;background:#000;border:1px solid var(--gold);border-radius:12px;padding:12px 14px;text-align:center;box-shadow:0 0 18px var(--gold-glow)}.t-label{color:var(--muted);font-size:13px}.t-main{color:var(--gold);font-size:28px;font-weight:900;line-height:1.3}.t-sub{color:#ccc;font-size:13px;min-height:18px}
-.status{font-size:13px;margin-top:10px;min-height:20px}.status.ok{color:#7bd88f}.status.err{color:var(--err)}.privacy{font-size:12px;color:var(--muted);margin-top:10px}
-.stage{background:radial-gradient(ellipse at center,#1a1a1a,#0a0a0a);border:1px solid var(--card-border);border-radius:14px;padding:10px;display:flex;flex-direction:column;justify-content:center;min-height:340px}
-.canvas-wrap{position:relative;width:100%}#glcanvas{width:100%;aspect-ratio:16/10;display:block;border-radius:10px;touch-action:pan-y;cursor:grab;background:#0e0e0e}#glcanvas:active{cursor:grabbing}
-#realWrap{width:100%;aspect-ratio:16/10;display:none;border-radius:10px;position:relative;overflow:hidden;background:#0e0e0e}#realImg{width:100%;height:100%;object-fit:contain;background:#111}#adOverlay{position:absolute;background-size:cover;background-position:center;border:2px dashed #D4AF37;box-shadow:0 0 10px rgba(212,175,55,0.5)}
-.upload-box{position:absolute;inset:0;background:rgba(0,0,0,0.84);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;z-index:5}.upload-box[hidden]{display:none!important}
-.drop{width:min(210px,62%);aspect-ratio:1;border:2px dashed var(--gold);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;color:var(--gold);cursor:pointer;padding:10px;font-size:14px;font-weight:700}.drop small{color:var(--muted);font-weight:400;font-size:12px}.drop.over,.drop:hover{background:rgba(212,175,55,0.12)}
-.nogl{display:none;padding:40px 12px;text-align:center;color:var(--muted);font-size:14px}.note{font-size:12px;color:var(--muted);margin-top:10px;text-align:center}.note b{color:var(--gold)}
-.chat-widget{background:var(--dark-gray);border:1px solid var(--gold);border-radius:12px;padding:15px;margin-top:20px}.chat-logs{height:120px;overflow-y:auto;background:#000;padding:10px;border-radius:8px;margin-bottom:10px;font-size:13px}.chat-input-row{display:flex;gap:10px}.chat-input-row input{flex:1;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:6px}.chat-input-row button{background:var(--gold);color:#000;border:none;padding:10px 20px;font-weight:bold;border-radius:6px;cursor:pointer}
-.site-footer{text-align:center;padding:30px 16px;border-top:2px solid var(--gold);margin-top:50px;background:#000}.site-footer h3{color:var(--gold);font-size:22px;margin-bottom:6px}.site-footer p{color:#aaa;margin:4px 0;font-size:14px}
-:root{--emb:#5fd0ff;--emb-glow:rgba(95,208,255,0.85)}html[data-mode="day"]{--emb:#ff7a7a;--emb-glow:rgba(255,90,90,0.6)}.emb-star{fill:var(--emb);fill-opacity:0.2;stroke:var(--emb);stroke-width:2.6;stroke-linejoin:round}.emb-txt{fill:var(--emb);font-weight:900}.emblem-sm{width:30px;height:30px;vertical-align:middle;margin-inline-end:6px;filter:drop-shadow(0 0 4px var(--emb-glow))}
+  :root {
+    --gold: #D4AF37;
+    --gold-light: #F3E5AB;
+    --gold-dark: #AA7C11;
+    --black: #050505;
+    --dark-gray: #121212;
+    --card-border: rgba(212,175,55,0.35);
+    --gold-glow: rgba(212,175,55,0.3);
+    --muted: #aaa;
+    --ok: #28a745;
+    --err: #ff6b6b;
+    --warn: #ffb74d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  html, body { width: 100%; overflow-x: hidden; background: var(--black); }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; direction: rtl; line-height: 1.7; }
+  a { color: inherit; }
+  [hidden] { display: none !important; }
+  button, input, select, textarea { font-family: inherit; }
+
+  /* الهيدر */
+  header { background: #000; border-bottom: 2px solid var(--gold); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+  .brand { display: flex; align-items: center; text-decoration: none; font-weight: 900; font-size: 22px; }
+  .brand .d { color: #C0C0C0; }
+  .brand .m { color: var(--gold); }
+  .brand .tag { font-size: 12px; color: var(--muted); font-weight: 400; border-right: 1px solid #333; padding-right: 8px; margin-right: 8px; }
+  .back-link { color: var(--gold); text-decoration: none; font-size: 14px; border: 1px solid var(--card-border); padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
+  .back-link:hover { background: var(--gold); color: #000; }
+
+  nav.sub { background: #0a0a0a; border-bottom: 1px solid #1d1d1d; display: flex; overflow-x: auto; padding: 8px 12px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  nav.sub::-webkit-scrollbar { display: none; }
+  nav.sub a { color: #ddd; text-decoration: none; font-size: 13px; padding: 5px 12px; margin-left: 6px; border-radius: 16px; white-space: nowrap; border: 1px solid transparent; }
+  nav.sub a:hover, nav.sub a.on { border-color: var(--gold); color: var(--gold); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 0 16px 10px; }
+  section { padding: 30px 0 6px; scroll-margin-top: 56px; }
+  h2.title { color: var(--gold); font-size: 24px; margin-bottom: 6px; }
+  h3.sub-title { color: var(--gold); font-size: 18px; margin: 18px 0 8px; }
+  p.lead { color: var(--muted); margin-bottom: 18px; font-size: 15px; }
+  .view h2.title:focus { outline: none; }
+
+  /* العرض الافتتاحي */
+  .offer-banner { background: linear-gradient(135deg, #1a1200, #2a1e00); border: 2px solid var(--gold); border-radius: 14px; padding: 14px 16px; text-align: center; margin: 18px 0 0; box-shadow: 0 0 25px var(--gold-glow); }
+  .offer-banner .o-title { color: var(--gold); font-weight: 900; font-size: 19px; }
+  .offer-banner .o-sub { color: #ccc; font-size: 13px; margin-top: 4px; }
+  .count { background: var(--gold); color: #000; padding: 2px 10px; border-radius: 20px; font-weight: 900; }
+  del { color: #888; }
+
+  /* القسم الرئيسي */
+  .hero { text-align: center; padding: 32px 0 26px; background: radial-gradient(ellipse at top, rgba(212,175,55,0.14), transparent 65%); }
+  .hero .badge { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 4px 14px; border-radius: 20px; font-size: 13px; margin-bottom: 14px; }
+  .hero h1 { font-size: 32px; font-weight: 900; line-height: 1.4; margin-bottom: 12px; }
+  .hero h1 span { color: var(--gold); }
+  .hero p { color: #ccc; max-width: 680px; margin: 0 auto 18px; font-size: 16px; }
+
+  .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #000; border: none; padding: 12px 22px; font-weight: 900; border-radius: 8px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; }
+  .btn-gold:hover { opacity: .9; }
+  .btn-gold[disabled] { opacity: .6; cursor: wait; }
+  .btn-line { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 12px 22px; font-weight: 700; border-radius: 8px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; }
+  .btn-line:hover { background: var(--gold); color: #000; }
+  .btn-line.sm { padding: 8px 14px; font-size: 14px; }
+  .btn-link { background: none; border: none; color: var(--gold); cursor: pointer; font-size: 13px; text-decoration: underline; padding: 6px; }
+  .btn-off { background: #1a1a1a; color: #777; border: 1px dashed #444; padding: 10px 16px; border-radius: 8px; font-size: 14px; cursor: not-allowed; width: 100%; }
+  .btns > * { margin: 4px; }
+  .btns { text-align: center; }
+
+  /* الحالات */
+  .chip { display: inline-block; font-size: 11px; padding: 1px 9px; border-radius: 10px; margin-bottom: 6px; border: 1px solid var(--card-border); }
+  .chip.live { background: rgba(40,167,69,0.14); color: #7bd88f; border-color: rgba(40,167,69,0.5); }
+  .chip.plan { background: rgba(212,175,55,0.12); color: var(--gold); }
+  .chip.demo { background: rgba(255,183,77,0.12); color: var(--warn); border-color: rgba(255,183,77,0.5); }
+  .chip.need { background: rgba(255,107,107,0.1); color: var(--err); border-color: rgba(255,107,107,0.45); }
+  .notice { border: 1px solid var(--card-border); border-right: 4px solid var(--gold); background: #0d0d0d; border-radius: 10px; padding: 12px 14px; margin: 14px 0; font-size: 14px; color: #ddd; }
+  .notice.warn { border-right-color: var(--warn); }
+  .notice b { color: var(--gold); }
+
+  /* البطاقات */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); grid-gap: 16px; }
+  .grid.two { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .card { background: var(--dark-gray); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; transition: .25s; }
+  .card:hover { border-color: var(--gold); box-shadow: 0 0 22px var(--gold-glow); }
+  .card .ico { font-size: 28px; margin-bottom: 6px; }
+  .card h3 { color: var(--gold); font-size: 18px; margin-bottom: 6px; }
+  .card p, .card li { color: #ccc; font-size: 14px; }
+  .card ul, .list { padding-right: 18px; margin-top: 6px; }
+  .list li { color: #ccc; font-size: 14px; margin-bottom: 3px; }
+  .step-num { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: #000; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+  a.role-card { display: block; text-decoration: none; color: inherit; cursor: pointer; }
+  a.role-card:hover { transform: translateY(-3px); }
+  a.role-card .go { color: var(--gold); font-weight: 700; font-size: 14px; margin-top: 8px; display: block; }
+
+  /* شريط العودة */
+  .back-bar { padding: 14px 0 0; }
+  .back-btn { display: inline-block; color: var(--gold); text-decoration: none; border: 1px solid var(--card-border); border-radius: 20px; padding: 6px 14px; font-size: 14px; }
+  .back-btn:hover { background: var(--gold); color: #000; }
+
+  /* الجداول */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--card-border); border-radius: 10px; margin: 8px 0 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 420px; }
+  th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid #222; color: #ddd; vertical-align: top; }
+  th { background: #0d0d0d; color: var(--gold); font-weight: 700; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+  td input, td select { width: 100%; min-width: 70px; padding: 6px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 13px; }
+
+  /* النماذج */
+  .panel { background: var(--dark-gray); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; }
+  .field { margin: 12px 0 0; }
+  .field > label, .field > .lbl { display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+  .field > label .req, .field > .lbl .req { color: var(--gold); }
+  .field input[type=text], .field input[type=tel], .field input[type=number], .field select, .field textarea, .panel select, .panel input[type=text], .panel input[type=tel] {
+    width: 100%; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 15px; }
+  .field textarea { min-height: 80px; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus, .panel select:focus { outline: none; border-color: var(--gold); }
+  .field.bad input, .field.bad select, .field.bad textarea { border-color: var(--err); }
+  .field .err { display: block; color: var(--err); font-size: 12px; min-height: 0; margin-top: 3px; }
+  .field .hint { display: block; color: var(--muted); font-size: 12px; margin-top: 3px; }
+  .field .opt { display: block; color: #ddd; font-size: 14px; margin: 6px 0; cursor: pointer; }
+  .field .opt input { accent-color: #D4AF37; margin-left: 8px; vertical-align: middle; }
+  label.radio { display: block; color: #ddd; font-size: 14px; margin: 8px 0; cursor: pointer; }
+  label.radio input { margin-left: 8px; accent-color: #D4AF37; vertical-align: middle; }
+  .row2 { display: grid; grid-template-columns: 1fr; grid-gap: 0 14px; }
+  @media (min-width: 640px) { .row2 { grid-template-columns: 1fr 1fr; } }
+  .file-row > * { margin-left: 8px; }
+  .fit { font-size: 12px; color: var(--muted); margin-top: 5px; min-height: 18px; word-break: break-all; }
+  .fit.ok { color: #7bd88f; }
+  .fit.err { color: var(--err); }
+  .privacy { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  .form-result { margin-top: 12px; }
+  .status { font-size: 14px; padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #0b0b0b; color: #ddd; }
+  .status.ok { border-color: rgba(40,167,69,0.6); color: #9be3ac; }
+  .status.warn { border-color: rgba(255,183,77,0.6); color: var(--warn); }
+  .status.err { border-color: rgba(255,107,107,0.6); color: var(--err); }
+  .result-msg { width: 100%; height: 170px; margin-top: 10px; padding: 10px; background: #000; color: #ddd; border: 1px solid #333; border-radius: 8px; font-size: 13px; line-height: 1.8; direction: rtl; }
+  .result-actions > * { margin: 8px 8px 0 0; }
+
+  /* الأسعار */
+  .total-box { margin-top: 14px; background: #000; border: 1px solid var(--gold); border-radius: 12px; padding: 12px 14px; text-align: center; box-shadow: 0 0 18px var(--gold-glow); }
+  .total-box .t-label { color: var(--muted); font-size: 13px; }
+  .total-box .t-main { color: var(--gold); font-size: 28px; font-weight: 900; line-height: 1.3; }
+  .total-box .t-sub { color: #ccc; font-size: 13px; min-height: 18px; }
+  .t-break { text-align: right; font-size: 13px; color: #ccc; margin: 8px 0 4px; border-top: 1px dashed #333; padding-top: 8px; }
+  .t-break div { display: flex; justify-content: space-between; padding: 2px 0; }
+  .t-break b { color: #fff; }
+  .formula { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+  /* المعاينة */
+  .preview-wrap { display: grid; grid-template-columns: 1fr; grid-gap: 16px; }
+  @media (min-width: 860px) { .preview-wrap { grid-template-columns: 380px 1fr; align-items: start; } }
+  @media (max-width: 859px) { .stage { order: -1; } }
+  .stage { background: radial-gradient(ellipse at center, #1a1a1a, #0a0a0a); border: 1px solid var(--card-border); border-radius: 14px; padding: 10px; }
+  .ratio { position: relative; width: 100%; height: 0; padding-bottom: 62.5%; border-radius: 10px; overflow: hidden; background: #0e0e0e; }
+  .ratio > * { position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; }
+  #glcanvas { display: block; touch-action: pan-y; cursor: grab; }
+  #glcanvas:active { cursor: grabbing; }
+  #realWrap { cursor: pointer; }
+  #realImg { width: 100%; height: 100%; object-fit: contain; background: #111; display: block; }
+  #adOverlay { position: absolute; width: auto; height: auto; background-size: cover; background-position: center; background-repeat: no-repeat; border: 2px dashed #D4AF37; box-shadow: 0 0 10px rgba(212,175,55,0.5); color: #000; font-weight: 900; text-align: center; font-size: 12px; overflow: hidden; }
+  .photo-note { position: absolute; left: 8px; right: 8px; bottom: 8px; top: auto; width: auto; height: auto; background: rgba(0,0,0,0.8); color: var(--gold); font-size: 12px; padding: 6px 10px; border-radius: 8px; text-align: center; }
+  .upload-box { background: rgba(0,0,0,0.86); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5; }
+  .drop { width: 62%; max-width: 210px; padding: 20px 10px; border: 2px dashed var(--gold); border-radius: 14px; text-align: center; color: var(--gold); cursor: pointer; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+  .drop small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; }
+  .drop .drop-ico { font-size: 32px; display: block; }
+  .drop.over, .drop:hover, .drop:focus { background: rgba(212,175,55,0.12); outline: none; }
+  .nogl { padding: 40px 12px; text-align: center; color: var(--muted); font-size: 14px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 10px; text-align: center; }
+  .note b { color: var(--gold); }
+  .mode-switch { text-align: center; margin-bottom: 8px; }
+  .mode-switch button { background: #000; color: #ddd; border: 1px solid var(--card-border); padding: 5px 14px; font-size: 13px; cursor: pointer; margin: 0 3px; border-radius: 16px; }
+  .mode-switch button.on { background: var(--gold); color: #000; font-weight: 700; }
+
+  /* لوحة الإدارة */
+  .tabs { margin: 10px 0; }
+  .tabs button { background: #000; color: #ddd; border: 1px solid var(--card-border); padding: 7px 14px; font-size: 13px; cursor: pointer; margin: 0 0 6px 6px; border-radius: 16px; }
+  .tabs button.on { background: var(--gold); color: #000; font-weight: 700; }
+  .stat { display: inline-block; min-width: 130px; margin: 4px; padding: 10px 14px; background: #000; border: 1px solid var(--card-border); border-radius: 10px; text-align: center; }
+  .stat b { display: block; color: var(--gold); font-size: 20px; }
+  .stat span { font-size: 12px; color: var(--muted); }
+
+  .site-footer { text-align: center; padding: 30px 16px; border-top: 2px solid var(--gold); margin-top: 40px; background: #000; }
+  .site-footer h3 { color: var(--gold); font-size: 22px; margin-bottom: 6px; }
+  .site-footer p { color: #aaa; margin: 4px 0; font-size: 14px; }
+  noscript .notice { margin: 16px; }
+
+  @media (max-width: 420px) {
+    header { padding: 8px 10px; }
+    .brand { font-size: 19px; }
+    .brand .tag { font-size: 11px; }
+    .back-link { font-size: 12px; padding: 5px 9px; }
+    .hero h1 { font-size: 26px; }
+    .panel { padding: 14px; }
+  }
 </style>
 </head>
 <body>
-<header><a class="brand" href="index.html"><span style="color:#C0C0C0">D</span><span style="color:var(--gold)">M</span><span class="tag">MD1 · إعلانات المركبات</span></a><a class="back-link" href="index.html">← العودة إلى MD7</a></header>
-<nav class="sub"><a href="#about">عن المنصة</a><a href="#vehicles">أنواع المركبات</a><a href="#preview">احجز إعلانك</a><a href="#register">التسجيل</a><a href="#partners">الشركاء</a></nav>
+
+<header>
+  <a class="brand" href="index.html" aria-label="MD7 Group">
+    <span class="d">D</span><span class="m">M</span>
+    <span class="tag">MD1 · تشغيل وإعلانات المركبات</span>
+  </a>
+  <a class="back-link" href="index.html">← العودة إلى MD7</a>
+</header>
+
+<nav class="sub" id="mainNav" aria-label="أقسام MD1">
+  <a href="#home" data-nav="home">الرئيسية</a>
+  <a href="#owner" data-nav="owner">مالك السيارة</a>
+  <a href="#driver" data-nav="driver">السائق</a>
+  <a href="#advertiser" data-nav="advertiser">المعلنون</a>
+  <a href="#maintenance" data-nav="maintenance">مركز الصيانة</a>
+  <a href="#partners">الشركاء</a>
+  <a href="#admin" data-nav="admin">لوحة الإدارة (تجريبية)</a>
+</nav>
+
+<noscript><div class="notice warn">هذه الصفحة تحتاج تفعيل JavaScript لتعمل الأقسام والنماذج.</div></noscript>
+
 <main>
-<div class="offer-banner" id="offerBanner">
-<div style="color:var(--gold);font-weight:900;font-size:20px">🔥 عرض الافتتاح: أول <span class="count" id="leftCount">70</span> إعلان بخصم خاص!</div>
-<div style="color:#ccc;font-size:13px;margin-top:4px" id="offerText">باقي <span id="leftCount2">70</span> إعلان بسعر <b>75,000 جنيه</b> بدلاً من 95,000 - أنت المعلن رقم <span id="myNum">1</span> <span id="modeBadge" style="background:#222;border:1px solid #444;padding:2px 8px;border-radius:12px;font-size:11px;margin-right:6px"></span></div>
+
+<!-- ===================== الرئيسية ===================== -->
+<div class="view" data-view="home" id="view-home">
+
+  <div class="offer-banner" id="offerBanner" hidden>
+    <div class="o-title">🔥 عرض الافتتاح: أول <span class="count" id="offerSize">70</span> إعلانًا بسعر خاص</div>
+    <div class="o-sub" id="offerText"></div>
+  </div>
+
+  <div class="hero">
+    <span class="badge">مشروع تابع لشركة MD7 Group</span>
+    <h1>منظومة واحدة لـ <span>السيارة والسائق والإعلان والصيانة</span></h1>
+    <p>MD1 تستهدف ربط أصحاب السيارات والسائقين والمعلنين ومركز صيانة مخطط في منظومة تشغيل منظمة وشفافة. اختر القسم المناسب لك.</p>
+  </div>
+
+  <section id="roles">
+    <h2 class="title">اختر دورك في المنظومة</h2>
+    <p class="lead">كل قسم فيه شرح ومميزات وشروط مقترحة ونموذج طلب.</p>
+    <div class="grid">
+      <a class="card role-card" href="#owner"><div class="ico">🚐</div><h3>مالك السيارة</h3><p>أدخل سيارتك في منظومة تشغيل منظمة، مع جدول تشغيل وسجل صيانة وتقرير مالي تقديري.</p><span class="go">ادخل القسم ←</span></a>
+      <a class="card role-card" href="#driver"><div class="ico">🧑‍✈️</div><h3>السائق</h3><p>اشتغل بنظام أوضح: جدول أسبوعي، وراحة محددة، ومسؤوليات مكتوبة.</p><span class="go">ادخل القسم ←</span></a>
+      <a class="card role-card" href="#advertiser"><div class="ico">📣</div><h3>المعلنون</h3><p>إعلان متحرك على سيارات تعمل ضمن خطوط سير معتمدة، مع معاينة وحاسبة أسعار.</p><span class="go">ادخل القسم ←</span></a>
+      <a class="card role-card" href="#maintenance"><div class="ico">🛠️</div><h3>مركز الصيانة المتكامل</h3><p>المركز المخطط لصيانة الأسطول وتجهيزه ومتابعته دوريًا.</p><span class="go">ادخل القسم ←</span></a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="title">فكرة المنصة</h2>
+    <p class="lead">ثلاث خطوات بسيطة بين من يريد الإعلان ومن يملك مركبة.</p>
+    <div class="grid">
+      <div class="card"><div class="step-num">1</div><h3>المعلن يجهّز إعلانه</h3><p>يختار المركبة ومكان الإعلان ويرفع صورته ويشاهدها على المركبة مباشرة.</p></div>
+      <div class="card"><div class="step-num">2</div><h3>صاحب المركبة والسائق</h3><p>يسجّلان بياناتهما ويدخلان منظومة تشغيل وصيانة منظمة.</p></div>
+      <div class="card"><div class="step-num">3</div><h3>مراجعة ثم موافقة</h3><p>يراجع فريق MD7 الطلبات والإعلانات قبل اعتمادها وعرضها.</p></div>
+    </div>
+  </section>
+
+  <section id="vehicles">
+    <h2 class="title">أنواع المركبات</h2>
+    <div class="grid">
+      <div class="card"><div class="ico">🚐</div><h3>الميكروباصات</h3><p>هيونداي H1 وتويوتا هاي إس.</p></div>
+      <div class="card"><div class="ico">🚕</div><h3>التاكسي</h3><p>هيونداي فيرنا (تاكسي).</p></div>
+      <div class="card"><div class="ico">🚌</div><h3>الأتوبيسات</h3><p>كوستر / روزا.</p></div>
+    </div>
+  </section>
+
+  <section id="status">
+    <h2 class="title">ما المتاح الآن وما هو قيد التطوير</h2>
+    <p class="lead">نفصل بوضوح بين ما يعمل فعليًا وما يزال مقترحًا.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>الميزة</th><th>الحالة</th><th>ملاحظة</th></tr></thead>
+      <tbody>
+        <tr><td>معاينة الإعلان على المركبة (3D)</td><td><span class="chip live">متاح الآن</span></td><td>تعمل داخل المتصفح، والصورة تبقى على جهازك.</td></tr>
+        <tr><td>حاسبة الأسعار والباقات</td><td><span class="chip live">متاح الآن</span></td><td>السعر النهائي يخضع للمراجعة والاتفاق.</td></tr>
+        <tr><td>تجهيز الطلب وإرساله بواتساب أو البريد</td><td><span class="chip live">متاح الآن</span></td><td>واتساب يعمل بعد ضبط رقم رسمي في إعدادات الصفحة، وإلا يُنسخ الطلب أو يُرسل بالبريد.</td></tr>
+        <tr><td>حفظ الطلبات مركزيًا وحسابات المستخدمين</td><td><span class="chip need">يحتاج قاعدة بيانات وخادمًا</span></td><td>غير متاح حاليًا.</td></tr>
+        <tr><td>رفع الصور إلى الإدارة تلقائيًا</td><td><span class="chip need">يحتاج خدمة تخزين</span></td><td>حاليًا تُرفق الصورة يدويًا مع الطلب.</td></tr>
+        <tr><td>لوحة إدارة محمية بتسجيل دخول</td><td><span class="chip need">يحتاج مصادقة وخادمًا</span></td><td>الموجود الآن نموذج أولي تجريبي فقط.</td></tr>
+        <tr><td>جداول التشغيل والتقارير المالية للمالك</td><td><span class="chip demo">نموذج توضيحي</span></td><td>أمثلة لشكل التقارير وليست بيانات حقيقية.</td></tr>
+        <tr><td>مركز الصيانة والتجهيز المتكامل</td><td><span class="chip plan">مخطط / قيد التأسيس</span></td><td>لم يبدأ التشغيل الفعلي بعد.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="partners">
+    <h2 class="title">الشركات والمستثمرون والجهات الحكومية</h2>
+    <p class="lead">فرص تعاون وشراكة لتوسيع المنصة وتنظيم الإعلان على المركبات.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🏢</div><h3>الشركات</h3><p>حملات إعلانية منظمة على أساطيل من المركبات.</p></div>
+      <div class="card"><div class="ico">📈</div><h3>المستثمرون</h3><p>المشاركة في تطوير المنصة وتوسيع نطاقها.</p></div>
+      <div class="card"><div class="ico">🏛️</div><h3>الجهات الحكومية</h3><p>التنسيق والتنظيم وحملات التوعية العامة.</p></div>
+    </div>
+    <div class="btns" style="margin-top:16px"><a class="btn-gold" id="partnerMail" href="#">تواصل معنا للتعاون (بريد إلكتروني)</a></div>
+  </section>
 </div>
 
-<div class="hero"><span class="badge">مشروع تابع لشركة MD7 Group</span><h1>إعلانك يتحرك في <span>شوارع المدينة</span></h1><p>MD1 منصة تربط المعلنين بأصحاب الميكروباصات والتاكسي والأتوبيسات، ليعرض المعلن إعلانه على المركبة ويصل إلى الناس أينما ذهبوا.</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><a class="btn-gold" href="#preview">احجز وشاهد إعلانك</a></div></div>
+<!-- ===================== مالك السيارة ===================== -->
+<div class="view" data-view="owner" id="view-owner" hidden>
+  <div class="back-bar"><a class="back-btn" href="#home">← القائمة الرئيسية</a></div>
+  <section>
+    <h2 class="title" tabindex="-1">🚐 مالك السيارة</h2>
+    <p class="lead">أدخل سيارتك في منظومة MD1 لتشغيل منظم، مع الاستفادة من الإعلانات التجارية كمصدر دخل للمشروع، وتنظيم الصيانة والمصروفات وجدول التشغيل.</p>
 
-<section id="preview">
-<h2 class="title">احجز إعلانك وشاهده على المركبة</h2>
-<p class="lead" id="previewLead">اختر المركبة ومكان الإعلان، واضغط على المركبة لرفع صورتك، ثم اسحب يمينًا ويسارًا لتدويرها.</p>
-<form id="bookForm" class="preview-wrap" novalidate>
-<div class="panel">
-<label>نوع المركبة</label><select id="vType"></select>
-<label>مكان الإعلان</label><select id="vZone"></select>
-<label>صورة الإعلان</label>
-<div class="file-row"><button type="button" class="btn-line sm" id="pickImg">📷 اختيار صورة</button><button type="button" class="btn-link" id="clearImg" hidden>إزالة الصورة</button></div>
-<div id="fileName" class="fit"></div><input type="file" id="adFile" accept="image/*" hidden>
-<label>ملاءمة الصورة</label><select id="fitMode"><option value="cover">ملء المساحة</option><option value="contain">إظهار كاملة</option></select>
-<label>طريقة الدفع</label>
-<label class="radio"><input type="radio" name="pay" value="cash" checked><span id="payCashTxt"></span></label>
-<label class="radio"><input type="radio" name="pay" value="inst"><span id="payInstTxt"></span></label>
-<div class="total-box"><div class="t-label">الإجمالي</div><div class="t-main"><span id="totalVal">75,000</span> جنيه</div><div class="t-sub" id="totalSub"></div><div style="font-size:11px;color:#7bd88f;margin-top:4px" id="discountNote">✓ سعر العرض لأول 70 معلن</div></div>
-<label>اسم المعلن</label><input type="text" id="advName" maxlength="60" autocomplete="name">
-<label>رقم التواصل</label><input type="tel" id="advPhone" maxlength="20" inputmode="tel" autocomplete="tel">
-<button type="submit" class="btn-gold" style="width:100%;margin-top:16px">إرسال طلب الحجز</button>
-<div id="bookStatus" class="status"></div>
-<p class="privacy">صورتك تبقى على جهازك ولا تُرفع إلى الموقع. بعد الإرسال يصل نص طلبك للمؤسس، وتُرفق الصورة داخل المحادثة نفسها.</p>
-</div>
-<div class="stage">
-<div class="canvas-wrap">
-<canvas id="glcanvas"></canvas>
-<div id="realWrap"><img id="realImg" src=""><div id="adOverlay"></div></div>
-<div class="upload-box" id="uploadBox" hidden><div class="drop" id="dropZone" tabindex="0"><span style="font-size:34px">📷</span><span>اضغط لاختيار صورة إعلانك</span><small>أو اسحبها وأفلتها هنا</small></div><button type="button" class="btn-link" id="closeUpload">إغلاق</button></div>
-</div>
-<div class="nogl" id="nogl"></div>
-<p class="note"><b id="noteText">اضغط على المركبة لرفع صورتك · اسحب يمينًا ويسارًا لتدويرها</b><br>نماذج ثلاثية الأبعاد مبسّطة والشكل النهائي يتحدد عند المراجعة.</p>
-</div>
-</form>
-</section>
+    <div class="notice"><b>سياسة مالية مكتوبة:</b> أموال الإعلانات المخصصة لصيانة السيارات تُدار وفق سياسة مالية مكتوبة، ولا يجوز استخدامها لأغراض غير معتمدة.</div>
+    <div class="notice warn"><b>تنبيه:</b> لا نعرض أرباحًا مضمونة أو دخلًا ثابتًا. الأرقام التالية أمثلة تقديرية قابلة للتعديل، والنتائج الفعلية تعتمد على العقود والإيرادات والمصروفات.</div>
 
-<section id="about"><h2 class="title">فكرة المنصة</h2><p class="lead">ثلاث خطوات بسيطة بين من يريد الإعلان ومن يملك مركبة.</p><div class="grid"><div class="card"><div class="step-num">1</div><h3>المعلن يجهّز إعلانه</h3><p>يختار المركبة ومكان الإعلان ويرفع صورته ويشاهدها على المركبة مباشرة.</p></div><div class="card"><div class="step-num">2</div><h3>صاحب المركبة يعرض مركبته</h3><p>يسجّل بيانات مركبته وخط سيرها ووسائل التواصل معه.</p></div><div class="card"><div class="step-num">3</div><h3>مراجعة ثم موافقة</h3><p>يراجع فريق MD7 الطلبات والإعلانات قبل اعتمادها وعرضها.</p></div></div></section>
+    <h3 class="sub-title">المميزات المستهدفة</h3>
+    <div class="grid">
+      <div class="card"><span class="chip live">متاح الآن</span><h3>تسجيل السيارة</h3><ul class="list"><li>بيانات المالك ووسائل التواصل</li><li>النوع والموديل وسنة الصنع والحالة</li><li>حالة الترخيص والتشغيل الأساسية</li><li>القيادة بنفسك أو إتاحتها لسائق</li></ul></div>
+      <div class="card"><span class="chip demo">نموذج توضيحي</span><h3>الجدول والتقارير</h3><ul class="list"><li>جدول تشغيل أسبوعي</li><li>سجل صيانة دورية وتكاليفها</li><li>تقرير مالي تقديري</li><li>لوحة حالة السيارة</li></ul></div>
+    </div>
+
+    <h3 class="sub-title">مثال لجدول تشغيل أسبوعي</h3>
+    <p class="lead" style="margin-bottom:6px">مثال توضيحي لتصور الجدول. أيام وساعات العمل الفعلية تُحدد في اتفاق التشغيل.</p>
+    <div class="table-wrap"><table id="weeklyTable"></table></div>
+
+    <h3 class="sub-title">حالة السيارة (أمثلة للحالات)</h3>
+    <p class="chips-row"><span class="chip live">متاحة</span> <span class="chip plan">قيد التشغيل</span> <span class="chip need">تحتاج إلى صيانة</span> <span class="chip demo">متوقفة مؤقتًا</span></p>
+
+    <h3 class="sub-title">سجل صيانة (عيّنة توضيحية)</h3>
+    <div class="table-wrap"><table id="maintLogTable"></table></div>
+
+    <h3 class="sub-title">حاسبة تقدير مالي (مثال حسابي فقط)</h3>
+    <div class="panel" id="ownerCalc">
+      <div class="notice warn" style="margin-top:0">هذه حاسبة لتجربة الأرقام بنفسك، وليست عرضًا أو وعدًا بأي دخل. أدخل أرقامك التقديرية.</div>
+      <div class="row2">
+        <div class="field"><label for="oc_rev">إجمالي الإيرادات الشهرية المتوقعة (جنيه)</label><input type="number" id="oc_rev" min="0" step="100" inputmode="numeric" value="0"></div>
+        <div class="field"><label for="oc_exp">مصروفات التشغيل الشهرية (جنيه)</label><input type="number" id="oc_exp" min="0" step="100" inputmode="numeric" value="0"></div>
+        <div class="field"><label for="oc_main">مخصص الصيانة الشهري (جنيه)</label><input type="number" id="oc_main" min="0" step="100" inputmode="numeric" value="0"></div>
+        <div class="field"><label for="oc_agree">المبلغ المحدد في الاتفاق لصيانة سيارتك (جنيه)</label><input type="number" id="oc_agree" min="0" step="100" inputmode="numeric" value="0"><span class="hint">يُستخدم لعرض النسبة المقترحة 15% فقط</span></div>
+      </div>
+      <div class="total-box">
+        <div class="t-label">صافي العائد التقديري الشهري</div>
+        <div class="t-main"><span id="oc_net">0</span> جنيه</div>
+        <div class="t-break">
+          <div><span>الإيرادات</span><b id="oc_r">0</b></div>
+          <div><span>− مصروفات التشغيل</span><b id="oc_e">0</b></div>
+          <div><span>− مخصص الصيانة</span><b id="oc_m">0</b></div>
+          <div><span>نسبة مقترحة 15% من المبلغ المحدد في الاتفاق (غير مضمونة)</span><b id="oc_15">0</b></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">خيار نسبة الـ 15%</h3>
+    <div class="notice">يمكنك طلب تخصيص نسبة <b>15%</b> من المبلغ المخصص لصيانة سيارتك، إذا اخترت هذا الشرط ووافق عليه المشروع في اتفاق مكتوب. هذه النسبة <b>مقترحة وليست مضمونة أو مستحقة تلقائيًا</b>، وتُحسب من المبلغ المحدد في الاتفاق، وليست بالضرورة من إجمالي إيرادات الإعلانات.</div>
+
+    <h3 class="sub-title">سجّل سيارتك في MD1</h3>
+    <div class="panel" id="ownerFormHost"></div>
+  </section>
+</div>
+
+<!-- ===================== السائق ===================== -->
+<div class="view" data-view="driver" id="view-driver" hidden>
+  <div class="back-bar"><a class="back-btn" href="#home">← القائمة الرئيسية</a></div>
+  <section>
+    <h2 class="title" tabindex="-1">🧑‍✈️ السائق</h2>
+    <p class="lead" style="color:#fff;font-size:18px;font-weight:700">اشتغل بنظام أوضح، وخلّي إدارة التشغيل علينا.</p>
+    <p class="lead">تستهدف MD1 تنظيم العمل وتخفيف الأعباء الإدارية عن السائق، مع الالتزام بقواعد المرور والسلامة.</p>
+
+    <h3 class="sub-title">المميزات المستهدفة</h3>
+    <div class="card"><ul class="list">
+      <li>تنظيم جدول التشغيل الأسبوعي.</li>
+      <li>تحديد ساعات العمل والراحة بوضوح.</li>
+      <li>توضيح المسؤوليات والواجبات قبل بدء العمل.</li>
+      <li>المساعدة في تنظيم الأوراق والتراخيص والتصاريح المطلوبة وفقًا للقوانين والإجراءات المعمول بها.</li>
+      <li>تنظيم المصروفات التشغيلية وتسجيلها.</li>
+      <li>توضيح طريقة احتساب الأجر أو الدخل والحوافز في اتفاق مكتوب.</li>
+      <li>آلية للتواصل مع الإدارة والإبلاغ عن الأعطال والمشكلات.</li>
+      <li>تنظيم مواعيد الصيانة ومتابعتها بالتنسيق مع مركز الصيانة.</li>
+      <li>الحد من الأعباء الإدارية غير الضرورية.</li>
+    </ul></div>
+    <div class="notice warn"><b>شروط مقترحة:</b> هذه المميزات مستهدفة، ولا نعد بساعات عمل محددة أو دخل ثابت أو إعفاء كامل من الإجراءات. التفاصيل النهائية تُحدد في اتفاق التشغيل المكتوب.</div>
+
+    <h3 class="sub-title">نموذج الانضمام</h3>
+    <div class="panel" id="driverFormHost"></div>
+  </section>
+</div>
+
+<!-- ===================== المعلنون ===================== -->
+<div class="view" data-view="advertiser" id="view-advertiser" hidden>
+  <div class="back-bar"><a class="back-btn" href="#home">← القائمة الرئيسية</a></div>
+  <section>
+    <h2 class="title" tabindex="-1">📣 المعلنون والإعلانات المتحركة</h2>
+    <p class="lead">الإعلان الثابت يبقى في مكان واحد، أما الإعلان المتحرك فيظهر على سيارات تتحرك وفق مسارات تشغيل معتمدة، فيتسع نطاق ظهور علامتك التجارية. وقد نقدّم تقارير تشغيل وإثباتات تنفيذ متى كانت متاحة.</p>
+    <div class="grid two">
+      <div class="card"><h3>الإعلان الثابت</h3><p>مكان واحد، وجمهوره من يمرّ بجواره فقط.</p></div>
+      <div class="card"><h3>الإعلان المتحرك</h3><p>يتحرك مع السيارة عبر خط سيرها المعتمد، فيصل إلى مناطق أوسع.</p></div>
+    </div>
+  </section>
+
+  <section id="preview">
+    <h2 class="title">احجز إعلانك وشاهده على المركبة</h2>
+    <p class="lead" id="previewLead">اختر المركبة ومكان الإعلان، واضغط على المركبة لرفع صورتك، ثم اسحب يمينًا ويسارًا لتدويرها.</p>
+    <form id="bookForm" class="preview-wrap" novalidate>
+      <div class="panel">
+        <div class="field" data-kind="select" data-label="نوع المركبة"><label for="vType">نوع المركبة</label><select id="vType" name="vType"></select></div>
+        <div class="field" data-kind="select" data-label="مكان الإعلان"><label for="vZone">مكان الإعلان</label><select id="vZone" name="vZone"></select></div>
+
+        <div class="field" data-kind="nomsg"><span class="lbl">صورة الإعلان <span class="req">*</span></span>
+          <div class="file-row"><button type="button" class="btn-line sm" id="pickImg">📷 اختيار صورة</button><button type="button" class="btn-link" id="clearImg" hidden>إزالة الصورة</button></div>
+          <div id="fileName" class="fit" aria-live="polite"></div>
+          <input type="file" id="adFile" accept="image/*" hidden>
+          <span class="hint">تبقى الصورة على جهازك للمعاينة فقط، ولا تُرسل تلقائيًا (انظر الملاحظة أسفل النموذج).</span>
+          <small class="err"></small>
+        </div>
+
+        <div class="field" data-kind="nomsg"><label for="fitMode">ملاءمة الصورة</label><select id="fitMode"><option value="cover">ملء المساحة (قد يُقصّ جزء منها)</option><option value="contain">إظهار الصورة كاملة</option></select></div>
+
+        <div class="field" data-kind="select" data-label="مدة الإعلان"><label for="durSel">مدة الإعلان</label><select id="durSel" name="durSel"></select></div>
+        <div class="field" data-kind="select" data-label="باقة مرات الظهور"><label for="planSel">عدد مرات أو دورات ظهور الإعلان</label><select id="planSel" name="planSel"></select><span class="hint" id="planHint"></span></div>
+
+        <div class="field" data-kind="nomsg"><span class="lbl">طريقة الدفع</span>
+          <label class="radio"><input type="radio" name="pay" value="cash" checked><span id="payCashTxt"></span></label>
+          <label class="radio"><input type="radio" name="pay" value="inst"><span id="payInstTxt"></span></label>
+        </div>
+
+        <div class="total-box" aria-live="polite">
+          <div class="t-label">الإجمالي التقديري</div>
+          <div class="t-main"><span id="totalVal">0</span> جنيه</div>
+          <div class="t-sub" id="totalSub"></div>
+          <div class="t-break">
+            <div><span>السعر الأساسي</span><b id="tBase">0</b></div>
+            <div><span id="tIncLbl">الزيادة</span><b id="tInc">0</b></div>
+          </div>
+          <div class="formula">السعر النهائي = السعر الأساسي + قيمة الزيادة حسب الباقة. وهو تقديري ويخضع للمراجعة والاتفاق.</div>
+          <div style="font-size:12px;color:#7bd88f;margin-top:4px" id="discountNote"></div>
+        </div>
+
+        <div class="field" data-kind="text" data-label="الشركة أو النشاط" data-req="1"><label for="adCompany">اسم الشركة أو النشاط <span class="req">*</span></label><input type="text" id="adCompany" name="adCompany" maxlength="80" autocomplete="organization"><small class="err"></small></div>
+        <div class="field" data-kind="text" data-label="اسم المسؤول" data-req="1"><label for="advName">اسم المسؤول <span class="req">*</span></label><input type="text" id="advName" name="advName" maxlength="60" autocomplete="name"><small class="err"></small></div>
+        <div class="field" data-kind="tel" data-label="رقم التواصل" data-req="1"><label for="advPhone">رقم التواصل <span class="req">*</span></label><input type="tel" id="advPhone" name="advPhone" maxlength="20" inputmode="tel" autocomplete="tel"><small class="err"></small></div>
+        <div class="field" data-kind="text" data-label="نطاق التشغيل أو خط السير المستهدف"><label for="advRoute">نطاق التشغيل أو خط السير المستهدف</label><input type="text" id="advRoute" name="advRoute" maxlength="120" placeholder="مثال: مدينة / منطقة / خط سير"><small class="err"></small></div>
+        <div class="field" data-kind="textarea" data-label="ملاحظات"><label for="advNotes">ملاحظات إضافية</label><textarea id="advNotes" name="advNotes" maxlength="400"></textarea><small class="err"></small></div>
+        <div class="field" data-kind="check" data-label="الموافقة على استخدام البيانات" data-req="1" data-nomsg="1"><label class="opt"><input type="checkbox" id="advConsent" name="advConsent"> أوافق على استخدام بياناتي للتواصل بخصوص هذا الطلب فقط. <span class="req">*</span></label><small class="err"></small></div>
+
+        <button type="submit" class="btn-gold" style="width:100%;margin-top:16px" id="bookSubmit">اطلب عرضًا إعلانيًا</button>
+        <div class="form-result" id="bookResult" aria-live="polite"></div>
+        <p class="privacy">لا يُرسل الموقع صورتك ولا بياناتك إلى أي خادم. يجهّز الطلب كنص تُرسله أنت (واتساب أو بريد)، وعليك <b>إرفاق الصورة يدويًا</b> في المحادثة أو البريد. نجمع أقل بيانات ممكنة.</p>
+      </div>
+
+      <div class="stage">
+        <div class="mode-switch" id="modeSwitch" hidden>
+          <button type="button" id="modeBtn3d" class="on">مجسم 3D</button><button type="button" id="modeBtnPhoto">صورة واقعية</button>
+        </div>
+        <div class="ratio" id="stageBox">
+          <canvas id="glcanvas" role="img" aria-label="معاينة ثلاثية الأبعاد تقريبية للإعلان على المركبة"></canvas>
+          <div id="realWrap" hidden><img id="realImg" alt="صورة المركبة" src=""><div id="adOverlay"></div><div class="photo-note" id="photoNote" hidden>الصورة الواقعية جانبية. اختر «مجسم 3D» لمعاينة الخلف.</div></div>
+          <div class="nogl" id="nogl" hidden></div>
+          <div class="upload-box" id="uploadBox" hidden>
+            <div class="drop" id="dropZone" tabindex="0" role="button" aria-label="اختيار صورة الإعلان"><span class="drop-ico">📷</span>اضغط لاختيار صورة إعلانك<small>أو اسحبها وأفلتها هنا</small></div>
+            <button type="button" class="btn-link" id="closeUpload">إغلاق</button>
+          </div>
+        </div>
+        <p class="note"><b id="noteText">اضغط على المركبة لرفع صورتك · اسحب يمينًا ويسارًا لتدويرها</b><br>نماذج ثلاثية الأبعاد مبسّطة، والشكل النهائي يتحدد عند المراجعة.</p>
+      </div>
+    </form>
+  </section>
+</div>
+
+<!-- ===================== مركز الصيانة ===================== -->
+<div class="view" data-view="maintenance" id="view-maintenance" hidden>
+  <div class="back-bar"><a class="back-btn" href="#home">← القائمة الرئيسية</a></div>
+  <section>
+    <h2 class="title" tabindex="-1">🛠️ MD1 | مركز الصيانة والتجهيز المتكامل</h2>
+    <span class="chip plan">المركز المخطط — قيد التأسيس</span>
+    <p class="lead">منظومة الصيانة المستهدفة لأسطول المركبات: صيانة وتجهيز ومتابعة دورية، مع إمكانية تمويل التكاليف من مخصصات إيرادات الإعلانات وفق سياسة مالية معلنة. المركز لم يبدأ التشغيل الفعلي بعد، وما يُسجَّل الآن هو طلبات اهتمام.</p>
+
+    <h3 class="sub-title">الخدمات المستهدفة</h3>
+    <div class="card"><ul class="list">
+      <li>الصيانة الدورية والوقائية.</li>
+      <li>متابعة الأعطال والإصلاحات.</li>
+      <li>توفير قطع الغيار حسب الميزانية والمخزون.</li>
+      <li>تنظيم العمالة الفنية والإشراف على تنفيذ الصيانة.</li>
+      <li>تجهيز السيارات للعمل ضمن المنظومة.</li>
+      <li>تركيب الإكسسوارات والتجهيزات المناسبة.</li>
+      <li>تجهيز السيارات وتركيب التصميمات الإعلانية.</li>
+      <li>تسجيل تكلفة كل عملية صيانة.</li>
+      <li>تحديد موعد الصيانة القادمة لكل سيارة.</li>
+      <li>سجل صيانة مرتبط برقم تعريفي لكل سيارة.</li>
+      <li>تقارير شهرية عن المصروفات وقطع الغيار والأعمال المنفذة.</li>
+    </ul></div>
+
+    <h3 class="sub-title">حالات طلب الصيانة (المستهدفة)</h3>
+    <p class="chips-row"><span class="chip plan">جديد</span> ← <span class="chip plan">قيد الفحص</span> ← <span class="chip plan">قيد الصيانة</span> ← <span class="chip live">مكتمل</span></p>
+
+    <h3 class="sub-title">الشرح المالي</h3>
+    <div class="notice">رأس المال المخصص للصيانة يُستخدم في الأغراض المعتمدة للمشروع، مثل قطع الغيار والعمالة الفنية والإشراف والتجهيزات اللازمة. ويجري توثيق الإيرادات والمصروفات، مع تخصيص المبالغ وفق سياسة واضحة قابلة للمراجعة.</div>
+    <div class="notice">إذا اتفق مالك السيارة على تخصيص نسبة 15% من المبلغ المحدد لصيانة سيارته، فيجب تسجيل ذلك في الاتفاق والحسابات بصورة مستقلة. ولا تُستخدم أموال الصيانة في أغراض أخرى خارج السياسة المعتمدة.</div>
+
+    <div class="btns" style="margin-top:14px">
+      <button type="button" class="btn-gold" id="btnMaintReq">طلب خدمة صيانة</button>
+      <button type="button" class="btn-line" id="btnMaintJoin">الانضمام إلى منظومة الصيانة</button>
+    </div>
+    <div class="panel" id="maintReqHost" hidden style="margin-top:14px"></div>
+    <div class="panel" id="maintJoinHost" hidden style="margin-top:14px"></div>
+  </section>
+</div>
+
+<!-- ===================== لوحة الإدارة (تجريبية) ===================== -->
+<div class="view" data-view="admin" id="view-admin" hidden>
+  <div class="back-bar"><a class="back-btn" href="#home">← القائمة الرئيسية</a></div>
+  <section>
+    <h2 class="title" tabindex="-1">🧭 لوحة الإدارة (نموذج أولي تجريبي)</h2>
+    <div class="notice warn">
+      <b>تنبيه مهم:</b> هذه الواجهة <b>غير محمية</b> ولا تتطلب تسجيل دخول، وليست لوحة إدارة حقيقية. لا تحتوي بيانات حقيقية لأي مالك أو سائق أو معلن. ما يظهر من «طلبات» هو سجل مختصر محفوظ في متصفح <b>هذا الجهاز فقط</b> (localStorage)، ولا يظهر على جهاز آخر. حفظ البيانات بصورة مشتركة بين الإدارة والمستخدمين، ولوحة محمية، يتطلبان قاعدة بيانات وخادمًا أو خدمة خلفية مع مصادقة آمنة.
+    </div>
+    <div class="tabs" id="adminTabs">
+      <button type="button" data-tab="requests" class="on">الطلبات</button>
+      <button type="button" data-tab="pricing">الأسعار والباقات</button>
+      <button type="button" data-tab="ledger">الإيرادات والمصروفات</button>
+      <button type="button" data-tab="schedule">جدول التشغيل</button>
+      <button type="button" data-tab="maint">تقارير الصيانة</button>
+    </div>
+    <div id="adminBody"></div>
+  </section>
+</div>
+
 </main>
-<footer class="site-footer"><h3>MD1 · مشروع تابع لـ MD7 Group</h3><p>تأسست MD7 في 2026</p><p>avtarpreins@gmail.com</p><p><a href="index.html" style="color:var(--gold)">العودة إلى الموقع الرئيسي</a></p></footer>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="md-emblem" viewBox="0 0 100 100"><polygon class="emb-star" points="50,4 62.93,26.2 88.04,31.64 70.92,50.8 73.51,76.36 50,66 26.49,76.36 29.08,50.8 11.96,31.64 37.07,26.2"/><text class="emb-txt" x="50" y="55" text-anchor="middle" font-size="30">7</text><text class="emb-txt" x="50" y="96" text-anchor="middle" font-size="17" letter-spacing="3">MD</text></symbol></defs></svg>
+
+<footer class="site-footer">
+  <h3>MD1 · مشروع تابع لـ MD7 Group</h3>
+  <p>تأسست MD7 في 2026</p>
+  <p id="footMail"></p>
+  <p><a href="index.html" style="color:var(--gold)">العودة إلى الموقع الرئيسي</a></p>
+</footer>
 
 <script>
-var WA_USERNAME='avtarmo';function openWhatsApp(t){var u='https://wa.me/'+WA_USERNAME+'?text='+encodeURIComponent(t);var w=window.open(u,'_blank');if(w)w.opener=null;return{win:w,url:u}}
-// عداد 70
-var MAX_OFFER=70;function getBooked(){return parseInt(localStorage.getItem('md1_booked')||'0')}function setBooked(n){localStorage.setItem('md1_booked',n)}
-function updateOfferUI(){var b=getBooked(),l=Math.max(0,MAX_OFFER-b),m=b+1;document.getElementById('leftCount').textContent=l;document.getElementById('leftCount2').textContent=l;document.getElementById('myNum').textContent=m>MAX_OFFER?MAX_OFFER:m;if(l<=0)document.getElementById('offerBanner').innerHTML='<div style="color:var(--gold);font-weight:900;font-size:20px">✅ انتهى عرض أول 70 إعلان</div><div style="color:#aaa;font-size:13px">الأسعار الآن بالسعر العادي - احجز الآن</div>'}
-updateOfferUI();
+/* ============================================================
+   إعدادات MD1 (عدّل هنا فقط). لا تضع أي بيانات سرية في هذا الملف.
+   ============================================================ */
+var MD1_CONFIG = {
+  // رقم واتساب الرسمي بصيغة دولية بالأرقام فقط، بدون + أو أصفار بادئة. مثال للصيغة: 20XXXXXXXXXX
+  // اتركه فارغًا حتى تضيف رقمًا رسميًا. وهو فارغ الآن، فلا يُفتح واتساب، ويظهر الطلب للنسخ أو للإرسال بالبريد.
+  whatsappNumber: '',
+  contactEmail: 'avtarpreins@gmail.com',
 
-// أسعار
-var PRICES_DISCOUNT={side:{cash:75000,inst:80000,n:4},rear:{cash:75000,inst:80000,n:4},full:{cash:190000,inst:190000,n:4}};
-var PRICES_NORMAL={side:{cash:95000,inst:105000,n:4},rear:{cash:95000,inst:105000,n:4},full:{cash:240000,inst:240000,n:4}};
-function getPrices(){return getBooked()<MAX_OFFER?PRICES_DISCOUNT:PRICES_NORMAL}
-var ZONES={side:'الجانب',rear:'الخلف',full:'السيارة كاملة'};
-var VEHICLES={
- h1:{label:'هيونداي H1', realList:['Images/h1-real.jpg','Images/images (15).jpeg','h1-real.jpg','./h1-real.jpg'], L:5.15,W:1.92},
- hiace:{label:'تويوتا هاي إس', realList:['Images/hiace-real.jpg','Images/images (14).jpeg','hiace-real.jpg'], L:5.38,W:1.88},
- taxi:{label:'تاكسي فيرنا', realList:['Images/verna-real.jpg','Images/images (17).jpeg','verna-real.jpg'], L:4.4,W:1.7},
- coaster:{label:'أتوبيس كوستر / روزا', realList:['Images/coaster-real.jpg','Images/images (20).jpeg','coaster-real.jpg'], L:7.0,W:2.08}
-};
-var VIEWS={side:{yaw:0.55,pitch:0.2},rear:{yaw:-1.12,pitch:0.2},full:{yaw:0.6,pitch:0.42}};
-var form=document.getElementById('bookForm'),selV=document.getElementById('vType'),selZ=document.getElementById('vZone'),selFit=document.getElementById('fitMode'),fileInput=document.getElementById('adFile'),fileNameEl=document.getElementById('fileName'),clearBtn=document.getElementById('clearImg'),uploadBox=document.getElementById('uploadBox'),dropZone=document.getElementById('dropZone'),canvas=document.getElementById('glcanvas'),realWrap=document.getElementById('realWrap'),realImg=document.getElementById('realImg'),adOverlay=document.getElementById('adOverlay'),statusEl=document.getElementById('bookStatus'),nameEl=document.getElementById('advName'),phoneEl=document.getElementById('advPhone'),state={img:null,name:'',url:''},view=null;
-Object.keys(VEHICLES).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=VEHICLES[k].label;selV.appendChild(o)});
-['side','rear','full'].forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=ZONES[k];selZ.appendChild(o)});
+  // عرض الافتتاح: أول 70 إعلانًا. هذه الصفحة لا تحتسب الحجوزات الفعلية، فالإدارة تؤكد توفر العرض عند المراجعة.
+  offerActive: true,
+  offerSize: 70,
 
-function fmt(n){return n.toLocaleString('en-US')}function payValue(){return form.querySelector('input[name="pay"]:checked').value}
-function updatePrice(){var z=selZ.value,PRICES=getPrices(),p=PRICES[z],pay=payValue(),per=p.inst/p.n,fixed=p.cash===p.inst;document.getElementById('payCashTxt').textContent='كاش — '+fmt(p.cash)+' جنيه';document.getElementById('payInstTxt').textContent='تقسيط على '+p.n+' دفعات — '+fmt(p.inst)+' جنيه ('+fmt(per)+' × '+p.n+(fixed?'، بدون زيادة':'')+')';document.getElementById('totalVal').textContent=fmt(pay==='cash'?p.cash:p.inst);document.getElementById('totalSub').textContent=pay==='cash'?'دفع كاش':'تقسيط '+fmt(per)+' جنيه × '+p.n+' دفعات'+(fixed?' (بدون زيادة)':'');document.getElementById('discountNote').textContent=getBooked()<MAX_OFFER?'✓ سعر العرض لأول 70 معلن (وفر '+(PRICES_NORMAL[z].cash-p.cash)+' جنيه!)':'السعر العادي'}
+  // الأسعار بالجنيه المصري: كاش / تقسيط (n دفعات)
+  prices: {
+    offer:  { side: { cash: 75000, inst: 80000, n: 4 }, rear: { cash: 75000, inst: 80000, n: 4 }, full: { cash: 190000, inst: 190000, n: 4 } },
+    normal: { side: { cash: 95000, inst: 105000, n: 4 }, rear: { cash: 95000, inst: 105000, n: 4 }, full: { cash: 240000, inst: 240000, n: 4 } }
+  },
 
-// كشف الجهاز
-function isLowEnd(){var mem=navigator.deviceMemory||4,cores=navigator.hardwareConcurrency||4,noWebGL=!document.createElement('canvas').getContext('webgl');return mem<=3||cores<=4||noWebGL}
-var lowEnd=isLowEnd();
-document.getElementById('modeBadge').textContent=lowEnd?'📱 وضع خفيف (كرتون)':'🔥 وضع واقعي';
-if(lowEnd){realWrap.style.display='none';canvas.style.display='block'}else{canvas.style.display='none';realWrap.style.display='block'}
+  // باقات مرات الظهور: السعر النهائي = السعر الأساسي + (السعر الأساسي × النسبة)
+  // تعريف «مرات الظهور» ودورية احتسابها لم يُحدد نهائيًا، لذلك الوصف قابل للتعديل.
+  plans: [
+    { id: 'p1', label: 'الباقة الأساسية (بدون زيادة)', pct: 0, desc: 'السعر الأساسي بدون زيادة.' },
+    { id: 'p2', label: 'مرتان', pct: 4, desc: 'زيادة 4%. تعريف «مرتان» ودورية احتسابهما قيد التحديد النهائي.' },
+    { id: 'p3', label: 'ثلاث مرات', pct: 4, desc: 'زيادة 4%. تعريف «ثلاث مرات» ودورية احتسابها قيد التحديد النهائي.' },
+    { id: 'p4', label: 'أربع مرات', pct: 6, desc: 'زيادة 6%. تعريف «أربع مرات» ودورية احتسابها قيد التحديد النهائي.' }
+  ],
 
-function showUpload(){uploadBox.hidden=false}function hideUpload(){uploadBox.hidden=true}
-function setStatus(m,c){statusEl.className='status '+(c||'');statusEl.textContent=m}
-function clearImage(){if(state.url)URL.revokeObjectURL(state.url);state={img:null,name:'',url:''};fileInput.value='';fileNameEl.textContent='';fileNameEl.className='fit';clearBtn.hidden=true;updateRealAd();if(view)view.refreshAd()}
-function setImageFile(f){if(!f||!/^image\//.test(f.type)){setStatus('اختر صورة JPG/PNG','err');return}if(f.size>10*1024*1024){setStatus('الصورة كبيرة','err');return}var url=URL.createObjectURL(f),img=new Image();img.onload=function(){if(state.url)URL.revokeObjectURL(state.url);state={img:img,name:f.name.slice(0,60),url:url};fileNameEl.textContent='✓ '+f.name+' ('+Math.round(f.size/1024)+' KB)';fileNameEl.className='fit ok';clearBtn.hidden=false;setStatus('','');hideUpload();updateRealAd();if(view)view.refreshAd()};img.onerror=function(){URL.revokeObjectURL(url);setStatus('تعذر قراءة الصورة','err')};img.src=url}
-document.getElementById('pickImg').addEventListener('click',function(){fileInput.click()});dropZone.addEventListener('click',function(){fileInput.click()});fileInput.addEventListener('change',function(){setImageFile(fileInput.files[0])});clearBtn.addEventListener('click',clearImage);document.getElementById('closeUpload').addEventListener('click',hideUpload);document.addEventListener('keydown',function(e){if(e.key==='Escape')hideUpload()});
-dropZone.addEventListener('dragover',function(e){e.preventDefault();dropZone.classList.add('over')});dropZone.addEventListener('dragleave',function(){dropZone.classList.remove('over')});dropZone.addEventListener('drop',function(e){e.preventDefault();dropZone.classList.remove('over');if(e.dataTransfer.files[0])setImageFile(e.dataTransfer.files[0])});
+  durations: ['سنوية', 'حسب الباقات المتاحة (تُحدد عند الاتفاق)'],
 
-form.addEventListener('submit',function(e){
- e.preventDefault();
- var name=nameEl.value.trim(),phone=phoneEl.value.replace(/[٠-٩]/g,function(d){return String(d.charCodeAt(0)-1632)}).replace(/[\s\-()]/g,'');
- if(!state.img){setStatus('ارفع صورة الإعلان أولا','err');return}
- if(name.length<2){setStatus('اكتب اسم المعلن','err');return}
- if(!/^\+?\d{8,15}$/.test(phone)){setStatus('رقم غير صحيح','err');return}
- var z=selZ.value,PRICES=getPrices(),p=PRICES[z],pay=payValue(),total=pay==='cash'?p.cash:p.inst,b=getBooked(),myNum=b+1,isOffer=b<MAX_OFFER;
- var payText=pay==='cash'?'كاش':'تقسيط على '+p.n+' دفعات ('+fmt(p.inst/p.n)+' جنيه)';
- var msg=['طلب حجز إعلان جديد - MD1 - عرض 70','', 'المعلن رقم: '+(isOffer?myNum+' (ضمن عرض أول 70)':'خارج العرض'),'نوع المركبة: '+VEHICLES[selV.value].label,'مكان الإعلان: '+ZONES[z],'الصورة: '+state.name+' (سأرفقها)','طريقة الدفع: '+payText,'الإجمالي: '+fmt(total)+' جنيه'+(isOffer?' (سعر عرض)':''),'اسم المعلن: '+name,'رقم التواصل: '+phone,'الباقي من العرض: '+(isOffer?MAX_OFFER-myNum:0),'الصفحة: '+location.href].join('\n');
- var r=openWhatsApp(msg);setBooked(myNum);updateOfferUI();updatePrice();
- statusEl.className='status ok';statusEl.textContent='تم تحويل طلبك للمؤسس على واتساب @'+WA_USERNAME+' ✅ رقمك: '+(myNum<=MAX_OFFER?myNum:'انتهى')+' - أرفق الصورة';
-});
-selZ.addEventListener('change',function(){updatePrice();updateRealAd();if(view){view.refreshAd();view.aim()}});selV.addEventListener('change',function(){updateRealAd();if(view){view.refreshVehicle();view.refreshAd();view.aim()}});selFit.addEventListener('change',function(){updateRealAd();if(view)view.refreshAd()});form.querySelectorAll('input[name=pay]').forEach(function(r){r.addEventListener('change',updatePrice)});updatePrice();
-
-// واقعي - يحمل من Images/
-function tryLoadReal(list,idx){if(idx>=list.length){realImg.src='';adOverlay.style.backgroundImage='none';return}var img=new Image();img.onload=function(){realImg.src=list[idx]};img.onerror=function(){tryLoadReal(list,idx+1)};img.src=list[idx]}
-function updateRealAd(){
- var v=VEHICLES[selV.value];tryLoadReal(v.realList,0);
- var spots={h1:{left:'28%',top:'48%',w:'24%',h:'22%'},hiace:{left:'29%',top:'42%',w:'24%',h:'32%'},taxi:{left:'33%',top:'52%',w:'18%',h:'18%'},coaster:{left:'22%',top:'42%',w:'48%',h:'32%'}};
- var s=spots[selV.value]||spots.h1;adOverlay.style.left=s.left;adOverlay.style.top=s.top;adOverlay.style.width=s.w;adOverlay.style.height=s.h;
- if(state.url){adOverlay.style.backgroundImage='url('+state.url+')';adOverlay.style.backgroundColor='transparent';adOverlay.style.borderStyle='solid'}else{adOverlay.style.backgroundImage='none';adOverlay.style.backgroundColor='#D4AF37';adOverlay.style.display='block';adOverlay.innerHTML='<div style="color:#000;font-weight:900;text-align:center;padding-top:20%;font-size:14px">ارفع صورتك هنا</div>'}
- if(state.url)adOverlay.innerHTML='';
-}
-updateRealAd();
-
-// كرتون - نفس كودك الأصلي بس متصلح
-function initGL(){
- try{
-  var gl=canvas.getContext('webgl',{antialias:true,alpha:false})||canvas.getContext('experimental-webgl');if(!gl)throw 'no gl';
-  function perspective(f,a,n,f2){var t=1/Math.tan(f/2);return[t/a,0,0,0,0,t,0,0,0,0,(f2+n)/(n-f2),-1,0,0,2*f2*n/(n-f2),0]}function sub(a,b){return[a[0]-b[0],a[1]-b[1],a[2]-b[2]]}function cross(a,b){return[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]}function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]}function norm(a){var l=Math.sqrt(dot(a,a))||1;return[a[0]/l,a[1]/l,a[2]/l]}function lookAt(e,c,u){var z=norm(sub(e,c)),x=norm(cross(u,z)),y=cross(z,x);return[x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,e),-dot(y,e),-dot(z,e),1]}function mul(a,b){var o=new Array(16);for(var c=0;c<4;c++)for(var r=0;r<4;r++){var s=0;for(var k=0;k<4;k++)s+=a[k*4+r]*b[c*4+k];o[c*4+r]=s}return o}
-  function Mesh(){this.d=[]}Mesh.prototype.v=function(p,n,c,uv){this.d.push(p[0],p[1],p[2],n[0],n[1],n[2],c[0],c[1],c[2],uv?uv[0]:0,uv?uv[1]:0)};Mesh.prototype.count=function(){return this.d.length/11}
-  function ccw(poly){var a=0;for(var i=0;i<poly.length;i++){var j=(i+1)%poly.length;a+=poly[i][0]*poly[j][1]-poly[j][0]*poly[i][1]}return a>0?poly:poly.slice().reverse()}
-  function pointInTri(p,a,b,c){var d1=(p[0]-b[0])*(a[1]-b[1])-(a[0]-b[0])*(p[1]-b[1]),d2=(p[0]-c[0])*(b[1]-c[1])-(b[0]-c[0])*(p[1]-c[1]),d3=(p[0]-a[0])*(c[1]-a[1])-(c[0]-a[0])*(p[1]-a[1]);return!((d1<0||d2<0||d3<0)&&(d1>0||d2>0||d3>0))}
-  function triangulate(poly){var idx=poly.map(function(_,i){return i}),tris=[],g=0;while(idx.length>3&&g++<1000){var cl=false;for(var i=0;i<idx.length;i++){var a=idx[(i+idx.length-1)%idx.length],b=idx[i],c=idx[(i+1)%idx.length];var A=poly[a],B=poly[b],C=poly[c];if((B[0]-A[0])*(C[1]-A[1])-(B[1]-A[1])*(C[0]-A[0])<=1e-9)continue;var inside=false;for(var k=0;k<idx.length;k++){var j=idx[k];if(j===a||j===b||j===c)continue;if(pointInTri(poly[j],A,B,C)){inside=true;break}}if(inside)continue;tris.push([a,b,c]);idx.splice(i,1);cl=true;break}if(!cl)break}if(idx.length===3)tris.push([idx[0],idx[1],idx[2]]);return tris}
-  function extrude(m,prof,z0,z1,col){var p=ccw(prof),t=triangulate(p);t.forEach(function(tr){tr.forEach(function(k){m.v([p[k][0],p[k][1],z1],[0,0,1],col)});[tr[0],tr[2],tr[1]].forEach(function(k){m.v([p[k][0],p[k][1],z0],[0,0,-1],col)});for(var i=0;i<p.length;i++){var a=p[i],b=p[(i+1)%p.length],dx=b[0]-a[0],dy=b[1]-a[1],len=Math.sqrt(dx*dx+dy*dy)||1,n=[dy/len,-dx/len,0];var A0=[a[0],a[1],z0],A1=[a[0],a[1],z1],B0=[b[0],b[1],z0],B1=[b[0],b[1],z1];[A0,B0,B1,A0,B1,A1].forEach(function(q){m.v(q,n,col)})}})}
-  function box(m,c,s,col){extrude(m,[[c[0]-s[0]/2,c[1]-s[1]/2],[c[0]+s[0]/2,c[1]-s[1]/2],[c[0]+s[0]/2,c[1]+s[1]/2],[c[0]-s[0]/2,c[1]+s[1]/2]],c[2]-s[2]/2,c[2]+s[2]/2,col)}
-  function cylZ(m,cx,cy,z0,z1,r,col,n){var pts=[];for(var i=0;i<n;i++){var a=i/n*Math.PI*2;pts.push([cx+Math.cos(a)*r,cy+Math.sin(a)*r])}extrude(m,pts,z0,z1,col)}
-  function quad(m,p0,p1,p2,p3,col){var n=norm(cross(sub(p1,p0),sub(p3,p0))),u=[[0,0],[1,0],[1,1],[0,1]];[[p0,0],[p1,1],[p2,2],[p0,0],[p2,2],[p3,3]].forEach(function(e){m.v(e[0],n,col,u[e[1]])})}
-  function discY(m,y,col,n,rx,rz){for(var i=0;i<n;i++){var a0=i/n*Math.PI*2,a1=(i+1)/n*Math.PI*2;m.v([0,y,0],[0,1,0],col);m.v([Math.cos(a1)*rx,y,Math.sin(a1)*rz],[0,1,0],col);m.v([Math.cos(a0)*rx,y,Math.sin(a0)*rz],[0,1,0],col)}}
-  function ringY(m,r0,r1,y,col,n){for(var i=0;i<n;i++){var a0=i/n*Math.PI*2,a1=(i+1)/n*Math.PI*2;var p=function(r,a){return[Math.cos(a)*r,y,Math.sin(a)*r]};[p(r0,a0),p(r1,a0),p(r1,a1),p(r0,a0),p(r1,a1),p(r0,a1)].forEach(function(q){m.v(q,[0,1,0],col)})}}
-  var BODY=[0.94,0.94,0.94],C_GLASS=[0.15,0.2,0.25],C_TIRE=[0.07,0.07,0.07],C_HUB=[0.62,0.62,0.62],C_ARCH=[0.04,0.04,0.04],C_DARK=[0.16,0.16,0.16],C_LIGHT=[1,0.92,0.65],C_RED=[0.75,0.15,0.12],C_GOLD=[0.83,0.69,0.22],C_GROUND=[0.11,0.11,0.11],C_SHADOW=[0.03,0.03,0.03],WHITE=[1,1,1];
-  function rect(x0,x1,y0,y1){return[[x0,y0],[x1,y0],[x1,y1],[x0,y1]]}
-  var VEH_PROF={
-   h1:{profile:[[-2.55,0.32],[2.40,0.32],[2.55,0.55],[2.55,0.95],[2.15,1.25],[1.65,1.9],[-2.5,1.9],[-2.55,1.8]],windows:[rect(0.55,1.35,1.12,1.72),rect(-0.5,0.4,1.12,1.72),rect(-1.55,-0.65,1.12,1.72),rect(-2.3,-1.7,1.12,1.72)],glass:[{b:[2.15,1.25],t:[1.65,1.9],hw:0.84}],side:{x0:-2.1,x1:1.3,y0:0.5,y1:1.05},rear:{z0:-0.6,z1:0.6,y0:0.55,y1:1.6},rearFull:{z0:-0.88,z1:0.88,y0:0.45,y1:1.75},roofFull:{x0:-2.4,x1:1.55,z0:-0.88,z1:0.88}},
-   hiace:{profile:[[-2.69,0.32],[2.5,0.32],[2.69,0.52],[2.69,0.95],[2.5,1.25],[2.05,1.98],[1.95,2.15],[-2.65,2.15],[-2.69,2.05]],windows:[rect(0.8,1.8,1.35,1.95),rect(-0.35,0.65,1.35,1.95),rect(-1.5,-0.5,1.35,1.95),rect(-2.5,-1.65,1.35,1.95)],glass:[{b:[2.5,1.25],t:[2.05,1.98],hw:0.82}],side:{x0:-2.4,x1:1.5,y0:0.5,y1:1.25},rear:{z0:-0.62,z1:0.62,y0:0.6,y1:1.85},rearFull:{z0:-0.85,z1:0.85,y0:0.45,y1:2.0},roofFull:{x0:-2.5,x1:1.85,z0:-0.85,z1:0.85}},
-   taxi:{profile:[[-2.2,0.3],[2.1,0.3],[2.2,0.5],[2.2,0.85],[1.35,0.95],[0.55,1.42],[-0.8,1.42],[-1.5,1.0],[-2.2,1.0]],windows:[[[1.0,1.02],[0.0,1.02],[0.0,1.34],[0.58,1.34]],[[-0.15,1.02],[-1.2,1.02],[-0.72,1.34],[-0.15,1.34]]],glass:[{b:[1.35,0.95],t:[0.55,1.42],hw:0.7},{b:[-1.5,1.0],t:[-0.8,1.42],hw:0.68}],extras:[{c:[0.0,1.52,0],s:[0.9,0.2,0.32],col:[0.95,0.77,0.07]}],side:{x0:-1.3,x1:1.05,y0:0.45,y1:0.9},rear:{z0:-0.6,z1:0.6,y0:0.55,y1:0.95},rearFull:{z0:-0.75,z1:0.75,y0:0.4,y1:0.98},roofFull:{x0:-0.75,x1:0.5,z0:-0.65,z1:0.65}},
-   coaster:{profile:[[-3.5,0.42],[3.3,0.42],[3.5,0.65],[3.5,1.15],[3.38,1.4],[3.18,2.5],[3.05,2.62],[-3.45,2.62],[-3.5,2.5]],windows:[rect(2.05,2.95,1.5,2.35),rect(0.75,1.95,1.5,2.35),rect(-0.55,0.65,1.5,2.35),rect(-1.85,-0.65,1.5,2.35),rect(-3.15,-1.95,1.5,2.35)],glass:[{b:[3.38,1.4],t:[3.18,2.5],hw:0.95}],side:{x0:-3.2,x1:2.9,y0:0.65,y1:1.4},rear:{z0:-0.8,z1:0.8,y0:0.7,y1:2.3},rearFull:{z0:-0.95,z1:0.95,y0:0.5,y1:2.45},roofFull:{x0:-3.3,x1:2.9,z0:-0.95,z1:0.95}}
-  };
-  function buildVehicle(key){
-   var v=VEH_PROF[key]||VEH_PROF.h1, L=VEHICLES[key].L,W=VEHICLES[key].W,Roof=key==='coaster'?2.62:key==='hiace'?2.15:key==='taxi'?1.42:1.9;
-   var m=new Mesh(),hz=W/2;discY(m,0,C_GROUND,56,L*0.85,L*0.85);ringY(m,L*0.85,L*0.85+0.07,0.003,C_GOLD,72);discY(m,0.006,C_SHADOW,40,L*0.58,W*0.66);
-   extrude(m,v.profile,-hz,hz,BODY);v.windows.forEach(function(w){extrude(m,w,-hz-0.008,hz+0.008,C_GLASS)});var cy=Roof/2;
-   v.glass.forEach(function(g){var s=[g.t[0]-g.b[0],g.t[1]-g.b[1]],n=norm([s[1],-s[0],0]);var mid=[(g.b[0]+g.t[0])/2,(g.b[1]+g.t[1])/2];if(n[0]*mid[0]+n[1]*(mid[1]-cy)<0)n=[-n[0],-n[1],0];var o=0.008,bx=g.b[0]+n[0]*o,by=g.b[1]+n[1]*o,tx=g.t[0]+n[0]*o,ty=g.t[1]+n[1]*o;quad(m,[bx,by,-g.hw],[bx,by,g.hw],[tx,ty,g.hw],[tx,ty,-g.hw],C_GLASS)});
-   box(m,[L/2+0.01,0.46,0],[0.1,0.24,W*0.96],C_DARK);box(m,[-L/2-0.01,0.46,0],[0.1,0.24,W*0.96],C_DARK);
-   [-1,1].forEach(function(s){box(m,[L/2+0.008,Roof>2?0.9:0.8,s*W*0.36],[0.04,0.14,0.3],C_LIGHT);box(m,[-L/2-0.008,Roof>2?1.2:0.75,s*W*0.38],[0.04,0.22,0.12],C_RED)});
-   (v.extras||[]).forEach(function(e){box(m,e.c,e.s,e.col)});
-   var wheelR=key==='coaster'?0.45:key==='taxi'?0.32:0.37,wheelX=key==='coaster'?2.25:key==='taxi'?1.3:1.6;
-   [wheelX,-wheelX].forEach(function(wx){[-1,1].forEach(function(s){var zin=s*(hz-0.24),zout=s*(hz+0.04);cylZ(m,wx,wheelR,s>0?hz:-hz-0.012,s>0?hz+0.012:-hz,wheelR+0.06,C_ARCH,24);cylZ(m,wx,wheelR,Math.min(zin,zout),Math.max(zin,zout),wheelR,C_TIRE,24);cylZ(m,wx,wheelR,s>0?hz+0.035:-hz-0.047,s>0?hz+0.047:-hz-0.035,wheelR*0.55,C_HUB,16)})});
-   return m;
+  // مسارات الصور الواقعية للمركبات. إن لم توجد الصورة يعمل المجسم ثلاثي الأبعاد بدلًا منها.
+  images: {
+    h1: ['Images/h1-real.jpg', 'Images/images (15).jpeg', 'h1-real.jpg'],
+    hiace: ['Images/hiace-real.jpg', 'Images/images (14).jpeg', 'hiace-real.jpg'],
+    taxi: ['Images/verna-real.jpg', 'Images/images (17).jpeg', 'verna-real.jpg'],
+    coaster: ['Images/coaster-real.jpg', 'Images/images (20).jpeg', 'coaster-real.jpg']
+  },
+  // موضع الإعلان فوق الصورة الواقعية (نسب مئوية تقريبية، عدّلها حسب صورك)
+  photoSpots: {
+    h1:      { side: { left: '28%', top: '48%', w: '24%', h: '22%' }, full: { left: '12%', top: '30%', w: '76%', h: '45%' } },
+    hiace:   { side: { left: '29%', top: '42%', w: '24%', h: '32%' }, full: { left: '12%', top: '25%', w: '76%', h: '52%' } },
+    taxi:    { side: { left: '33%', top: '52%', w: '18%', h: '18%' }, full: { left: '14%', top: '38%', w: '72%', h: '36%' } },
+    coaster: { side: { left: '22%', top: '42%', w: '48%', h: '32%' }, full: { left: '8%', top: '25%', w: '84%', h: '52%' } }
   }
-  function planeQuad(o,u,vv,w,h){return function(m){var a=[o[0]+u[0]*w,o[1]+u[1]*w,o[2]+u[2]*w],d=[o[0]+vv[0]*h,o[1]+vv[1]*h,o[2]+vv[2]*h];quad(m,o,a,[a[0]+vv[0]*h,a[1]+vv[1]*h,a[2]+vv[2]*h],d,WHITE)}}
-  function sidePlanes(v,r,zs){var w=r.x1-r.x0,h=r.y1-r.y0;return[planeQuad([r.x0,r.y0,zs],[1,0,0],[0,1,0],w,h),planeQuad([r.x1,r.y0,-zs],[-1,0,0],[0,1,0],w,h)]}
-  function rearPlane(v,r){return planeQuad([-v.L/2-0.006,r.y0,r.z0],[0,0,1],[0,1,0],r.z1-r.z0,r.y1-r.y0)}
-  function roofPlane(v,r){return planeQuad([r.x0,(v.key==='coaster'?2.62:v.key==='hiace'?2.15:v.key==='taxi'?1.42:1.9)+0.006,r.z1],[1,0,0],[0,0,-1],r.x1-r.x0,r.z1-r.z0)}
-  function silhouette(v,sign){var p=ccw(v.profile),tr=triangulate(p),minx=1e9,maxx=-1e9,miny=1e9,maxy=-1e9;for(var i=0;i<p.length;i++){minx=Math.min(minx,p[i][0]);maxx=Math.max(maxx,p[i][0]);miny=Math.min(miny,p[i][1]);maxy=Math.max(maxy,p[i][1])}var zs=sign*(v.W/2+0.014);return{w:maxx-minx,h:maxy-miny,build:function(m){tr.forEach(function(t){t.forEach(function(k){var x=p[k][0],y=p[k][1],u=(x-minx)/(maxx-minx);m.v([x,y,zs],[0,0,sign],WHITE,[sign<0?1-u:u,(y-miny)/(maxy-miny)])})})}}}
-  function surfaceGroups(vKey,zone){var v=VEH_PROF[vKey];v.L=VEHICLES[vKey].L;v.W=VEHICLES[vKey].W;v.key=vKey;if(zone==='side'){var s=v.side;return[{w:s.x1-s.x0,h:s.y1-s.y0,parts:sidePlanes(v,s,v.W/2+0.006)}]}if(zone==='rear'){var r=v.rear;return[{w:r.z1-r.z0,h:r.y1-r.y0,parts:[rearPlane(v,r)]}]}var a=silhouette(v,1),b=silhouette(v,-1),rf=v.rearFull,tf=v.roofFull;return[{w:a.w,h:a.h,parts:[a.build,b.build]},{w:rf.z1-rf.z0,h:rf.y1-rf.y0,parts:[rearPlane(v,rf)]},{w:tf.x1-tf.x0,h:tf.z1-tf.z0,parts:[roofPlane(v,tf)]}]}
-  var VS='attribute vec3 aPos;attribute vec3 aNor;attribute vec3 aCol;attribute vec2 aUV;uniform mat4 uVP;varying vec3 vN;varying vec3 vC;varying vec2 vUV;void main(){vN=aNor;vC=aCol;vUV=aUV;gl_Position=uVP*vec4(aPos,1.0);}';
-  var FS='precision mediump float;varying vec3 vN;varying vec3 vC;varying vec2 vUV;uniform float uTexOn;uniform sampler2D uTex;void main(){vec3 n=normalize(vN);float l=0.40+0.60*max(dot(n,normalize(vec3(0.45,0.85,0.55))),0.0)+0.18*max(dot(n,normalize(vec3(-0.6,0.25,-0.5))),0.0);vec3 base=uTexOn>0.5?texture2D(uTex,vUV).rgb:vC;gl_FragColor=vec4(base*min(l,1.12),1.0);}';
-  function shader(t,s){var x=gl.createShader(t);gl.shaderSource(x,s);gl.compileShader(x);return x}
-  var prog=gl.createProgram();gl.attachShader(prog,shader(gl.VERTEX_SHADER,VS));gl.attachShader(prog,shader(gl.FRAGMENT_SHADER,FS));gl.bindAttribLocation(prog,0,'aPos');gl.bindAttribLocation(prog,1,'aNor');gl.bindAttribLocation(prog,2,'aCol');gl.bindAttribLocation(prog,3,'aUV');gl.linkProgram(prog);gl.useProgram(prog);
-  var uVP=gl.getUniformLocation(prog,'uVP'),uTexOn=gl.getUniformLocation(prog,'uTexOn');gl.uniform1i(gl.getUniformLocation(prog,'uTex'),0);gl.enable(gl.DEPTH_TEST);
-  var bufBody=gl.createBuffer(),bodyCount=0,slots=[],drawList=[];
-  function upload(buf,mesh){gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh.d),gl.STATIC_DRAW);return mesh.count()}
-  function bindAttribs(buf){gl.bindBuffer(gl.ARRAY_BUFFER,buf);var S=44;gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,S,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,S,12);gl.enableVertexAttribArray(2);gl.vertexAttribPointer(2,3,gl.FLOAT,false,S,24);gl.enableVertexAttribArray(3);gl.vertexAttribPointer(3,2,gl.FLOAT,false,S,36)}
-  function newSlot(){var t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);return{tex:t,buf:gl.createBuffer(),count:0}}
-  var cur={yaw:VIEWS.side.yaw,pitch:VIEWS.side.pitch},tgt={yaw:cur.yaw,pitch:cur.pitch},raf=0,dist=9,targetY=1;
-  function render(){var w=canvas.width,h=canvas.height;if(!w||!h)return;gl.viewport(0,0,w,h);gl.clearColor(0.07,0.07,0.07,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);var cp=Math.cos(cur.pitch),eye=[Math.sin(cur.yaw)*cp*dist,targetY+Math.sin(cur.pitch)*dist,Math.cos(cur.yaw)*cp*dist];var vp=mul(perspective(34*Math.PI/180,w/h,1,80),lookAt(eye,[0,targetY,0],[0,1,0]));gl.uniformMatrix4fv(uVP,false,new Float32Array(vp));gl.uniform1f(uTexOn,0);bindAttribs(bufBody);gl.drawArrays(gl.TRIANGLES,0,bodyCount);gl.uniform1f(uTexOn,1);gl.activeTexture(gl.TEXTURE0);drawList.forEach(function(s){gl.bindTexture(gl.TEXTURE_2D,s.tex);bindAttribs(s.buf);gl.drawArrays(gl.TRIANGLES,0,s.count)})}
-  function frame(){raf=0;var dy=tgt.yaw-cur.yaw,dp=tgt.pitch-cur.pitch;if(Math.abs(dy)>0.0008||Math.abs(dp)>0.0008){cur.yaw+=dy*0.14;cur.pitch+=dp*0.14;request()}else{cur.yaw=tgt.yaw;cur.pitch=tgt.pitch}render()}
-  function request(){if(!raf)raf=requestAnimationFrame(frame)}function nearest(f,t){while(t-f>Math.PI)t-=Math.PI*2;while(t-f<-Math.PI)t+=Math.PI*2;return t}
-  function resize(){var r=canvas.parentElement.getBoundingClientRect();var d=Math.min(devicePixelRatio||1,2);var w=Math.max(100,Math.round(r.width*d)),h=Math.max(100,Math.round(r.width*0.625*d));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h}request()}
-  if(window.ResizeObserver)new ResizeObserver(resize).observe(canvas.parentElement);else window.addEventListener('resize',resize);
-  var drag=null;canvas.addEventListener('pointerdown',function(e){drag={x:e.clientX,x0:e.clientX,y0:e.clientY,t:Date.now(),moved:false};try{canvas.setPointerCapture(e.pointerId)}catch(x){}});canvas.addEventListener('pointermove',function(e){if(!drag)return;if(Math.abs(e.clientX-drag.x0)>6||Math.abs(e.clientY-drag.y0)>6)drag.moved=true;var dx=e.clientX-drag.x;drag.x=e.clientX;cur.yaw-=dx*0.008;tgt.yaw=cur.yaw;render()});canvas.addEventListener('pointerup',function(){var d=drag;drag=null;if(d&&!d.moved&&Date.now()-d.t<600)showUpload()});canvas.addEventListener('pointercancel',function(){drag=null});
-  var adCanvas=document.createElement('canvas'),adCtx=adCanvas.getContext('2d');
-  function paint(g){var S=1024/Math.max(g.w,g.h),W=Math.max(64,Math.round(g.w*S)),H=Math.max(64,Math.round(g.h*S)),c=adCtx;adCanvas.width=W;adCanvas.height=H;if(state.img){var iw=state.img.naturalWidth,ih=state.img.naturalHeight,contain=selFit.value==='contain';c.fillStyle='#111';c.fillRect(0,0,W,H);var k=contain?Math.min(W/iw,H/ih):Math.max(W/iw,H/ih);c.drawImage(state.img,(W-iw*k)/2,(H-ih*k)/2,iw*k,ih*k)}else{c.fillStyle='#D4AF37';c.fillRect(0,0,W,H);var lw=Math.max(4,Math.min(W,H)*0.035);c.strokeStyle='#000';c.lineWidth=lw;c.strokeRect(lw,lw,W-2*lw,H-2*lw);var label='ارفع صورتك هنا',size=H*0.5,fam=' \"Segoe UI\", Tahoma, Arial, sans-serif';c.textAlign='center';c.textBaseline='middle';c.font='800 '+size+'px'+fam;while(size>12&&c.measureText(label).width>W*0.84){size*=0.93;c.font='800 '+size+'px'+fam}c.fillStyle='#000';c.fillText(label,W/2,H/2+size*0.04)}return adCanvas}
-  function refreshAd(){var vKey=selV.value,groups=surfaceGroups(vKey,selZ.value);drawList=groups.map(function(g,i){var slot=slots[i]||(slots[i]=newSlot()),m=new Mesh();gl.bindTexture(gl.TEXTURE_2D,slot.tex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,paint(g));g.parts.forEach(function(p){p(m)});slot.count=upload(slot.buf,m);return slot});request()}
-  function refreshVehicle(){var vKey=selV.value;bodyCount=upload(bufBody,buildVehicle(vKey));var L=VEHICLES[vKey].L;dist=L*1.25+2;targetY=(vKey==='coaster'?2.62:vKey==='hiace'?2.15:vKey==='taxi'?1.42:1.9)*0.48}
-  function aim(){var vw=VIEWS[selZ.value];tgt.yaw=nearest(cur.yaw,vw.yaw);tgt.pitch=vw.pitch;request()}
-  function start(){resize();refreshVehicle();refreshAd();aim();setTimeout(function(){resize();render()},300)}
-  if(document.readyState==='complete')start();else window.addEventListener('load',start);
-  return{refreshAd:refreshAd,refreshVehicle:refreshVehicle,aim:aim}
- }catch(e){
-  console.log('WebGL failed',e);
-  // لو حتى الكرتون فشل، حول للواقعي
-  canvas.style.display='none';realWrap.style.display='block';updateRealAd();
-  return{refreshAd:updateRealAd,refreshVehicle:updateRealAd,aim:function(){}}
- }
+};
+
+(function () {
+'use strict';
+var C = MD1_CONFIG;
+
+/* ====================== أدوات عامة ====================== */
+function $(id) { return document.getElementById(id); }
+function mk(tag, attrs, text) {
+  var e = document.createElement(tag), k;
+  if (attrs) for (k in attrs) { if (k === 'class') e.className = attrs[k]; else e.setAttribute(k, attrs[k]); }
+  if (text != null) e.textContent = text;
+  return e;
+}
+function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+function latinDigits(s) {
+  return String(s).replace(/[٠-٩]/g, function (d) { return String(d.charCodeAt(0) - 1632); })
+                  .replace(/[۰-۹]/g, function (d) { return String(d.charCodeAt(0) - 1776); });
+}
+function clean(s, max) { return String(s == null ? '' : s).replace(/[\u0000-\u0009\u000b-\u001f\u007f]/g, ' ').replace(/\s+$/, '').slice(0, max || 500); }
+function lsGet(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }
+function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+function pct(n) { return String(n).replace('.', '٫') + '%'; }
+
+$('footMail').textContent = C.contactEmail;
+$('partnerMail').href = 'mailto:' + C.contactEmail + '?subject=' + encodeURIComponent('تعاون مع MD1');
+
+/* ====================== التنقل بين الأقسام ====================== */
+var VIEWS = ['home', 'owner', 'driver', 'advertiser', 'maintenance', 'admin'];
+var LEGACY = { preview: 'advertiser', register: 'home', about: 'home', vehicles: 'home', partners: 'home', roles: 'home', status: 'home' };
+var advShown = false;
+
+function currentRoute() {
+  var h = (location.hash || '').replace(/^#/, '');
+  try { h = decodeURIComponent(h); } catch (e) {}
+  if (VIEWS.indexOf(h) > -1) return { view: h, anchor: null };
+  if (LEGACY[h]) return { view: LEGACY[h], anchor: h };
+  return { view: 'home', anchor: null };
+}
+function applyRoute(initial) {
+  var r = currentRoute(), nodes = document.querySelectorAll('[data-view]'), i, links;
+  for (i = 0; i < nodes.length; i++) nodes[i].hidden = nodes[i].getAttribute('data-view') !== r.view;
+  links = document.querySelectorAll('#mainNav a');
+  for (i = 0; i < links.length; i++) {
+    var on = links[i].getAttribute('data-nav') === r.view || (r.anchor === 'partners' && links[i].getAttribute('href') === '#partners');
+    links[i].className = on ? 'on' : '';
+  }
+  if (r.view === 'advertiser') onAdvertiserShown();
+  if (r.view === 'admin') renderAdmin();
+  var target = r.anchor ? $(r.anchor) : null;
+  if (target && target.offsetParent !== null) target.scrollIntoView(); else window.scrollTo(0, 0);
+  if (!initial && !r.anchor) {
+    var h2 = $('view-' + r.view).querySelector('h2.title');
+    if (h2 && r.view !== 'home') { try { h2.focus({ preventScroll: true }); } catch (e) { h2.focus(); } }
+  }
+}
+window.addEventListener('hashchange', function () { applyRoute(false); });
+
+/* ====================== جداول عرض ====================== */
+function fillTable(table, head, rows) {
+  table.innerHTML = '';
+  var thead = mk('thead'), tr = mk('tr'), tbody = mk('tbody'), i, j;
+  for (i = 0; i < head.length; i++) tr.appendChild(mk('th', null, head[i]));
+  thead.appendChild(tr); table.appendChild(thead);
+  for (i = 0; i < rows.length; i++) {
+    var r = mk('tr');
+    for (j = 0; j < rows[i].length; j++) r.appendChild(mk('td', null, rows[i][j]));
+    tbody.appendChild(r);
+  }
+  table.appendChild(tbody);
+}
+var WEEKLY = [
+  ['السبت', 'تشغيل', '07:00 – 15:00', 'فترة صباحية'],
+  ['الأحد', 'تشغيل', '07:00 – 15:00', 'فترة صباحية'],
+  ['الاثنين', 'تشغيل', '15:00 – 23:00', 'فترة مسائية'],
+  ['الثلاثاء', 'تشغيل', '15:00 – 23:00', 'فترة مسائية'],
+  ['الأربعاء', 'تشغيل', '07:00 – 15:00', 'فترة صباحية'],
+  ['الخميس', 'صيانة دورية', '—', 'فحص ومتابعة مع مركز الصيانة'],
+  ['الجمعة', 'راحة', '—', 'يوم راحة']
+];
+var MAINT_SAMPLE = [
+  ['عيّنة 1', 'تغيير زيت وفلاتر', '1,200', 'بعد 3 أشهر'],
+  ['عيّنة 2', 'فحص فرامل', '800', 'بعد 6 أشهر'],
+  ['عيّنة 3', 'إطارات', '4,000', 'حسب الاستهلاك']
+];
+fillTable($('weeklyTable'), ['اليوم', 'الحالة', 'الساعات', 'ملاحظة'], WEEKLY);
+fillTable($('maintLogTable'), ['السجل', 'العملية', 'التكلفة (جنيه) — عيّنة', 'الموعد القادم'], MAINT_SAMPLE);
+
+/* ====================== حاسبة المالك التقديرية ====================== */
+function num(id) { var v = parseFloat(latinDigits($(id).value)); return isFinite(v) && v > 0 ? v : 0; }
+function ownerCalc() {
+  var rev = num('oc_rev'), exp = num('oc_exp'), mnt = num('oc_main'), agree = num('oc_agree');
+  $('oc_net').textContent = fmt(rev - exp - mnt);
+  $('oc_r').textContent = fmt(rev); $('oc_e').textContent = fmt(exp); $('oc_m').textContent = fmt(mnt);
+  $('oc_15').textContent = fmt(agree * 0.15);
+}
+['oc_rev', 'oc_exp', 'oc_main', 'oc_agree'].forEach(function (id) { $(id).addEventListener('input', ownerCalc); });
+ownerCalc();
+
+/* ====================== إرسال الطلبات (بدون ادعاء) ====================== */
+// واتساب يُفتح فقط إن ضُبط رقم دولي صحيح في الإعدادات. غير ذلك لا نفتح شيئًا ولا نخترع رقمًا.
+function waReady() { return /^\d{8,15}$/.test(String(C.whatsappNumber || '')); }
+function waUrl(text) { return 'https://wa.me/' + C.whatsappNumber + '?text=' + encodeURIComponent(text); }
+function mailUrl(subject, body) { return 'mailto:' + C.contactEmail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body); }
+
+function copyText(text, area) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text).then(function () { return true; }, function () { return legacyCopy(area); });
+  }
+  return Promise.resolve(legacyCopy(area));
+}
+function legacyCopy(area) {
+  try { area.focus(); area.select(); area.setSelectionRange(0, area.value.length); return document.execCommand('copy'); } catch (e) { return false; }
 }
 
-if(lowEnd){view=initGL()}else{updateRealAd();view=initGL();if(view){canvas.style.display='block';realWrap.style.display='none';view.aim()}}
+function logRequest(type, summary) {
+  var list = lsGet('md1_requests_v1');
+  if (!list || !list.push) list = [];
+  list.unshift({ id: Date.now(), type: type, summary: clean(summary, 120), status: 'جديد', ts: new Date().toISOString().slice(0, 16).replace('T', ' ') });
+  lsSet('md1_requests_v1', list.slice(0, 50));
+}
 
-</script>
-<script>
-// واتساب
-(function(){
- var logs=document.getElementById('chatLogs'),input=document.getElementById('chatInput');
- function add(w,t,c){var p=document.createElement('p');p.style.color=c;var b=document.createElement('b');b.textContent=w;p.appendChild(b);p.appendChild(document.createTextNode(' '+t));logs.appendChild(p);return p}
- function send(){var v=input.value.trim();if(!v)return;add('أنت:',v,'var(--gold)');var r=openWhatsApp('مرحبا استاذ محمد - سؤال من MD7: '+v+' - '+location.href);if(r.win)add('MD7:','تم التحويل لواتساب @'+WA_USERNAME+' ✅','#fff');logs.scrollTop=logs.scrollHeight;input.value=''}
- var btn=document.getElementById('chatSend');if(btn)btn.addEventListener('click',send);
- if(input)input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();send()}})
+// يُستدعى مباشرة من حدث الإرسال، حتى لا يمنع المتصفح فتح النافذة
+function dispatchRequest(resultEl, title, type, summary, message, extraNote) {
+  var opened = false, popupBlocked = false;
+  if (waReady()) {
+    var w = null;
+    try { w = window.open(waUrl(message), '_blank'); } catch (e) { w = null; }
+    if (w) { try { w.opener = null; } catch (e2) {} opened = true; } else { popupBlocked = true; }
+  }
+  logRequest(type, summary);
+
+  resultEl.innerHTML = '';
+  var st = mk('div', { 'class': 'status ' + (opened ? 'ok' : 'warn'), role: 'status' });
+  if (opened) st.textContent = 'تم تجهيز طلبك وفتح واتساب. لم يُرسل الطلب بعد: اضغط «إرسال» داخل واتساب لإتمامه.';
+  else if (popupBlocked) st.textContent = 'منع المتصفح فتح واتساب تلقائيًا. استخدم الزر أدناه، أو انسخ الطلب، أو أرسله بالبريد.';
+  else st.textContent = 'تم تجهيز طلبك، لكنه لم يُرسل بعد. واتساب غير مفعّل على هذه الصفحة (لم يُضبط رقم رسمي)، فانسخ الطلب أو أرسله بالبريد الإلكتروني.';
+  resultEl.appendChild(st);
+  if (extraNote) resultEl.appendChild(mk('p', { 'class': 'privacy' }, extraNote));
+
+  var area = mk('textarea', { 'class': 'result-msg', readonly: 'readonly', 'aria-label': 'نص الطلب الجاهز' });
+  area.value = message;
+  resultEl.appendChild(area);
+
+  var acts = mk('div', { 'class': 'result-actions' });
+  var copyBtn = mk('button', { type: 'button', 'class': 'btn-line sm' }, 'نسخ الطلب');
+  copyBtn.addEventListener('click', function () {
+    copyText(message, area).then(function (ok) { copyBtn.textContent = ok ? 'تم النسخ ✓' : 'تعذّر النسخ، حدد النص وانسخه يدويًا'; });
+  });
+  acts.appendChild(copyBtn);
+  var mail = mk('a', { 'class': 'btn-line sm', href: mailUrl(title, message) }, 'إرسال بالبريد');
+  acts.appendChild(mail);
+  if (popupBlocked) acts.appendChild(mk('a', { 'class': 'btn-gold', href: waUrl(message), target: '_blank', rel: 'noopener' }, 'فتح واتساب'));
+  resultEl.appendChild(acts);
+  try { resultEl.scrollIntoView(); } catch (e3) {}
+}
+
+/* ====================== التحقق وقراءة الحقول (عام لكل النماذج) ====================== */
+function ctrlOf(f) { return f.querySelector('input,select,textarea'); }
+function readField(f) {
+  var kind = f.getAttribute('data-kind') || 'text', c, out, i, boxes;
+  if (kind === 'checks') {
+    out = []; boxes = f.querySelectorAll('input[type=checkbox]');
+    for (i = 0; i < boxes.length; i++) if (boxes[i].checked) out.push(boxes[i].getAttribute('data-text'));
+    return out;
+  }
+  c = ctrlOf(f);
+  if (!c) return '';
+  if (kind === 'check') return c.checked;
+  if (c.tagName === 'SELECT') return c.value ? c.options[c.selectedIndex].text : '';
+  if (kind === 'tel') return latinDigits(c.value).replace(/[\s\-()]/g, '');
+  return clean(c.value, c.tagName === 'TEXTAREA' ? 600 : 200);
+}
+function validateForm(form) {
+  var fields = form.querySelectorAll('.field'), first = null, i;
+  for (i = 0; i < fields.length; i++) {
+    var f = fields[i], kind = f.getAttribute('data-kind') || 'text', label = f.getAttribute('data-label') || '', req = f.getAttribute('data-req') === '1';
+    var errEl = f.querySelector('.err'), v = readField(f), msg = '', c = ctrlOf(f);
+    if (kind === 'nomsg') { if (f.querySelector('.err')) { f.className = f.className.replace(/\bbad\b/g, '').replace(/\s+$/, ''); f.querySelector('.err').textContent = ''; } continue; }
+    if (kind === 'checks') { if (req && !v.length) msg = 'اختر ' + label + ' (خيارًا واحدًا على الأقل).'; }
+    else if (kind === 'check') { if (req && !v) msg = 'يلزم الموافقة للمتابعة.'; }
+    else if (kind === 'select') { if (req && !v) msg = 'اختر ' + label + '.'; }
+    else if (kind === 'tel') { if (req && !v) msg = 'اكتب ' + label + '.'; else if (v && !/^\+?\d{8,15}$/.test(v)) msg = 'رقم غير صحيح: أرقام فقط من 8 إلى 15 رقمًا.'; }
+    else if (kind === 'number') {
+      if (req && v === '') msg = 'اكتب ' + label + '.';
+      else if (v !== '') {
+        var n = parseFloat(latinDigits(v)), mn = parseFloat(c.getAttribute('min')), mx = parseFloat(c.getAttribute('max'));
+        if (!isFinite(n)) msg = 'اكتب رقمًا صحيحًا.';
+        else if (isFinite(mn) && n < mn) msg = 'القيمة يجب ألا تقل عن ' + mn + '.';
+        else if (isFinite(mx) && n > mx) msg = 'القيمة يجب ألا تزيد عن ' + mx + '.';
+      }
+    } else { if (req && v.length < 2) msg = 'اكتب ' + label + '.'; }
+    if (errEl) errEl.textContent = msg;
+    f.className = f.className.replace(/\bbad\b/g, '').replace(/\s+$/, '') + (msg ? ' bad' : '');
+    if (msg && !first) first = { field: f, msg: msg };
+  }
+  return first;
+}
+function collectLines(form) {
+  var fields = form.querySelectorAll('.field'), lines = [], i;
+  for (i = 0; i < fields.length; i++) {
+    var f = fields[i], kind = f.getAttribute('data-kind') || 'text';
+    if (kind === 'nomsg' || f.getAttribute('data-nomsg') === '1') continue;
+    var v = readField(f), label = f.getAttribute('data-label') || '';
+    if (kind === 'checks') { if (v.length) lines.push(label + ': ' + v.join('، ')); }
+    else if (kind === 'check') { if (v) lines.push(label + ': نعم'); }
+    else if (v !== '') lines.push(label + ': ' + v);
+  }
+  return lines;
+}
+function showFirstError(resultEl, err) {
+  resultEl.innerHTML = '';
+  resultEl.appendChild(mk('div', { 'class': 'status err', role: 'alert' }, 'راجع الحقول المطلوبة: ' + err.msg));
+  var c = ctrlOf(err.field);
+  try { err.field.scrollIntoView(); if (c) c.focus(); } catch (e) {}
+}
+function busy(btn, text) {
+  var old = btn.textContent;
+  btn.disabled = true; btn.textContent = text;
+  setTimeout(function () { btn.disabled = false; btn.textContent = old; }, 900);
+}
+
+/* ====================== بناء النماذج من مواصفات ====================== */
+function buildForm(host, spec) {
+  var form = mk('form', { id: spec.id, novalidate: 'novalidate' }), i, j;
+  var row = null;
+  for (i = 0; i < spec.fields.length; i++) {
+    var fs = spec.fields[i], f = mk('div', { 'class': 'field', 'data-kind': fs.t, 'data-label': fs.l });
+    if (fs.req) f.setAttribute('data-req', '1');
+    if (fs.nomsg) f.setAttribute('data-nomsg', '1');
+    var id = spec.id + '_' + fs.n;
+    if (fs.t === 'check') {
+      var lab = mk('label', { 'class': 'opt' }), cb = mk('input', { type: 'checkbox', id: id, name: fs.n });
+      lab.appendChild(cb); lab.appendChild(document.createTextNode(' ' + fs.txt + (fs.req ? ' *' : '')));
+      f.appendChild(lab);
+    } else if (fs.t === 'checks') {
+      f.appendChild(mk('span', { 'class': 'lbl' }, fs.l + (fs.req ? ' *' : '')));
+      for (j = 0; j < fs.opts.length; j++) {
+        var l2 = mk('label', { 'class': 'opt' }), c2 = mk('input', { type: 'checkbox', name: fs.n, 'data-text': fs.opts[j] });
+        l2.appendChild(c2); l2.appendChild(document.createTextNode(' ' + fs.opts[j])); f.appendChild(l2);
+      }
+    } else {
+      f.appendChild(mk('label', { 'for': id }, fs.l + (fs.req ? ' *' : '')));
+      var ctrl;
+      if (fs.t === 'select') {
+        ctrl = mk('select', { id: id, name: fs.n });
+        ctrl.appendChild(mk('option', { value: '' }, 'اختر…'));
+        for (j = 0; j < fs.opts.length; j++) ctrl.appendChild(mk('option', { value: fs.opts[j] }, fs.opts[j]));
+      } else if (fs.t === 'textarea') {
+        ctrl = mk('textarea', { id: id, name: fs.n, maxlength: '400' });
+      } else {
+        ctrl = mk('input', { id: id, name: fs.n, type: fs.t === 'tel' ? 'tel' : (fs.t === 'number' ? 'number' : 'text'), maxlength: String(fs.max || 80) });
+        if (fs.t === 'tel') { ctrl.setAttribute('inputmode', 'tel'); ctrl.setAttribute('autocomplete', 'tel'); }
+        if (fs.t === 'number') { ctrl.setAttribute('inputmode', 'numeric'); if (fs.min != null) ctrl.setAttribute('min', fs.min); if (fs.maxv != null) ctrl.setAttribute('max', fs.maxv); }
+        if (fs.ac) ctrl.setAttribute('autocomplete', fs.ac);
+        if (fs.ph) ctrl.setAttribute('placeholder', fs.ph);
+      }
+      f.appendChild(ctrl);
+    }
+    if (fs.hint) f.appendChild(mk('span', { 'class': 'hint' }, fs.hint));
+    f.appendChild(mk('small', { 'class': 'err' }));
+    form.appendChild(f);
+  }
+  var btn = mk('button', { type: 'submit', 'class': 'btn-gold', style: 'width:100%;margin-top:16px' }, spec.submit);
+  var res = mk('div', { 'class': 'form-result', 'aria-live': 'polite' });
+  form.appendChild(btn); form.appendChild(res);
+  form.appendChild(mk('p', { 'class': 'privacy' }, spec.privacy || 'لا يُرسل الموقع بياناتك إلى أي خادم. يجهّز الطلب كنص تُرسله أنت بواتساب أو بالبريد. نجمع أقل بيانات ممكنة، ولا نطلب صور الرخص أو الهوية في هذه المرحلة.'));
+  host.appendChild(form);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var err = validateForm(form);
+    if (err) { showFirstError(res, err); return; }
+    busy(btn, 'جارٍ تجهيز الطلب…');
+    var lines = [spec.title, ''].concat(collectLines(form));
+    lines.push('', 'الصفحة: ' + location.href.split('#')[0] + '#' + spec.view);
+    var msg = lines.join('\n');
+    dispatchRequest(res, spec.title, spec.type, spec.summary(form), msg, spec.note);
+  });
+  return form;
+}
+function val(form, n) { var c = form.querySelector('[name="' + n + '"]'); return c ? (c.tagName === 'SELECT' && c.value ? c.options[c.selectedIndex].text : c.value) : ''; }
+
+var VEHICLE_OPTS = ['هيونداي H1', 'تويوتا هاي إس', 'تاكسي فيرنا', 'أتوبيس كوستر / روزا', 'أخرى'];
+
+buildForm($('ownerFormHost'), {
+  id: 'ownerForm', view: 'owner', type: 'مالك سيارة', submit: 'سجّل سيارتك في MD1',
+  title: 'طلب تسجيل سيارة جديد - MD1 - MD7 Group',
+  note: 'صور السيارة ومستنداتها لا تُرفع من هذه الصفحة. ستُطلب منك عند اعتماد الانضمام.',
+  summary: function (f) { return val(f, 'vtype') + ' / ' + val(f, 'year'); },
+  fields: [
+    { n: 'name', l: 'الاسم الكامل', t: 'text', req: 1, max: 60, ac: 'name' },
+    { n: 'phone', l: 'رقم التواصل', t: 'tel', req: 1, max: 20 },
+    { n: 'city', l: 'المدينة أو منطقة العمل', t: 'text', req: 1, max: 60 },
+    { n: 'vtype', l: 'نوع السيارة', t: 'select', req: 1, opts: VEHICLE_OPTS },
+    { n: 'model', l: 'الموديل', t: 'text', req: 1, max: 40 },
+    { n: 'year', l: 'سنة الصنع', t: 'number', req: 1, min: 1990, maxv: 2027 },
+    { n: 'cond', l: 'حالة السيارة', t: 'select', req: 1, opts: ['ممتازة', 'جيدة', 'متوسطة', 'تحتاج صيانة'] },
+    { n: 'lic', l: 'حالة الترخيص', t: 'select', req: 1, opts: ['ساري', 'منتهي', 'تحت التجديد', 'لا أعلم'] },
+    { n: 'licexp', l: 'تاريخ انتهاء الترخيص (اختياري)', t: 'text', max: 20, ph: 'شهر/سنة' },
+    { n: 'drive', l: 'من سيقود السيارة؟', t: 'select', req: 1, opts: ['أقود سيارتي بنفسي', 'أتيحها لسائق ضمن منظومة التشغيل', 'لم أحدد بعد'] },
+    { n: 'req15', l: 'طلب نسبة 15% للصيانة', t: 'check', txt: 'أرغب في طلب تخصيص 15% من المبلغ المخصص لصيانة سيارتي (مقترحة وليست مضمونة، وتُحدد في اتفاق مكتوب).' },
+    { n: 'notes', l: 'ملاحظات', t: 'textarea' },
+    { n: 'consent', l: 'الموافقة على استخدام البيانات', t: 'check', req: 1, nomsg: 1, txt: 'أوافق على استخدام بياناتي للتواصل بخصوص هذا الطلب فقط.' }
+  ]
+});
+
+buildForm($('driverFormHost'), {
+  id: 'driverForm', view: 'driver', type: 'سائق', submit: 'قدّم طلب الانضمام كسائق',
+  title: 'طلب انضمام سائق - MD1 - MD7 Group',
+  note: 'شروط الأجر وساعات العمل تُحدد في اتفاق التشغيل المكتوب، ولا يتضمن هذا الطلب أي التزام.',
+  summary: function (f) { return 'سائق / ' + val(f, 'city'); },
+  fields: [
+    { n: 'name', l: 'الاسم الكامل', t: 'text', req: 1, max: 60, ac: 'name' },
+    { n: 'phone', l: 'رقم الهاتف', t: 'tel', req: 1, max: 20 },
+    { n: 'city', l: 'المدينة أو منطقة العمل', t: 'text', req: 1, max: 60 },
+    { n: 'lictype', l: 'نوع رخصة القيادة', t: 'text', req: 1, max: 40 },
+    { n: 'licexp', l: 'تاريخ صلاحية الرخصة', t: 'text', req: 1, max: 20, ph: 'شهر/سنة' },
+    { n: 'exp', l: 'سنوات الخبرة', t: 'number', req: 1, min: 0, maxv: 60 },
+    { n: 'vehicles', l: 'المركبات التي تستطيع قيادتها', t: 'checks', req: 1, opts: ['ميكروباص', 'سيارة / تاكسي', 'أتوبيس', 'أخرى'] },
+    { n: 'times', l: 'الأوقات المناسبة للعمل', t: 'checks', req: 1, opts: ['صباحًا', 'مساءً', 'ليلًا', 'مرنة'] },
+    { n: 'hascar', l: 'هل تمتلك سيارة؟', t: 'select', req: 1, opts: ['أمتلك سيارة', 'أبحث عن فرصة للعمل على سيارة ضمن المنظومة'] },
+    { n: 'notes', l: 'ملاحظات إضافية (اختياري)', t: 'textarea' },
+    { n: 'consent', l: 'الموافقة على استخدام البيانات', t: 'check', req: 1, nomsg: 1, txt: 'أوافق على استخدام بياناتي للتواصل بخصوص هذا الطلب فقط.' }
+  ]
+});
+
+var maintReqForm = buildForm($('maintReqHost'), {
+  id: 'maintReqForm', view: 'maintenance', type: 'طلب صيانة', submit: 'إرسال طلب الصيانة',
+  title: 'طلب خدمة صيانة - MD1 - MD7 Group',
+  note: 'مركز الصيانة ما زال مخططًا ولم يبدأ التشغيل الفعلي، فالطلب يُسجَّل كاهتمام وليس حجز موعد.',
+  summary: function (f) { return val(f, 'vtype') + ' / ' + val(f, 'urgency'); },
+  fields: [
+    { n: 'name', l: 'الاسم', t: 'text', req: 1, max: 60, ac: 'name' },
+    { n: 'phone', l: 'رقم التواصل', t: 'tel', req: 1, max: 20 },
+    { n: 'vtype', l: 'نوع المركبة', t: 'select', req: 1, opts: VEHICLE_OPTS },
+    { n: 'issue', l: 'وصف العطل أو الخدمة المطلوبة', t: 'textarea', req: 1 },
+    { n: 'urgency', l: 'درجة الاستعجال', t: 'select', req: 1, opts: ['عادي', 'عاجل'] },
+    { n: 'consent', l: 'الموافقة على استخدام البيانات', t: 'check', req: 1, nomsg: 1, txt: 'أوافق على استخدام بياناتي للتواصل بخصوص هذا الطلب فقط.' }
+  ]
+});
+var maintJoinForm = buildForm($('maintJoinHost'), {
+  id: 'maintJoinForm', view: 'maintenance', type: 'انضمام صيانة', submit: 'إرسال طلب الانضمام',
+  title: 'طلب انضمام إلى منظومة الصيانة - MD1 - MD7 Group',
+  note: 'المنظومة قيد التأسيس. هذا الطلب تعبير عن اهتمام وليس عقد عمل.',
+  summary: function (f) { return val(f, 'role') + ' / ' + val(f, 'city'); },
+  fields: [
+    { n: 'name', l: 'الاسم', t: 'text', req: 1, max: 60, ac: 'name' },
+    { n: 'phone', l: 'رقم التواصل', t: 'tel', req: 1, max: 20 },
+    { n: 'role', l: 'صفتك', t: 'select', req: 1, opts: ['فني ميكانيكا', 'فني كهرباء', 'سمكرة ودهان', 'ورشة', 'مورّد قطع غيار', 'مشرف صيانة', 'أخرى'] },
+    { n: 'city', l: 'المدينة', t: 'text', req: 1, max: 60 },
+    { n: 'exp', l: 'سنوات الخبرة', t: 'number', min: 0, maxv: 60 },
+    { n: 'notes', l: 'ملاحظات (اختياري)', t: 'textarea' },
+    { n: 'consent', l: 'الموافقة على استخدام البيانات', t: 'check', req: 1, nomsg: 1, txt: 'أوافق على استخدام بياناتي للتواصل بخصوص هذا الطلب فقط.' }
+  ]
+});
+$('btnMaintReq').addEventListener('click', function () { $('maintReqHost').hidden = false; $('maintJoinHost').hidden = true; try { $('maintReqHost').scrollIntoView(); } catch (e) {} });
+$('btnMaintJoin').addEventListener('click', function () { $('maintJoinHost').hidden = false; $('maintReqHost').hidden = true; try { $('maintJoinHost').scrollIntoView(); } catch (e) {} });
+
+/* ====================== المعلنون: الأسعار والباقات ====================== */
+var ZONES = { side: 'الجانب', rear: 'الخلف', full: 'السيارة كاملة' };
+var ZONE_KEYS = ['side', 'rear', 'full'];
+var form = $('bookForm'), selV = $('vType'), selZ = $('vZone'), selFit = $('fitMode'), selDur = $('durSel'), selPlan = $('planSel');
+
+function findPlan(id) { var i; for (i = 0; i < C.plans.length; i++) if (C.plans[i].id === id) return C.plans[i]; return C.plans[0]; }
+function priceTable() { return C.offerActive ? C.prices.offer : C.prices.normal; }
+function payValue() { return form.querySelector('input[name="pay"]:checked').value; }
+function quote(zone, pay, planId) {
+  var p = priceTable()[zone], base = pay === 'cash' ? p.cash : p.inst, plan = findPlan(planId);
+  var inc = Math.round(base * plan.pct / 100), total = base + inc;
+  return { base: base, inc: inc, pct: plan.pct, plan: plan, total: total, n: p.n, per: Math.round(total / p.n), p: p };
+}
+function updatePrice() {
+  var z = selZ.value, pay = payValue(), q = quote(z, pay, selPlan.value), t = priceTable()[z], norm = C.prices.normal[z];
+  $('payCashTxt').textContent = 'كاش — ' + fmt(t.cash) + ' جنيه (السعر الأساسي)';
+  $('payInstTxt').textContent = 'تقسيط على ' + t.n + ' دفعات — ' + fmt(t.inst) + ' جنيه' + (t.cash === t.inst ? ' (بدون زيادة تقسيط)' : ' (' + fmt(t.inst / t.n) + ' × ' + t.n + ')');
+  $('totalVal').textContent = fmt(q.total);
+  $('tBase').textContent = fmt(q.base) + ' جنيه';
+  $('tIncLbl').textContent = 'الزيادة (' + pct(q.pct) + ')';
+  $('tInc').textContent = fmt(q.inc) + ' جنيه';
+  $('totalSub').textContent = pay === 'cash' ? 'دفع كاش' : 'تقسيط ≈ ' + fmt(q.per) + ' جنيه × ' + q.n + ' دفعات';
+  $('planHint').textContent = q.plan.desc;
+  $('discountNote').textContent = C.offerActive ? ('✓ سعر العرض (بدلًا من ' + fmt(pay === 'cash' ? norm.cash : norm.inst) + ' جنيه). يؤكد فريق MD7 توفر العرض عند المراجعة.') : 'السعر العادي';
+}
+
+// العرض الافتتاحي
+(function () {
+  if (!C.offerActive) return;
+  $('offerBanner').hidden = false;
+  $('offerSize').textContent = C.offerSize;
+  $('offerText').innerHTML = '';
+  var s = C.prices.offer.side.cash, n = C.prices.normal.side.cash;
+  $('offerText').appendChild(document.createTextNode('إعلان الجانب أو الخلف كاش بسعر ' + fmt(s) + ' جنيه '));
+  $('offerText').appendChild(mk('del', null, 'بدلًا من ' + fmt(n)));
+  $('offerText').appendChild(document.createTextNode(' — توفر العرض يؤكده فريق MD7 عند مراجعة طلبك، فهذه الصفحة لا تحتسب الحجوزات الفعلية.'));
 })();
-</script>
-</body>
-</html>
+
+function fillSelects() {
+  var k, i;
+  ['h1', 'hiace', 'taxi', 'coaster'].forEach(function (key) { selV.appendChild(mk('option', { value: key }, VEHICLES[key].label)); });
+  ZONE_KEYS.forEach(function (z) { selZ.appendChild(mk('option', { value: z }, ZONES[z])); });
+  for (i = 0; i < C.durations.length; i++) selDur.appendChild(mk('option', { value: String(i) }, C.durations[i]));
+  for (i = 0; i < C.plans.length; i++) selPlan.appendChild(mk('option', { value: C.plans[i].id }, C.plans[i].label + (C.plans[i].pct ? ' (+' + pct(C.plans[i].pct) + ')' : '')));
+}
+
+/* ====================== صورة الإعلان (تبقى على الجهاز) ====================== */
+var state = { img: null, name: '', url: '' };
+var fileInput = $('adFile'), fileNameEl = $('fileName'), clearBtn = $('clearImg'), uploadBox = $('uploadBox'), dropZone = $('dropZone');
+var ctl = null;       // مُتحكّم WebGL
+var mode = '3d';
+
+function showUpload() { uploadBox.hidden = false; try { dropZone.focus(); } catch (e) {} }
+function hideUpload() { uploadBox.hidden = true; }
+function setFileMsg(msg, cls) { fileNameEl.textContent = msg; fileNameEl.className = 'fit' + (cls ? ' ' + cls : ''); }
+function refreshPreview() { if (ctl) ctl.refreshAd(); updatePhoto(); }
+
+function clearImage() {
+  if (state.url) { try { URL.revokeObjectURL(state.url); } catch (e) {} }
+  state = { img: null, name: '', url: '' };
+  fileInput.value = ''; setFileMsg('', ''); clearBtn.hidden = true;
+  refreshPreview();
+}
+function setImageFile(f) {
+  if (!f) return;
+  if (!/^image\//.test(f.type)) { setFileMsg('الملف المختار ليس صورة. اختر JPG أو PNG.', 'err'); return; }
+  if (f.size > 10 * 1024 * 1024) { setFileMsg('حجم الصورة أكبر من 10 ميجا. اختر صورة أصغر.', 'err'); return; }
+  setFileMsg('جارٍ قراءة الصورة…', '');
+  var url = URL.createObjectURL(f), img = new Image();
+  img.onload = function () {
+    if (state.url) { try { URL.revokeObjectURL(state.url); } catch (e) {} }
+    state = { img: img, name: clean(f.name, 60), url: url };
+    setFileMsg('✓ ' + state.name + ' (' + Math.max(1, Math.round(f.size / 1024)) + ' KB) — للمعاينة فقط على جهازك', 'ok');
+    clearBtn.hidden = false; hideUpload(); refreshPreview();
+  };
+  img.onerror = function () { try { URL.revokeObjectURL(url); } catch (e) {} setFileMsg('تعذّرت قراءة الصورة. جرّب صورة أخرى.', 'err'); };
+  img.src = url;
+}
+$('pickImg').addEventListener('click', function () { fileInput.click(); });
+dropZone.addEventListener('click', function () { fileInput.click(); });
+dropZone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
+dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('over'); });
+dropZone.addEventListener('dragleave', function () { dropZone.classList.remove('over'); });
+dropZone.addEventListener('drop', function (e) { e.preventDefault(); dropZone.classList.remove('over'); if (e.dataTransfer && e.dataTransfer.files[0]) setImageFile(e.dataTransfer.files[0]); });
+fileInput.addEventListener('change', function () { setImageFile(fileInput.files[0]); });
+clearBtn.addEventListener('click', clearImage);
+$('closeUpload').addEventListener('click', hideUpload);
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideUpload(); });
+
+/* ====================== الصورة الواقعية (اختيارية، مع بديل) ====================== */
+var photoCache = {};
+var realWrap = $('realWrap'), realImg = $('realImg'), adOverlay = $('adOverlay'), photoNote = $('photoNote'), glcanvas = $('glcanvas'), noGl = $('nogl');
+
+function probePhoto(key, cb) {
+  if (photoCache[key] !== undefined) { cb(photoCache[key]); return; }
+  var list = C.images[key] || [], i = 0;
+  (function next() {
+    if (i >= list.length) { photoCache[key] = false; cb(false); return; }
+    var src = encodeURI(list[i++]), im = new Image();
+    im.onload = function () { photoCache[key] = src; cb(src); };
+    im.onerror = next;
+    im.src = src;
+  })();
+}
+function updatePhoto() {
+  if (mode !== 'photo') return;
+  var key = selV.value, src = photoCache[key];
+  if (!src) return;
+  if (realImg.getAttribute('data-src') !== src) { realImg.setAttribute('data-src', src); realImg.src = src; }
+  var z = selZ.value, spots = C.photoSpots[key] || C.photoSpots.h1;
+  photoNote.hidden = z !== 'rear';
+  if (z === 'rear') { adOverlay.style.display = 'none'; return; }
+  var s = z === 'full' ? spots.full : spots.side;
+  adOverlay.style.display = 'block';
+  adOverlay.style.left = s.left; adOverlay.style.top = s.top; adOverlay.style.width = s.w; adOverlay.style.height = s.h;
+  if (state.url) {
+    adOverlay.style.backgroundImage = 'url("' + state.url + '")';
+    adOverlay.style.backgroundSize = selFit.value === 'contain' ? 'contain' : 'cover';
+    adOverlay.style.backgroundColor = '#111'; adOverlay.style.borderStyle = 'solid'; adOverlay.textContent = '';
+  } else {
+    adOverlay.style.backgroundImage = 'none'; adOverlay.style.backgroundColor = '#D4AF37'; adOverlay.style.borderStyle = 'dashed';
+    adOverlay.textContent = 'ارفع صورتك هنا';
+  }
+}
+function setMode(m) {
+  mode = m;
+  var photoOk = !!photoCache[selV.value];
+  if (m === 'photo' && !photoOk) mode = m = '3d';
+  var glOk = !!ctl;
+  glcanvas.hidden = !(m === '3d' && glOk);
+  realWrap.hidden = m !== 'photo';
+  noGl.hidden = (m === '3d' && glOk) || m === 'photo';
+  if (!glOk && m === '3d') noGl.textContent = 'تعذّر تشغيل المعاينة ثلاثية الأبعاد على هذا الجهاز. يمكنك إكمال الطلب بدون معاينة.';
+  $('modeBtn3d').className = m === '3d' ? 'on' : '';
+  $('modeBtnPhoto').className = m === 'photo' ? 'on' : '';
+  if (m === 'photo') updatePhoto();
+  if (m === '3d' && ctl) ctl.resize();
+}
+function syncPhotoAvailability() {
+  var key = selV.value;
+  probePhoto(key, function (src) {
+    if (selV.value !== key) return;
+    $('modeSwitch').hidden = !(src && ctl);
+    if (!ctl && src) setMode('photo');       // لا WebGL: استخدم الصورة
+    else if (!src && mode === 'photo') setMode('3d');
+    else setMode(mode);
+  });
+}
+$('modeBtn3d').addEventListener('click', function () { setMode('3d'); });
+$('modeBtnPhoto').addEventListener('click', function () { setMode('photo'); });
+realWrap.addEventListener('click', showUpload);
+
+/* ====================== أحداث نموذج المعلن ====================== */
+selZ.addEventListener('change', function () { updatePrice(); refreshPreview(); if (ctl) ctl.aim(); });
+selV.addEventListener('change', function () { if (ctl) { ctl.refreshVehicle(); } refreshPreview(); if (ctl) ctl.aim(); syncPhotoAvailability(); });
+selFit.addEventListener('change', refreshPreview);
+selPlan.addEventListener('change', updatePrice);
+Array.prototype.forEach.call(form.querySelectorAll('input[name="pay"]'), function (r) { r.addEventListener('change', updatePrice); });
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var res = $('bookResult'), err = validateForm(form), btn = $('bookSubmit');
+  if (!err && !state.img) {
+    var imgField = fileInput.parentNode;
+    imgField.querySelector('.err').textContent = 'ارفع صورة الإعلان أولًا: اضغط على المركبة أو على زر «اختيار صورة».';
+    err = { field: imgField, msg: 'ارفع صورة الإعلان أولًا.' };
+  } else if (state.img) { fileInput.parentNode.querySelector('.err').textContent = ''; }
+  if (err) { showFirstError(res, err); return; }
+  busy(btn, 'جارٍ تجهيز الطلب…');
+  var z = selZ.value, pay = payValue(), q = quote(z, pay, selPlan.value);
+  var payText = pay === 'cash' ? 'كاش' : 'تقسيط على ' + q.n + ' دفعات (≈ ' + fmt(q.per) + ' جنيه للدفعة)';
+  var lines = ['طلب حجز إعلان جديد - MD7 Group - عرض الشركات 70 إعلان فترة محدودة', '',
+    'نوع المركبة: ' + VEHICLES[selV.value].label,
+    'مكان الإعلان: ' + ZONES[z],
+    'الصورة: ' + state.name + ' (لم تُرسل تلقائيًا، سأرفقها يدويًا في هذه المحادثة)',
+    'مدة الإعلان: ' + C.durations[parseInt(selDur.value, 10) || 0],
+    'باقة مرات الظهور: ' + q.plan.label + ' — ' + q.plan.desc,
+    'طريقة الدفع: ' + payText,
+    'السعر الأساسي: ' + fmt(q.base) + ' جنيه',
+    'الزيادة (' + pct(q.pct) + '): ' + fmt(q.inc) + ' جنيه',
+    'الإجمالي التقديري: ' + fmt(q.total) + ' جنيه (يخضع للمراجعة والاتفاق)' + (C.offerActive ? ' — سعر العرض' : '')
+  ].concat(collectLines(form).filter(function (l) { return !/^(نوع المركبة|مكان الإعلان|مدة الإعلان|باقة مرات الظهور):/.test(l); }));
+  lines.push('', 'الصفحة: ' + location.href.split('#')[0] + '#advertiser');
+  var msg = lines.join('\n');
+  dispatchRequest(res, lines[0], 'معلن', VEHICLES[selV.value].label + ' / ' + ZONES[z] + ' / ' + fmt(q.total) + ' جنيه', msg,
+    'تذكير: الصورة لم تُرسل مع هذا الطلب. أرفقها يدويًا في محادثة واتساب أو في رسالة البريد.');
+});
+
+/* ====================== المعاينة ثلاثية الأبعاد (WebGL بدون مكتبات) ====================== */
+function rect(x0, x1, y0, y1) { return [[x0, y0], [x1, y0], [x1, y1], [x0, y1]]; }
+var BODY = [0.94, 0.94, 0.94];
+var VEHICLES = {
+  h1: {
+    label: 'هيونداي H1',
+    L: 5.15, W: 1.92, roofY: 1.9, wheelR: 0.37, wheelX: 1.6, lightY: 0.8, tailY: 1.0,
+    profile: [[-2.55, 0.32], [2.40, 0.32], [2.55, 0.55], [2.55, 0.95], [2.15, 1.25], [1.65, 1.9], [-2.5, 1.9], [-2.55, 1.8]],
+    windows: [rect(0.55, 1.35, 1.12, 1.72), rect(-0.5, 0.4, 1.12, 1.72), rect(-1.55, -0.65, 1.12, 1.72), rect(-2.3, -1.7, 1.12, 1.72)],
+    glass: [{ b: [2.15, 1.25], t: [1.65, 1.9], hw: 0.84 }],
+    side: { x0: -2.1, x1: 1.3, y0: 0.5, y1: 1.05 }, rear: { z0: -0.6, z1: 0.6, y0: 0.55, y1: 1.6 },
+    rearFull: { z0: -0.88, z1: 0.88, y0: 0.45, y1: 1.75 }, roofFull: { x0: -2.4, x1: 1.55, z0: -0.88, z1: 0.88 }
+  },
+  hiace: {
+    label: 'تويوتا هاي إس',
+    L: 5.38, W: 1.88, roofY: 2.15, wheelR: 0.37, wheelX: 1.65, lightY: 0.8, tailY: 1.05,
+    profile: [[-2.69, 0.32], [2.5, 0.32], [2.69, 0.52], [2.69, 0.95], [2.5, 1.25], [2.05, 1.98], [1.95, 2.15], [-2.65, 2.15], [-2.69, 2.05]],
+    windows: [rect(0.8, 1.8, 1.35, 1.95), rect(-0.35, 0.65, 1.35, 1.95), rect(-1.5, -0.5, 1.35, 1.95), rect(-2.5, -1.65, 1.35, 1.95)],
+    glass: [{ b: [2.5, 1.25], t: [2.05, 1.98], hw: 0.82 }],
+    side: { x0: -2.4, x1: 1.5, y0: 0.5, y1: 1.25 }, rear: { z0: -0.62, z1: 0.62, y0: 0.6, y1: 1.85 },
+    rearFull: { z0: -0.85, z1: 0.85, y0: 0.45, y1: 2.0 }, roofFull: { x0: -2.5, x1: 1.85, z0: -0.85, z1: 0.85 }
+  },
+  taxi: {
+    label: 'تاكسي فيرنا',
+    L: 4.4, W: 1.7, roofY: 1.42, wheelR: 0.32, wheelX: 1.3, lightY: 0.68, tailY: 0.75,
+    profile: [[-2.2, 0.3], [2.1, 0.3], [2.2, 0.5], [2.2, 0.85], [1.35, 0.95], [0.55, 1.42], [-0.8, 1.42], [-1.5, 1.0], [-2.2, 1.0]],
+    windows: [[[1.0, 1.02], [0.0, 1.02], [0.0, 1.34], [0.58, 1.34]], [[-0.15, 1.02], [-1.2, 1.02], [-0.72, 1.34], [-0.15, 1.34]]],
+    glass: [{ b: [1.35, 0.95], t: [0.55, 1.42], hw: 0.7 }, { b: [-1.5, 1.0], t: [-0.8, 1.42], hw: 0.68 }],
+    extras: [{ c: [0.0, 1.52, 0], s: [0.9, 0.2, 0.32], col: [0.95, 0.77, 0.07] }],
+    side: { x0: -1.3, x1: 1.05, y0: 0.45, y1: 0.9 }, rear: { z0: -0.6, z1: 0.6, y0: 0.55, y1: 0.95 },
+    rearFull: { z0: -0.75, z1: 0.75, y0: 0.4, y1: 0.98 }, roofFull: { x0: -0.75, x1: 0.5, z0: -0.65, z1: 0.65 }
+  },
+  coaster: {
+    label: 'أتوبيس كوستر / روزا',
+    L: 7.0, W: 2.08, roofY: 2.62, wheelR: 0.45, wheelX: 2.25, lightY: 0.9, tailY: 1.2,
+    profile: [[-3.5, 0.42], [3.3, 0.42], [3.5, 0.65], [3.5, 1.15], [3.38, 1.4], [3.18, 2.5], [3.05, 2.62], [-3.45, 2.62], [-3.5, 2.5]],
+    windows: [rect(2.05, 2.95, 1.5, 2.35), rect(0.75, 1.95, 1.5, 2.35), rect(-0.55, 0.65, 1.5, 2.35), rect(-1.85, -0.65, 1.5, 2.35), rect(-3.15, -1.95, 1.5, 2.35)],
+    glass: [{ b: [3.38, 1.4], t: [3.18, 2.5], hw: 0.95 }],
+    side: { x0: -3.2, x1: 2.9, y0: 0.65, y1: 1.4 }, rear: { z0: -0.8, z1: 0.8, y0: 0.7, y1: 2.3 },
+    rearFull: { z0: -0.95, z1: 0.95, y0: 0.5, y1: 2.45 }, roofFull: { x0: -3.3, x1: 2.9, z0: -0.95, z1: 0.95 }
+  }
+};
+var VIEWS_CAM = { side: { yaw: 0.55, pitch: 0.2 }, rear: { yaw: -1.12, pitch: 0.2 }, full: { yaw: 0.6, pitch: 0.42 } };
+
+// جهاز ضعيف: جودة أقل (دقة أقل، بدون تنعيم، مجسمات أخفّ)، والشكل نفسه
+function isLowEnd() { var mem = navigator.deviceMemory || 4, cores = navigator.hardwareConcurrency || 4; return mem <= 3 || cores <= 4; }
+var lowEnd = isLowEnd();
+
+function initGL() {
+  var gl = null;
+  try {
+    gl = glcanvas.getContext('webgl', { antialias: !lowEnd, alpha: true }) || glcanvas.getContext('experimental-webgl');
+  } catch (e) { gl = null; }
+  if (!gl) return null;
+
+  function perspective(f, a, n, f2) { var t = 1 / Math.tan(f / 2); return [t / a, 0, 0, 0, 0, t, 0, 0, 0, 0, (f2 + n) / (n - f2), -1, 0, 0, 2 * f2 * n / (n - f2), 0]; }
+  function sub(a, b) { return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }
+  function cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
+  function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+  function norm(a) { var l = Math.sqrt(dot(a, a)) || 1; return [a[0] / l, a[1] / l, a[2] / l]; }
+  function lookAt(e, c, u) { var z = norm(sub(e, c)), x = norm(cross(u, z)), y = cross(z, x); return [x[0], y[0], z[0], 0, x[1], y[1], z[1], 0, x[2], y[2], z[2], 0, -dot(x, e), -dot(y, e), -dot(z, e), 1]; }
+  function mul(a, b) { var o = new Array(16), c, r, k, s; for (c = 0; c < 4; c++) for (r = 0; r < 4; r++) { s = 0; for (k = 0; k < 4; k++) s += a[k * 4 + r] * b[c * 4 + k]; o[c * 4 + r] = s; } return o; }
+
+  function Mesh() { this.d = []; }
+  Mesh.prototype.v = function (p, n, c, uv) { this.d.push(p[0], p[1], p[2], n[0], n[1], n[2], c[0], c[1], c[2], uv ? uv[0] : 0, uv ? uv[1] : 0); };
+  Mesh.prototype.count = function () { return this.d.length / 11; };
+  function ccw(poly) { var a = 0, i, j; for (i = 0; i < poly.length; i++) { j = (i + 1) % poly.length; a += poly[i][0] * poly[j][1] - poly[j][0] * poly[i][1]; } return a > 0 ? poly : poly.slice().reverse(); }
+  function pointInTri(p, a, b, c) {
+    var d1 = (p[0] - b[0]) * (a[1] - b[1]) - (a[0] - b[0]) * (p[1] - b[1]), d2 = (p[0] - c[0]) * (b[1] - c[1]) - (b[0] - c[0]) * (p[1] - c[1]), d3 = (p[0] - a[0]) * (c[1] - a[1]) - (c[0] - a[0]) * (p[1] - a[1]);
+    return !((d1 < 0 || d2 < 0 || d3 < 0) && (d1 > 0 || d2 > 0 || d3 > 0));
+  }
+  function triangulate(poly) {
+    var idx = poly.map(function (_, i) { return i; }), tris = [], g = 0, i, k;
+    while (idx.length > 3 && g++ < 1000) {
+      var cl = false;
+      for (i = 0; i < idx.length; i++) {
+        var a = idx[(i + idx.length - 1) % idx.length], b = idx[i], c = idx[(i + 1) % idx.length], A = poly[a], B = poly[b], C = poly[c];
+        if ((B[0] - A[0]) * (C[1] - A[1]) - (B[1] - A[1]) * (C[0] - A[0]) <= 1e-9) continue;
+        var inside = false;
+        for (k = 0; k < idx.length; k++) { var j = idx[k]; if (j === a || j === b || j === c) continue; if (pointInTri(poly[j], A, B, C)) { inside = true; break; } }
+        if (inside) continue;
+        tris.push([a, b, c]); idx.splice(i, 1); cl = true; break;
+      }
+      if (!cl) break;
+    }
+    if (idx.length === 3) tris.push([idx[0], idx[1], idx[2]]);
+    return tris;
+  }
+  function extrude(m, prof, z0, z1, col) {
+    var p = ccw(prof), t = triangulate(p), i;
+    t.forEach(function (tr) {
+      tr.forEach(function (k) { m.v([p[k][0], p[k][1], z1], [0, 0, 1], col); });
+      [tr[0], tr[2], tr[1]].forEach(function (k) { m.v([p[k][0], p[k][1], z0], [0, 0, -1], col); });
+    });
+    for (i = 0; i < p.length; i++) {
+      var a = p[i], b = p[(i + 1) % p.length], dx = b[0] - a[0], dy = b[1] - a[1], len = Math.sqrt(dx * dx + dy * dy) || 1, n = [dy / len, -dx / len, 0];
+      var A0 = [a[0], a[1], z0], A1 = [a[0], a[1], z1], B0 = [b[0], b[1], z0], B1 = [b[0], b[1], z1];
+      [A0, B0, B1, A0, B1, A1].forEach(function (q) { m.v(q, n, col); });
+    }
+  }
+  function box(m, c, s, col) { extrude(m, rect(c[0] - s[0] / 2, c[0] + s[0] / 2, c[1] - s[1] / 2, c[1] + s[1] / 2), c[2] - s[2] / 2, c[2] + s[2] / 2, col); }
+  function cylZ(m, cx, cy, z0, z1, r, col, n) { var pts = [], i, a; for (i = 0; i < n; i++) { a = i / n * Math.PI * 2; pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); } extrude(m, pts, z0, z1, col); }
+  function quad(m, p0, p1, p2, p3, col) {
+    var n = norm(cross(sub(p1, p0), sub(p3, p0))), u = [[0, 0], [1, 0], [1, 1], [0, 1]];
+    [[p0, 0], [p1, 1], [p2, 2], [p0, 0], [p2, 2], [p3, 3]].forEach(function (e) { m.v(e[0], n, col, u[e[1]]); });
+  }
+  function discY(m, y, col, n, rx, rz) { var i, a0, a1; for (i = 0; i < n; i++) { a0 = i / n * Math.PI * 2; a1 = (i + 1) / n * Math.PI * 2; m.v([0, y, 0], [0, 1, 0], col); m.v([Math.cos(a1) * rx, y, Math.sin(a1) * rz], [0, 1, 0], col); m.v([Math.cos(a0) * rx, y, Math.sin(a0) * rz], [0, 1, 0], col); } }
+  function ringY(m, r0, r1, y, col, n) {
+    var i, a0, a1, p = function (r, a) { return [Math.cos(a) * r, y, Math.sin(a) * r]; };
+    for (i = 0; i < n; i++) { a0 = i / n * Math.PI * 2; a1 = (i + 1) / n * Math.PI * 2; [p(r0, a0), p(r1, a0), p(r1, a1), p(r0, a0), p(r1, a1), p(r0, a1)].forEach(function (q) { m.v(q, [0, 1, 0], col); }); }
+  }
+  var C_GLASS = [0.15, 0.2, 0.25], C_TIRE = [0.07, 0.07, 0.07], C_HUB = [0.62, 0.62, 0.62], C_ARCH = [0.04, 0.04, 0.04], C_DARK = [0.16, 0.16, 0.16],
+      C_LIGHT = [1, 0.92, 0.65], C_RED = [0.75, 0.15, 0.12], C_GOLD = [0.83, 0.69, 0.22], C_GROUND = [0.11, 0.11, 0.11], C_SHADOW = [0.03, 0.03, 0.03], WHITE = [1, 1, 1];
+  var SEG = lowEnd ? 14 : 24;
+
+  function buildVehicle(v) {
+    var m = new Mesh(), W = v.W, L = v.L, hz = W / 2, cy = v.roofY / 2;
+    discY(m, 0, C_GROUND, 56, L * 0.85, L * 0.85); ringY(m, L * 0.85, L * 0.85 + 0.07, 0.003, C_GOLD, 72); discY(m, 0.006, C_SHADOW, 40, L * 0.58, W * 0.66);
+    extrude(m, v.profile, -hz, hz, BODY);
+    v.windows.forEach(function (w) { extrude(m, w, -hz - 0.008, hz + 0.008, C_GLASS); });
+    v.glass.forEach(function (g) {
+      var s = [g.t[0] - g.b[0], g.t[1] - g.b[1]], n = norm([s[1], -s[0], 0]), mid = [(g.b[0] + g.t[0]) / 2, (g.b[1] + g.t[1]) / 2];
+      if (n[0] * mid[0] + n[1] * (mid[1] - cy) < 0) n = [-n[0], -n[1], 0];
+      var o = 0.008, bx = g.b[0] + n[0] * o, by = g.b[1] + n[1] * o, tx = g.t[0] + n[0] * o, ty = g.t[1] + n[1] * o;
+      quad(m, [bx, by, -g.hw], [bx, by, g.hw], [tx, ty, g.hw], [tx, ty, -g.hw], C_GLASS);
+    });
+    box(m, [L / 2 + 0.01, 0.46, 0], [0.1, 0.24, W * 0.96], C_DARK); box(m, [-L / 2 - 0.01, 0.46, 0], [0.1, 0.24, W * 0.96], C_DARK);
+    [-1, 1].forEach(function (s) { box(m, [L / 2 + 0.008, v.lightY, s * W * 0.36], [0.04, 0.14, 0.3], C_LIGHT); box(m, [-L / 2 - 0.008, v.tailY, s * W * 0.38], [0.04, 0.22, 0.12], C_RED); });
+    (v.extras || []).forEach(function (e) { box(m, e.c, e.s, e.col); });
+    [v.wheelX, -v.wheelX].forEach(function (wx) {
+      [-1, 1].forEach(function (s) {
+        var zin = s * (hz - 0.24), zout = s * (hz + 0.04);
+        cylZ(m, wx, v.wheelR, s > 0 ? hz : -hz - 0.012, s > 0 ? hz + 0.012 : -hz, v.wheelR + 0.06, C_ARCH, SEG);
+        cylZ(m, wx, v.wheelR, Math.min(zin, zout), Math.max(zin, zout), v.wheelR, C_TIRE, SEG);
+        cylZ(m, wx, v.wheelR, s > 0 ? hz + 0.035 : -hz - 0.047, s > 0 ? hz + 0.047 : -hz - 0.035, v.wheelR * 0.55, C_HUB, Math.min(SEG, 16));
+      });
+    });
+    return m;
+  }
+  function planeQuad(o, u, vv, w, h) { return function (m) { var a = [o[0] + u[0] * w, o[1] + u[1] * w, o[2] + u[2] * w], d = [o[0] + vv[0] * h, o[1] + vv[1] * h, o[2] + vv[2] * h]; quad(m, o, a, [a[0] + vv[0] * h, a[1] + vv[1] * h, a[2] + vv[2] * h], d, WHITE); }; }
+  function sidePlanes(r, zs) { var w = r.x1 - r.x0, h = r.y1 - r.y0; return [planeQuad([r.x0, r.y0, zs], [1, 0, 0], [0, 1, 0], w, h), planeQuad([r.x1, r.y0, -zs], [-1, 0, 0], [0, 1, 0], w, h)]; }
+  function rearPlane(v, r) { return planeQuad([-v.L / 2 - 0.006, r.y0, r.z0], [0, 0, 1], [0, 1, 0], r.z1 - r.z0, r.y1 - r.y0); }
+  function roofPlane(v, r) { return planeQuad([r.x0, v.roofY + 0.006, r.z1], [1, 0, 0], [0, 0, -1], r.x1 - r.x0, r.z1 - r.z0); }
+  function silhouette(v, sign) {
+    var p = ccw(v.profile), tr = triangulate(p), i, minx = 1e9, maxx = -1e9, miny = 1e9, maxy = -1e9;
+    for (i = 0; i < p.length; i++) { minx = Math.min(minx, p[i][0]); maxx = Math.max(maxx, p[i][0]); miny = Math.min(miny, p[i][1]); maxy = Math.max(maxy, p[i][1]); }
+    var zs = sign * (v.W / 2 + 0.014);
+    return { w: maxx - minx, h: maxy - miny, build: function (m) { tr.forEach(function (t) { t.forEach(function (k) { var x = p[k][0], y = p[k][1], u = (x - minx) / (maxx - minx); m.v([x, y, zs], [0, 0, sign], WHITE, [sign < 0 ? 1 - u : u, (y - miny) / (maxy - miny)]); }); }); } };
+  }
+  function surfaceGroups(v, zone) {
+    if (zone === 'side') { var s = v.side; return [{ w: s.x1 - s.x0, h: s.y1 - s.y0, parts: sidePlanes(s, v.W / 2 + 0.006) }]; }
+    if (zone === 'rear') { var r = v.rear; return [{ w: r.z1 - r.z0, h: r.y1 - r.y0, parts: [rearPlane(v, r)] }]; }
+    var a = silhouette(v, 1), b = silhouette(v, -1), rf = v.rearFull, tf = v.roofFull;
+    return [{ w: a.w, h: a.h, parts: [a.build, b.build] }, { w: rf.z1 - rf.z0, h: rf.y1 - rf.y0, parts: [rearPlane(v, rf)] }, { w: tf.x1 - tf.x0, h: tf.z1 - tf.z0, parts: [roofPlane(v, tf)] }];
+  }
+
+  var VS = 'attribute vec3 aPos;attribute vec3 aNor;attribute vec3 aCol;attribute vec2 aUV;uniform mat4 uVP;varying vec3 vN;varying vec3 vC;varying vec2 vUV;void main(){vN=aNor;vC=aCol;vUV=aUV;gl_Position=uVP*vec4(aPos,1.0);}';
+  var FS = 'precision mediump float;varying vec3 vN;varying vec3 vC;varying vec2 vUV;uniform float uTexOn;uniform sampler2D uTex;void main(){vec3 n=normalize(vN);float l=0.40+0.60*max(dot(n,normalize(vec3(0.45,0.85,0.55))),0.0)+0.18*max(dot(n,normalize(vec3(-0.6,0.25,-0.5))),0.0);vec3 base=uTexOn>0.5?texture2D(uTex,vUV).rgb:vC;gl_FragColor=vec4(base*min(l,1.12),1.0);}';
+  function shader(t, s) { var x = gl.createShader(t); gl.shaderSource(x, s); gl.compileShader(x); if (!gl.getShaderParameter(x, gl.COMPILE_STATUS)) throw new Error('shader'); return x; }
+  var prog = gl.createProgram();
+  gl.attachShader(prog, shader(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, FS));
+  gl.bindAttribLocation(prog, 0, 'aPos'); gl.bindAttribLocation(prog, 1, 'aNor'); gl.bindAttribLocation(prog, 2, 'aCol'); gl.bindAttribLocation(prog, 3, 'aUV');
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error('link');
+  gl.useProgram(prog);
+  var uVP = gl.getUniformLocation(prog, 'uVP'), uTexOn = gl.getUniformLocation(prog, 'uTexOn');
+  gl.uniform1i(gl.getUniformLocation(prog, 'uTex'), 0);
+  gl.enable(gl.DEPTH_TEST);
+
+  var bufBody = gl.createBuffer(), bodyCount = 0, slots = [], drawList = [];
+  function upload(buf, mesh) { gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(mesh.d), gl.STATIC_DRAW); return mesh.count(); }
+  function bindAttribs(buf) {
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf); var S = 44;
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 3, gl.FLOAT, false, S, 0);
+    gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1, 3, gl.FLOAT, false, S, 12);
+    gl.enableVertexAttribArray(2); gl.vertexAttribPointer(2, 3, gl.FLOAT, false, S, 24);
+    gl.enableVertexAttribArray(3); gl.vertexAttribPointer(3, 2, gl.FLOAT, false, S, 36);
+  }
+  function newSlot() {
+    var t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    return { tex: t, buf: gl.createBuffer(), count: 0 };
+  }
+
+  var cur = { yaw: VIEWS_CAM.side.yaw, pitch: VIEWS_CAM.side.pitch }, tgt = { yaw: cur.yaw, pitch: cur.pitch }, raf = 0, dist = 9, targetY = 1, lost = false;
+
+  function render() {
+    var w = glcanvas.width, h = glcanvas.height;
+    if (!w || !h || lost) return;
+    gl.viewport(0, 0, w, h); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    var cp = Math.cos(cur.pitch), eye = [Math.sin(cur.yaw) * cp * dist, targetY + Math.sin(cur.pitch) * dist, Math.cos(cur.yaw) * cp * dist];
+    var vp = mul(perspective(34 * Math.PI / 180, w / h, 1, 80), lookAt(eye, [0, targetY, 0], [0, 1, 0]));
+    gl.uniformMatrix4fv(uVP, false, new Float32Array(vp));
+    gl.uniform1f(uTexOn, 0); bindAttribs(bufBody); gl.drawArrays(gl.TRIANGLES, 0, bodyCount);
+    gl.uniform1f(uTexOn, 1); gl.activeTexture(gl.TEXTURE0);
+    drawList.forEach(function (s) { gl.bindTexture(gl.TEXTURE_2D, s.tex); bindAttribs(s.buf); gl.drawArrays(gl.TRIANGLES, 0, s.count); });
+  }
+  function frame() {
+    raf = 0;
+    var dy = tgt.yaw - cur.yaw, dp = tgt.pitch - cur.pitch;
+    if (Math.abs(dy) > 0.0008 || Math.abs(dp) > 0.0008) { cur.yaw += dy * 0.14; cur.pitch += dp * 0.14; request(); } else { cur.yaw = tgt.yaw; cur.pitch = tgt.pitch; }
+    render();
+  }
+  function request() { if (!raf && !lost) raf = requestAnimationFrame(frame); }
+  function nearest(f, t) { while (t - f > Math.PI) t -= Math.PI * 2; while (t - f < -Math.PI) t += Math.PI * 2; return t; }
+  function resize() {
+    var box = $('stageBox'), r = box.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, lowEnd ? 1 : 2);
+    if (!r.width) return;
+    var w = Math.max(2, Math.round(r.width * d)), h = Math.max(2, Math.round(r.height * d));
+    if (glcanvas.width !== w || glcanvas.height !== h) { glcanvas.width = w; glcanvas.height = h; }
+    request();
+  }
+  if (window.ResizeObserver) new ResizeObserver(resize).observe($('stageBox')); else window.addEventListener('resize', resize);
+
+  var drag = null;
+  glcanvas.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, x0: e.clientX, y0: e.clientY, t: Date.now(), moved: false }; try { glcanvas.setPointerCapture(e.pointerId); } catch (x) {} });
+  glcanvas.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    if (Math.abs(e.clientX - drag.x0) > 6 || Math.abs(e.clientY - drag.y0) > 6) drag.moved = true;
+    var dx = e.clientX - drag.x; drag.x = e.clientX; cur.yaw -= dx * 0.008; tgt.yaw = cur.yaw; request();
+  });
+  glcanvas.addEventListener('pointerup', function () { var d = drag; drag = null; if (d && !d.moved && Date.now() - d.t < 600) showUpload(); });
+  glcanvas.addEventListener('pointercancel', function () { drag = null; });
+  glcanvas.addEventListener('webglcontextlost', function (e) { e.preventDefault(); lost = true; ctl = null; setMode(photoCache[selV.value] ? 'photo' : '3d'); $('modeSwitch').hidden = true; });
+
+  var adCanvas = document.createElement('canvas'), adCtx = adCanvas.getContext('2d'), TEX = lowEnd ? 512 : 1024;
+  function paint(g) {
+    var S = TEX / Math.max(g.w, g.h), W = Math.max(64, Math.round(g.w * S)), H = Math.max(64, Math.round(g.h * S)), c = adCtx;
+    adCanvas.width = W; adCanvas.height = H;
+    if (state.img) {
+      var iw = state.img.naturalWidth, ih = state.img.naturalHeight, contain = selFit.value === 'contain';
+      c.fillStyle = '#111'; c.fillRect(0, 0, W, H);
+      var k = contain ? Math.min(W / iw, H / ih) : Math.max(W / iw, H / ih);
+      c.drawImage(state.img, (W - iw * k) / 2, (H - ih * k) / 2, iw * k, ih * k);
+    } else {
+      c.fillStyle = '#D4AF37'; c.fillRect(0, 0, W, H);
+      var lw = Math.max(4, Math.min(W, H) * 0.035);
+      c.strokeStyle = '#000'; c.lineWidth = lw; c.strokeRect(lw, lw, W - 2 * lw, H - 2 * lw);
+      var label = 'ارفع صورتك هنا', size = H * 0.5, fam = ' "Segoe UI", Tahoma, Arial, sans-serif';
+      c.textAlign = 'center'; c.textBaseline = 'middle'; c.font = '800 ' + size + 'px' + fam;
+      while (size > 12 && c.measureText(label).width > W * 0.84) { size *= 0.93; c.font = '800 ' + size + 'px' + fam; }
+      c.fillStyle = '#000'; c.fillText(label, W / 2, H / 2 + size * 0.04);
+    }
+    return adCanvas;
+  }
+  function refreshAd() {
+    var v = VEHICLES[selV.value], groups = surfaceGroups(v, selZ.value);
+    drawList = groups.map(function (g, i) {
+      var slot = slots[i] || (slots[i] = newSlot()), m = new Mesh();
+      gl.bindTexture(gl.TEXTURE_2D, slot.tex); gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, paint(g));
+      g.parts.forEach(function (p) { p(m); });
+      slot.count = upload(slot.buf, m);
+      return slot;
+    });
+    request();
+  }
+  function refreshVehicle() { var v = VEHICLES[selV.value]; bodyCount = upload(bufBody, buildVehicle(v)); dist = v.L * 1.25 + 2; targetY = v.roofY * 0.48; }
+  function aim() { var vw = VIEWS_CAM[selZ.value]; tgt.yaw = nearest(cur.yaw, vw.yaw); tgt.pitch = vw.pitch; request(); }
+
+  resize(); refreshVehicle(); refreshAd(); aim();
+  return { refreshAd: refreshAd, refreshVehicle: refreshVehicle, aim: aim, resize: resize };
+}
+
+function onAdvertiserShown() {
+  if (!advShown) {
+    advShown = true;
+    try { ctl = initGL(); } catch (e) { ctl = null; }
+    updatePrice();
+    syncPhotoAvailability();
+    setMode('3d');
+  } else if (ctl) { ctl.resize(); }
+}
+
+/* ====================== لوحة الإدارة التجريبية ====================== */
+var adminTab = 'requests';
+var STATUSES = ['جديد', 'قيد المراجعة', 'معتمد', 'مرفوض'];
+var LEDGER = [
+  ['إيراد', 'عيّنة: إيراد تشغيل', 12000], ['إيراد', 'عيّنة: إيراد إعلان', 5000],
+  ['مصروف', 'عيّنة: وقود', 3000], ['مصروف', 'عيّنة: مخصص صيانة', 1500], ['مصروف', 'عيّنة: تأمين وتراخيص', 800]
+];
+function adminBlock(title, node) { var d = mk('div'); d.appendChild(mk('h3', { 'class': 'sub-title' }, title)); d.appendChild(node); return d; }
+
+function renderAdmin() {
+  var body = $('adminBody'), tabs = $('adminTabs').querySelectorAll('button'), i;
+  for (i = 0; i < tabs.length; i++) tabs[i].className = tabs[i].getAttribute('data-tab') === adminTab ? 'on' : '';
+  body.innerHTML = '';
+  if (adminTab === 'requests') renderRequests(body);
+  else if (adminTab === 'pricing') renderPricing(body);
+  else if (adminTab === 'ledger') renderLedger(body);
+  else if (adminTab === 'schedule') {
+    body.appendChild(mk('p', { 'class': 'lead' }, 'جدول تشغيل أسبوعي توضيحي (عيّنة). يُحدد الجدول الفعلي في اتفاق التشغيل.'));
+    var t = mk('table'); fillTable(t, ['اليوم', 'الحالة', 'الساعات', 'ملاحظة'], WEEKLY);
+    var w = mk('div', { 'class': 'table-wrap' }); w.appendChild(t); body.appendChild(w);
+  } else {
+    body.appendChild(mk('p', { 'class': 'lead' }, 'تقرير صيانة شهري توضيحي (عيّنة). لا تمثل أرقامًا حقيقية.'));
+    var t2 = mk('table'); fillTable(t2, ['السجل', 'العملية', 'التكلفة (جنيه)', 'الموعد القادم'], MAINT_SAMPLE);
+    var w2 = mk('div', { 'class': 'table-wrap' }); w2.appendChild(t2); body.appendChild(w2);
+  }
+}
+function renderRequests(body) {
+  var list = lsGet('md1_requests_v1'); if (!list || !list.length) list = [];
+  var types = ['مالك سيارة', 'سائق', 'معلن', 'طلب صيانة', 'انضمام صيانة'], counts = mk('div'), i;
+  for (i = 0; i < types.length; i++) {
+    var n = 0, j; for (j = 0; j < list.length; j++) if (list[j].type === types[i]) n++;
+    var s = mk('div', { 'class': 'stat' }); s.appendChild(mk('b', null, String(n))); s.appendChild(mk('span', null, types[i])); counts.appendChild(s);
+  }
+  body.appendChild(counts);
+  body.appendChild(mk('p', { 'class': 'lead' }, list.length ? 'سجل مختصر لما جهّزته على هذا الجهاز فقط. لا يحتوي أسماء أو أرقام هواتف.' : 'لا توجد طلبات مسجّلة على هذا الجهاز. تظهر هنا الطلبات التي تجهّزها من الأقسام الأخرى.'));
+  if (!list.length) return;
+  var t = mk('table'), thead = mk('thead'), hr = mk('tr'), tbody = mk('tbody'), heads = ['النوع', 'الملخص', 'الوقت', 'الحالة'];
+  for (i = 0; i < heads.length; i++) hr.appendChild(mk('th', null, heads[i]));
+  thead.appendChild(hr); t.appendChild(thead);
+  list.forEach(function (r, idx) {
+    var tr = mk('tr');
+    tr.appendChild(mk('td', null, r.type)); tr.appendChild(mk('td', null, r.summary)); tr.appendChild(mk('td', null, r.ts));
+    var td = mk('td'), sel = mk('select', { 'aria-label': 'حالة الطلب' }), k;
+    for (k = 0; k < STATUSES.length; k++) { var o = mk('option', { value: STATUSES[k] }, STATUSES[k]); if (STATUSES[k] === r.status) o.selected = true; sel.appendChild(o); }
+    sel.addEventListener('change', function () { var l = lsGet('md1_requests_v1') || []; if (l[idx]) { l[idx].status = sel.value; lsSet('md1_requests_v1', l); } });
+    td.appendChild(sel); tr.appendChild(td); tbody.appendChild(tr);
+  });
+  t.appendChild(tbody);
+  var wrap = mk('div', { 'class': 'table-wrap' }); wrap.appendChild(t); body.appendChild(wrap);
+  var clr = mk('button', { type: 'button', 'class': 'btn-link' }, 'مسح السجل المحلي');
+  clr.addEventListener('click', function () { lsSet('md1_requests_v1', []); renderAdmin(); });
+  body.appendChild(clr);
+}
+function renderPricing(body) {
+  body.appendChild(mk('p', { 'class': 'lead' }, 'جرّب تعديل الباقات ونسب الزيادة هنا. التعديل في هذه اللوحة لا يغيّر الأسعار الظاهرة للزوار، ولا يُحفظ على خادم. لاعتماد تغيير فعلي انسخ الإعدادات الناتجة وضعها في MD1_CONFIG.plans داخل الملف، أو اربطها بقاعدة بيانات لاحقًا.'));
+  var work = [], i;
+  for (i = 0; i < C.plans.length; i++) work.push({ id: C.plans[i].id, label: C.plans[i].label, pct: C.plans[i].pct, desc: C.plans[i].desc });
+  var t = mk('table'), thead = mk('thead'), hr = mk('tr'), tbody = mk('tbody');
+  ['الباقة', 'النسبة %', 'الوصف (قابل للتعديل)'].forEach(function (h) { hr.appendChild(mk('th', null, h)); });
+  thead.appendChild(hr); t.appendChild(thead);
+  work.forEach(function (p) {
+    var tr = mk('tr'), a = mk('input', { type: 'text', value: p.label, 'aria-label': 'اسم الباقة' }), b = mk('input', { type: 'number', value: String(p.pct), min: '0', step: '0.5', 'aria-label': 'نسبة الزيادة' }), c = mk('input', { type: 'text', value: p.desc, 'aria-label': 'وصف الباقة' });
+    a.addEventListener('input', function () { p.label = a.value; calc(); }); b.addEventListener('input', function () { var n = parseFloat(latinDigits(b.value)); p.pct = isFinite(n) && n >= 0 ? n : 0; calc(); }); c.addEventListener('input', function () { p.desc = c.value; calc(); });
+    [a, b, c].forEach(function (x) { var td = mk('td'); td.appendChild(x); tr.appendChild(td); });
+    tbody.appendChild(tr);
+  });
+  t.appendChild(tbody);
+  var wrap = mk('div', { 'class': 'table-wrap' }); wrap.appendChild(t); body.appendChild(wrap);
+
+  var panel = mk('div', { 'class': 'panel' });
+  var lab = mk('label', { 'for': 'adm_base', style: 'display:block;color:#aaa;font-size:13px' }, 'السعر الأساسي التجريبي (جنيه)');
+  var base = mk('input', { type: 'number', id: 'adm_base', value: String(C.prices.offer.side.cash), min: '0', step: '1000' });
+  var out = mk('div', { 'class': 'total-box' });
+  panel.appendChild(lab); panel.appendChild(base); panel.appendChild(out); body.appendChild(panel);
+  function calc() {
+    var b = parseFloat(latinDigits(base.value)); if (!isFinite(b) || b < 0) b = 0;
+    out.innerHTML = '';
+    out.appendChild(mk('div', { 'class': 'formula' }, 'السعر النهائي = السعر الأساسي + قيمة الزيادة حسب الباقة'));
+    var tb = mk('div', { 'class': 't-break' }), k;
+    for (k = 0; k < work.length; k++) {
+      var inc = Math.round(b * work[k].pct / 100), row = mk('div');
+      row.appendChild(mk('span', null, work[k].label + ' (' + pct(work[k].pct) + ')'));
+      row.appendChild(mk('b', null, '+' + fmt(inc) + ' = ' + fmt(b + inc) + ' جنيه'));
+      tb.appendChild(row);
+    }
+    out.appendChild(tb);
+    out.appendChild(mk('div', { 'class': 'formula' }, 'السعر النهائي تقديري ويخضع للمراجعة والاتفاق.'));
+    cfg.value = 'plans: ' + JSON.stringify(work, null, 2);
+  }
+  base.addEventListener('input', calc);
+  body.appendChild(mk('h3', { 'class': 'sub-title' }, 'إعدادات جاهزة للنسخ'));
+  var cfg = mk('textarea', { 'class': 'result-msg', readonly: 'readonly', style: 'direction:ltr;text-align:left;height:150px', 'aria-label': 'إعدادات الباقات' });
+  body.appendChild(cfg);
+  var cp = mk('button', { type: 'button', 'class': 'btn-line sm' }, 'نسخ الإعدادات');
+  cp.addEventListener('click', function () { copyText(cfg.value, cfg).then(function (ok) { cp.textContent = ok ? 'تم النسخ ✓' : 'تعذّر النسخ، انسخ يدويًا'; }); });
+  body.appendChild(cp);
+  calc();
+}
+function renderLedger(body) {
+  body.appendChild(mk('p', { 'class': 'lead' }, 'سجل إيرادات ومصروفات توضيحي (عيّنة بأرقام افتراضية، وليست بيانات حقيقية).'));
+  var rev = 0, exp = 0, rows = [], i;
+  for (i = 0; i < LEDGER.length; i++) { if (LEDGER[i][0] === 'إيراد') rev += LEDGER[i][2]; else exp += LEDGER[i][2]; rows.push([LEDGER[i][0], LEDGER[i][1], fmt(LEDGER[i][2])]); }
+  var t = mk('table'); fillTable(t, ['النوع', 'البند', 'المبلغ (جنيه)'], rows);
+  var wrap = mk('div', { 'class': 'table-wrap' }); wrap.appendChild(t); body.appendChild(wrap);
+  var st = mk('div');
+  [['الإيرادات', rev], ['المصروفات', exp], ['الصافي', rev - exp]].forEach(function (p) { var s = mk('div', { 'class': 'stat' }); s.appendChild(mk('b', null, fmt(p[1]))); s.appendChild(mk('span', null, p[0])); st.appendChild(s); });
+  body.appendChild(st);
+}
+$('adminTabs').addEventListener('click', function (e) { var b = e.target; if (b && b.getAttribute && b.getAttribute('data-tab')) { adminTab = b.getAttribute('data-tab'); renderAdmin(); } });
+
+/* ==================
