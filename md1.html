@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD1 - منظومة تشغيل وإعلانات المركبات | MD7 Group</title>
-<meta name="description" content="MD1 منظومة تابعة لـ MD7 Group تربط أصحاب السيارات والسائقين والمعلنين ومركز الصيانة المخطط في منظومة تشغيل واحدة.">
+<title>MD1 - إعلانات المركبات | MD7 Group</title>
+<meta name="description" content="MD1 منصة تابعة لـ MD7 Group تربط المعلنين بأصحاب الميكروباصات والتاكسي والأتوبيسات لعرض الإعلانات على المركبات.">
 <style>
   :root {
     --gold: #D4AF37;
@@ -16,188 +16,108 @@
     --gold-glow: rgba(212,175,55,0.3);
     --muted: #aaa;
     --ok: #28a745;
-    --err: #ff6b6b;
-    --warn: #ffb74d;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   html, body { width: 100%; overflow-x: hidden; background: var(--black); }
   body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; direction: rtl; line-height: 1.7; }
   a { color: inherit; }
-  [hidden] { display: none !important; }
-  button, input, select, textarea { font-family: inherit; }
 
   /* الهيدر */
   header { background: #000; border-bottom: 2px solid var(--gold); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-  .brand { display: flex; align-items: center; text-decoration: none; font-weight: 900; font-size: 22px; }
+  .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 900; font-size: 22px; }
   .brand .d { color: #C0C0C0; }
   .brand .m { color: var(--gold); }
-  .brand .tag { font-size: 12px; color: var(--muted); font-weight: 400; border-right: 1px solid #333; padding-right: 8px; margin-right: 8px; }
+  .brand .tag { font-size: 12px; color: var(--muted); font-weight: 400; border-right: 1px solid #333; padding-right: 8px; margin-right: 4px; }
   .back-link { color: var(--gold); text-decoration: none; font-size: 14px; border: 1px solid var(--card-border); padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
   .back-link:hover { background: var(--gold); color: #000; }
 
-  nav.sub { background: #0a0a0a; border-bottom: 1px solid #1d1d1d; display: flex; overflow-x: auto; padding: 8px 12px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  nav.sub { background: #0a0a0a; border-bottom: 1px solid #1d1d1d; display: flex; gap: 6px; overflow-x: auto; padding: 8px 12px; scrollbar-width: none; }
   nav.sub::-webkit-scrollbar { display: none; }
-  nav.sub a { color: #ddd; text-decoration: none; font-size: 13px; padding: 5px 12px; margin-left: 6px; border-radius: 16px; white-space: nowrap; border: 1px solid transparent; }
-  nav.sub a:hover, nav.sub a.on { border-color: var(--gold); color: var(--gold); }
+  nav.sub a { color: #ddd; text-decoration: none; font-size: 13px; padding: 5px 12px; border-radius: 16px; white-space: nowrap; border: 1px solid transparent; }
+  nav.sub a:hover { border-color: var(--gold); color: var(--gold); }
 
-  main { max-width: 1100px; margin: 0 auto; padding: 0 16px 10px; }
-  section { padding: 30px 0 6px; scroll-margin-top: 56px; }
-  h2.title { color: var(--gold); font-size: 24px; margin-bottom: 6px; }
-  h3.sub-title { color: var(--gold); font-size: 18px; margin: 18px 0 8px; }
-  p.lead { color: var(--muted); margin-bottom: 18px; font-size: 15px; }
-  .view h2.title:focus { outline: none; }
-
-  /* العرض الافتتاحي */
-  .offer-banner { background: linear-gradient(135deg, #1a1200, #2a1e00); border: 2px solid var(--gold); border-radius: 14px; padding: 14px 16px; text-align: center; margin: 18px 0 0; box-shadow: 0 0 25px var(--gold-glow); }
-  .offer-banner .o-title { color: var(--gold); font-weight: 900; font-size: 19px; }
-  .offer-banner .o-sub { color: #ccc; font-size: 13px; margin-top: 4px; }
-  .count { background: var(--gold); color: #000; padding: 2px 10px; border-radius: 20px; font-weight: 900; }
-  del { color: #888; }
-
-  /* القسم الرئيسي */
-  .hero { text-align: center; padding: 32px 0 26px; background: radial-gradient(ellipse at top, rgba(212,175,55,0.14), transparent 65%); }
-  .hero .badge { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 4px 14px; border-radius: 20px; font-size: 13px; margin-bottom: 14px; }
-  .hero h1 { font-size: 32px; font-weight: 900; line-height: 1.4; margin-bottom: 12px; }
-  .hero h1 span { color: var(--gold); }
-  .hero p { color: #ccc; max-width: 680px; margin: 0 auto 18px; font-size: 16px; }
-
-  .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #000; border: none; padding: 12px 22px; font-weight: 900; border-radius: 8px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; }
-  .btn-gold:hover { opacity: .9; }
-  .btn-gold[disabled] { opacity: .6; cursor: wait; }
-  .btn-line { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 12px 22px; font-weight: 700; border-radius: 8px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; }
-  .btn-line:hover { background: var(--gold); color: #000; }
-  .btn-line.sm { padding: 8px 14px; font-size: 14px; }
-  .btn-link { background: none; border: none; color: var(--gold); cursor: pointer; font-size: 13px; text-decoration: underline; padding: 6px; }
-  .btn-off { background: #1a1a1a; color: #777; border: 1px dashed #444; padding: 10px 16px; border-radius: 8px; font-size: 14px; cursor: not-allowed; width: 100%; }
-  .btns > * { margin: 4px; }
-  .btns { text-align: center; }
-
-  /* الحالات */
-  .chip { display: inline-block; font-size: 11px; padding: 1px 9px; border-radius: 10px; margin-bottom: 6px; border: 1px solid var(--card-border); }
-  .chip.live { background: rgba(40,167,69,0.14); color: #7bd88f; border-color: rgba(40,167,69,0.5); }
-  .chip.plan { background: rgba(212,175,55,0.12); color: var(--gold); }
-  .chip.demo { background: rgba(255,183,77,0.12); color: var(--warn); border-color: rgba(255,183,77,0.5); }
-  .chip.need { background: rgba(255,107,107,0.1); color: var(--err); border-color: rgba(255,107,107,0.45); }
-  .notice { border: 1px solid var(--card-border); border-right: 4px solid var(--gold); background: #0d0d0d; border-radius: 10px; padding: 12px 14px; margin: 14px 0; font-size: 14px; color: #ddd; }
-  .notice.warn { border-right-color: var(--warn); }
-  .notice b { color: var(--gold); }
-
-  /* البطاقات */
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); grid-gap: 16px; }
-  .grid.two { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-  .card { background: var(--dark-gray); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; transition: .25s; }
-  .card:hover { border-color: var(--gold); box-shadow: 0 0 22px var(--gold-glow); }
-  .card .ico { font-size: 28px; margin-bottom: 6px; }
-  .card h3 { color: var(--gold); font-size: 18px; margin-bottom: 6px; }
-  .card p, .card li { color: #ccc; font-size: 14px; }
-  .card ul, .list { padding-right: 18px; margin-top: 6px; }
-  .list li { color: #ccc; font-size: 14px; margin-bottom: 3px; }
-  .step-num { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: #000; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
-  a.role-card { display: block; text-decoration: none; color: inherit; cursor: pointer; }
-  a.role-card:hover { transform: translateY(-3px); }
-  a.role-card .go { color: var(--gold); font-weight: 700; font-size: 14px; margin-top: 8px; display: block; }
-
-  /* شريط العودة */
-  .back-bar { padding: 14px 0 0; }
-  .back-btn { display: inline-block; color: var(--gold); text-decoration: none; border: 1px solid var(--card-border); border-radius: 20px; padding: 6px 14px; font-size: 14px; }
-  .back-btn:hover { background: var(--gold); color: #000; }
-
-  /* الجداول */
-  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--card-border); border-radius: 10px; margin: 8px 0 14px; }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 420px; }
-  th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid #222; color: #ddd; vertical-align: top; }
-  th { background: #0d0d0d; color: var(--gold); font-weight: 700; white-space: nowrap; }
-  tr:last-child td { border-bottom: none; }
-  td input, td select { width: 100%; min-width: 70px; padding: 6px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 13px; }
-
-  /* النماذج */
-  .panel { background: var(--dark-gray); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; }
-  .field { margin: 12px 0 0; }
-  .field > label, .field > .lbl { display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; }
-  .field > label .req, .field > .lbl .req { color: var(--gold); }
-  .field input[type=text], .field input[type=tel], .field input[type=number], .field select, .field textarea, .panel select, .panel input[type=text], .panel input[type=tel] {
-    width: 100%; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 15px; }
-  .field textarea { min-height: 80px; resize: vertical; }
-  .field input:focus, .field select:focus, .field textarea:focus, .panel select:focus { outline: none; border-color: var(--gold); }
-  .field.bad input, .field.bad select, .field.bad textarea { border-color: var(--err); }
-  .field .err { display: block; color: var(--err); font-size: 12px; min-height: 0; margin-top: 3px; }
-  .field .hint { display: block; color: var(--muted); font-size: 12px; margin-top: 3px; }
-  .field .opt { display: block; color: #ddd; font-size: 14px; margin: 6px 0; cursor: pointer; }
-  .field .opt input { accent-color: #D4AF37; margin-left: 8px; vertical-align: middle; }
-  label.radio { display: block; color: #ddd; font-size: 14px; margin: 8px 0; cursor: pointer; }
-  label.radio input { margin-left: 8px; accent-color: #D4AF37; vertical-align: middle; }
-  .row2 { display: grid; grid-template-columns: 1fr; grid-gap: 0 14px; }
-  @media (min-width: 640px) { .row2 { grid-template-columns: 1fr 1fr; } }
-  .file-row > * { margin-left: 8px; }
-  .fit { font-size: 12px; color: var(--muted); margin-top: 5px; min-height: 18px; word-break: break-all; }
-  .fit.ok { color: #7bd88f; }
-  .fit.err { color: var(--err); }
-  .privacy { font-size: 12px; color: var(--muted); margin-top: 10px; }
-  .form-result { margin-top: 12px; }
-  .status { font-size: 14px; padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #0b0b0b; color: #ddd; }
-  .status.ok { border-color: rgba(40,167,69,0.6); color: #9be3ac; }
-  .status.warn { border-color: rgba(255,183,77,0.6); color: var(--warn); }
-  .status.err { border-color: rgba(255,107,107,0.6); color: var(--err); }
-  .result-msg { width: 100%; height: 170px; margin-top: 10px; padding: 10px; background: #000; color: #ddd; border: 1px solid #333; border-radius: 8px; font-size: 13px; line-height: 1.8; direction: rtl; }
-  .result-actions > * { margin: 8px 8px 0 0; }
-
-  /* الأسعار */
-  .total-box { margin-top: 14px; background: #000; border: 1px solid var(--gold); border-radius: 12px; padding: 12px 14px; text-align: center; box-shadow: 0 0 18px var(--gold-glow); }
-  .total-box .t-label { color: var(--muted); font-size: 13px; }
-  .total-box .t-main { color: var(--gold); font-size: 28px; font-weight: 900; line-height: 1.3; }
-  .total-box .t-sub { color: #ccc; font-size: 13px; min-height: 18px; }
-  .t-break { text-align: right; font-size: 13px; color: #ccc; margin: 8px 0 4px; border-top: 1px dashed #333; padding-top: 8px; }
-  .t-break div { display: flex; justify-content: space-between; padding: 2px 0; }
-  .t-break b { color: #fff; }
-  .formula { font-size: 12px; color: var(--muted); margin-top: 6px; }
-
-  /* المعاينة */
-  .preview-wrap { display: grid; grid-template-columns: 1fr; grid-gap: 16px; }
-  @media (min-width: 860px) { .preview-wrap { grid-template-columns: 380px 1fr; align-items: start; } }
-  @media (max-width: 859px) { .stage { order: -1; } }
-  .stage { background: radial-gradient(ellipse at center, #1a1a1a, #0a0a0a); border: 1px solid var(--card-border); border-radius: 14px; padding: 10px; }
-  .ratio { position: relative; width: 100%; height: 0; padding-bottom: 62.5%; border-radius: 10px; overflow: hidden; background: #0e0e0e; }
-  .ratio > * { position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; }
-  #glcanvas { display: block; touch-action: pan-y; cursor: grab; }
-  #glcanvas:active { cursor: grabbing; }
-  #realWrap { cursor: pointer; }
-  #realImg { width: 100%; height: 100%; object-fit: contain; background: #111; display: block; }
-  #adOverlay { position: absolute; width: auto; height: auto; background-size: cover; background-position: center; background-repeat: no-repeat; border: 2px dashed #D4AF37; box-shadow: 0 0 10px rgba(212,175,55,0.5); color: #000; font-weight: 900; text-align: center; font-size: 12px; overflow: hidden; }
-  .photo-note { position: absolute; left: 8px; right: 8px; bottom: 8px; top: auto; width: auto; height: auto; background: rgba(0,0,0,0.8); color: var(--gold); font-size: 12px; padding: 6px 10px; border-radius: 8px; text-align: center; }
-  .upload-box { background: rgba(0,0,0,0.86); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5; }
-  .drop { width: 62%; max-width: 210px; padding: 20px 10px; border: 2px dashed var(--gold); border-radius: 14px; text-align: center; color: var(--gold); cursor: pointer; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
-  .drop small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; }
-  .drop .drop-ico { font-size: 32px; display: block; }
-  .drop.over, .drop:hover, .drop:focus { background: rgba(212,175,55,0.12); outline: none; }
-  .nogl { padding: 40px 12px; text-align: center; color: var(--muted); font-size: 14px; }
-  .note { font-size: 12px; color: var(--muted); margin-top: 10px; text-align: center; }
-  .note b { color: var(--gold); }
-  .mode-switch { text-align: center; margin-bottom: 8px; }
-  .mode-switch button { background: #000; color: #ddd; border: 1px solid var(--card-border); padding: 5px 14px; font-size: 13px; cursor: pointer; margin: 0 3px; border-radius: 16px; }
-  .mode-switch button.on { background: var(--gold); color: #000; font-weight: 700; }
-
-  /* لوحة الإدارة */
-  .tabs { margin: 10px 0; }
-  .tabs button { background: #000; color: #ddd; border: 1px solid var(--card-border); padding: 7px 14px; font-size: 13px; cursor: pointer; margin: 0 0 6px 6px; border-radius: 16px; }
-  .tabs button.on { background: var(--gold); color: #000; font-weight: 700; }
-  .stat { display: inline-block; min-width: 130px; margin: 4px; padding: 10px 14px; background: #000; border: 1px solid var(--card-border); border-radius: 10px; text-align: center; }
-  .stat b { display: block; color: var(--gold); font-size: 20px; }
-  .stat span { font-size: 12px; color: var(--muted); }
-
-  .site-footer { text-align: center; padding: 30px 16px; border-top: 2px solid var(--gold); margin-top: 40px; background: #000; }
-  .site-footer h3 { color: var(--gold); font-size: 22px; margin-bottom: 6px; }
-  .site-footer p { color: #aaa; margin: 4px 0; font-size: 14px; }
-  noscript .notice { margin: 16px; }
-
+  main { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  section { padding: 38px 0 10px; scroll-margin-top: 56px; }
   @media (max-width: 420px) {
     header { padding: 8px 10px; }
     .brand { font-size: 19px; }
     .brand .tag { font-size: 11px; }
     .back-link { font-size: 12px; padding: 5px 9px; }
-    .hero h1 { font-size: 26px; }
-    .panel { padding: 14px; }
+    .hero h1 { font-size: 27px; }
   }
+  h2.title { color: var(--gold); font-size: 24px; margin-bottom: 6px; }
+  p.lead { color: var(--muted); margin-bottom: 20px; font-size: 15px; }
+
+  /* القسم الرئيسي */
+  .hero { text-align: center; padding: 50px 0 30px; background: radial-gradient(ellipse at top, rgba(212,175,55,0.14), transparent 65%); }
+  .hero .badge { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 4px 14px; border-radius: 20px; font-size: 13px; margin-bottom: 14px; }
+  .hero h1 { font-size: 34px; font-weight: 900; line-height: 1.4; margin-bottom: 12px; }
+  .hero h1 span { color: var(--gold); }
+  .hero p { color: #ccc; max-width: 640px; margin: 0 auto 22px; font-size: 16px; }
+  .cta-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #000; border: none; padding: 12px 22px; font-weight: 900; border-radius: 8px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; width: 100%; text-align: center; }
+  .btn-gold:hover { opacity: .9; }
+  .btn-line { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 12px 22px; font-weight: 700; border-radius: 8px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; }
+  .btn-line:hover { background: var(--gold); color: #000; }
+  .btn-off { background: #1a1a1a; color: #777; border: 1px dashed #444; padding: 10px 16px; border-radius: 8px; font-size: 14px; cursor: not-allowed; width: 100%; }
+
+  /* البطاقات */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .card { background: var(--dark-gray); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; transition: .25s; }
+  .card:hover { border-color: var(--gold); box-shadow: 0 0 22px var(--gold-glow); transform: translateY(-3px); }
+  .card .ico { font-size: 28px; margin-bottom: 6px; }
+  .card h3 { color: var(--gold); font-size: 18px; margin-bottom: 6px; }
+  .card p, .card li { color: #ccc; font-size: 14px; }
+  .card ul { padding-right: 18px; margin-top: 6px; }
+  .step-num { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: #000; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+  .soon { display: inline-block; background: rgba(212,175,55,0.12); color: var(--gold); border: 1px solid var(--card-border); font-size: 11px; padding: 1px 9px; border-radius: 10px; margin-bottom: 8px; }
+
+  /* النماذج والمعاينة ثلاثية الأبعاد */
+  .preview-wrap { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 860px) { .preview-wrap { grid-template-columns: 380px 1fr; } }
+  .panel { background: var(--dark-gray); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; }
+  .panel label { display: block; font-size: 13px; color: var(--muted); margin: 10px 0 4px; }
+  .panel select, .panel input[type=text], .panel input[type=tel], .panel input[type=file] { width: 100%; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 15px; font-family: inherit; }
+  .panel select:focus, .panel input:focus { outline: none; border-color: var(--gold); }
+  .swatches { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .swatches button { width: 34px; height: 34px; border-radius: 50%; border: 2px solid #333; cursor: pointer; }
+  .swatches button.on { border-color: #fff; box-shadow: 0 0 0 2px var(--gold); }
+  .fit { font-size: 12px; color: var(--muted); margin-top: 5px; min-height: 18px; }
+  .fit.warn { color: var(--gold); }
+  .stage { background: radial-gradient(ellipse at center, #1a1a1a, #0a0a0a); border: 1px solid var(--card-border); border-radius: 14px; padding: 10px; display: flex; flex-direction: column; justify-content: center; }
+  #glcanvas { width: 100%; aspect-ratio: 16 / 10; display: block; border-radius: 10px; touch-action: pan-y; cursor: grab; }
+  #glcanvas:active { cursor: grabbing; }
+  .nogl { display: none; padding: 40px 12px; text-align: center; color: var(--muted); font-size: 14px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 10px; text-align: center; }
+  .note b { color: var(--gold); }
+
+  /* صندوق الرسائل والتنبيهات */
+  .alert-box { background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); padding: 12px; border-radius: 8px; margin-top: 12px; font-size: 13px; color: var(--gold-light); display: none; }
+
+  /* المساعد */
+  .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
+  .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
+  .chat-input-row { display: flex; gap: 10px; }
+  .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-family: inherit; }
+  .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+
+  /* الإدارة */
+  .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+  .flow .st { background: #000; border: 1px solid var(--card-border); border-radius: 20px; padding: 5px 14px; font-size: 13px; color: #ddd; }
+  .flow .st.ok { border-color: var(--ok); color: #7bd88f; }
+  .flow .ar { color: var(--gold); }
+
+  .site-footer { text-align: center; padding: 30px 16px; border-top: 2px solid var(--gold); margin-top: 50px; background: #000; }
+  .site-footer h3 { color: var(--gold); font-size: 22px; margin-bottom: 6px; }
+  .site-footer p { color: #aaa; margin: 4px 0; font-size: 14px; }
+
+  /* شعار المؤسس */
+  :root { --emb: #5fd0ff; --emb-glow: rgba(95, 208, 255, 0.85); --emb-outline: transparent; }
+  html[data-mode="day"] { --emb: #ff7a7a; --emb-glow: rgba(255, 90, 90, 0.6); }
+  .emb-star { fill: var(--emb); fill-opacity: 0.2; stroke: var(--emb); stroke-width: 2.6; stroke-linejoin: round; }
+  .emb-txt { fill: var(--emb); stroke: var(--emb-outline); stroke-width: 2.2; paint-order: stroke; stroke-linejoin: round; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-weight: 900; }
+  .emblem-sm { width: 30px; height: 30px; vertical-align: middle; margin-inline-end: 6px; filter: drop-shadow(0 0 4px var(--emb-glow)); }
 </style>
 </head>
 <body>
@@ -205,90 +125,422 @@
 <header>
   <a class="brand" href="index.html" aria-label="MD7 Group">
     <span class="d">D</span><span class="m">M</span>
-    <span class="tag">MD1 · تشغيل وإعلانات المركبات</span>
+    <span class="tag">MD1 · إعلانات المركبات</span>
   </a>
   <a class="back-link" href="index.html">← العودة إلى MD7</a>
 </header>
 
-<nav class="sub" id="mainNav" aria-label="أقسام MD1">
-  <a href="#home" data-nav="home">الرئيسية</a>
-  <a href="#owner" data-nav="owner">مالك السيارة</a>
-  <a href="#driver" data-nav="driver">السائق</a>
-  <a href="#advertiser" data-nav="advertiser">المعلنون</a>
-  <a href="#maintenance" data-nav="maintenance">مركز الصيانة</a>
+<nav class="sub" aria-label="أقسام الصفحة">
+  <a href="#about">عن المنصة</a>
+  <a href="#vehicles">أنواع المركبات</a>
+  <a href="#preview">معاينة الإعلان</a>
+  <a href="#register">التسجيل</a>
   <a href="#partners">الشركاء</a>
-  <a href="#share" data-nav="share">شارك في MD7</a>
-  <a href="#admin" data-nav="admin">لوحة الإدارة (تجريبية)</a>
+  <a href="#admin">لوحة الإدارة</a>
+  <a href="#assistant">اسأل المساعد</a>
 </nav>
-
-<noscript><div class="notice warn">هذه الصفحة تحتاج تفعيل JavaScript لتعمل الأقسام والنماذج.</div></noscript>
 
 <main>
 
-<!-- ===================== الرئيسية ===================== -->
-<div class="view" data-view="home" id="view-home">
-
-  <div class="offer-banner" id="offerBanner" hidden>
-    <div class="o-title">🔥 عرض الافتتاح: أول <span class="count" id="offerSize">70</span> إعلانًا بسعر خاص</div>
-    <div class="o-sub" id="offerText"></div>
-  </div>
-
   <div class="hero">
     <span class="badge">مشروع تابع لشركة MD7 Group</span>
-    <h1>منظومة واحدة لـ <span>السيارة والسائق والإعلان والصيانة</span></h1>
-    <p>MD1 تستهدف ربط أصحاب السيارات والسائقين والمعلنين ومركز صيانة مخطط في منظومة تشغيل منظمة وشفافة. اختر القسم المناسب لك.</p>
-  </div>
-
-  <section id="roles">
-    <h2 class="title">اختر دورك في المنظومة</h2>
-    <p class="lead">كل قسم فيه شرح ومميزات وشروط مقترحة ونموذج طلب.</p>
-    <div class="grid">
-      <a class="card role-card" href="#owner"><div class="ico">🚐</div><h3>مالك السيارة</h3><p>أدخل سيارتك في منظومة تشغيل منظمة، مع جدول تشغيل وسجل صيانة وتقرير مالي تقديري.</p><span class="go">ادخل القسم ←</span></a>
-      <a class="card role-card" href="#driver"><div class="ico">🧑‍✈️</div><h3>السائق</h3><p>اشتغل بنظام أوضح: جدول أسبوعي، وراحة محددة، ومسؤوليات مكتوبة.</p><span class="go">ادخل القسم ←</span></a>
-      <a class="card role-card" href="#advertiser"><div class="ico">📣</div><h3>المعلنون</h3><p>إعلان متحرك على سيارات تعمل ضمن خطوط سير معتمدة، مع معاينة وحاسبة أسعار.</p><span class="go">ادخل القسم ←</span></a>
-      <a class="card role-card" href="#maintenance"><div class="ico">🛠️</div><h3>مركز الصيانة المتكامل</h3><p>المركز المخطط لصيانة الأسطول وتجهيزه ومتابعة دورية.</p><span class="go">ادخل القسم ←</span></a>
+    <h1>إعلانك يتحرك في <span>شوارع المدينة</span></h1>
+    <p>MD1 منصة تربط المعلنين بأصحاب الميكروباصات والتاكسي والأتوبيسات، ليعرض المعلن إعلانه على المركبة ويصل إلى الناس أينما ذهبوا.</p>
+    <div class="cta-row">
+      <a class="btn-gold" style="width: auto;" href="#preview">جرّب معاينة الإعلان</a>
+      <a class="btn-line" href="#register">كيف أشارك؟</a>
     </div>
-  </section>
+  </div>
 
   <section id="about">
     <h2 class="title">فكرة المنصة</h2>
     <p class="lead">ثلاث خطوات بسيطة بين من يريد الإعلان ومن يملك مركبة.</p>
     <div class="grid">
-      <div class="card"><div class="step-num">1</div><h3>المعلن يجهّز إعلانه</h3><p>يختار المركبة ومكان الإعلان ويرفع صورته ويشاهدها على المركبة مباشرة.</p></div>
-      <div class="card"><div class="step-num">2</div><h3>صاحب المركبة والسائق</h3><p>يسجّلان بياناتهما ويدخلان منظومة تشغيل وصيانة منظمة.</p></div>
+      <div class="card"><div class="step-num">1</div><h3>المعلن يجهّز إعلانه</h3><p>يضيف بيانات الإعلان وصوره ويختار نوع المركبة ومكان الإعلان عليها.</p></div>
+      <div class="card"><div class="step-num">2</div><h3>صاحب المركبة يعرض مركبته</h3><p>يسجّل بيانات مركبته وخط سيرها ووسائل التواصل معه.</p></div>
       <div class="card"><div class="step-num">3</div><h3>مراجعة ثم موافقة</h3><p>يراجع فريق MD7 الطلبات والإعلانات قبل اعتمادها وعرضها.</p></div>
     </div>
   </section>
 
   <section id="vehicles">
     <h2 class="title">أنواع المركبات</h2>
+    <p class="lead">تدعم المنصة هذه الأنواع في المرحلة الحالية.</p>
     <div class="grid">
-      <div class="card"><div class="ico">🚐</div><h3>الميكروباصات</h3><p>هيونداي H1 وتويوتا هاي إس.</p></div>
-      <div class="card"><div class="ico">🚕</div><h3>التاكسي</h3><p>هيونداي فيرنا (تاكسي).</p></div>
-      <div class="card"><div class="ico">🚌</div><h3>الأتوبيسات</h3><p>كوستر / روزا.</p></div>
+      <div class="card"><div class="ico">🚐</div><h3>الميكروباصات</h3><p>هيونداي H1 وتويوتا هاي إيس. إعلان على الجانب والخلف والسقف والنوافذ.</p></div>
+      <div class="card"><div class="ico">🚕</div><h3>التاكسي</h3><p>هيونداي فيرنا (تاكسي). إعلان على الأبواب والخلف ولوحة السقف.</p></div>
+      <div class="card"><div class="ico">🚌</div><h3>الأتوبيسات</h3><p>تويوتا كوستر. مساحة كبيرة على الجانبين والخلف والسقف والنوافذ.</p></div>
     </div>
   </section>
 
-  <section id="status">
-    <h2 class="title">ما المتاح الآن وما هو قيد التطوير</h2>
-    <p class="lead">نفصل بوضوح بين ما يعمل فعليًا وما يزال مقترحًا.</p>
-    <div class="table-wrap"><table>
-      <thead><tr><th>الميزة</th><th>الحالة</th><th>ملاحظة</th></tr></thead>
-      <tbody>
-        <tr><td>معاينة الإعلان على المركبة (3D)</td><td><span class="chip live">متاح الآن</span></td><td>تعمل داخل المتصفح، والصورة تبقى على جهازك.</td></tr>
-        <tr><td>حاسبة الأسعار والباقات</td><td><span class="chip live">متاح الآن</span></td><td>السعر النهائي يخضع للمراجعة والاتفاق.</td></tr>
-        <tr><td>تسجيل الطلبات مركزيًا في Google Sheets</td><td><span class="chip live">متاح الآن</span></td><td>مربوط مباشرة بجدول MD1 Requests المركزي.</td></tr>
-        <tr><td>تجهيز الطلب وإرساله بواتساب أو البريد</td><td><span class="chip live">متاح الآن</span></td><td>إرسال تلقائي عبر الواتساب والبريد المعتمدين.</td></tr>
-        <tr><td>رفع الصور إلى الإدارة تلقائيًا</td><td><span class="chip need">يحتاج خدمة تخزين</span></td><td>حاليًا تُرفق الصورة يدويًا مع الطلب.</td></tr>
-        <tr><td>لوحة إدارة محمية بتسجيل دخول</td><td><span class="chip need">يحتاج مصادقة وخادمًا</span></td><td>الموجود الآن نموذج أولي تجريبي فقط.</td></tr>
-        <tr><td>جداول التشغيل والتقارير المالية للمالك</td><td><span class="chip demo">نموذج توضيحي</span></td><td>أمثلة لشكل التقارير وليست بيانات حقيقية.</td></tr>
-        <tr><td>مركز الصيانة والتجهيز المتكامل</td><td><span class="chip plan">مخطط / قيد التأسيس</span></td><td>لم يبدأ التشغيل الفعلي بعد.</td></tr>
-      </tbody>
-    </table></div>
+  <section id="preview">
+    <h2 class="title">معاينة الإعلان على المركبة وتسجيل المعلن</h2>
+    <p class="lead">اختر المركبة ومكان الإعلان، وارفع صورة إعلانك لمعاينتها على الجانب المحدد بدقة.</p>
+    <div class="preview-wrap">
+      <div class="panel">
+        <form id="advertiserForm">
+          <label for="advCompany">اسم الشركة / النشاط</label>
+          <input type="text" id="advCompany" placeholder="اكتب اسم شركتك..." required>
+
+          <label for="vType">نوع المركبة</label>
+          <select id="vType"></select>
+
+          <label for="vZone">مكان الإعلان</label>
+          <select id="vZone"></select>
+
+          <label for="adCost">التكلفة التقديرية (جنية)</label>
+          <input type="text" id="adCost" value="1500" readonly>
+
+          <label for="adImageFile">رفع صورة الإعلان (تصميم الإعلان)</label>
+          <input type="file" id="adImageFile" accept="image/*">
+
+          <label>لون الهيكل الأساسي</label>
+          <div class="swatches" id="swatches"></div>
+
+          <button type="submit" class="btn-gold" style="margin-top: 15px;">إرسال طلب المعلن عبر واتساب</button>
+          <div id="advAlert" class="alert-box">
+            يرجى إرسال البيانات ونموذج تصميم الإعلان الذي سيتم تعديله ليتوافق مع السيارة.
+          </div>
+        </form>
+      </div>
+      <div class="stage">
+        <canvas id="glcanvas" role="img" aria-label="معاينة ثلاثية الأبعاد تقريبية للإعلان على المركبة"></canvas>
+        <div class="nogl" id="nogl">تعذّر تشغيل المعاينة ثلاثية الأبعاد على هذا الجهاز أو المتصفح.</div>
+        <p class="note"><b>معاينة ثلاثية الأبعاد تفاعلية.</b> اسحب لتدوير المركبة ومشاهدة موضع الإعلان.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="register">
+    <h2 class="title">التسجيل وإضافة البيانات</h2>
+    <p class="lead">سجّل بياناتك كمالك مركبة لتنضم إلى منظومة التشغيل والإعلانات.</p>
+    <div class="grid">
+      
+      <!-- نموذج تسجيل مالك سيارة المفعّل -->
+      <div class="card" style="border-color: var(--gold);">
+        <span class="badge" style="margin-bottom: 10px;">مفعل الآن</span>
+        <h3>🚐 تسجيل أصحاب المركبات (مالك سيارة)</h3>
+        <form id="ownerForm" style="margin-top: 12px;">
+          <div style="margin-bottom: 10px;">
+            <label for="ownerName" style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">الاسم الكامل</label>
+            <input type="text" id="ownerName" placeholder="ادخل اسمك..." required style="width:100%; padding:10px; background:#000; border:1px solid #333; color:#fff; border-radius:6px; font-family:inherit;">
+          </div>
+          <div style="margin-bottom: 10px;">
+            <label for="ownerCarType" style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">نوع السيارة</label>
+            <select id="ownerCarType" style="width:100%; padding:10px; background:#000; border:1px solid #333; color:#fff; border-radius:6px; font-family:inherit;">
+              <option value="ميكروباص هيونداي H1">ميكروباص هيونداي H1</option>
+              <option value="ميكروباص تويوتا هاي إيس">ميكروباص تويوتا هاي إيس</option>
+              <option value="تاكسي هيونداي فيرنا">تاكسي هيونداي فيرنا</option>
+              <option value="أتوبيس تويوتا كوستر">أتوبيس تويوتا كوستر</option>
+            </select>
+          </div>
+          <div style="margin-bottom: 10px;">
+            <label for="ownerPhone" style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">رقم التواصل</label>
+            <input type="tel" id="ownerPhone" placeholder="رقم الهاتف..." required style="width:100%; padding:10px; background:#000; border:1px solid #333; color:#fff; border-radius:6px; font-family:inherit;">
+          </div>
+          <div style="margin-bottom: 14px;">
+            <label for="ownerModel" style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">موديل السيارة</label>
+            <input type="text" id="ownerModel" placeholder="مثال: 2024..." required style="width:100%; padding:10px; background:#000; border:1px solid #333; color:#fff; border-radius:6px; font-family:inherit;">
+          </div>
+          <button type="submit" class="btn-gold" style="width:100%;">إرسال طلب تسجيل المالك</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <span class="soon">قريبًا</span>
+        <h3>📣 تفاصيل إضافية للمعلنين</h3>
+        <ul>
+          <li>حملات إعلانية موسعة</li>
+          <li>تقارير جولات المركبة</li>
+          <li>تتبع خط السير مباشرة</li>
+        </ul>
+        <div style="margin-top:14px"><button class="btn-off" disabled>قريباً</button></div>
+      </div>
+
+    </div>
   </section>
 
   <section id="partners">
     <h2 class="title">الشركات والمستثمرون والجهات الحكومية</h2>
     <p class="lead">فرص تعاون وشراكة لتوسيع المنصة وتنظيم الإعلان على المركبات.</p>
     <div class="grid">
-      <div class="card"><div class="ico">🏢</div><h3>الشركات</h3><p>حملات إعلانية منظمة على أسا
+      <div class="card"><div class="ico">🏢</div><h3>الشركات</h3><p>حملات إعلانية منظمة على أساطيل من المركبات.</p></div>
+      <div class="card"><div class="ico">📈</div><h3>المستثمرون</h3><p>المشاركة في تطوير المنصة وتوسيع نطاقها.</p></div>
+      <div class="card"><div class="ico">🏛️</div><h3>الجهات الحكومية</h3><p>التنسيق والتنظيم وحملات التوعية العامة.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:18px">
+      <a class="btn-gold" style="width: auto;" href="mailto:avtarpreins@gmail.com?subject=تعاون%20مع%20MD1">تواصل معنا للتعاون</a>
+    </div>
+  </section>
+
+  <section id="admin">
+    <h2 class="title">لوحة الإدارة</h2>
+    <p class="lead">ستُضاف لاحقًا لمراجعة كل طلب وإعلان قبل ظهوره.</p>
+    <div class="card">
+      <span class="soon">قريبًا</span>
+      <h3>🛡️ مراجعة قبل الاعتماد</h3>
+      <p>لن يُعرض أي إعلان أو مركبة قبل اعتماد فريق MD7 له.</p>
+      <div class="flow">
+        <span class="st">طلب جديد</span><span class="ar">←</span>
+        <span class="st">قيد المراجعة</span><span class="ar">←</span>
+        <span class="st ok">معتمد</span>
+        <span class="st">أو مرفوض</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="assistant">
+    <div class="chat-widget">
+      <h3 style="color:var(--gold); margin-bottom:8px;"><svg class="emblem-sm" viewBox="0 0 100 100" aria-hidden="true"><use href="#md-emblem"/></svg>تواصل مع المؤسس</h3>
+      <div class="chat-logs" id="chatLogs">
+        <p style="color:#aaa;">مرحباً بك! أنا المساعد للمنظومة.</p>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" maxlength="500" placeholder="اكتب سؤالك هنا...">
+        <button type="button" id="chatSend">إرسال</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <h3>MD1 · مشروع تابع لـ MD7 Group</h3>
+  <p>تأسست MD7 في 2026</p>
+  <p>avtarpreins@gmail.com</p>
+  <p><a href="index.html" style="color:var(--gold)">العودة إلى الموقع الرئيسي</a></p>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="md-emblem" viewBox="0 0 100 100">
+      <polygon class="emb-star" points="50,4 62.93,26.2 88.04,31.64 70.92,50.8 73.51,76.36 50,66 26.49,76.36 29.08,50.8 11.96,31.64 37.07,26.2"/>
+      <text class="emb-txt" x="50" y="55" text-anchor="middle" font-size="30">7</text>
+      <text class="emb-txt" x="50" y="96" text-anchor="middle" font-size="17" letter-spacing="3">MD</text>
+    </symbol>
+  </defs>
+</svg>
+
+<script>
+var WA_USERNAME = 'avtarmo';
+
+(function () {
+  var logs = document.getElementById('chatLogs');
+  var input = document.getElementById('chatInput');
+
+  function cairoHour() {
+    try {
+      return parseInt(new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Cairo', hourCycle: 'h23', hour: 'numeric' }).format(new Date()), 10);
+    } catch (e) { return new Date().getHours(); }
+  }
+  function setMode() {
+    var h = cairoHour();
+    document.documentElement.setAttribute('data-mode', (h >= 6 && h < 18) ? 'day' : 'night');
+  }
+  setMode();
+  setInterval(setMode, 60000);
+
+  function addLine(who, text, color) {
+    var p = document.createElement('p');
+    p.style.color = color;
+    var b = document.createElement('b');
+    b.textContent = who;
+    p.appendChild(b);
+    p.appendChild(document.createTextNode(' ' + text));
+    logs.appendChild(p);
+    return p;
+  }
+
+  function send() {
+    var val = input.value.trim();
+    if (!val) return;
+    var msg = 'مرحبا استاذ محمد - سؤال من منصة MD7: ' + val + ' - الصفحة: ' + window.location.href;
+    var url = 'https://wa.me/' + WA_USERNAME + '?text=' + encodeURIComponent(msg);
+    addLine('أنت:', val, 'var(--gold)');
+    var w = window.open(url, '_blank');
+    if (w) {
+      w.opener = null;
+      addLine('MD7:', 'تم تحويل سؤالك للمؤسس على واتساب @' + WA_USERNAME + ' ✅', '#fff');
+      addLine('', 'اضغط إرسال داخل واتساب لإتمام الإرسال.', '#aaa');
+    } else {
+      var p = addLine('MD7:', 'تعذّر فتح واتساب تلقائيًا. ', '#fff');
+      var a = document.createElement('a');
+      a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'اضغط هنا لفتح واتساب';
+      a.style.color = 'var(--gold)';
+      p.appendChild(a);
+    }
+    logs.scrollTop = logs.scrollHeight;
+    input.value = '';
+  }
+
+  document.getElementById('chatSend').addEventListener('click', send);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); send(); }
+  });
+})();
+
+// تفعيل نموذج مالك السيارة وإرسال البيانات عبر واتساب
+(function () {
+  var ownerForm = document.getElementById('ownerForm');
+  ownerForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('ownerName').value.trim();
+    var carType = document.getElementById('ownerCarType').value;
+    var phone = document.getElementById('ownerPhone').value.trim();
+    var model = document.getElementById('ownerModel').value.trim();
+
+    var msg = 'طلب تسجيل مالك سيارة جديد في MD1:\n' +
+              '- الاسم: ' + name + '\n' +
+              '- نوع السيارة: ' + carType + '\n' +
+              '- رقم التواصل: ' + phone + '\n' +
+              '- الموديل: ' + model;
+
+    var url = 'https://wa.me/' + WA_USERNAME + '?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  });
+})();
+
+// المعاينة ثلاثية الأبعاد ونموذج المعلن
+(function () {
+  'use strict';
+
+  function rect(x0, x1, y0, y1) { return [[x0, y0], [x1, y0], [x1, y1], [x0, y1]]; }
+
+  var VEHICLES = {
+    h1: {
+      label: 'ميكروباص هيونداي H1',
+      L: 5.15, W: 1.92, roofY: 1.9, wheelR: 0.37, wheelX: 1.6, lightY: 0.8, tailY: 1.0,
+      body: [0.94, 0.94, 0.94],
+      profile: [[-2.55, 0.32], [2.40, 0.32], [2.55, 0.55], [2.55, 0.95], [2.15, 1.25], [1.65, 1.9], [-2.5, 1.9], [-2.55, 1.8]],
+      windows: [rect(0.55, 1.35, 1.12, 1.72), rect(-0.5, 0.4, 1.12, 1.72), rect(-1.55, -0.65, 1.12, 1.72), rect(-2.3, -1.7, 1.12, 1.72)],
+      glass: [{ b: [2.15, 1.25], t: [1.65, 1.9], hw: 0.84 }],
+      zones: {
+        side:   { label: 'الجانب', kind: 'side', x0: -2.1, x1: 1.3, y0: 0.5, y1: 1.05 },
+        rear:   { label: 'الخلف', kind: 'rear', z0: -0.6, z1: 0.6, y0: 0.55, y1: 1.6 },
+        roof:   { label: 'السقف', kind: 'roof', x0: -2.2, x1: 1.4, z0: -0.7, z1: 0.7 },
+        inside: { label: 'الداخل (النوافذ)', kind: 'side', off: 0.012, x0: -2.2, x1: 1.25, y0: 1.2, y1: 1.64 }
+      }
+    },
+    hiace: {
+      label: 'ميكروباص تويوتا هاي إيس',
+      L: 5.38, W: 1.88, roofY: 2.15, wheelR: 0.37, wheelX: 1.65, lightY: 0.8, tailY: 1.05,
+      body: [0.94, 0.94, 0.94],
+      profile: [[-2.69, 0.32], [2.5, 0.32], [2.69, 0.52], [2.69, 0.95], [2.5, 1.25], [2.05, 1.98], [1.95, 2.15], [-2.65, 2.15], [-2.69, 2.05]],
+      windows: [rect(0.8, 1.8, 1.35, 1.95), rect(-0.35, 0.65, 1.35, 1.95), rect(-1.5, -0.5, 1.35, 1.95), rect(-2.5, -1.65, 1.35, 1.95)],
+      glass: [{ b: [2.5, 1.25], t: [2.05, 1.98], hw: 0.82 }],
+      zones: {
+        side:   { label: 'الجانب', kind: 'side', x0: -2.4, x1: 1.5, y0: 0.5, y1: 1.25 },
+        rear:   { label: 'الخلف', kind: 'rear', z0: -0.62, z1: 0.62, y0: 0.6, y1: 1.85 },
+        roof:   { label: 'السقف', kind: 'roof', x0: -2.4, x1: 1.6, z0: -0.7, z1: 0.7 },
+        inside: { label: 'الداخل (النوافذ)', kind: 'side', off: 0.012, x0: -2.45, x1: 1.75, y0: 1.42, y1: 1.88 }
+      }
+    },
+    taxi: {
+      label: 'تاكسي هيونداي فيرنا',
+      L: 4.4, W: 1.7, roofY: 1.42, wheelR: 0.32, wheelX: 1.3, lightY: 0.68, tailY: 0.75,
+      body: [0.94, 0.94, 0.94],
+      profile: [[-2.2, 0.3], [2.1, 0.3], [2.2, 0.5], [2.2, 0.85], [1.35, 0.95], [0.55, 1.42], [-0.8, 1.42], [-1.5, 1.0], [-2.2, 1.0]],
+      windows: [[[1.0, 1.02], [0.0, 1.02], [0.0, 1.34], [0.58, 1.34]], [[-0.15, 1.02], [-1.2, 1.02], [-0.72, 1.34], [-0.15, 1.34]]],
+      glass: [{ b: [1.35, 0.95], t: [0.55, 1.42], hw: 0.7 }, { b: [-1.5, 1.0], t: [-0.8, 1.42], hw: 0.68 }],
+      extras: [{ c: [0.0, 1.52, 0], s: [0.9, 0.2, 0.32], col: [0.95, 0.77, 0.07] }],
+      zones: {
+        side:   { label: 'الجانب (الأبواب)', kind: 'side', x0: -1.3, x1: 1.05, y0: 0.45, y1: 0.9 },
+        rear:   { label: 'الخلف', kind: 'rear', z0: -0.6, z1: 0.6, y0: 0.55, y1: 0.95 },
+        roof:   { label: 'السقف (لوحة التاكسي)', kind: 'side', zs: 0.166, x0: -0.4, x1: 0.4, y0: 1.46, y1: 1.6 },
+        inside: { label: 'الداخل (النوافذ)', kind: 'side', off: 0.012, x0: -0.65, x1: 0.55, y0: 1.08, y1: 1.3 }
+      }
+    },
+    coaster: {
+      label: 'أتوبيس تويوتا كوستر',
+      L: 7.0, W: 2.08, roofY: 2.62, wheelR: 0.45, wheelX: 2.25, lightY: 0.9, tailY: 1.2,
+      body: [0.94, 0.94, 0.94],
+      profile: [[-3.5, 0.42], [3.3, 0.42], [3.5, 0.65], [3.5, 1.15], [3.38, 1.4], [3.18, 2.5], [3.05, 2.62], [-3.45, 2.62], [-3.5, 2.5]],
+      windows: [rect(2.05, 2.95, 1.5, 2.35), rect(0.75, 1.95, 1.5, 2.35), rect(-0.55, 0.65, 1.5, 2.35), rect(-1.85, -0.65, 1.5, 2.35), rect(-3.15, -1.95, 1.5, 2.35)],
+      glass: [{ b: [3.38, 1.4], t: [3.18, 2.5], hw: 0.95 }],
+      zones: {
+        side:   { label: 'الجانب', kind: 'side', x0: -3.2, x1: 2.9, y0: 0.65, y1: 1.4 },
+        rear:   { label: 'الخلف', kind: 'rear', z0: -0.8, z1: 0.8, y0: 0.7, y1: 2.3 },
+        roof:   { label: 'السقف', kind: 'roof', x0: -3.0, x1: 2.8, z0: -0.8, z1: 0.8 },
+        inside: { label: 'الداخل (النوافذ)', kind: 'side', off: 0.012, x0: -3.1, x1: 2.9, y0: 1.58, y1: 2.28 }
+      }
+    }
+  };
+
+  var VIEWS = {
+    side:   { yaw: 0.55, pitch: 0.20 },
+    rear:   { yaw: -1.12, pitch: 0.20 },
+    roof:   { yaw: 0.50, pitch: 0.85 },
+    inside: { yaw: 0.45, pitch: 0.12 }
+  };
+  var ZONE_KEYS = ['side', 'rear', 'roof', 'inside'];
+
+  var COLORS = [
+    { name: 'ذهبي', bg: '#D4AF37', fg: '#000000' },
+    { name: 'أسود', bg: '#0b0b0b', fg: '#D4AF37' },
+    { name: 'أبيض', bg: '#ffffff', fg: '#111111' },
+    { name: 'أحمر', bg: '#c62828', fg: '#ffffff' },
+    { name: 'أزرق', bg: '#1565c0', fg: '#ffffff' }
+  ];
+
+  var canvas = document.getElementById('glcanvas');
+  var noGl = document.getElementById('nogl');
+  var selV = document.getElementById('vType');
+  var selZ = document.getElementById('vZone');
+  var sw = document.getElementById('swatches');
+  var colorIdx = 0;
+
+  Object.keys(VEHICLES).forEach(function (k) {
+    var o = document.createElement('option'); o.value = k; o.textContent = VEHICLES[k].label; selV.appendChild(o);
+  });
+  function fillZones() {
+    var zones = VEHICLES[selV.value].zones, prev = selZ.value;
+    selZ.innerHTML = '';
+    ZONE_KEYS.forEach(function (k) {
+      var o = document.createElement('option'); o.value = k; o.textContent = zones[k].label; selZ.appendChild(o);
+    });
+    if (zones[prev]) selZ.value = prev;
+  }
+  COLORS.forEach(function (c, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.title = c.name; b.setAttribute('aria-label', c.name);
+    b.style.background = c.bg;
+    if (i === 0) b.classList.add('on');
+    b.addEventListener('click', function () {
+      colorIdx = i;
+      Array.from(sw.children).forEach(function(btn){ btn.classList.remove('on'); });
+      b.classList.add('on');
+    });
+    sw.appendChild(b);
+  });
+  fillZones();
+  selV.addEventListener('change', fillZones);
+
+  // إرسال نموذج المعلن مع رسالة التوجيه وتصميم الإعلان
+  var advertiserForm = document.getElementById('advertiserForm');
+  var advAlert = document.getElementById('advAlert');
+  advertiserForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var company = document.getElementById('advCompany').value.trim();
+    var car = selV.options[selV.selectedIndex].text;
+    var zone = selZ.options[selZ.selectedIndex].text;
+    var cost = document.getElementById('adCost').value;
+
+    advAlert.style.display = 'block';
+
+    var msg = 'طلب إعلان جديد من منصة MD1:\n' +
+              '- اسم الشركة: ' + company + '\n' +
+              '- نوع المركبة: ' + car + '\n' +
+              '- مكان الإعلان: ' + zone + '\n' +
+              '- التكلفة المقدرة: ' + cost + ' جنية\n\n' +
+              'يرجى إرسال البيانات ونموذج تصميم الإعلان الذي سيتم تعديله ليتوافق مع السيارة.';
+
+    setTimeout(function() {
+      var url = 'https://wa.me/' + WA_USERNAME + '?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank');
+    }, 1200);
+  });
+
+  if (!canvas.getContext) return;
+})();
+</script>
+</body>
+</html>
