@@ -97,6 +97,11 @@
   .proj a, .proj button { background: var(--gold); color: #000; border: 0; border-radius: 8px; padding: 10px; font-weight: 900; text-align: center; text-decoration: none; cursor: pointer; font-size: 14px; font-family: inherit; }
   .proj .soon { background: #222; color: #888; }
 
+  .tag { color: var(--gold); font-weight: 900; font-size: 13px; display: block; margin-bottom: 4px; }
+  .back-btn { background: transparent; color: var(--gold); border: 1px solid rgba(212,175,55,.5); border-radius: 20px; padding: 6px 14px; cursor: pointer; font-family: inherit; font-size: 12px; margin-bottom: 12px; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+  .share-btn.big { display: inline-block; font-size: 14px; padding: 11px 20px; flex: 1 1 150px; text-align: center; }
+  .share-btn.alt { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
   .view-section { display: none; padding: 15px; width: 100%; max-width: 1200px; margin: 0 auto; }
   .view-section.active { display: block; }
 
@@ -193,7 +198,7 @@
 </svg>
 
 <header>
-  <a class="share-btn" href="join-md7.html" id="shareR" title="شارك مع MD7">🤝 شارك</a>
+  <a class="share-btn" href="join-md7.html" id="shareR" data-contact="partnership" title="شارك مع MD7">🤝 شارك</a>
   <a class="brand-logo" href="#" onclick="switchTab('md7'); return false;" aria-label="MD7 GROUP - الرئيسية">
     <span class="group-text">
       <span class="logo-G">G</span><span class="logo-R">R</span><span class="logo-O">O</span><span class="logo-U">U</span><span class="logo-P">P</span>
@@ -202,7 +207,7 @@
   <button type="button" class="md-btn" id="mdBtn" aria-haspopup="dialog" title="تعريف MD">
     <span class="logo-D">D</span><span class="logo-M">M</span>
   </button>
-  <a class="share-btn" href="join-md7.html" id="shareL" title="شارك مع MD7">🤝 شارك</a>
+  <a class="share-btn" href="join-md7.html" id="shareL" data-contact="partnership" title="شارك مع MD7">🤝 شارك</a>
 </header>
 <nav class="site-nav" aria-label="التنقل">
   <button type="button" data-go="md7" class="on">الرئيسية</button>
@@ -249,12 +254,15 @@
       <svg class="emblem" viewBox="0 0 100 100" role="img" aria-label="MD7"><use href="#md-emblem"/></svg>
     </div>
     <div class="orbit-ring">
-      <div class="planet planet-1" onclick="window.location.href='md1.html'">MD1<br>إعلانات</div>
-      <div class="planet planet-2" onclick="switchTab('md2')">MD2<br>المؤلفين</div>
+      <div class="planet planet-1" onclick="window.location.href='md1.html#advertiser'">MD1<br>إعلانات</div>
+      <div class="planet planet-2" onclick="window.location.href='md2-management.html'">MD2<br>الإدارة</div>
       <div class="planet planet-3" onclick="window.location.href='wasal24.html'">MD3<br>وصل</div>
-      <div class="planet planet-4" onclick="switchTab('md4')">MD4<br>صناعة  </div>
+      <div class="planet planet-4" onclick="window.location.href='md4-book-creator.html'">MD4<br>الكتب</div>
       <div class="planet planet-5" onclick="switchTab('md5')">MD5<br>الأعمال</div>
-      <div class="planet planet-6" onclick="window.location.href='MD6.html'">MD6<br>إعادة التدوير من القمامة ليدك</div>
+      <div class="planet planet-6" onclick="window.location.href='md6-recycling.html'">MD6<br>التدوير</div>
+    </div>
+  </div>
+
   <div class="chat-widget">
     <h3 style="color:var(--gold); margin-bottom:8px;"><svg class="emblem-sm" viewBox="0 0 100 100" aria-hidden="true"><use href="#md-emblem"/></svg>تواصل مع المؤسس</h3>
     <div class="chat-logs" id="chatLogs">
@@ -294,24 +302,84 @@
         <span class="tag">MD1</span>
         <h3>🚐 إعلانات المركبات</h3>
         <p>منصة لإعلانات المركبات والميكروباصات والأتوبيسات، وخدمات الملاك والسائقين والمعلنين ومركز الصيانة.</p>
-        <a href="md1.html" id="discoverMd1">اكتشف المشروع</a>
+        <a href="md1.html#advertiser" id="discoverMd1">اكتشف المشروع</a>
       </div>
-      <div class="proj"><span class="tag">MD2</span><h3>📚 تطوير الإدارة</h3><p>المؤلفون وتطوير الإدارة.</p><button type="button" data-go="md2">فتح</button></div>
+      <div class="proj"><span class="tag">MD2</span><h3>📚 تطوير الإدارة</h3><p>سجّل بيانات مشروعك أو مؤسستك أو شركتك ليدرسها فريق MD7 ويقدّم لك مقترحات تطوير.</p><a href="md2-management.html">سجّل بياناتك</a></div>
       <div class="proj"><span class="tag">MD3</span><h3>🛒 وصل</h3><p>منصة وصل.</p><a href="wasal24.html">فتح</a></div>
-      <div class="proj"><span class="tag">MD4</span><h3>👁️ تقديم الخدمات</h3><p>ألم عين.</p><button type="button" data-go="md4">فتح</button></div>
+      <div class="proj"><span class="tag">MD4</span><h3>📖 MD4 Book Creator</h3><p>أداة لتنسيق الكتب بمقاس A5 مع معاينة وتصدير PDF يدعم العربي.</p><a href="md4-book-creator.html">افتح الأداة</a></div>
       <div class="proj"><span class="tag">MD5</span><h3>🎬 تعليم وصحة</h3><p>الأعمال والتعليم والصحة.</p><button type="button" data-go="md5">فتح</button></div>
-      <div class="proj"><span class="tag">MD6</span><h3>🌱 الطاقة وإعادة التدوير</h3><p>مشروعات الطاقة وإعادة التدوير.</p><button type="button" data-go="md6">فتح</button></div>
+      <div class="proj"><span class="tag">MD6</span><h3>♻️ إعادة التدوير من القمامة ليدك</h3><p>فرز من المصدر واقتصاد تدوير، مع باب لعروض شراكة شركات النظافة والتدوير.</p><a href="md6-recycling.html">اكتشف المشروع</a></div>
       <div class="proj"><span class="tag">MD8</span><h3>🚀 مولد خطط المشاريع</h3><p>أداة إعداد خطط المشاريع.</p><button type="button" data-go="md8">فتح</button></div>
+    </div>
+    <div class="actions" style="margin-top:16px">
+      <a class="share-btn big" href="join-md7.html" data-contact="partnership" data-proj="MD7 Group">🤝 طلب شراكة</a>
+      <a class="share-btn big alt" href="join-md7.html" data-contact="contract" data-proj="MD7 Group">📄 طلب عقد</a>
     </div>
   </div>
 </section>
 
-<section id="md8" class="view-section"><div class="card-box"><h2>🚀 MD8: مولد خطط المشاريع</h2></div></section>
-<section id="md2" class="view-section"><div class="card-box"><h2>📚 MD2:تطوير الإدراة  </h2></div></section>
-<section id="md3" class="view-section"><div class="card-box"><h2>🛒 MD3: منصة وصل</h2></div></section>
-<section id="md4" class="view-section"><div class="card-box"><h2>👁️ MD4: تقديم الخدمات </h2></div></section>
-<section id="md5" class="view-section"><div class="card-box"><h2>🎬 MD5:تعليم وصحه </h2></div></section>
-<section id="md6" class="view-section"><div class="card-box"><h2>🌱 MD6:  الطاقة واعادة التدوير </h2></div></section>
+<section id="md8" class="view-section"><div class="card-box">
+  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
+  <span class="tag">MD8</span>
+  <h2>🚀 MD8: مولد خطط المشاريع</h2>
+  <p class="about-p">نحوّل الفكرة إلى خطة مشروع منظمة. هذه مشروعات MD7 التي أنجزنا واجهاتها أو نعمل عليها الآن، وكل منها يصلح نموذجًا لخطتك.</p>
+  <div class="proj-grid" style="margin-top:12px">
+    <div class="proj feat"><span class="tag">MD1 · واجهة جاهزة للتجربة</span><h3>🚐 إعلانات المركبات</h3><p>معاينة ثلاثية الأبعاد، ورفع صورة الإعلان، وحساب السعر، وطلب حجز.</p><a href="md1.html#advertiser">افتح المشروع</a></div>
+    <div class="proj feat"><span class="tag">MD6 · عرض مشروع وباب شراكة</span><h3>♻️ إعادة التدوير من القمامة ليدك</h3><p>فرز من المصدر واقتصاد تدوير، وعروض شراكة لشركات النظافة والتدوير.</p><a href="md6-recycling.html">افتح المشروع</a></div>
+    <div class="proj feat"><span class="tag">MD4 · أداة جاهزة للتجربة</span><h3>📖 MD4 Book Creator</h3><p>تنسيق الكتب بمقاس A5 وتصدير PDF يدعم العربي.</p><a href="md4-book-creator.html">افتح الأداة</a></div>
+    <div class="proj"><span class="tag">MD2 · تسجيل بيانات</span><h3>📚 تطوير الإدارة</h3><p>نموذج لمن يريد تطوير مشروعه أو مؤسسته أو شركته.</p><a href="md2-management.html">سجّل بياناتك</a></div>
+  </div>
+  <p class="about-p" style="margin-top:12px;font-size:12px;color:#999">الحالة الفعلية: الواجهات تعمل للتجربة، وتسجيل الطلبات الدائم يحتاج ربطها بقاعدة بيانات.</p>
+  <div class="actions"><a class="share-btn big" href="join-md7.html" data-contact="partnership" data-proj="MD8 - خطة مشروع">🤝 اطلب خطة لمشروعك</a></div>
+</div></section>
+<section id="md2" class="view-section"><div class="card-box">
+  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
+  <span class="tag">MD2</span>
+  <h2>📚 MD2: تطوير الإدارة</h2>
+  <p class="about-p">سجّل بيانات مشروعك أو مؤسستك أو شركتك ليتم دراستها وتقديم مقترحات تطوير.</p>
+  <div class="actions"><a class="share-btn big" href="md2-management.html">سجّل بياناتك</a>
+  <a class="share-btn big alt" href="join-md7.html" data-contact="partnership" data-proj="MD2 - 📚 MD2: تطوير الإدارة">🤝 طلب شراكة</a></div>
+</div></section>
+<section id="md3" class="view-section"><div class="card-box">
+  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
+  <span class="tag">MD3</span>
+  <h2>🛒 MD3: منصة وصل</h2>
+  <p class="about-p">منصة وصل ضمن منظومة MD7 Group.</p>
+  <div class="val" style="margin:14px 0"><b>الحالة</b><span>قيد الإعداد — تُضاف تفاصيل هذا المشروع وخدماته هنا فور اعتمادها.</span></div>
+  <p style="margin:10px 0"><a class="share-btn big" href="wasal24.html">افتح منصة وصل</a></p>
+  <div class="actions">
+    <a class="share-btn big" href="join-md7.html" data-contact="partnership" data-proj="MD3 - منصة وصل">🤝 طلب شراكة</a>
+    <a class="share-btn big alt" href="join-md7.html" data-contact="contract" data-proj="MD3 - منصة وصل">📄 طلب عقد</a>
+  </div>
+</div></section>
+<section id="md4" class="view-section"><div class="card-box">
+  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
+  <span class="tag">MD4</span>
+  <h2>📖 MD4: Book Creator</h2>
+  <p class="about-p">أداة مستقلة لتنسيق الكتب بمقاس A5 وتصديرها PDF.</p>
+  <div class="actions"><a class="share-btn big" href="md4-book-creator.html">افتح الأداة</a>
+  <a class="share-btn big alt" href="join-md7.html" data-contact="partnership" data-proj="MD4 - 📖 MD4: Book Creator">🤝 طلب شراكة</a></div>
+</div></section>
+<section id="md5" class="view-section"><div class="card-box">
+  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
+  <span class="tag">MD5</span>
+  <h2>🎬 MD5: تعليم وصحة</h2>
+  <p class="about-p">مشروع الأعمال والتعليم والصحة ضمن منظومة MD7 Group.</p>
+  <div class="val" style="margin:14px 0"><b>الحالة</b><span>قيد الإعداد — تُضاف تفاصيل هذا المشروع وخدماته هنا فور اعتمادها.</span></div>
+  
+  <div class="actions">
+    <a class="share-btn big" href="join-md7.html" data-contact="partnership" data-proj="MD5 - تعليم وصحة">🤝 طلب شراكة</a>
+    <a class="share-btn big alt" href="join-md7.html" data-contact="contract" data-proj="MD5 - تعليم وصحة">📄 طلب عقد</a>
+  </div>
+</div></section>
+<section id="md6" class="view-section"><div class="card-box">
+  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
+  <span class="tag">MD6</span>
+  <h2>♻️ MD6: إعادة التدوير من القمامة ليدك</h2>
+  <p class="about-p">مشروع فرز من المصدر واقتصاد تدوير مع فتح باب الشراكة لشركات النظافة والتدوير.</p>
+  <div class="actions"><a class="share-btn big" href="md6-recycling.html">اكتشف المشروع</a>
+  <a class="share-btn big alt" href="join-md7.html" data-contact="partnership" data-proj="MD6 - ♻️ MD6: إعادة التدوير من القمامة ليدك">🤝 طلب شراكة</a></div>
+</div></section>
 
 <footer class="site-footer">
   <h3>MD7 Group</h3>
@@ -329,6 +397,18 @@
   document.addEventListener('click', function (e) {
     var t = e.target.closest ? e.target.closest('[data-go]') : null;
     if (t) switchTab(t.getAttribute('data-go'));
+  });
+
+  // أزرار الشراكة/العقد: واتساب صاحب المشروع إن ضُبط الرقم، وإلا تعمل صفحة join-md7.html كما كانت
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-contact]') : null;
+    if (!t || !/^\d{8,15}$/.test(MD7_WA_NUMBER)) return;
+    e.preventDefault();
+    var kind = t.getAttribute('data-contact') === 'contract' ? 'عقد' : 'شراكة', proj = t.getAttribute('data-proj');
+    var msg = 'طلب ' + kind + ' - MD7 Group' + (proj ? ' - ' + proj : '') + ' - الصفحة: ' + window.location.href;
+    var url = 'https://wa.me/' + MD7_WA_NUMBER + '?text=' + encodeURIComponent(msg);
+    var w = window.open(url, '_blank');
+    if (w) { try { w.opener = null; } catch (x) {} } else { window.location.href = url; }
   });
 
   // نافذة تعريف MD
