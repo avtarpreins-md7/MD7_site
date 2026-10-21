@@ -3,82 +3,244 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>إعادة التدوير من القمامة ليدك - MD7 Group</title>
+<title>MD6 - إعادة التدوير من القمامة ليدك</title>
+<meta name="description" content="مشروع إعادة التدوير من القمامة ليدك: فرز من المصدر واقتصاد تدوير، مع باب لعروض الشراكة">
 <style>
-:root{--gold:#D4AF37;--gold2:#B8860B;--bg:#050505;--card:#121212;--txt:#f2f2f2}
+:root{--gold:#D4AF37;--gold2:#B8860B;--bg:#050505;--card:#121212;--line:#2a2a2a;--txt:#f2f2f2;--mut:#a9a9a9;--ok:#7bd88f;--bad:#ff7b7b}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Tahoma,sans-serif;line-height:1.9}
-header{background:#000;border-bottom:2px solid var(--gold);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50}
-header b{color:var(--gold)}
-header a{color:var(--gold);border:1px solid var(--gold);border-radius:20px;padding:6px 14px;text-decoration:none;font-size:13px}
-main{max-width:800px;margin:0 auto;padding:16px 14px 50px}
-.hero{text-align:center;padding:30px 10px 20px}
-.badge{border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:4px 16px;font-size:12px;display:inline-block;margin-bottom:12px}
-.hero h1{color:var(--gold);font-size:28px}
-.card{background:var(--card);border:1px solid rgba(212,175,55,.4);border-radius:14px;padding:18px;margin-bottom:16px}
-.card h2{color:var(--gold);font-size:20px;margin-bottom:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
-.tile{border:1px solid rgba(212,175,55,.35);border-radius:10px;padding:12px;background:#0a0a0a}
-.tile b{display:block;color:var(--gold)}
-.form{background:#0a0a0a;border:1px solid var(--gold);border-radius:12px;padding:16px;margin-top:20px}
-.form label{display:block;color:var(--gold);font-size:13px;margin:10px 0 4px}
-.form input,.form select,.form textarea{width:100%;background:#121212;border:1px solid #333;border-radius:8px;padding:10px;color:#fff}
-.btn{display:block;width:100%;background:linear-gradient(90deg,#D4AF37,#B8860B);color:#000;border:none;border-radius:10px;padding:12px;font-weight:700;font-size:16px;margin-top:14px;cursor:pointer}
+html,body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Tahoma,Arial,sans-serif;overflow-x:hidden}
+body{line-height:1.8}
+header{background:#000;border-bottom:2px solid var(--gold);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;position:sticky;top:0;z-index:50}
+header b{color:var(--gold);font-size:16px}
+header a{color:var(--gold);border:1px solid var(--gold);border-radius:20px;padding:5px 12px;font-size:12px;text-decoration:none;white-space:nowrap}
+main{max-width:780px;margin:0 auto;padding:14px 12px 40px}
+.hero{text-align:center;padding:26px 10px 14px}
+.hero .badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:3px 14px;font-size:12px;margin-bottom:10px}
+.hero h1{color:var(--gold);font-size:26px;line-height:1.5}
+.hero p{color:#ddd;margin-top:8px;font-size:15px}
+.card{background:var(--card);border:1px solid rgba(212,175,55,.45);border-radius:12px;padding:14px;margin-bottom:14px}
+.card h2{color:var(--gold);font-size:18px;margin-bottom:8px}
+.card h3{color:var(--gold);font-size:15px;margin:10px 0 4px}
+.card p,.card li{color:#ddd;font-size:14px}
+.card ul{padding-inline-start:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:8px}
+.tile{border:1px solid rgba(212,175,55,.35);border-radius:10px;padding:10px;background:#0a0a0a}
+.tile b{display:block;color:var(--gold);margin-bottom:2px}
+.tile span{color:#bbb;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+th{background:#000;color:var(--gold);padding:8px;text-align:right}
+td{padding:8px;border:1px solid #2a2a2a;color:#ddd;vertical-align:top}
+td:first-child{color:#fff;font-weight:700;white-space:nowrap}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{flex:1;background:transparent;color:var(--gold);border:1px solid rgba(212,175,55,.5);border-radius:10px;padding:10px 6px;font:700 14px inherit;font-family:inherit;cursor:pointer}
+.tabs button.on{background:var(--gold);color:#000}
+label{display:block;font-size:13px;color:#ddd;margin:10px 0 4px}
+label .req{color:var(--gold)}
+input[type=text],input[type=tel],input[type=number],textarea,select{width:100%;background:#000;color:#fff;border:1px solid #3a3a3a;border-radius:8px;padding:10px;font-family:inherit;font-size:15px}
+textarea{min-height:90px;resize:vertical}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:var(--bad)}
+.err{color:var(--bad);font-size:12px;display:block;min-height:0}
+.chk{display:flex;gap:8px;align-items:flex-start;margin:12px 0;font-size:13px;color:#ddd}
+.chk input{width:20px;height:20px;margin-top:3px;flex:0 0 auto}
+.btn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border:0;border-radius:10px;padding:12px 16px;font:900 15px inherit;font-family:inherit;cursor:pointer;text-align:center;text-decoration:none;display:block;width:100%;margin-top:10px}
+.btn.line{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.btn.sm{display:inline-block;width:auto;padding:7px 12px;font-size:12px}
+.status{margin-top:10px;padding:10px;border-radius:8px;font-size:13px;border:1px solid var(--line)}
+.status.ok{border-color:var(--ok);color:var(--ok)}.status.warn{border-color:var(--gold);color:var(--gold)}.status.bad{border-color:var(--bad);color:var(--bad)}
+.result-msg{margin-top:8px;min-height:140px;font-size:13px}
+.note{font-size:12px;color:var(--mut);margin-top:8px}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:20px 12px;border-top:1px solid var(--gold)}
+svg.flow{width:100%;height:auto;display:block;margin:8px 0}
 </style>
 </head>
 <body>
-<header><b>MD7 Group | إعادة التدوير</b><a href="/">الرئيسية</a></header>
+<header><b>MD6</b><a href="index.html">← MD7 Group</a></header>
 <main>
-  <div class="hero">
-    <div class="badge">MD6 • مشروع بيئي استثماري</div>
-    <h1>إعادة التدوير من القمامة ليدك</h1>
-    <p>نحول المخلفات لنظام أرباح مستدام - شراكة بين شركات النظافة وشركات إعادة التدوير بإدارة وتشغيل من MD7</p>
+
+<section class="hero">
+  <span class="badge">MD6 · الطاقة وإعادة التدوير</span>
+  <h1>إعادة التدوير من القمامة ليدك</h1>
+  <p>مشروع للتحول من جمع المخلفات والتخلص منها إلى <b>اقتصاد التدوير</b>: فرز من المصدر، وقيمة اقتصادية من المخلفات.</p>
+  <p class="note">مقترح مشروع مقدَّم من MD7 Group لتطوير المشاريع والمؤسسات.</p>
+</section>
+
+<div class="card">
+  <h2>جوهر الفكرة</h2>
+  <p>بدل التعامل مع المخلفات كعبء يُتخلص منه بالكامل، يتحول التعامل معها إلى فرز أولي وتصنيف نوعي من خلال أدوات مناسبة، فتصبح المخلفات مادة ذات قيمة اقتصادية.</p>
+  <svg class="flow" viewBox="0 0 640 150" role="img" aria-label="مسار المخلفات من الجمع إلى الفرز إلى مصانع التدوير">
+    <g font-family="Tahoma,Arial,sans-serif" font-size="15" text-anchor="middle">
+      <rect x="500" y="40" width="130" height="64" rx="10" fill="#0a0a0a" stroke="#D4AF37"/><text x="565" y="68" fill="#D4AF37">جمع المخلفات</text><text x="565" y="90" fill="#bbb" font-size="12">نقاط ومحطات مجهزة</text>
+      <rect x="255" y="40" width="130" height="64" rx="10" fill="#0a0a0a" stroke="#D4AF37"/><text x="320" y="68" fill="#D4AF37">الفرز والتصنيف</text><text x="320" y="90" fill="#bbb" font-size="12">أدوات فرز أولية</text>
+      <rect x="10" y="40" width="130" height="64" rx="10" fill="#0a0a0a" stroke="#D4AF37"/><text x="75" y="68" fill="#D4AF37">مصانع وتجار التدوير</text><text x="75" y="90" fill="#bbb" font-size="12">توريد حسب الاتفاق</text>
+      <path d="M498 72 H390" stroke="#D4AF37" stroke-width="2" fill="none"/><path d="M398 66 L388 72 L398 78" fill="none" stroke="#D4AF37" stroke-width="2"/>
+      <path d="M253 72 H145" stroke="#D4AF37" stroke-width="2" fill="none"/><path d="M153 66 L143 72 L153 78" fill="none" stroke="#D4AF37" stroke-width="2"/>
+    </g>
+  </svg>
+  <div class="grid">
+    <div class="tile"><b>المواد العضوية وبقايا الطعام</b><span>تُجمع منفصلة وتُوجَّه لمصانع التسميد العضوي (الكمبوست).</span></div>
+    <div class="tile"><b>البلاستيك واللدائن</b><span>تُفرز وتُكبس وتُسلَّم لمصانع إعادة تدوير البلاستيك.</span></div>
+    <div class="tile"><b>الورق والكرتون</b><span>يُعزل ويُورَّد لمصانع تدوير الورق والكرتون.</span></div>
+    <div class="tile"><b>المعادن والزجاج والزجاجات</b><span>تُصنَّف حسب طبيعتها وتُورَّد للتجار والشركات المعتمدة.</span></div>
   </div>
-  <div class="card">
-    <h2>فكرة المشروع</h2>
-    <div class="grid">
-      <div class="tile"><b>1. التجميع</b><span>شركات النظافة تجمع مفروز من المصدر</span></div>
-      <div class="tile"><b>2. الفرز الذكي</b><span>سيستم MD7 لفرز بلاستيك / ورق / معدن</span></div>
-      <div class="tile"><b>3. التحويل</b><span>شركات التدوير تحول لمنتج نهائي</span></div>
-      <div class="tile"><b>4. البيع</b><span>منصة MD7 تبيع المنتج</span></div>
-    </div>
+</div>
+
+<div class="card">
+  <h2>ماذا يتغير في التشغيل؟</h2>
+  <h3>قيمة اقتصادية إضافية</h3>
+  <ul><li>جمع وفرز وتجهيز المواد القابلة للتدوير داخل نقاط ومحطات مجهزة.</li>
+  <li>اتفاقيات توريد مع مصانع وتجار التدوير بأسعار تسليم محددة.</li>
+  <li>يتحول الفرز إلى مصدر دخل إضافي يغطي تكاليف التطوير، وفق ما يُتفق عليه.</li></ul>
+  <h3>تطوير المعدات والسيارات بأقل تكلفة</h3>
+  <ul><li>دراسة هندسية وميدانية للسيارات والمعدات الموجودة بدل شراء أسطول جديد بالكامل.</li>
+  <li>مقترحات لتعديل الصناديق وقواطع الجمع لتدعم التجميع الفرزي المباشر أثناء الحركة.</li></ul>
+  <h3>حاويات القمامة ونظام التثبيت بالرصيف (تصور أولي للدراسة)</h3>
+  <ul><li>مادة صلبة متوسطة الوزن، سهلة التنظيف، لا تحتفظ بالروائح.</li>
+  <li>تثبيت معدني/شكلي في الرصيف يمنع السرقة أو التحرك العشوائي.</li>
+  <li>سهولة التفريغ: عند وصول سيارة الجمع يُفتح التثبيت بسهولة ثم يُعاد.</li></ul>
+  <h3>فائدة مباشرة للعمال</h3>
+  <ul><li>تقليل الجهد البدني وتنظيم الجمع والفرز، ومزيد من الراحة والأمان أثناء العمل.</li></ul>
+  <p class="note">هذا تصور أولي قابل للدراسة والتطوير، وليس وعدًا بنتائج مالية محددة.</p>
+</div>
+
+<div class="card">
+  <h2>من المستفيد؟</h2>
+  <table>
+    <tr><th>الجهة</th><th>الفائدة المتوقعة</th></tr>
+    <tr><td>شركات النظافة والخدمات البيئية</td><td>تحديث المعدات، ومصدر دخل جديد، وتحسين الصورة والهوية.</td></tr>
+    <tr><td>عمال الجمع الميدانيون</td><td>بيئة عمل منظمة وجهد بدني أقل.</td></tr>
+    <tr><td>شركات ومصانع إعادة التدوير</td><td>مواد مفروزة منتظمة التوريد وبأسعار متفق عليها.</td></tr>
+    <tr><td>صاحب الفكرة والمطوّر</td><td>مقابل عادل (نسبة/شراكة) يُتفق عليه كتابيًا.</td></tr>
+    <tr><td>البيئة والمجتمع</td><td>تلوث أقل ونشاط اقتصادي مستدام.</td></tr>
+  </table>
+  <p class="note">حفظ الحقوق: يُحفظ للفكرة صاحبها ويُنظَّم العائد بين الأطراف بنسبة أو شراكة عادلة بعد الاتفاق.</p>
+</div>
+
+<div class="card" id="join">
+  <h2>اعرض شراكتك</h2>
+  <p>نفتح الباب أمام <b>شركات النظافة</b> و<b>شركات إعادة التدوير</b> لتقديم عروض شراكة. نعرض عليك من MD7: دراسة ميدانية، وتصور لنظام الفرز والتشغيل، ونموذج توريد وعائد يُتفق عليه.</p>
+  <div class="tabs" style="margin-top:10px">
+    <button type="button" class="on" id="tabClean">شركة نظافة / خدمات بيئة</button>
+    <button type="button" id="tabRecy">شركة إعادة تدوير / مصنع / تاجر</button>
   </div>
-  <div class="card">
-    <h2>صياغة اقتراح لشركة بيئية</h2>
-    <p><b style="color:var(--gold)">لمن العرض؟</b><br>• شركات النظافة<br>• شركات إعادة التدوير<br>• هيئات وبلديات<br>• مستثمري الاقتصاد الأخضر</p>
-    <br>
-    <p><b style="color:var(--gold)">ماذا نقدم؟</b><br>• نظام تتبع GPS + QR<br>• تطبيق للمواطن بنظام نقاط<br>• لوحة تحكم أرباح<br>• عقود وتسويق</p>
-  </div>
-  <div class="card">
-    <h2>نموذج الربح</h2>
-    <div class="grid">
-      <div class="tile"><b>شركة النظافة 40%</b><span>قيمة بيع + تقليل دفن</span></div>
-      <div class="tile"><b>شركة التدوير 40%</b><span>خامات رخيصة ومستمرة</span></div>
-      <div class="tile"><b>MD7 النظام 20%</b><span>تشغيل ومنصة وتسويق</span></div>
-    </div>
-  </div>
-  <div class="form">
-    <h2 style="color:var(--gold);text-align:center">طلب شراكة</h2>
-    <label>اسم الشركة</label><input id="cname">
-    <label>نوع الجهة</label><select id="ctype"><option>شركة نظافة</option><option>شركة إعادة تدوير</option><option>هيئة حكومية</option><option>مستثمر</option></select>
-    <label>المدينة</label><input id="city">
-    <label>حجم المخلفات اليومي</label><select id="vol"><option>أقل من 1 طن</option><option>1-5 طن</option><option>5-20 طن</option><option>أكثر من 20 طن</option></select>
-    <label>رقم واتساب</label><input id="phone">
-    <label>ماذا تريد من الشراكة؟</label><textarea id="msg"></textarea>
-    <button class="btn" onclick="sendWA()">إرسال طلب الشراكة - واتساب MD7</button>
-  </div>
+  <div id="hostClean"></div>
+  <div id="hostRecy" hidden></div>
+  <p class="note">الطلب هنا عرض شراكة أولي لبدء التواصل، وليس عقدًا. أي التزام مالي يتم بالاتفاق المكتوب.</p>
+</div>
+
+<div class="card">
+  <h2>عقد أو شراكة مباشرة</h2>
+  <button type="button" class="btn line" id="cBtn">📄 طلب عقد / شراكة عبر واتساب</button>
+  <div id="cBtnSt" role="status" aria-live="polite"></div>
+  <p class="note">المؤسس ورئيس الكيان والتطوير التنفيذي: أ. محمد رضوان.</p>
+</div>
+
 </main>
+<footer>MD7 Group — لتطوير المشاريع والمؤسسات</footer>
 <script>
-function sendWA(){
-  const c=document.getElementById('cname').value||'-';
-  const t=document.getElementById('ctype').value;
-  const ci=document.getElementById('city').value||'-';
-  const v=document.getElementById('vol').value;
-  const p=document.getElementById('phone').value||'-';
-  const m=document.getElementById('msg').value||'-';
-  const text=`طلب شراكة - إعادة التدوير MD7%0A🏢${c}%0A📌${t}%0A📍${ci}%0A♻️${v}%0A📱${p}%0A💬${m}`;
-  window.open(`https://wa.me/201000000000?text=${text}`,'_blank');
+(function () {
+'use strict';
+
+var CFG = { whatsappNumber: '', contactEmail: 'avtarpreins@gmail.com' };
+function $(id){return document.getElementById(id);}
+function mk(t,a,x){var e=document.createElement(t),k;if(a)for(k in a){if(k==='class')e.className=a[k];else e.setAttribute(k,a[k]);}if(x!=null)e.textContent=x;return e;}
+function waReady(){return /^\d{8,15}$/.test(String(CFG.whatsappNumber||''));}
+function waUrl(t){return 'https://wa.me/'+CFG.whatsappNumber+'?text='+encodeURIComponent(t);}
+function mailUrl(s,b){return 'mailto:'+CFG.contactEmail+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(b);}
+function copyText(t,area){return new Promise(function(res){try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){res(true);},function(){res(fb());});return;}}catch(e){}res(fb());function fb(){try{area.focus();area.select();return document.execCommand('copy');}catch(e){return false;}}});}
+
+function buildForm(host, spec) {
+  var form = mk('form', { novalidate: '', id: spec.id });
+  spec.fields.forEach(function (f) {
+    var w = mk('div', { 'class': 'field', 'data-n': f.n }), id = spec.id + '_' + f.n, el;
+    if (f.t === 'check') {
+      var l = mk('label', { 'class': 'chk', 'for': id }); el = mk('input', { type: 'checkbox', id: id, name: f.n });
+      l.appendChild(el); l.appendChild(document.createTextNode(f.txt)); w.appendChild(l);
+    } else {
+      var lb = mk('label', { 'for': id }, f.l + (f.req ? ' ' : '')); if (f.req) lb.appendChild(mk('span', { 'class': 'req' }, '*')); w.appendChild(lb);
+      if (f.t === 'select') { el = mk('select', { id: id, name: f.n }); el.appendChild(mk('option', { value: '' }, 'اختر...')); f.opts.forEach(function (o) { el.appendChild(mk('option', { value: o }, o)); }); }
+      else if (f.t === 'textarea') el = mk('textarea', { id: id, name: f.n, maxlength: String(f.max || 800) });
+      else { el = mk('input', { type: f.t === 'tel' ? 'tel' : (f.t === 'number' ? 'number' : 'text'), id: id, name: f.n, maxlength: String(f.max || 80) }); if (f.t === 'tel') el.setAttribute('inputmode', 'tel'); if (f.t === 'number') { el.setAttribute('min', '0'); el.setAttribute('inputmode', 'numeric'); } }
+      w.appendChild(el);
+    }
+    w.appendChild(mk('small', { 'class': 'err' }));
+    form.appendChild(w);
+  });
+  var btn = mk('button', { type: 'submit', 'class': 'btn' }, spec.submit); form.appendChild(btn);
+  var res = mk('div', { role: 'status', 'aria-live': 'polite' }); form.appendChild(res);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true, lines = [];
+    spec.fields.forEach(function (f) {
+      var w = form.querySelector('[data-n="' + f.n + '"]'), el = w.querySelector('input,select,textarea'), er = w.querySelector('.err'), v = f.t === 'check' ? el.checked : el.value.trim(), msg = '';
+      if (f.req && (f.t === 'check' ? !v : !v)) msg = f.t === 'check' ? 'يلزم الموافقة للمتابعة.' : 'هذا الحقل مطلوب.';
+      else if (f.t === 'tel' && v && (v.replace(/\D/g, '').length < 8 || !/^[+\d][\d\s\-]{6,19}$/.test(v))) msg = 'اكتب رقمًا صحيحًا (أرقام فقط).';
+      w.classList.toggle('bad', !!msg); er.textContent = msg; if (msg) ok = false;
+      if (!msg && f.t !== 'check' && v) lines.push(f.l + ': ' + v);
+    });
+    if (!ok) { setStatus(res, 'bad', 'راجع الحقول المطلوبة ثم أعد المحاولة.'); var b = form.querySelector('.bad'); if (b && b.scrollIntoView) b.scrollIntoView(); return; }
+    dispatch(res, spec.msgTitle + '\n\n' + lines.join('\n'), spec.msgTitle);
+  });
+  host.appendChild(form);
 }
+function setStatus(el, k, m) { el.innerHTML = ''; el.appendChild(mk('div', { 'class': 'status ' + k }, m)); }
+function dispatch(res, message, title) {
+  res.innerHTML = '';
+  var opened = false, blocked = false;
+  if (waReady()) { var w = null; try { w = window.open(waUrl(message), '_blank'); } catch (e) {} if (w) { try { w.opener = null; } catch (e2) {} opened = true; } else blocked = true; }
+  res.appendChild(mk('div', { 'class': 'status ' + (opened ? 'ok' : 'warn') },
+    opened ? 'فُتح واتساب والطلب جاهز. لم يُرسل بعد: اضغط «إرسال» داخل واتساب لإتمامه.'
+    : blocked ? 'منع المتصفح فتح واتساب تلقائيًا. استخدم الزر أدناه أو انسخ الطلب.'
+    : 'تم تجهيز طلبك لكنه لم يُرسل بعد، فواتساب غير مفعّل على هذه الصفحة. انسخ الطلب وأرسله بالبريد الإلكتروني أو لفريق MD7. لا تُحفظ بياناتك في أي مكان.'));
+  var area = mk('textarea', { 'class': 'result-msg', readonly: '', 'aria-label': 'نص الطلب' }); area.value = message; res.appendChild(area);
+  var row = mk('div'), cp = mk('button', { type: 'button', 'class': 'btn line sm' }, 'نسخ الطلب');
+  cp.addEventListener('click', function () { copyText(message, area).then(function (ok) { cp.textContent = ok ? 'تم النسخ ✓' : 'حدد النص وانسخه يدويًا'; }); });
+  row.appendChild(cp);
+  var a = mk('a', { 'class': 'btn line sm', href: mailUrl(title, message), style: 'margin-inline-start:8px' }, 'إرسال بالبريد'); row.appendChild(a);
+  if (waReady()) row.appendChild(mk('a', { 'class': 'btn line sm', href: waUrl(message), target: '_blank', rel: 'noopener', style: 'margin-inline-start:8px' }, 'فتح واتساب'));
+  res.appendChild(row);
+}
+function contactBtn(id, text) {
+  var b = $(id); if (!b) return;
+  b.addEventListener('click', function () {
+    var st = $(id + 'St'); st.innerHTML = '';
+    if (waReady()) { var u = waUrl(text), w = window.open(u, '_blank'); if (w) { try { w.opener = null; } catch (e) {} setStatus(st, 'ok', 'فُتح واتساب والرسالة جاهزة. اضغط «إرسال» لإتمام الطلب.'); } else window.location.href = u; }
+    else { setStatus(st, 'warn', 'واتساب غير مفعّل بعد (لم يُضبط رقم). لم يُرسل شيء. راسلنا على ' + CFG.contactEmail); }
+  });
+}
+
+
+buildForm($('hostClean'), {
+  id: 'cleanForm', submit: 'أرسل عرض الشراكة', msgTitle: 'عرض شراكة - شركة نظافة / خدمات بيئة - MD7 Group - MD6 إعادة التدوير من القمامة ليدك',
+  fields: [
+    { n: 'org', l: 'اسم الشركة', t: 'text', req: 1, max: 80 },
+    { n: 'name', l: 'اسم المسؤول', t: 'text', req: 1, max: 60 },
+    { n: 'phone', l: 'رقم التواصل', t: 'tel', req: 1, max: 20 },
+    { n: 'area', l: 'المدينة / منطقة العمل', t: 'text', req: 1, max: 80 },
+    { n: 'cars', l: 'عدد سيارات ومعدات الجمع تقريبًا', t: 'number' },
+    { n: 'workers', l: 'عدد العمال تقريبًا', t: 'number' },
+    { n: 'need', l: 'ما الذي تريده من النظام والتشغيل؟', t: 'select', opts: ['دراسة وتطوير المعدات والسيارات', 'نظام فرز وتشغيل كامل', 'ربط بمصانع وتجار التدوير', 'أخرى'] },
+    { n: 'notes', l: 'ملاحظات', t: 'textarea', max: 600 },
+    { n: 'consent', l: '', t: 'check', req: 1, txt: 'أوافق على استخدام بياناتي للتواصل بخصوص هذا العرض فقط.' }
+  ]
+});
+buildForm($('hostRecy'), {
+  id: 'recyForm', submit: 'أرسل عرض الشراكة', msgTitle: 'عرض شراكة - شركة إعادة تدوير / مصنع / تاجر - MD7 Group - MD6 إعادة التدوير من القمامة ليدك',
+  fields: [
+    { n: 'org', l: 'اسم الشركة أو المصنع', t: 'text', req: 1, max: 80 },
+    { n: 'name', l: 'اسم المسؤول', t: 'text', req: 1, max: 60 },
+    { n: 'phone', l: 'رقم التواصل', t: 'tel', req: 1, max: 20 },
+    { n: 'area', l: 'المدينة / موقع المصنع', t: 'text', req: 1, max: 80 },
+    { n: 'mat', l: 'المواد التي تستقبلها', t: 'select', req: 1, opts: ['مواد عضوية / كمبوست', 'بلاستيك', 'ورق وكرتون', 'معادن', 'زجاج', 'أكثر من نوع'] },
+    { n: 'qty', l: 'الكمية الشهرية التي تستطيع استلامها (تقريبًا)', t: 'text', max: 60 },
+    { n: 'notes', l: 'ملاحظات (شروط التسليم، الأسعار التقريبية...)', t: 'textarea', max: 600 },
+    { n: 'consent', l: '', t: 'check', req: 1, txt: 'أوافق على استخدام بياناتي للتواصل بخصوص هذا العرض فقط.' }
+  ]
+});
+$('tabClean').addEventListener('click', function () { $('hostClean').hidden = false; $('hostRecy').hidden = true; this.classList.add('on'); $('tabRecy').classList.remove('on'); });
+$('tabRecy').addEventListener('click', function () { $('hostClean').hidden = true; $('hostRecy').hidden = false; this.classList.add('on'); $('tabClean').classList.remove('on'); });
+contactBtn('cBtn', 'طلب عقد/شراكة - MD7 Group - MD6 إعادة التدوير من القمامة ليدك');
+
+})();
 </script>
 </body>
 </html>
