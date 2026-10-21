@@ -3,110 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD3 - سوق وصل24</title>
-<link rel="stylesheet" href="style.css"> <!-- ملف الـ CSS الاساسي بتاع MD7 -->
-
+<title>واصل & MD3 - منصة التجارة وإعلانات المركبات | MD7 Group</title>
+<meta name="description" content="منصة واصل للتجارة الإلكترونية وإعلانات المركبات التابعة لـ MD7 Group.">
 <style>
-  body{ background:#000; padding:20px; }
-  .page-title{ text-align:center; color:var(--primary); font-size:28px; margin-bottom:20px; border-bottom:2px solid var(--primary); padding-bottom:10px; }
-  .back-btn{ display:inline-block; margin-bottom:20px; color:var(--primary); text-decoration:none; border:1px solid var(--primary); padding:8px 15px; border-radius:8px; }
+  :root {
+    --gold: #D4AF37;
+    --gold-light: #F3E5AB;
+    --gold-dark: #AA7C11;
+    --black: #050505;
+    --dark-gray: #121212;
+    --card-border: rgba(212,175,55,0.35);
+    --gold-glow: rgba(212,175,55,0.3);
+    --muted: #aaa;
+    --ok: #28a745;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  html, body { width: 100%; overflow-x: hidden; background: var(--black); }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; direction: rtl; line-height: 1.7; }
+  a { color: inherit; }
+
+  /* الهيدر */
+  header { background: #000; border-bottom: 2px solid var(--gold); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+  .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 900; font-size: 22px; }
+  .brand .d { color: #C0C0C0; }
+  .brand .m { color: var(--gold); }
+  .brand .tag { font-size: 12px; color: var(--muted); font-weight: 400; border-right: 1px solid #333; padding-right: 8px; margin-right: 4px; }
+  .back-link { color: var(--gold); text-decoration: none; font-size: 14px; border: 1px solid var(--card-border); padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
+  .back-link:hover { background: var(--gold); color: #000; }
+
+  nav.sub { background: #0a0a0a; border-bottom: 1px solid #1d1d1d; display: flex; gap: 6px; overflow-x: auto; padding: 8px 12px; scrollbar-width: none; }
+  nav.sub::-webkit-scrollbar { display: none; }
+  nav.sub a { color: #ddd; text-decoration: none; font-size: 13px; padding: 5px 12px; border-radius: 16px; white-space: nowrap; border: 1px solid transparent; }
+  nav.sub a:hover { border-color: var(--gold); color: var(--gold); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  section { padding: 38px 0 10px; scroll-margin-top: 56px; }
+  
+  h2.title { color: var(--gold); font-size: 24px; margin-bottom: 6px; }
+  p.lead { color: var(--muted); margin-bottom: 20px; font-size: 15px; }
+
+  /* القسم الرئيسي */
+  .hero { text-align: center; padding: 50px 0 30px; background: radial-gradient(ellipse at top, rgba(212,175,55,0.14), transparent 65%); }
+  .hero .badge { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 4px 14px; border-radius: 20px; font-size: 13px; margin-bottom: 14px; }
+  .hero h1 { font-size: 34px; font-weight: 900; line-height: 1.4; margin-bottom: 12px; }
+  .hero h1 span { color: var(--gold); }
+  .hero p { color: #ccc; max-width: 640px; margin: 0 auto 22px; font-size: 16px; }
+  .cta-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #000; border: none; padding: 12px 22px; font-weight: 900; border-radius: 8px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; width: 100%; text-align: center; }
+  .btn-gold:hover { opacity: .9; }
+  .btn-line { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 12px 22px; font-weight: 700; border-radius: 8px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; }
+  .btn-line:hover { background: var(--gold); color: #000; }
+
+  /* البطاقات والنماذج */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .card { background: var(--dark-gray); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; transition: .25s; }
+  .card:hover { border-color: var(--gold); box-shadow: 0 0 22px var(--gold-glow); transform: translateY(-3px); }
+  .card h3 { color: var(--gold); font-size: 18px; margin-bottom: 6px; }
+  .card p, .card li { color: #ccc; font-size: 14px; }
+  
+  .panel { background: var(--dark-gray); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; }
+  .panel label { display: block; font-size: 13px; color: var(--muted); margin: 10px 0 4px; }
+  .panel select, .panel input[type=text], .panel input[type=tel], .panel input[type=number], .panel input[type=file], .panel textarea { width: 100%; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 15px; font-family: inherit; }
+  .panel select:focus, .panel input:focus, .panel textarea:focus { outline: none; border-color: var(--gold); }
+
+  /* قسم واصل (بيع وشراء) */
+  .wasel-box { background: var(--dark-gray); border: 2px solid var(--gold); border-radius: 16px; padding: 24px; margin-bottom: 30px; }
+  .mode-switch { display: flex; gap: 12px; justify-content: center; margin-bottom: 20px; }
+  .mode-btn { background: #000; border: 1px solid var(--gold); color: var(--gold); padding: 10px 24px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+  .mode-btn.active { background: var(--gold); color: #000; }
+  
+  .market-section { display: none; }
+  .market-section.active { display: block; }
+
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 15px; }
+  .product-card { background: #000; border: 1px solid var(--card-border); border-radius: 10px; padding: 14px; text-align: center; }
+  .product-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; background: #222; }
+  .product-card h4 { color: var(--gold); margin-bottom: 6px; }
+  .product-card p { font-size: 13px; color: #bbb; margin-bottom: 10px; }
+  .product-card .price { font-weight: bold; color: #fff; margin-bottom: 8px; }
+  .product-card .fee { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+
+  /* المعاينة ثلاثية الأبعاد */
+  .preview-wrap { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 860px) { .preview-wrap { grid-template-columns: 380px 1fr; } }
+  .stage { background: radial-gradient(ellipse at center, #1a1a1a, #0a0a0a); border: 1px solid var(--card-border); border-radius: 14px; padding: 10px; display: flex; flex-direction: column; justify-content: center; }
+  #glcanvas { width: 100%; aspect-ratio: 16 / 10; display: block; border-radius: 10px; touch-action: pan-y; cursor: grab; }
+  .nogl { display: none; padding: 40px 12px; text-align: center; color: var(--muted); font-size: 14px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 10px; text-align: center; }
+  .note b { color: var(--gold); }
+  .alert-box { background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); padding: 12px; border-radius: 8px; margin-top: 12px; font-size: 13px; color: var(--gold-light); display: none; }
+
+  /* المساعد */
+  .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
+  .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
+  .chat-input-row { display: flex; gap: 10px; }
+  .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-family: inherit; }
+  .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+
+  .site-footer { text-align: center; padding: 30px 16px; border-top: 2px solid var(--gold); margin-top: 50px; background: #000; }
+  .site-footer h3 { color: var(--gold); font-size: 22px; margin-bottom: 6px; }
+  .site-footer p { color: #aaa; margin: 4px 0; font-size: 14px; }
 </style>
 </head>
 <body>
 
-<a href="index.html" class="back-btn">← الرجوع للرئيسية</a>
-<h1 class="page-title">🛒 سوق وصل24 - MD3</h1>
+<header>
+  <a class="brand" href="#" aria-label="MD7 Group">
+    <span class="d">D</span><span class="m">M</span>
+    <span class="tag">واصل & MD1 · MD7 Group</span>
+  </a>
+  <a class="back-link" href="#">العودة للرئيسية</a>
+</header>
 
-<div class="products-grid">
-  
-  <!-- ========= قالب منتج 1 : بن البرنس ========= -->
-<div class="product-card">
-  <!-- غير الصورة هنا -->
-  <img src="images/ban-elprins.jpg" alt="بن البرنس">
-  <!-- غير الاسم هنا -->
-  <h2>بن البرنس</h2>
-  <!-- غير السعر هنا بس -->
-  <p>السعر: <span class="price">126</span> جنيه</p>
-    
-    <div class="calc-box">
-      <label>العدد:</label>
-      <input type="number" class="qty" value="1" min="1" oninput="calcTotal(this)">
-      <label>طريقة الدفع:</label>
-      <select class="payment" onchange="calcTotal(this)">
-        <option value="0">كاش فوري - 0ج</option>
-        <option value="2">تحصيل 3 أيام - +2ج</option>
-        <option value="5">تحصيل 5 أيام - +5ج</option>
-      </select>
-      <h3>الاجمالي: <span class="total">126</span> جنيه</h3>
-    </div>
-    <button class="btn-gold" onclick="checkout(this)">اطلب الآن</button>
+<nav class="sub" aria-label="أقسام الصفحة">
+  <a href="#wasel-market">منصة واصل (بيع وشراء)</a>
+  <a href="#vehicles">أنواع المركبات</a>
+  <a href="#preview">معاينة الإعلان 3D</a>
+  <a href="#register">تسجيل مالك سيارة</a>
+  <a href="#assistant">اسأل المساعد</a>
+</nav>
+
+<main>
+
+  <div class="hero">
+    <span class="badge">مجموعة MD7 Group</span>
+    <h1>منصة واصل & <span>إعلانات المركبات MD1</span></h1>
+    <p>بوابتك المتكاملة لبيع وشراء المنتجات عبر واصل، وعرض إعلاناتك المتحركة على أساطيل المركبات.</p>
   </div>
 
-  <!-- ========== قالب منتج 2: رز مصري ========== -->
-  <div class="product-card">
-    <img src="images/roz.jpg" alt="رز">
-    <h2>رز مصري</h2>
-    <p>السعر: <span class="price">45</span> جنيه / الكيلو</p>
-    <div class="calc-box">
-      <label>العدد كيلو:</label>
-      <input type="number" class="qty" value="1" min="1" oninput="calcTotal(this)">
-      <label>طريقة الدفع:</label>
-      <select class="payment" onchange="calcTotal(this)">
-        <option value="0">كاش فوري - 0ج</option>
-        <option value="2">تحصيل 3 أيام - +2ج</option>
-        <option value="5">تحصيل 5 أيام - +5ج</option>
-      </select>
-      <h3>الاجمالي: <span class="total">45</span> جنيه</h3>
-    </div>
-    <button class="btn-gold" onclick="checkout(this)">اطلب الآن</button>
-  </div>
+  <!-- قسم منصة واصل (بيع وشراء) -->
+  <section id="wasel-market">
+    <div class="wasel-box">
+      <h2 class="title" style="text-align:center;">منصة واصل - سوق المنتجات</h2>
+      <p class="lead" style="text-align:center;">اختر ما تحتاجه: هل تريد البيع أم الشراء؟</p>
+      
+      <div class="mode-switch">
+        <button type="button" class="mode-btn active" id="btnBuyMode">🛒 أريد الشراء (تصفح المنتجات)</button>
+        <button type="button" class="mode-btn" id="btnSellMode">📦 أريد البيع (إضافة منتج)</button>
+      </div>
 
-  <!-- ========== قالب منتج 3: زيت ========== -->
-  <div class="product-card">
-    <img src="images/oil.jpg" alt="زيت">
-    <h2>زيت عباد الشمس</h2>
-    <p>السعر: <span class="price">95</span> جنيه / اللتر</p>
-    <div class="calc-box">
-      <label>العدد لتر:</label>
-      <input type="number" class="qty" value="1" min="1" oninput="calcTotal(this)">
-      <label>طريقة الدفع:</label>
-      <select class="payment" onchange="calcTotal(this)">
-        <option value="0">كاش فوري - 0ج</option>
-        <option value="2">تحصيل 3 أيام - +2ج</option>
-        <option value="5">تحصيل 5 أيام - +5ج</option>
-      </select>
-      <h3>الاجمالي: <span class="total">95</span> جنيه</h3>
-    </div>
-    <button class="btn-gold" onclick="checkout(this)">اطلب الآن</button>
-  </div>
-
-  <!-- انسخ القالب ده عشان تضيف منتج جديد -->
-  
-</div>
-
-<script>
-// دالة الحسبة - بتشتغل على اي كارت لوحده
-function calcTotal(element){
-  let card = element.closest('.product-card'); // تجيب الكارت بتاع المنتج ده بس
-  let price = parseFloat(card.querySelector('.price').innerText);
-  let qty = parseInt(card.querySelector('.qty').value);
-  let fee = parseInt(card.querySelector('.payment').value);
-  
-  let total = (price * qty) + (fee * qty); // السعر*العدد + الرسوم*العدد
-  card.querySelector('.total').innerText = total;
-}
-
-// دالة الطلب
-function checkout(btn){
-  let card = btn.closest('.product-card');
-  let name = card.querySelector('h2').innerText;
-  let qty = card.querySelector('.qty').value;
-  let total = card.querySelector('.total').innerText;
-  
-  alert('تم اضافة للسلة ✅ \n' + name + '\n العدد: ' + qty + '\n الاجمالي: ' + total + ' جنيه');
-  // هنا بعدين نربطه بـ WhatsApp
-}
-</script>
-
-</body>
-</html>
+      <!-- واجهة الشراء -->
+      <div class="market-section active" id="buySection">
+        <h3 style="color:var(--gold); margin-bottom: 10px;">المنتجات المعروضة حالياً</h3>
+        <p style="font-size: 13px; color: var(--muted); margin-bottom: 15px;">يتم احتساب رسوم استخدام المنصة
