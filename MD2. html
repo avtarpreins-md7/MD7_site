@@ -1,44 +1,186 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>MD2 | منصة المؤلفين</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-      body { font-family: 'Cairo', sans-serif; background: #050505; color: #fff; direction: rtl; padding: 20px; }
-      .container { max-width: 700px; margin: 40px auto; background: #121212; border: 1px solid #D4AF37; padding: 30px; border-radius: 12px; }
-      textarea { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; font-family: 'Cairo'; margin: 10px 0; }
-      .btn { background: #D4AF37; color: #000; border: none; padding: 12px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; }
-      .code-box { background: #000; border: 1px dashed #D4AF37; padding: 15px; border-radius: 6px; margin-top: 15px; display: none; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD2 - تطوير الإدارة</title>
+<meta name="description" content="سجّل بياناتك ليتم تطوير مشروعك أو مؤسستك أو شركتك مع MD7 Group">
+<style>
+:root{--gold:#D4AF37;--gold2:#B8860B;--bg:#050505;--card:#121212;--line:#2a2a2a;--txt:#f2f2f2;--mut:#a9a9a9;--ok:#7bd88f;--bad:#ff7b7b}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Tahoma,Arial,sans-serif;overflow-x:hidden}
+body{line-height:1.8}
+header{background:#000;border-bottom:2px solid var(--gold);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;position:sticky;top:0;z-index:50}
+header b{color:var(--gold);font-size:16px}
+header a{color:var(--gold);border:1px solid var(--gold);border-radius:20px;padding:5px 12px;font-size:12px;text-decoration:none;white-space:nowrap}
+main{max-width:780px;margin:0 auto;padding:14px 12px 40px}
+.hero{text-align:center;padding:26px 10px 14px}
+.hero .badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:3px 14px;font-size:12px;margin-bottom:10px}
+.hero h1{color:var(--gold);font-size:26px;line-height:1.5}
+.hero p{color:#ddd;margin-top:8px;font-size:15px}
+.card{background:var(--card);border:1px solid rgba(212,175,55,.45);border-radius:12px;padding:14px;margin-bottom:14px}
+.card h2{color:var(--gold);font-size:18px;margin-bottom:8px}
+.card h3{color:var(--gold);font-size:15px;margin:10px 0 4px}
+.card p,.card li{color:#ddd;font-size:14px}
+.card ul{padding-inline-start:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:8px}
+.tile{border:1px solid rgba(212,175,55,.35);border-radius:10px;padding:10px;background:#0a0a0a}
+.tile b{display:block;color:var(--gold);margin-bottom:2px}
+.tile span{color:#bbb;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+th{background:#000;color:var(--gold);padding:8px;text-align:right}
+td{padding:8px;border:1px solid #2a2a2a;color:#ddd;vertical-align:top}
+td:first-child{color:#fff;font-weight:700;white-space:nowrap}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{flex:1;background:transparent;color:var(--gold);border:1px solid rgba(212,175,55,.5);border-radius:10px;padding:10px 6px;font:700 14px inherit;font-family:inherit;cursor:pointer}
+.tabs button.on{background:var(--gold);color:#000}
+label{display:block;font-size:13px;color:#ddd;margin:10px 0 4px}
+label .req{color:var(--gold)}
+input[type=text],input[type=tel],input[type=number],textarea,select{width:100%;background:#000;color:#fff;border:1px solid #3a3a3a;border-radius:8px;padding:10px;font-family:inherit;font-size:15px}
+textarea{min-height:90px;resize:vertical}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:var(--bad)}
+.err{color:var(--bad);font-size:12px;display:block;min-height:0}
+.chk{display:flex;gap:8px;align-items:flex-start;margin:12px 0;font-size:13px;color:#ddd}
+.chk input{width:20px;height:20px;margin-top:3px;flex:0 0 auto}
+.btn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border:0;border-radius:10px;padding:12px 16px;font:900 15px inherit;font-family:inherit;cursor:pointer;text-align:center;text-decoration:none;display:block;width:100%;margin-top:10px}
+.btn.line{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.btn.sm{display:inline-block;width:auto;padding:7px 12px;font-size:12px}
+.status{margin-top:10px;padding:10px;border-radius:8px;font-size:13px;border:1px solid var(--line)}
+.status.ok{border-color:var(--ok);color:var(--ok)}.status.warn{border-color:var(--gold);color:var(--gold)}.status.bad{border-color:var(--bad);color:var(--bad)}
+.result-msg{margin-top:8px;min-height:140px;font-size:13px}
+.note{font-size:12px;color:var(--mut);margin-top:8px}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:20px 12px;border-top:1px solid var(--gold)}
+svg.flow{width:100%;height:auto;display:block;margin:8px 0}
+</style>
 </head>
 <body>
-<a href="index.html" class="btn" style="margin-bottom:20px;">← العودة للرئيسية</a>
-<div class="container">
-    <h2 style="color:#D4AF37;">📚 MD2: مولد أكواد وصف الصور لـ Gemini</h2>
-    <p style="color:#aaa; font-size:14px; margin-top:5px;">اكتب وصف المشهد، وسيقوم النظام بتنسيقه كأمر موجه لجيمناي جاهز للنسخ.</p>
-    
-    <textarea id="desc" rows="4" placeholder="صف المشهد المطلوبة (مثال: غلاف كتاب سينمائي عن الذكاء الاصطناعي)..."></textarea>
-    <button class="btn" onclick="genPrompt()">توليد كود Gemini</button>
+<header><b>MD2</b><a href="index.html">← MD7 Group</a></header>
+<main>
 
-    <div id="result" class="code-box">
-        <p style="color:#D4AF37; font-size:12px;">انسخ الكود وأرسله لـ Gemini:</p>
-        <code id="promptCode" style="color:#00ffcc; word-break:break-all;"></code>
-        <br><br>
-        <button class="btn" style="font-size:12px;" onclick="copyCode()">نسخ الكود</button>
-    </div>
+<section class="hero">
+  <span class="badge">MD2</span>
+  <h1>تطوير الإدارة</h1>
+  <p>سجّل بياناتك ليدرس فريق MD7 مشروعك أو مؤسستك أو شركتك أو مجال عملك، ويقدّم لك مقترحات قابلة للتطبيق.</p>
+</section>
+
+<div class="card">
+  <h2>كيف نعمل معك؟</h2>
+  <div class="grid">
+    <div class="tile"><b>١ — تسجّل بياناتك</b><span>تعبّئ النموذج أدناه بما تريد تطويره.</span></div>
+    <div class="tile"><b>٢ — ندرس الواقع</b><span>نحلل الوضع الحالي والتحديات.</span></div>
+    <div class="tile"><b>٣ — نقدّم المقترحات</b><span>مقترحات قابلة للتطبيق بالتعاون مع الجهات المعنية.</span></div>
+    <div class="tile"><b>٤ — نتعاون في التنفيذ</b><span>وفق ما نتفق عليه معك كتابيًا.</span></div>
+  </div>
+  <p class="note">التسجيل طلب تواصل فقط، وليس عقدًا ولا وعدًا بنتائج أو أرباح محددة. شروط أي تعاون تُحدَّد بالاتفاق.</p>
 </div>
+
+<div class="card">
+  <h2>سجّل بياناتك لتطوير مشروعك</h2>
+  <div id="formHost"></div>
+  <p class="note">لا نطلب أي بيانات مالية أو رقم هوية. اكتب فقط ما يلزم للتواصل.</p>
+</div>
+
+<div class="card">
+  <h2>تريد عقدًا أو شراكة مباشرة؟</h2>
+  <p>راسل المؤسس مباشرة على واتساب لطلب عقد أو شراكة.</p>
+  <button type="button" class="btn line" id="cBtn">📄 طلب عقد / شراكة عبر واتساب</button>
+  <div id="cBtnSt" role="status" aria-live="polite"></div>
+</div>
+
+</main>
+<footer>MD7 Group — لتطوير المشاريع والمؤسسات</footer>
 <script>
-  function genPrompt() {
-    const txt = document.getElementById('desc').value;
-    if(!txt) return alert('أدخل الوصف أولاً');
-    document.getElementById('promptCode').innerText = `/generate_image prompt: "A hyper-realistic cinematic cover art, based on: ${txt}, 8k resolution, gold and black lighting, sharp focus"`;
-    document.getElementById('result').style.display = 'block';
-  }
-  function copyCode() {
-    navigator.clipboard.writeText(document.getElementById('promptCode').innerText);
-    alert('تم النسخ!');
-  }
+(function () {
+'use strict';
+
+var CFG = { whatsappNumber: '', contactEmail: 'avtarpreins@gmail.com' };
+function $(id){return document.getElementById(id);}
+function mk(t,a,x){var e=document.createElement(t),k;if(a)for(k in a){if(k==='class')e.className=a[k];else e.setAttribute(k,a[k]);}if(x!=null)e.textContent=x;return e;}
+function waReady(){return /^\d{8,15}$/.test(String(CFG.whatsappNumber||''));}
+function waUrl(t){return 'https://wa.me/'+CFG.whatsappNumber+'?text='+encodeURIComponent(t);}
+function mailUrl(s,b){return 'mailto:'+CFG.contactEmail+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(b);}
+function copyText(t,area){return new Promise(function(res){try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){res(true);},function(){res(fb());});return;}}catch(e){}res(fb());function fb(){try{area.focus();area.select();return document.execCommand('copy');}catch(e){return false;}}});}
+
+function buildForm(host, spec) {
+  var form = mk('form', { novalidate: '', id: spec.id });
+  spec.fields.forEach(function (f) {
+    var w = mk('div', { 'class': 'field', 'data-n': f.n }), id = spec.id + '_' + f.n, el;
+    if (f.t === 'check') {
+      var l = mk('label', { 'class': 'chk', 'for': id }); el = mk('input', { type: 'checkbox', id: id, name: f.n });
+      l.appendChild(el); l.appendChild(document.createTextNode(f.txt)); w.appendChild(l);
+    } else {
+      var lb = mk('label', { 'for': id }, f.l + (f.req ? ' ' : '')); if (f.req) lb.appendChild(mk('span', { 'class': 'req' }, '*')); w.appendChild(lb);
+      if (f.t === 'select') { el = mk('select', { id: id, name: f.n }); el.appendChild(mk('option', { value: '' }, 'اختر...')); f.opts.forEach(function (o) { el.appendChild(mk('option', { value: o }, o)); }); }
+      else if (f.t === 'textarea') el = mk('textarea', { id: id, name: f.n, maxlength: String(f.max || 800) });
+      else { el = mk('input', { type: f.t === 'tel' ? 'tel' : (f.t === 'number' ? 'number' : 'text'), id: id, name: f.n, maxlength: String(f.max || 80) }); if (f.t === 'tel') el.setAttribute('inputmode', 'tel'); if (f.t === 'number') { el.setAttribute('min', '0'); el.setAttribute('inputmode', 'numeric'); } }
+      w.appendChild(el);
+    }
+    w.appendChild(mk('small', { 'class': 'err' }));
+    form.appendChild(w);
+  });
+  var btn = mk('button', { type: 'submit', 'class': 'btn' }, spec.submit); form.appendChild(btn);
+  var res = mk('div', { role: 'status', 'aria-live': 'polite' }); form.appendChild(res);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true, lines = [];
+    spec.fields.forEach(function (f) {
+      var w = form.querySelector('[data-n="' + f.n + '"]'), el = w.querySelector('input,select,textarea'), er = w.querySelector('.err'), v = f.t === 'check' ? el.checked : el.value.trim(), msg = '';
+      if (f.req && (f.t === 'check' ? !v : !v)) msg = f.t === 'check' ? 'يلزم الموافقة للمتابعة.' : 'هذا الحقل مطلوب.';
+      else if (f.t === 'tel' && v && (v.replace(/\D/g, '').length < 8 || !/^[+\d][\d\s\-]{6,19}$/.test(v))) msg = 'اكتب رقمًا صحيحًا (أرقام فقط).';
+      w.classList.toggle('bad', !!msg); er.textContent = msg; if (msg) ok = false;
+      if (!msg && f.t !== 'check' && v) lines.push(f.l + ': ' + v);
+    });
+    if (!ok) { setStatus(res, 'bad', 'راجع الحقول المطلوبة ثم أعد المحاولة.'); var b = form.querySelector('.bad'); if (b && b.scrollIntoView) b.scrollIntoView(); return; }
+    dispatch(res, spec.msgTitle + '\n\n' + lines.join('\n'), spec.msgTitle);
+  });
+  host.appendChild(form);
+}
+function setStatus(el, k, m) { el.innerHTML = ''; el.appendChild(mk('div', { 'class': 'status ' + k }, m)); }
+function dispatch(res, message, title) {
+  res.innerHTML = '';
+  var opened = false, blocked = false;
+  if (waReady()) { var w = null; try { w = window.open(waUrl(message), '_blank'); } catch (e) {} if (w) { try { w.opener = null; } catch (e2) {} opened = true; } else blocked = true; }
+  res.appendChild(mk('div', { 'class': 'status ' + (opened ? 'ok' : 'warn') },
+    opened ? 'فُتح واتساب والطلب جاهز. لم يُرسل بعد: اضغط «إرسال» داخل واتساب لإتمامه.'
+    : blocked ? 'منع المتصفح فتح واتساب تلقائيًا. استخدم الزر أدناه أو انسخ الطلب.'
+    : 'تم تجهيز طلبك لكنه لم يُرسل بعد، فواتساب غير مفعّل على هذه الصفحة. انسخ الطلب وأرسله بالبريد الإلكتروني أو لفريق MD7. لا تُحفظ بياناتك في أي مكان.'));
+  var area = mk('textarea', { 'class': 'result-msg', readonly: '', 'aria-label': 'نص الطلب' }); area.value = message; res.appendChild(area);
+  var row = mk('div'), cp = mk('button', { type: 'button', 'class': 'btn line sm' }, 'نسخ الطلب');
+  cp.addEventListener('click', function () { copyText(message, area).then(function (ok) { cp.textContent = ok ? 'تم النسخ ✓' : 'حدد النص وانسخه يدويًا'; }); });
+  row.appendChild(cp);
+  var a = mk('a', { 'class': 'btn line sm', href: mailUrl(title, message), style: 'margin-inline-start:8px' }, 'إرسال بالبريد'); row.appendChild(a);
+  if (waReady()) row.appendChild(mk('a', { 'class': 'btn line sm', href: waUrl(message), target: '_blank', rel: 'noopener', style: 'margin-inline-start:8px' }, 'فتح واتساب'));
+  res.appendChild(row);
+}
+function contactBtn(id, text) {
+  var b = $(id); if (!b) return;
+  b.addEventListener('click', function () {
+    var st = $(id + 'St'); st.innerHTML = '';
+    if (waReady()) { var u = waUrl(text), w = window.open(u, '_blank'); if (w) { try { w.opener = null; } catch (e) {} setStatus(st, 'ok', 'فُتح واتساب والرسالة جاهزة. اضغط «إرسال» لإتمام الطلب.'); } else window.location.href = u; }
+    else { setStatus(st, 'warn', 'واتساب غير مفعّل بعد (لم يُضبط رقم). لم يُرسل شيء. راسلنا على ' + CFG.contactEmail); }
+  });
+}
+
+
+buildForm($('formHost'), {
+  id: 'devForm', submit: 'سجّل بياناتي لتطوير مشروعي', msgTitle: 'طلب تطوير إدارة - MD7 Group - MD2',
+  fields: [
+    { n: 'kind', l: 'نوع الجهة', t: 'select', req: 1, opts: ['مشروع صغير / محل', 'مؤسسة', 'شركة', 'مجال عمل أو فكرة جديدة'] },
+    { n: 'org', l: 'اسم المشروع أو المؤسسة أو الشركة', t: 'text', req: 1, max: 80 },
+    { n: 'field', l: 'المجال / النشاط', t: 'text', req: 1, max: 80 },
+    { n: 'name', l: 'اسم المسؤول', t: 'text', req: 1, max: 60 },
+    { n: 'phone', l: 'رقم التواصل', t: 'tel', req: 1, max: 20 },
+    { n: 'city', l: 'المدينة / المحافظة', t: 'text', max: 60 },
+    { n: 'size', l: 'عدد العاملين تقريبًا', t: 'number' },
+    { n: 'stage', l: 'مرحلة المشروع', t: 'select', opts: ['فكرة فقط', 'بدأ حديثًا', 'قائم ويعمل', 'قائم ويحتاج إعادة هيكلة'] },
+    { n: 'need', l: 'ما الذي تريد تطويره؟', t: 'textarea', req: 1, max: 800 },
+    { n: 'time', l: 'أنسب وقت للتواصل', t: 'text', max: 60 },
+    { n: 'consent', l: '', t: 'check', req: 1, txt: 'أوافق على استخدام بياناتي للتواصل بخصوص هذا الطلب فقط.' }
+  ]
+});
+contactBtn('cBtn', 'طلب عقد/شراكة - MD7 Group - MD2 تطوير الإدارة');
+
+})();
 </script>
 </body>
 </html>
