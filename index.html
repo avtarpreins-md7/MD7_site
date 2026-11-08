@@ -1632,7 +1632,7 @@
           </a>
 
           <p style="font-size: 15px; color: var(--text-blue-light); opacity: 0.85; font-weight: 600; margin: 2px 0 6px;">
-            يارا هترد عليك وتوصلك بالمطور
+            يارا هترد عليك وتساعدك في اي  سوال  
           </p>
 
           <!-- زرار صغير ثانوي: تواصل مع المطور -->
@@ -1664,70 +1664,7 @@
       </div>
 
       <p style="margin-top: 4px; font-size: 13px;">جميع الحقوق محفوظة © <span id="currentYear">2026</span> دليكوم</p>
-
-      <div class="footer-tools">
-        <button class="btn-tool" onclick="downloadCurrentHtmlFile()" title="تحميل ملف index.html المستقل بالكامل لرفعه على Netlify أو GitHub">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          <span>تحميل ملف index.html الجاهز</span>
-        </button>
-
-        <button class="btn-tool" onclick="copyFullHtmlCode()" title="نسخ الكود المصدري الكامل لملف index.html">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-          </svg>
-          <span>نسخ كود index.html بالكامل</span>
-        </button>
-
-        <button class="btn-tool" onclick="openSettingsModal()" title="إعداد روابط الواتساب بسهولة">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
-          <span>تخصيص روابط الواتساب</span>
-        </button>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ====================================================================
-       Modals
-       ==================================================================== -->
-  <!-- 1. نافذة تكبير الصور -->
-  <div class="modal-overlay" id="photoModal" onclick="closePhotoModal(event)">
-    <div class="modal-card" style="max-width: 660px; padding: 18px;" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <h3 class="modal-title" id="photoModalTitle">معاينة الصورة بدقة كاملة</h3>
-        <button class="modal-close" onclick="closePhotoModal()">×</button>
-      </div>
-      <div style="width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(56, 189, 248, 0.3); background: #020617;">
-        <img id="photoModalImg" src="" alt="عرض صورة دليكوم" style="width: 100%; height: auto; max-height: 72vh; object-fit: contain; display: block;">
-      </div>
-      <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center;">
-        <span style="font-size: 13px; color: var(--text-muted);">انقر خارج النافذة للإغلاق</span>
-        <button class="btn btn-cyber-outline" style="min-height: 38px; font-size: 13px; width: auto; padding: 6px 16px;" onclick="closePhotoModal()">إغلاق</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2. نافذة خيارات تحميل التطبيق -->
-  <div class="modal-overlay" id="downloadModal" onclick="closeDownloadModal(event)">
-    <div class="modal-card" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <h3 class="modal-title" id="downloadModalTitle">تحميل تطبيق دليكوم</h3>
-        <button class="modal-close" onclick="closeDownloadModal()">×</button>
-      </div>
-      <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 20px;" id="downloadModalDesc">
-        اختر الطريقة الأنسب لك لتحميل التطبيق على جهازك مباشرة:
-      </p>
-      <div style="display: flex; flex-direction: column; gap: 12px;" id="downloadModalButtons"></div>
-    </div>
-  </div>
-
+ 
   <!-- 3. نافذة ملخص الورقة البيضاء -->
   <div class="modal-overlay" id="whitepaperModal" onclick="closeWhitepaperModal(event)">
     <div class="modal-card" onclick="event.stopPropagation()">
