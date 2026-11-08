@@ -1,549 +1,2088 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD7 Group - الحاضر هو المستقبل & MD7 AI</title>
+<html lang="ar" dir="rtl"><head>
+  <script type="module" src="/@vite/client"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>موقع دليكوم | سوشيال + محفظة + شات مشفر في تطبيق واحد</title>
+  <meta name="description" content="دليكوم هو الحل. سوشيال ومحفظة رقمية وشات مشفر في تطبيق واحد عربي متكامل. عِش تجربة رحلة دليكوم الحية بتقنية البلوكشين والمكافآت الفورية.">
+  <meta name="theme-color" content="#030712">
 
-<script type="text/javascript">
-  (function(){
-    emailjs.init("-VHvtaMeTpVBPHzIG");
-  })();
-</script>
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="موقع دليكوم | سوشيال + محفظة + شات مشفر">
+  <meta property="og:description" content="دليكوم هو الحل. سوشيال + محفظة + شات مشفر في تطبيق واحد.">
+  <meta property="og:type" content="website">
 
-<style>
-  :root {
-    --gold: #D4AF37;
-    --silver: #C0C0C0;
-    --black: #050505;
-    --dark-gray: #121212;
-  }
+  <!-- خط عربي حديث وواضح وقوي -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet">
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden; 
-    background-color: var(--black);
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
-    direction: rtl;
-  }
+  <style>
+    /* ==========================================================================
+       دليكوم - ثيم سايبر بلو وميتافيرس مستوحى من درجات ألوان الصور
+       كروت مستقلة تحت بعضها بدون تداخل | موبايل أولاً | RTL
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-  /* الهيدر */
-  header { background: #000; border-bottom: 2px solid var(--gold); padding: 12px 20px; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; width: 100%; }
-  .logo-M { color: var(--gold); }
-  .logo-D { color: var(--silver); }
-  .logo-G { color: #ff0000; }
-  .logo-R { color: #0000ff; }
-  .logo-O { color: #00ff00; }
-  .logo-U { color: #ffff00; }
-  .logo-P { color: #ffa500; }
-  .group-text { font-size: 14px; letter-spacing: 3px; }
+    :root {
+      --bg-space: #030712;
+      --bg-dark-blue: #070e1e;
+      --bg-card: rgba(10, 20, 42, 0.9);
+      --border-blue: rgba(56, 189, 248, 0.28);
+      --border-cyan-glow: #00f0ff;
+      --neon-cyan: #00f0ff;
+      --neon-blue: #38bdf8;
+      --neon-gold: #facc15;
+      --text-white: #ffffff;
+      --text-blue-light: #e0f2fe;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-cairo: 'Cairo', system-ui, -apple-system, sans-serif;
+      --font-orbitron: 'Orbitron', monospace, sans-serif;
+    }
 
+    body {
+      background-color: var(--bg-space);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 10% 30%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 70%, rgba(0, 240, 255, 0.1) 0%, transparent 50%),
+        linear-gradient(rgba(3, 7, 18, 0.94), rgba(3, 7, 18, 0.97)),
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(56, 189, 248, 0.03) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(56, 189, 248, 0.03) 40px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      background-attachment: fixed;
+      color: var(--text-white);
+      font-family: var(--font-cairo);
+      line-height: 1.6;
+      direction: rtl;
+      text-align: right;
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
 
-  /* الهيدر: شارك | GROUP | MD | شارك */
-  header { gap: 10px; }
-  .brand-logo, .md-btn { background: none; border: 0; font: inherit; color: inherit; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 900; text-decoration: none; padding: 4px; }
-  .md-btn { border-bottom: 1px dotted rgba(212,175,55,.6); }
-  .share-btn { background: linear-gradient(135deg, var(--gold), #B8860B); color: #000; font-weight: 900; font-size: 12px; text-decoration: none; padding: 7px 10px; border-radius: 30px; white-space: nowrap; }
-  @media (max-width: 380px) { .brand-logo, .md-btn { font-size: 20px; gap: 5px; } .share-btn { font-size: 11px; padding: 6px 8px; } header { padding: 10px 8px; gap: 6px; } }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  /* شريط التنقل */
-  .site-nav { display: flex; justify-content: center; gap: 8px; padding: 10px 12px; background: #0a0a0a; border-bottom: 1px solid #222; flex-wrap: wrap; }
-  .site-nav button { background: transparent; color: var(--gold); border: 1px solid rgba(212,175,55,.5); border-radius: 20px; padding: 7px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
-  .site-nav button.on { background: var(--gold); color: #000; }
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: none;
+    }
 
-  /* نافذة تعريف MD */
-  .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.82); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 16px; }
-  .modal-bg.open { display: flex; }
-  .modal-box { background: #0d0d0d; border: 2px solid var(--gold); border-radius: 14px; max-width: 520px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 22px 20px; line-height: 1.9; box-shadow: 0 0 30px rgba(212,175,55,.35); }
-  .modal-box h2 { color: var(--gold); margin-bottom: 10px; font-size: 20px; }
-  .modal-box p { color: #ddd; font-size: 15px; margin-bottom: 8px; }
-  .modal-box .close { background: var(--gold); color: #000; border: 0; border-radius: 8px; padding: 9px 22px; font-weight: 900; cursor: pointer; margin-top: 8px; font-family: inherit; }
--size: 15px;} 
-  /* من نحن + المشاريع */
-  .about-p { color: #ddd; line-height: 2; font-size: 15px; }
-  .about-p b { color: var(--gold); }
-  .vals { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 16px 0; }
-  .val { border: 1px solid rgba(212,175,55,.35); border-radius: 10px; padding: 12px 8px; text-align: center; background: #0a0a0a; }
-  .val b { display: block; color: var(--gold); margin-bottom: 4px; }
-  .val span { color: #bbb; font-size: 12px; }
-  .two { display: grid; grid-template-columns: 1fr; gap: 10px; }
-  .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-  .proj { background: var(--dark-gray); border: 1px solid rgba(212,175,55,.5); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
-  .proj.feat { border-color: var(--gold); box-shadow: 0 0 18px rgba(212,175,55,.3); }
-  .proj .tag { color: var(--gold); font-weight: 900; font-size: 13px; }
-  .proj h3 { font-size: 17px; }
-  .proj p { color: #bbb; font-size: 13px; line-height: 1.8; flex: 1; }
-  .proj a, .proj button { background: var(--gold); color: #000; border: 0; border-radius: 8px; padding: 10px; font-weight: 900; text-align: center; text-decoration: none; cursor: pointer; font-size: 14px; font-family: inherit; }
-  .proj .soon { background: #222; color: #888; }
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
 
-  .tag { color: var(--gold); font-weight: 900; font-size: 13px; display: block; margin-bottom: 4px; }
-  .back-btn { background: transparent; color: var(--gold); border: 1px solid rgba(212,175,55,.5); border-radius: 20px; padding: 6px 14px; cursor: pointer; font-family: inherit; font-size: 12px; margin-bottom: 12px; }
-  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-  .share-btn.big { display: inline-block; font-size: 14px; padding: 11px 20px; flex: 1 1 150px; text-align: center; }
-  .share-btn.alt { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
-  .view-section { display: none; padding: 15px; width: 100%; max-width: 1200px; margin: 0 auto; }
-  .view-section.active { display: block; }
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 1px solid rgba(56, 189, 248, 0.22);
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(3, 7, 18, 0.95);
+      backdrop-filter: blur(16px);
+      z-index: 60;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
+    }
 
-  /* الدواير صغيرة */
-  .solar-system-container { --R: min(37.5vw, 225px); position: relative; width: 100%; height: 70vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-  /* الدائرة المركزية = MD8 (نصف قطرها 0.55 من نصف قطر المدار حتى لا تلمس الكواكب) */
-  .center-sun-moon { width: calc(var(--R) * 1.1); height: calc(var(--R) * 1.1); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; z-index: 10; cursor: pointer; text-align: center; }
-  /* نهارًا: وهج شمس. ليلًا: قمر يتبع طور القمر الحقيقي (هلال ← نصف ← كامل) */
-  .sun-mode { background: radial-gradient(circle, #fff7ad 0%, #ffd700 50%, #ff8c00 100%); box-shadow: 0 0 50px 8px rgba(255, 183, 40, 0.65); color: #000; }
-  .moon-mode { background: radial-gradient(circle, #0f2038 0%, #07101c 100%); color: #fff; }
-  .moon-phase { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; pointer-events: none; }
-  .moon-mode .moon-phase { display: block; }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
 
-  /* شعار المؤسس: نجمة + 7 + MD (سماوي ليلًا، وهج أحمر خفيف نهارًا) */
-  :root { --emb: #5fd0ff; --emb-glow: rgba(95, 208, 255, 0.85); --emb-outline: #04202f; }
-  html[data-mode="day"] { --emb: #8e1212; --emb-glow: rgba(255, 70, 70, 0.55); --emb-outline: rgba(255, 244, 200, 0.6); }
-  .emb-star { fill: var(--emb); fill-opacity: 0.2; stroke: var(--emb); stroke-width: 2.6; stroke-linejoin: round; }
-  .emb-txt { fill: var(--emb); stroke: var(--emb-outline); stroke-width: 2.2; paint-order: stroke; stroke-linejoin: round; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-weight: 900; }
-  .emblem { position: relative; z-index: 1; width: 74%; height: 74%; overflow: visible; filter: drop-shadow(0 0 5px var(--emb-glow)); }
-  .emblem-sm { width: 30px; height: 30px; vertical-align: middle; margin-inline-end: 6px; --emb-outline: transparent; filter: drop-shadow(0 0 4px var(--emb-glow)); }
-  html[data-mode="day"] .emblem-sm { --emb: #ff7a7a; --emb-glow: rgba(255, 90, 90, 0.6); }
-  
-  .orbit-ring { 
-    position: absolute; 
-    width: 75vw; 
-    max-width: 450px;
-    height: 75vw; 
-    max-height: 450px; 
-    border: 1px dashed rgba(212, 175, 55, 0.3); 
-    border-radius: 50%; 
-    animation: rotateOrbit 35s linear infinite; 
-  }
-  @keyframes rotateOrbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-  
-  .planet { 
-    position: absolute; 
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    color: #fff; 
-    font-weight: bold; 
-    font-size: 9px;
-    cursor: pointer; 
-    text-align: center; 
-    line-height: 1.2;
-    animation: drift 6s ease-in-out infinite;
-  }
+    .brand-logo {
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      text-shadow: 0 0 14px rgba(0, 240, 255, 0.6);
+    }
 
-  /* الكواكب تقترب من المركز وتبتعد (--ix/--iy اتجاه الاقتراب كنسبة من نصف قطر المدار) */
-  @keyframes drift {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(calc(var(--R) * var(--ix, 0)), calc(var(--R) * var(--iy, 0))); }
-  }
-  @media (prefers-reduced-motion: reduce) { .orbit-ring, .planet { animation: none; } }
+    .brand-badge {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: var(--neon-cyan);
+      border-radius: 3px;
+      box-shadow: 0 0 10px var(--neon-cyan);
+    }
 
-  .planet-1 { top: -20px; left: calc(50% - 20px); background: #ff4757; --ix: 0; --iy: 0.16; animation-delay: 0s; }
-  .planet-2 { top: 15%; right: -20px; background: #2ed573; --ix: -0.16; --iy: 0.10; animation-delay: -1s; }
-  .planet-3 { bottom: 15%; right: -20px; background: #ffa502; --ix: -0.16; --iy: -0.10; animation-delay: -2s; }
-  .planet-4 { bottom: -20px; left: calc(50% - 20px); background: #1e90ff; --ix: 0; --iy: -0.16; animation-delay: -3s; }
-  .planet-5 { bottom: 15%; left: -20px; background: #9b59b6; --ix: 0.16; --iy: -0.10; animation-delay: -4s; }
-  .planet-6 { top: 15%; left: -20px; background: #2acc71; --ix: 0.16; --iy: 0.10; animation-delay: -5s; }
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
 
-  .chat-widget { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 12px; padding: 15px; margin-top: 20px; }
-  .chat-logs { height: 120px; overflow-y: auto; background: #000; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
-  .chat-input-row { display: flex; gap: 10px; }
-  .chat-input-row input { flex: 1; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; }
-  .chat-input-row button { background: var(--gold); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
-  .card-box { background: var(--dark-gray); border: 1px solid var(--gold); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
-  .card-box h2 { color: var(--gold); margin-bottom: 15px; font-size: 20px; }
+    .header-whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 7px 12px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 8px;
+      color: #ffffff;
+      background: rgba(10, 25, 55, 0.7);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
 
-  .site-footer{ text-align:center; padding:30px; border-top:2px solid var(--gold); margin-top:50px; background:#000; width:100%; }
-  .site-footer h3{ color:var(--gold); font-size:22px; margin-bottom:8px; }
-  .site-footer p{ color:#aaa; margin:5px 0; }
-</style>
-</head>
+    .header-whatsapp-btn:hover {
+      background: #ffffff;
+      color: #030712;
+      border-color: #ffffff;
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Sections Shared Styles */
+    section {
+      padding: 44px 0;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.16);
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(24px, 5.5vw, 30px);
+      font-weight: 900;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      color: #ffffff;
+      text-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+    }
+
+    .section-subtitle {
+      font-size: clamp(14px, 3.8vw, 16px);
+      color: var(--text-blue-light);
+      opacity: 0.85;
+      margin-bottom: 24px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       Section 1: Hero (البداية)
+       ========================================================================== */
+    .hero-section {
+      padding: 48px 0 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      border-radius: 999px;
+      margin-bottom: 18px;
+      background: rgba(0, 240, 255, 0.08);
+      color: var(--neon-cyan);
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.2);
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 7vw, 44px);
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffffff 30%, #7dd3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 16px rgba(0, 240, 255, 0.35));
+    }
+
+    .hero-desc {
+      font-size: clamp(17px, 4.5vw, 21px);
+      font-weight: 700;
+      color: #e2e8f0;
+      line-height: 1.5;
+      margin-bottom: 28px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Buttons */
+    .btn-group-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 54px;
+      padding: 12px 20px;
+      font-size: 17px;
+      font-weight: 800;
+      border-radius: 12px;
+      transition: all 0.25s ease;
+      text-align: center;
+      cursor: pointer;
+      line-height: 1.35;
+    }
+
+    .btn-cyber-primary {
+      background: linear-gradient(135deg, #00f0ff 0%, #0284c7 100%);
+      color: #030712;
+      font-weight: 900;
+      border: 1px solid #00f0ff;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
+    }
+
+    .btn-cyber-primary:hover {
+      background: linear-gradient(135deg, #38bdf8 0%, #0369a1 100%);
+      box-shadow: 0 0 26px rgba(0, 240, 255, 0.7);
+      transform: translateY(-2px);
+    }
+
+    .btn-cyber-outline {
+      background: rgba(10, 25, 55, 0.65);
+      color: #ffffff;
+      border: 1.5px solid rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-cyber-outline:hover {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: #00f0ff;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       شريط أسهم وعملات 3D الدوارة الصاعدة
+       ========================================================================== */
+    .crypto-stock-ticker-section {
+      padding: 22px 0 26px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      background: rgba(5, 12, 28, 0.7);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+
+    .ticker-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .ticker-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--neon-cyan);
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+
+    .ticker-pulse-green {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: greenPulse 1.6s infinite ease-in-out;
+    }
+
+    @keyframes greenPulse {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.6; }
+    }
+
+    .ticker-scroll-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 6px 0 10px;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: tickerAscendScroll 30s linear infinite;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes tickerAscendScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+
+    .coin-stock-card {
+      background: linear-gradient(145deg, rgba(13, 27, 56, 0.92) 0%, rgba(7, 15, 34, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      padding: 16px;
+      width: 215px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      transition: all 0.25s ease;
+    }
+
+    .coin-stock-card:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 10px 28px rgba(0, 240, 255, 0.35);
+      transform: translateY(-3px);
+    }
+
+    .coin-3d-rotating-frame {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+      perspective: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .coin-3d-rotating-disc {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      animation: coinRotate3D 5s infinite linear;
+      position: relative;
+      border-radius: 50%;
+    }
+
+    @keyframes coinRotate3D {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+
+    .coin-usdt-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
+    }
+
+    .coin-growth-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+      font-family: var(--font-orbitron);
+    }
+
+    .coin-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .coin-subtext {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .coin-sparkline-svg {
+      width: 100%;
+      height: 22px;
+      margin-top: 8px;
+    }
+
+    /* ==========================================================================
+       قسم الرحلة: كروت المراحل تحت بعضها بمسافة واضحة وبدون أي تداخل
+       ========================================================================== */
+    .journey-section {
+      padding: 44px 0;
+      position: relative;
+    }
+
+    .journey-stages-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 36px; /* مسافة واضحة جداً تمنع أي تداخل */
+      width: 100%;
+      position: relative;
+    }
+
+    .journey-stage {
+      width: 100%;
+      background: linear-gradient(160deg, rgba(10, 22, 48, 0.95) 0%, rgba(5, 12, 28, 0.98) 100%);
+      border: 2px solid rgba(56, 189, 248, 0.28);
+      border-radius: 20px;
+      padding: 24px 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      transition: opacity 0.4s ease, filter 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+    }
+
+    /* النبض الواضح للمرحلة النشطة (Breathing Pulse Glow) */
+    .journey-stage.is-active {
+      opacity: 1 !important;
+      filter: none !important;
+      border-color: #00f0ff !important;
+      background: linear-gradient(165deg, rgba(14, 34, 76, 0.98) 0%, rgba(6, 16, 38, 0.99) 100%) !important;
+      animation: activeStageGlowPulse 2.4s infinite ease-in-out !important;
+    }
+
+    @keyframes activeStageGlowPulse {
+      0% {
+        box-shadow: 0 0 16px rgba(0, 240, 255, 0.4), inset 0 0 10px rgba(0, 240, 255, 0.2);
+        border-color: #00f0ff;
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 45px rgba(0, 240, 255, 0.85), inset 0 0 25px rgba(0, 240, 255, 0.35);
+        border-color: #ffffff;
+        transform: scale(1.025);
+      }
+      100% {
+        box-shadow: 0 0 16px rgba(0, 240, 255, 0.4), inset 0 0 10px rgba(0, 240, 255, 0.2);
+        border-color: #00f0ff;
+        transform: scale(1);
+      }
+    }
+
+    .journey-stage.is-dimmed {
+      opacity: 0.42;
+      filter: grayscale(45%) brightness(0.72);
+      transform: scale(0.985);
+    }
+
+    .journey-stage.is-dimmed:hover {
+      opacity: 0.8;
+      filter: grayscale(10%) brightness(0.9);
+    }
+
+    .stage-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .stage-badge-cyber {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #030712;
+      background: var(--neon-cyan);
+      padding: 5px 12px;
+      border-radius: 6px;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+    }
+
+    .stage-status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--neon-cyan);
+    }
+
+    .stage-heading {
+      font-size: clamp(20px, 4.8vw, 24px);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .stage-summary {
+      font-size: clamp(14px, 3.6vw, 15px);
+      color: var(--text-blue-light);
+      opacity: 0.9;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    /* إطار الصورة بدون أوفرلاي يحجب الكلام */
+    .stage-image-box {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1.5px solid rgba(56, 189, 248, 0.35);
+      background: #020617;
+      margin-bottom: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .journey-stage.is-active .stage-image-box {
+      border-color: #00f0ff;
+      box-shadow: 0 0 24px rgba(0, 240, 255, 0.45);
+    }
+
+    .stage-image-box img {
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .journey-stage.is-active .stage-image-box img {
+      animation: activeImageZoomPulse 2.8s infinite ease-in-out;
+    }
+
+    @keyframes activeImageZoomPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    .stage-image-caption {
+      padding: 10px 14px;
+      background: rgba(3, 7, 18, 0.95);
+      border-top: 1px solid rgba(56, 189, 248, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    /* صندوق خطوات الدخول (تظهر مرة واحدة فقط في المرحلة 2) */
+    .steps-card-guide {
+      background: rgba(4, 11, 26, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 14px;
+      padding: 16px 14px;
+      margin-bottom: 16px;
+    }
+
+    .steps-card-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: #ffffff;
+      text-align: right;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-item-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #f1f5f9;
+      line-height: 1.4;
+    }
+
+    .step-item-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-badge-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--neon-gold);
+      color: #030712;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* كود QR عالي الوضوح في المرحلة 3 */
+    .stage-qr-box {
+      background: rgba(3, 7, 18, 0.95);
+      border: 1.5px solid var(--border-cyan-glow);
+      border-radius: 16px;
+      padding: 22px 16px;
+      text-align: center;
+      margin-bottom: 18px;
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+    }
+
+    .qr-frame-white {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .qr-frame-white svg {
+      width: 160px;
+      height: 160px;
+      display: block;
+    }
+
+    .qr-bold-label {
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    /* بطاقة إنهاء الرحلة */
+    .journey-completion-card {
+      margin-top: 24px;
+      background: linear-gradient(145deg, rgba(14, 165, 233, 0.18) 0%, rgba(3, 7, 18, 0.98) 100%);
+      border: 2px solid var(--neon-cyan);
+      border-radius: 18px;
+      padding: 24px 18px;
+      text-align: center;
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.3);
+    }
+
+    .completion-icon-ring {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--neon-cyan);
+      color: #030712;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      box-shadow: 0 0 18px var(--neon-cyan);
+    }
+
+    .completion-headline {
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .completion-subline {
+      font-size: 14px;
+      color: var(--text-blue-light);
+      margin-bottom: 18px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       3. ليه دليكوم؟ - مسافة واضحة تماماً بين الأيقونة والعنوان
+       ========================================================================== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 580px) {
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .feature-card {
+      background: linear-gradient(160deg, rgba(10, 22, 48, 0.85) 0%, rgba(5, 12, 28, 0.95) 100%);
+      border: 1.5px solid rgba(56, 189, 248, 0.28);
+      border-radius: 18px;
+      padding: 22px 18px;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-card:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 8px 24px rgba(0, 240, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* رأس الكارت يجمع الأيقونة والعنوان بجانب بعض بمسافة 16px واضحة */
+    .feature-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px; /* مسافة واضحة تمنع أي تداخل بين الأيقونة والكلام */
+      margin-bottom: 14px;
+    }
+
+    .feature-icon-box {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: rgba(0, 240, 255, 0.12);
+      border: 1.5px solid rgba(0, 240, 255, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--neon-cyan);
+      flex-shrink: 0; /* يمنع انضغاط الأيقونة نهائياً */
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+    }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.35;
+      margin: 0;
+      padding: 0;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--text-blue-light);
+      opacity: 0.85;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ==========================================================================
+       4. الثقة - 4 روابط
+       ========================================================================== */
+    .trust-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 22, 48, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 14px;
+      padding: 16px 18px;
+      transition: all 0.2s ease;
+    }
+
+    .trust-item:hover {
+      border-color: var(--neon-cyan);
+      background: rgba(14, 30, 66, 0.85);
+      transform: translateX(-4px);
+    }
+
+    .trust-item-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .trust-badge-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--neon-cyan);
+      flex-shrink: 0;
+    }
+
+    .trust-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .trust-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .trust-arrow {
+      color: var(--neon-cyan);
+      transform: scaleX(-1);
+    }
+
+    /* ==========================================================================
+       5. آخر الرحلة - تواصل مع يارا والمطور
+       ========================================================================== */
+    .contact-section {
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .contact-headline {
+      font-size: 34px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 12px;
+      text-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    }
+
+    .btn-whatsapp-large {
+      background: linear-gradient(135deg, #00f0ff 0%, #0284c7 100%);
+      color: #030712;
+      border: 1px solid #00f0ff;
+      font-size: 19px;
+      font-weight: 900;
+      min-height: 58px;
+      box-shadow: 0 0 24px rgba(0, 240, 255, 0.45);
+    }
+
+    .btn-whatsapp-large:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 32px rgba(0, 240, 255, 0.75);
+    }
+
+    .btn-whatsapp-small {
+      min-height: 46px;
+      font-size: 15px;
+      font-weight: 800;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(10, 25, 55, 0.65);
+      color: var(--text-muted);
+    }
+
+    .btn-whatsapp-small:hover {
+      color: #ffffff;
+      border-color: var(--neon-cyan);
+      background: rgba(14, 32, 70, 0.85);
+    }
+
+    /* رمز مثلث MD7 الصغير فقط في الأسفل */
+    .small-bottom-symbol {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 16px auto 6px;
+      opacity: 0.85;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      cursor: pointer;
+    }
+
+    .small-bottom-symbol:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      padding: 32px 0 46px;
+      text-align: center;
+      border-top: 1px solid rgba(56, 189, 248, 0.2);
+      font-size: 14px;
+      color: var(--text-dim);
+      background: rgba(2, 6, 18, 0.95);
+    }
+
+    .footer-tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-tool {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(10, 22, 48, 0.7);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-tool:hover {
+      color: var(--neon-cyan);
+      border-color: var(--neon-cyan);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 50%;
+      transform: translateX(50%) translateY(100px);
+      background: #0284c7;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 240, 255, 0.5);
+      border: 1px solid var(--neon-cyan);
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.88);
+      backdrop-filter: blur(10px);
+      z-index: 9000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #071329;
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      border-radius: 18px;
+      padding: 24px 20px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 240, 255, 0.2);
+      text-align: right;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      padding-bottom: 10px;
+    }
+
+    .modal-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .modal-close {
+      font-size: 22px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: var(--neon-cyan);
+    }
+  </style>
+<script src="/_aistudio-iframe.js?v=1f94f900"></script><script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@2.0.4"></script><style>.aistudio-hover-highlight { box-shadow: inset 0 0 0 0.5px white, inset 0 0 0 1.5px rgba(128,128,128,0.6) !important; }.aistudio-active-highlight { outline: 2px solid #87a9ff !important; outline-offset: -2px !important; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.3), inset 0 0 0 0.5px rgba(0,0,0,0.3) !important; }.aistudio-generating-blur { filter: blur(5px) grayscale(100%) brightness(28%) !important; transition: filter 0.3s ease; }#aistudio-focus-mode-tag { position: absolute; display: none; align-items: center; gap: 4px; background: #87a9ff; border-radius: 12px; z-index: 10000; padding: 8px; color: #32302c; font-family: Inter, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; pointer-events: none; }#aistudio-hover-mode-tag { position: absolute; display: none; align-items: center; gap: 4px; background: rgba(128,128,128,0.6); border-radius: 12px; z-index: 10000; padding: 8px; color: white; font-family: Inter, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; pointer-events: none; }.aistudio-img-icon { display: none; vertical-align: middle; pointer-events: auto; cursor: pointer; }.aistudio-img-icon.visible { display: inline-flex; }#aistudio-focus-mode-tag .aistudio-img-icon { position: relative; width: 26px; height: 26px; background: #32302c; border-radius: 6px; margin: -4px -4px -4px 0; }#aistudio-focus-mode-tag .aistudio-img-icon::before { content: ""; position: absolute; top: 4px; left: 4px; width: 18px; height: 18px; background-color: white; -webkit-mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); mask-size: contain; mask-repeat: no-repeat; }#aistudio-hover-mode-tag .aistudio-img-icon { position: relative; width: 18px; height: 18px; margin-left: 4px; }#aistudio-hover-mode-tag .aistudio-img-icon::before { content: ""; position: absolute; top: 0; left: 0; width: 18px; height: 18px; background-color: white; -webkit-mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); mask-size: contain; mask-repeat: no-repeat; }#aistudio-focus-mode-tag .aistudio-img-icon:hover, #aistudio-hover-mode-tag .aistudio-img-icon:hover { background: #424242 !important; }#aistudio-focus-mode-tag .aistudio-img-icon:active, #aistudio-hover-mode-tag .aistudio-img-icon:active { background: #393f51 !important; }</style></head>
 <body>
 
-<!-- شعار المؤسس: نجمة + 7 + MD (يُستخدم في الدائرة الرئيسية وفي عنوان التواصل) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <radialGradient id="moonGrad" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#cfd9e6"/>
-    </radialGradient>
-    <symbol id="md-emblem" viewBox="0 0 100 100">
-      <polygon class="emb-star" points="50,4 62.93,26.2 88.04,31.64 70.92,50.8 73.51,76.36 50,66 26.49,76.36 29.08,50.8 11.96,31.64 37.07,26.2"/>
-      <text class="emb-txt" x="50" y="55" text-anchor="middle" font-size="30">7</text>
-      <text class="emb-txt" x="50" y="96" text-anchor="middle" font-size="17" letter-spacing="3">MD</text>
-    </symbol>
-  </defs>
-</svg>
-
-<header>
-  <a class="share-btn" href="join-md7.html" id="shareR" data-contact="partnership" title="شارك مع MD7">🤝 شارك</a>
-  <a class="brand-logo" href="#" onclick="switchTab('md7'); return false;" aria-label="MD7 GROUP - الرئيسية">
-    <span class="group-text">
-      <span class="logo-G">G</span><span class="logo-R">R</span><span class="logo-O">O</span><span class="logo-U">U</span><span class="logo-P">P</span>
-    </span>
-  </a>
-  <button type="button" class="md-btn" id="mdBtn" aria-haspopup="dialog" title="تعريف MD">
-    <span class="logo-D">D</span><span class="logo-M">M</span>
-  </button>
-  <a class="share-btn" href="join-md7.html" id="shareL" data-contact="partnership" title="شارك مع MD7">🤝 شارك</a>
-</header>
-<nav class="site-nav" aria-label="التنقل">
-  <button type="button" data-go="md7" class="on">الرئيسية</button>
-  <button type="button" data-go="about">من نحن؟</button>
-  <button type="button" data-go="projects">المشاريع</button>
-</nav>
-
-<div class="modal-bg" id="mdModal" role="dialog" aria-modal="true" aria-labelledby="mdTitle">
-  <div class="modal-box">
-    <h2 id="mdTitle">MD = إدارة المشاريع وتطويرها</h2>
-    <p>نتعاون للاستفادة من مؤسستك على أعلى مستوى، ووفق أعلى خدمة مقدّمة، وننال رضا العامل قبل العميل، ورضاك كصاحب مؤسسة.</p>
-    <p>نبدأ من المحلات، مرورًا بالمؤسسات، وصولًا إلى الشركات.</p>
-    <button type="button" class="close" id="mdClose">إغلاق</button>
-  </div>
-</div>
-
-<div id="intro" role="dialog" aria-label="واجهة افتتاحية">
-  <h1>MD7 GROUP</h1>
-  <p>من مصر تبدأ رؤيتنا .. نحو عالم جديد</p>
-  <button type="button" id="egyptBtn" aria-label="اضغط على خريطة مصر لتعرف من نحن">
-    <svg viewBox="0 0 380 350" aria-hidden="true">
-      <defs>
-        <clipPath id="egClip"><path id="egPath" d="M6.1,10.2 L66.6,17.0 L127.1,34.0 L187.6,13.6 L226.9,20.4 L286.0,20.4 L305.6,81.6 L293.5,129.2 L286.0,141.1 L266.3,129.2 L251.2,102.0 L239.1,78.2 L234.5,64.6 L228.5,78.2 L237.5,95.2 L251.2,120.7 L272.3,158.1 L278.4,176.8 L305.6,232.9 L323.8,272.0 L366.1,336.6 L6.1,336.6 Z"/></clipPath>
-      </defs>
-      <g clip-path="url(#egClip)">
-        <rect x="0" y="0" width="380" height="120" fill="#ce1126"/>
-        <rect x="0" y="120" width="380" height="110" fill="#ffffff"/>
-        <rect x="0" y="230" width="380" height="120" fill="#111111"/>
-      </g>
-      <path d="M6.1,10.2 L66.6,17.0 L127.1,34.0 L187.6,13.6 L226.9,20.4 L286.0,20.4 L305.6,81.6 L293.5,129.2 L286.0,141.1 L266.3,129.2 L251.2,102.0 L239.1,78.2 L234.5,64.6 L228.5,78.2 L237.5,95.2 L251.2,120.7 L272.3,158.1 L278.4,176.8 L305.6,232.9 L323.8,272.0 L366.1,336.6 L6.1,336.6 Z" fill="none" stroke="#D4AF37" stroke-width="4" stroke-linejoin="round"/>
-      <circle cx="170" cy="175" r="26" fill="none" stroke="#D4AF37" stroke-width="3"/>
-      <text x="170" y="184" text-anchor="middle" font-size="26" font-weight="900" fill="#D4AF37" font-family="Segoe UI, Tahoma, Arial, sans-serif">7</text>
-    </svg>
-  </button>
-  <div class="tap-hint">👆 اضغط على خريطة مصر لتعرف من نحن</div>
-  <button type="button" id="introSkip">تخطي</button>
-</div>
-
-
-<section id="md7" class="view-section active">
-  <div class="solar-system-container">
-    <div id="center-node" class="center-sun-moon" onclick="switchTab('md8')" title="MD8: مولد خطط المشاريع">
-      <svg class="moon-phase" viewBox="-50 -50 100 100" aria-hidden="true"><path id="moon-lit" fill="url(#moonGrad)"/></svg>
-      <svg class="emblem" viewBox="0 0 100 100" role="img" aria-label="MD7"><use href="#md-emblem"/></svg>
-    </div>
-    <div class="orbit-ring">
-      <div class="planet planet-1" onclick="window.location.href='md1.html#advertiser'">MD1<br>إعلانات</div>
-      <div class="planet planet-2" onclick="window.location.href='md2-management.html'">MD2<br>الإدارة</div>
-      <div class="planet planet-3" onclick="window.location.href='wasal24.html'">MD3<br>وصل</div>
-      <div class="planet planet-4" onclick="window.location.href='md4-book-creator.html'">MD4<br>الكتب</div>
-      <div class="planet planet-5" onclick="switchTab('md5')">MD5<br>الأعمال</div>
-      <div class="planet planet-6" onclick="window.location.href='md6-recycling.html'">MD6<br>التدوير</div>
-    </div>
-  </div>
-
-  <div class="chat-widget">
-    <h3 style="color:var(--gold); margin-bottom:8px;"><svg class="emblem-sm" viewBox="0 0 100 100" aria-hidden="true"><use href="#md-emblem"/></svg>تواصل مع المؤسس</h3>
-    <div class="chat-logs" id="chatLogs">
-      <p style="color:#aaa;">مرحباً بك! أنا المساعد  للمنظومة.</p>
-    </div>
-    <div class="chat-input-row">
-      <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا...">
-      <button onclick="sendChatMessage()">إرسال</button>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="view-section">
-  <div class="card-box">
-    <h2>من نحن؟</h2>
-    <p class="about-p"><b>MD7 Group</b> هي مجموعة متخصصة في تقديم أفكار وحلول مبتكرة لتطوير المؤسسات والمشروعات، والمساهمة في تحسين إدارة الموارد والاستفادة من الإمكانات المتاحة، من خلال دراسة الواقع، وتحليل التحديات، وتقديم المقترحات القابلة للتطبيق بالتعاون مع الجهات المعنية.</p>
-    <div class="vals">
-      <div class="val"><b>الرؤية</b><span>نحو مجتمع أكثر تنظيمًا وتقدمًا</span></div>
-      <div class="val"><b>التطوير</b><span>للمؤسسات والمشروعات</span></div>
-      <div class="val"><b>الابتكار</b><span>في تقديم الحلول</span></div>
-      <div class="val"><b>الشراكة</b><span>مع الجهات والمؤسسات المعنية</span></div>
-    </div>
-    <div class="two">
-      <div class="val"><b>رسالتنا</b><span>تحويل الأفكار المدروسة إلى فرص حقيقية للتطوير والنمو.</span></div>
-      <div class="val"><b>رؤيتنا</b><span>المساهمة في بناء مجتمع أكثر تنظيمًا وتطورًا.</span></div>
-    </div>
-    <div class="val" style="margin-top:12px"><b>🇪🇬 نبدأ رحلتنا من مصر ...</b><span>باعتبارها نقطة الانطلاق نحو مستقبل أكبر، ولأنها تستحق أن تكون في مقدمة الدول التي تشهد التنمية والتطوير.</span></div>
-    <p style="margin-top:14px"><button type="button" class="share-btn" style="border:0;cursor:pointer;font-family:inherit;font-size:14px;padding:10px 20px" data-go="projects">استعرض المشاريع ←</button></p>
-  </div>
-</section>
-
-<section id="projects" class="view-section">
-  <div class="card-box">
-    <h2>المشاريع</h2>
-    <div class="proj-grid">
-      <div class="proj feat">
-        <span class="tag">MD1</span>
-        <h3>🚐 إعلانات المركبات</h3>
-        <p>منصة لإعلانات المركبات والميكروباصات والأتوبيسات، وخدمات الملاك والسائقين والمعلنين ومركز الصيانة.</p>
-        <a href="md1.html#advertiser" id="discoverMd1">اكتشف المشروع</a>
+  <!-- شريط الملاحة الثابت مع زر الصوت السريع والواتساب -->
+  <header class="header-bar">
+    <div class="container header-content">
+      <div class="brand-logo">
+        <span class="brand-badge"></span>
+        <span>دليكوم</span>
       </div>
-      <div class="proj"><span class="tag">MD2</span><h3>📚 تطوير الإدارة</h3><p>سجّل بيانات مشروعك أو مؤسستك أو شركتك ليدرسها فريق MD7 ويقدّم لك مقترحات تطوير.</p><a href="md2-management.html">سجّل بياناتك</a></div>
-      <div class="proj"><span class="tag">MD3</span><h3>🛒 وصل</h3><p>منصة وصل.</p><a href="wasal24.html">فتح</a></div>
-      <div class="proj"><span class="tag">MD4</span><h3>📖 MD4 Book Creator</h3><p>أداة لتنسيق الكتب بمقاس A5 مع معاينة وتصدير PDF يدعم العربي.</p><a href="md4-book-creator.html">افتح الأداة</a></div>
-      <div class="proj"><span class="tag">MD5</span><h3>🎬 تعليم وصحة</h3><p>الأعمال والتعليم والصحة.</p><button type="button" data-go="md5">فتح</button></div>
-      <div class="proj"><span class="tag">MD6</span><h3>♻️ إعادة التدوير من القمامة ليدك</h3><p>فرز من المصدر واقتصاد تدوير، مع باب لعروض شراكة شركات النظافة والتدوير.</p><a href="md6-recycling.html">اكتشف المشروع</a></div>
-      <div class="proj"><span class="tag">MD8</span><h3>🚀 مولد خطط المشاريع</h3><p>أداة إعداد خطط المشاريع.</p><button type="button" data-go="md8">فتح</button></div>
+
+      <div class="header-controls">
+        <a href="#contact" class="header-whatsapp-btn" onclick="openYaraWhatsApp(event)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.51c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.45 1.03 2.61.12.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.59.21-1.09.15-1.19-.06-.1-.23-.17-.48-.29z"></path>
+          </svg>
+          <span>واتساب</span>
+        </a>
+      </div>
     </div>
-    <div class="actions" style="margin-top:16px">
-      <a class="share-btn big" href="join-md7.html" data-contact="partnership" data-proj="MD7 Group">🤝 طلب شراكة</a>
-      <a class="share-btn big alt" href="join-md7.html" data-contact="contract" data-proj="MD7 Group">📄 طلب عقد</a>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         1. البداية (Hero Section)
+         ==================================================================== -->
+    <section class="hero-section">
+      <div class="container">
+        <span class="hero-tag">
+          <span class="ticker-pulse-green"></span>
+          <span>منظومة التواصل اللامركزي والمحفظة الرقمية</span>
+        </span>
+        <h1 class="hero-title">دليكوم هو الحل</h1>
+        <p class="hero-desc">سوشيال + محفظة + شات مشفر في تطبيق واحد</p>
+
+        <!-- زرارين: تحميل أندرويد و تحميل آيفون -->
+        <div class="btn-group-hero">
+          <a href="#download-android" class="btn btn-cyber-primary" id="btn-hero-android" onclick="handleDownload(event, 'android')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9997.9993-.9997c.5516 0 .9998.4482.9998.9997 0 .5515-.4482 1.0001-.9998 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9997.9993-.9997c.5516 0 .9998.4482.9998.9997 0 .5515-.4482 1.0001-.9998 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 0 0-.1521-.5676.416.416 0 0 0-.5676.1521l-2.0223 3.503C15.5902 8.4126 13.8533 8.0818 12 8.0818c-1.8535 0-3.5902.3308-5.1368.8679L4.8409 5.4467a.4161.4161 0 0 0-.5677-.1521.4157.4157 0 0 0-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"></path>
+            </svg>
+            <span>تحميل أندرويد</span>
+          </a>
+
+          <a href="#download-ios" class="btn btn-cyber-outline" id="btn-hero-ios" onclick="handleDownload(event, 'ios')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.66-.8 1.11-1.92.99-3.04-.96.04-2.12.64-2.8 1.44-.6.69-1.13 1.83-.99 2.92 1.07.08 2.16-.54 2.8-1.32z"></path>
+            </svg>
+            <span>تحميل آيفون</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         شريط العملات والأسهم التصاعدي التفاعلي
+         ==================================================================== -->
+    <div class="crypto-stock-ticker-section">
+      <div class="container">
+        <div class="ticker-header-bar">
+          <div class="ticker-live-badge">
+            <span class="ticker-pulse-green"></span>
+            <span>مؤشرات العملات والرتب الحية</span>
+          </div>
+          <span style="font-size: 13px; color: var(--text-muted); font-weight: 700;">دوران ثلاثي الأبعاد • نمو تصاعدي فوري</span>
+        </div>
+
+        <div class="ticker-scroll-wrapper">
+          <div class="ticker-track">
+
+            <!-- كارت 1: عملة USDT الفضية -->
+            <div class="coin-stock-card">
+              <div class="coin-3d-rotating-frame">
+                <div class="coin-3d-rotating-disc">
+                  <svg viewBox="0 0 100 100" class="coin-usdt-svg">
+                    <circle cx="50" cy="50" r="46" fill="url(#silverGrad)" stroke="#38bdf8" stroke-width="3"></circle>
+                    <circle cx="50" cy="50" r="38" fill="#0b1736" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="4 2"></circle>
+                    <text x="50" y="62" font-size="34" font-weight="900" fill="#00f0ff" text-anchor="middle" font-family="'Orbitron', sans-serif">₮</text>
+                    <defs>
+                      <radialGradient id="silverGrad" cx="30%" cy="30%" r="70%">
+                        <stop offset="0%" stop-color="#ffffff"></stop>
+                        <stop offset="60%" stop-color="#94a3b8"></stop>
+                        <stop offset="100%" stop-color="#334155"></stop>
+                      </radialGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+              <div class="coin-growth-badge">▲ +1000$ USDT</div>
+              <div class="coin-title">رتبة المدير (Director)</div>
+              <p class="coin-subtext">محفظتك تستقبل الأرباح مباشرة بدون قيود</p>
+              <svg viewBox="0 0 100 24" class="coin-sparkline-svg">
+                <polyline points="0,20 20,16 40,18 60,10 80,12 100,2" fill="none" stroke="#10b981" stroke-width="2.5"></polyline>
+              </svg>
+            </div>
+
+            <!-- كارت 2: عملة 250$ الذهبية -->
+            <div class="coin-stock-card">
+              <div class="coin-3d-rotating-frame">
+                <div class="coin-3d-rotating-disc">
+                  <svg viewBox="0 0 100 100" class="coin-usdt-svg">
+                    <circle cx="50" cy="50" r="46" fill="url(#goldGrad)" stroke="#eab308" stroke-width="3"></circle>
+                    <circle cx="50" cy="50" r="38" fill="#1e1b4b" stroke="#facc15" stroke-width="1.5" stroke-dasharray="4 2"></circle>
+                    <text x="50" y="58" font-size="20" font-weight="900" fill="#facc15" text-anchor="middle" font-family="'Cairo', sans-serif">250$</text>
+                    <text x="50" y="74" font-size="11" font-weight="800" fill="#fde047" text-anchor="middle">انطلاقة</text>
+                    <defs>
+                      <radialGradient id="goldGrad" cx="30%" cy="30%" r="70%">
+                        <stop offset="0%" stop-color="#fef08a"></stop>
+                        <stop offset="60%" stop-color="#eab308"></stop>
+                        <stop offset="100%" stop-color="#854d0e"></stop>
+                      </radialGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+              <div class="coin-growth-badge">▲ +250$ هدية</div>
+              <div class="coin-title">مكافأة الانطلاقة السريعة</div>
+              <p class="coin-subtext">للقائد الخبير خلال أول 30 يوماً</p>
+              <svg viewBox="0 0 100 24" class="coin-sparkline-svg">
+                <polyline points="0,22 25,18 50,14 70,8 100,2" fill="none" stroke="#10b981" stroke-width="2.5"></polyline>
+              </svg>
+            </div>
+
+            <!-- كارت 3: عملة 10% العمولات المباشرة -->
+            <div class="coin-stock-card">
+              <div class="coin-3d-rotating-frame">
+                <div class="coin-3d-rotating-disc">
+                  <svg viewBox="0 0 100 100" class="coin-usdt-svg">
+                    <circle cx="50" cy="50" r="46" fill="url(#cyanGrad)" stroke="#00f0ff" stroke-width="3"></circle>
+                    <circle cx="50" cy="50" r="38" fill="#030712" stroke="#38bdf8" stroke-width="1.5"></circle>
+                    <text x="50" y="62" font-size="28" font-weight="900" fill="#00f0ff" text-anchor="middle" font-family="'Orbitron', sans-serif">10%</text>
+                    <defs>
+                      <radialGradient id="cyanGrad" cx="30%" cy="30%" r="70%">
+                        <stop offset="0%" stop-color="#e0f2fe"></stop>
+                        <stop offset="60%" stop-color="#0284c7"></stop>
+                        <stop offset="100%" stop-color="#082f49"></stop>
+                      </radialGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+              <div class="coin-growth-badge">▲ +10% عمولة</div>
+              <div class="coin-title">العمولة المباشرة</div>
+              <p class="coin-subtext">تحويل فوري إلى محفظتك الخاصة</p>
+              <svg viewBox="0 0 100 24" class="coin-sparkline-svg">
+                <polyline points="0,18 20,20 45,12 75,10 100,3" fill="none" stroke="#10b981" stroke-width="2.5"></polyline>
+              </svg>
+            </div>
+
+            <!-- كارت 4: عملة دليكوم Dlicom Token -->
+            <div class="coin-stock-card">
+              <div class="coin-3d-rotating-frame">
+                <div class="coin-3d-rotating-disc">
+                  <svg viewBox="0 0 100 100" class="coin-usdt-svg">
+                    <circle cx="50" cy="50" r="46" fill="url(#blueCoreGrad)" stroke="#6366f1" stroke-width="3"></circle>
+                    <polygon points="50,15 80,75 20,75" fill="none" stroke="#00f0ff" stroke-width="2.5"></polygon>
+                    <text x="50" y="60" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle" font-family="'Orbitron', sans-serif">DLICOM</text>
+                    <defs>
+                      <radialGradient id="blueCoreGrad" cx="30%" cy="30%" r="70%">
+                        <stop offset="0%" stop-color="#818cf8"></stop>
+                        <stop offset="70%" stop-color="#312e81"></stop>
+                        <stop offset="100%" stop-color="#0f172a"></stop>
+                      </radialGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+              <div class="coin-growth-badge">▲ +450$ مكافأة</div>
+              <div class="coin-title">خطة الأجيال والثنائية</div>
+              <p class="coin-subtext">منظومة نمو مستمرة لشركاء النجاح</p>
+              <svg viewBox="0 0 100 24" class="coin-sparkline-svg">
+                <polyline points="0,21 30,15 60,12 80,6 100,1" fill="none" stroke="#10b981" stroke-width="2.5"></polyline>
+              </svg>
+            </div>
+
+            <!-- تكرار لسلاسة الحركة -->
+            <div class="coin-stock-card">
+              <div class="coin-3d-rotating-frame">
+                <div class="coin-3d-rotating-disc">
+                  <svg viewBox="0 0 100 100" class="coin-usdt-svg">
+                    <circle cx="50" cy="50" r="46" fill="url(#silverGrad)" stroke="#38bdf8" stroke-width="3"></circle>
+                    <circle cx="50" cy="50" r="38" fill="#0b1736" stroke="#00f0ff" stroke-width="1.5"></circle>
+                    <text x="50" y="62" font-size="34" font-weight="900" fill="#00f0ff" text-anchor="middle" font-family="'Orbitron', sans-serif">₮</text>
+                  </svg>
+                </div>
+              </div>
+              <div class="coin-growth-badge">▲ +1000$ USDT</div>
+              <div class="coin-title">رتبة المدير (Director)</div>
+              <p class="coin-subtext">محفظتك تستقبل الأرباح مباشرة بدون قيود</p>
+              <svg viewBox="0 0 100 24" class="coin-sparkline-svg">
+                <polyline points="0,20 20,16 40,18 60,10 80,12 100,2" fill="none" stroke="#10b981" stroke-width="2.5"></polyline>
+              </svg>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         2. قسم الرحلة - كروت مستقلة تحت بعضها بمسافة واضحة ودون أي تكرار
+         المرحلة 1: حمل التطبيق (صورة المؤتمرات والمحاضرات)
+         المرحلة 2: اعمل حساب في دقيقة (صورة الرتب والمكافآت + طريقة الدخول في 4 خطوات تظهر مرة واحدة فقط)
+         المرحلة 3: انضم لمجتمعنا (صورة كود QR + بطاقة إنهاء الرحلة مع يارا)
+         ==================================================================== -->
+    <section class="journey-section" id="journey">
+      <div class="container">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 24px;">
+          <div>
+            <h2 class="section-title">رحلة دليكوم (3 مراحل متتالية)</h2>
+            <p class="section-subtitle" style="margin-bottom: 0;">كل مرحلة في كارت مستقل يوضح خطوات انضمامك ونجاحك بهدوء ووضوح.</p>
+          </div>
+          <button class="btn-tool" onclick="openPhotoModal('assets/aistudio/IMG-20261106-WA7657_9b1d7a0a.jpg', 'بوستر نماذج دليكوم المجمع')">
+            معاينة بوستر النماذج بالكامل 🔍
+          </button>
+        </div>
+
+        <div class="journey-stages-stack">
+
+          <!-- ================================================================
+               المرحلة 1: حمل التطبيق (صورة المؤتمرات والمحاضرات)
+               ================================================================ -->
+          <div class="journey-stage is-active" id="stage-1" data-stage="1">
+            <div class="stage-top-meta">
+              <span class="stage-badge-cyber">المرحلة 1</span>
+              <div class="stage-status-indicator">
+                <span class="ticker-pulse-green"></span>
+                <span>المرحلة النشطة الحالية (نبض حي)</span>
+              </div>
+            </div>
+
+            <h3 class="stage-heading">المرحلة 1: حمل التطبيق</h3>
+            <p class="stage-summary">
+              حمل تطبيق دليكوم الآن على هاتفك لتكون جزءاً من المؤتمرات واللقاءات والمحاضرات الحية في كل مكان مع قادة المجتمع.
+            </p>
+
+            <!-- صورة المؤتمرات والمحاضرات -->
+            <div class="stage-image-box" onclick="openPhotoModal('assets/aistudio/IMG________________-COLLAGE_b566ba6f.jpg', 'المرحلة 1: مؤتمرات ومحاضرات مجتمع دليكوم في كل مكان')">
+              <img src="assets/aistudio/IMG________________-COLLAGE_b566ba6f.jpg" alt="مؤتمرات ومحاضرات مجتمع دليكوم" loading="lazy" onerror="this.onerror=null; this.src='/public/assets/aistudio/IMG________________-COLLAGE_b566ba6f.jpg';">
+              <div class="stage-image-caption">
+                <span>مؤتمرات ومحاضرات حية في كل مكان</span>
+                <span style="font-size: 11px; background: var(--neon-cyan); color: #030712; padding: 2px 8px; border-radius: 4px; font-weight: 900;">LIVE PULSE</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button class="btn btn-cyber-primary" style="flex: 1; min-height: 48px; font-size: 15px;" onclick="handleDownload(event, 'android')">
+                تحميل أندرويد
+              </button>
+              <button class="btn btn-cyber-outline" style="flex: 1; min-height: 48px; font-size: 15px;" onclick="handleDownload(event, 'ios')">
+                تحميل آيفون
+              </button>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               المرحلة 2: اعمل حساب في دقيقة (صورة الرتب والمكافآت + طريقة الدخول في 4 خطوات تظهر مرة واحدة فقط)
+               ================================================================ -->
+          <div class="journey-stage is-dimmed" id="stage-2" data-stage="2">
+            <div class="stage-top-meta">
+              <span class="stage-badge-cyber">المرحلة 2</span>
+              <div class="stage-status-indicator">
+                <span class="ticker-pulse-green"></span>
+                <span>المرحلة 2 (انتقل هنا بالسكرول)</span>
+              </div>
+            </div>
+
+            <h3 class="stage-heading">المرحلة 2: اعمل حساب في دقيقة</h3>
+            <p class="stage-summary">
+              أنشئ محفظتك المشفرة في 60 ثانية بدون أي تعقيد، وابدأ فوراً بالاستفادة من خطط العمولات المباشرة 10% وجوائز الرتب.
+            </p>
+
+            <!-- صورة الرتب والمكافآت والعمولات -->
+            <div class="stage-image-box" onclick="openPhotoModal('assets/aistudio/IMG________________-COLLAGE_fded1adc.jpg', 'المرحلة 2: نظام الرتب والمكافآت والعمولات الفورية')">
+              <img src="assets/aistudio/IMG________________-COLLAGE_fded1adc.jpg" alt="نظام الرتب والمكافآت والعمولات" loading="lazy" onerror="this.onerror=null; this.src='/public/assets/aistudio/IMG________________-COLLAGE_fded1adc.jpg';">
+              <div class="stage-image-caption">
+                <span>نظام الرتب والمكافآت والعمولات الفورية</span>
+                <span style="font-size: 11px; background: var(--neon-gold); color: #030712; padding: 2px 8px; border-radius: 4px; font-weight: 900;">REWARDS</span>
+              </div>
+            </div>
+
+            <!-- طريقة الدخول في 4 خطوات (تظهر هنا فقط مرة واحدة بدون أي تكرار) -->
+            <div class="steps-card-guide">
+              <div class="steps-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <span>طريقة الدخول في 4 خطوات</span>
+              </div>
+
+              <div class="step-item-row">
+                <span class="step-badge-num">1</span>
+                <span>حمل تطبيق دليكوم لأندرويد أو آيفون</span>
+              </div>
+              <div class="step-item-row">
+                <span class="step-badge-num">2</span>
+                <span>افتح التطبيق وحدد اسم المستخدم الخاص بك</span>
+              </div>
+              <div class="step-item-row">
+                <span class="step-badge-num">3</span>
+                <span>احفظ المفتاح السري المشفر لمحفظتك في مكان آمن</span>
+              </div>
+              <div class="step-item-row">
+                <span class="step-badge-num">4</span>
+                <span>ادخل إلى المنصة وابدأ فوراً بجني الأرباح والعمولات</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button class="btn btn-cyber-primary" style="width: 100%; min-height: 48px; font-size: 15px;" onclick="openSimulatedAccountModal()">
+                ابدأ تسجيل حسابك في 60 ثانية
+              </button>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               المرحلة 3: انضم لمجتمعنا (صورة كود QR + بطاقة إنهاء الرحلة والتواصل مع يارا)
+               ================================================================ -->
+          <div class="journey-stage is-dimmed" id="stage-3" data-stage="3">
+            <div class="stage-top-meta">
+              <span class="stage-badge-cyber">المرحلة 3</span>
+              <div class="stage-status-indicator">
+                <span class="ticker-pulse-green"></span>
+                <span>المرحلة 3 (انتقل هنا بالسكرول)</span>
+              </div>
+            </div>
+
+            <h3 class="stage-heading">المرحلة 3: انضم لمجتمعنا</h3>
+            <p class="stage-summary">
+              امسح كود الدعوة وانضم لآلاف الأعضاء ورواد الأعمال النشطين في مجتمع دليكوم الرسمي لتبادل الخبرات ومتابعة التحديثات.
+            </p>
+
+            <!-- صندوق كود QR عالي الوضوح والدقة (يظهر مرة واحدة فقط بدون تكرار) -->
+            <div class="stage-qr-box">
+              <div class="qr-frame-white" title="كود QR الرسمي لمجتمع دليكوم">
+                <svg viewBox="0 0 100 100" fill="#030712">
+                  <rect x="5" y="5" width="26" height="26" rx="3"></rect>
+                  <rect x="9" y="9" width="18" height="18" fill="#fff"></rect>
+                  <rect x="13" y="13" width="10" height="10"></rect>
+                  <rect x="69" y="5" width="26" height="26" rx="3"></rect>
+                  <rect x="73" y="9" width="18" height="18" fill="#fff"></rect>
+                  <rect x="77" y="13" width="10" height="10"></rect>
+                  <rect x="5" y="69" width="26" height="26" rx="3"></rect>
+                  <rect x="9" y="73" width="18" height="18" fill="#fff"></rect>
+                  <rect x="13" y="77" width="10" height="10"></rect>
+                  <rect x="35" y="9" width="6" height="6"></rect>
+                  <rect x="47" y="9" width="6" height="6"></rect>
+                  <rect x="57" y="9" width="6" height="6"></rect>
+                  <rect x="35" y="21" width="8" height="6"></rect>
+                  <rect x="51" y="21" width="12" height="6"></rect>
+                  <rect x="9" y="37" width="6" height="6"></rect>
+                  <rect x="23" y="37" width="8" height="6"></rect>
+                  <rect x="39" y="37" width="10" height="6"></rect>
+                  <rect x="57" y="37" width="14" height="6"></rect>
+                  <rect x="79" y="37" width="10" height="6"></rect>
+                  <rect x="5" y="49" width="12" height="6"></rect>
+                  <rect x="25" y="49" width="14" height="6"></rect>
+                  <rect x="47" y="49" width="6" height="6"></rect>
+                  <rect x="61" y="49" width="18" height="6"></rect>
+                  <rect x="87" y="49" width="8" height="6"></rect>
+                  <rect x="35" y="69" width="12" height="6"></rect>
+                  <rect x="55" y="69" width="14" height="6"></rect>
+                  <rect x="77" y="69" width="18" height="6"></rect>
+                  <rect x="35" y="83" width="16" height="6"></rect>
+                  <rect x="59" y="83" width="10" height="6"></rect>
+                  <rect x="77" y="83" width="16" height="6"></rect>
+                </svg>
+              </div>
+              <div class="qr-bold-label">امسح الكود وانضم</div>
+              <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 14px;">وجه كاميرا هاتفك نحو الرمز للانضمام الفوري للمجتمع</p>
+              
+              <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://t.me/delycom_official" target="_blank" rel="noopener noreferrer" class="btn btn-cyber-primary" style="min-height: 44px; font-size: 14px; width: auto; padding: 8px 20px;">
+                  فتح رابط المجتمع مباشرة
+                </a>
+                <button class="btn btn-cyber-outline" style="min-height: 44px; font-size: 14px; width: auto; padding: 8px 16px;" onclick="copyCommunityLink()">
+                  نسخ الرابط
+                </button>
+              </div>
+            </div>
+
+            <!-- بطاقة إنهاء الرحلة: "خلصت الرحلة، كلم يارا دلوقتي" -->
+            <div class="journey-completion-card">
+              <div class="completion-icon-ring">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#030712" stroke-width="2.6">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <h4 class="completion-headline">خلصت الرحلة، كلم يارا دلوقتي</h4>
+              <p class="completion-subline">يارا هترد عليك وتوصلك بالمطور لتفعيل محفظتك ومكافآتك فوراً</p>
+              <a href="#" class="btn btn-whatsapp-large" onclick="openYaraWhatsApp(event)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.51c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.45 1.03 2.61.12.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.59.21-1.09.15-1.19-.06-.1-.23-.17-.48-.29z"></path>
+                </svg>
+                <span>تواصل مع يارا</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         3. ليه دليكوم؟ - مسافة 16px واضحة جداً بين الأيقونة والعنوان
+         ==================================================================== -->
+    <section id="why-delycom">
+      <div class="container">
+        <h2 class="section-title">ليه دليكوم؟</h2>
+        <p class="section-subtitle">أربعة أسباب تجعل دليكوم الخيار الأذكى والأنسب لك.</p>
+
+        <div class="features-grid">
+          <!-- كارت 1 -->
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <div class="feature-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+                  <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+                  <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+                </svg>
+              </div>
+              <h3 class="feature-title">محفظتك بتاعتك انت</h3>
+            </div>
+            <p class="feature-desc">أنت وحدك المالك لمفاتيحك وأموالك. لا وسيط يتحكم في رصيدك ولا منصة مركزية تجمد حسابك.</p>
+          </div>
+
+          <!-- كارت 2 -->
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <div class="feature-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <h3 class="feature-title">رسايلك مشفرة</h3>
+            </div>
+            <p class="feature-desc">تشفير كامل من طرف لطرف للمحادثات الخاصة والمجموعات. خصوصيتك حق غير قابل للمساومة.</p>
+          </div>
+
+          <!-- كارت 3 -->
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <div class="feature-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                  <path d="M12 6v2m0 8v2"></path>
+                </svg>
+              </div>
+              <h3 class="feature-title">تكسب من محتواك</h3>
+            </div>
+            <p class="feature-desc">نظام مكافآت وعمولات فورية يحول حضورك وتفاعلك وصناعتك للمحتوى إلى دخل رقمي ملموس.</p>
+          </div>
+
+          <!-- كارت 4 -->
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <div class="feature-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h3 class="feature-title">مجتمع عربي</h3>
+            </div>
+            <p class="feature-desc">بيئة عربية رائدة تجمع رواد الأعمال والمبدعين والمستخدمين لتبادل الخبرات والنمو سوياً.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         4. الثقة - 4 روابط
+         ==================================================================== -->
+    <section id="trust">
+      <div class="container">
+        <h2 class="section-title">الثقة والمصداقية</h2>
+        <p class="section-subtitle">شفافية كاملة وروابط رسمية تدعم انطلاقتنا واستقرار بنيتنا.</p>
+
+        <div class="trust-links-list">
+          <a href="#whitepaper" class="trust-item" onclick="handleTrustClick(event, 'whitepaper')">
+            <div class="trust-item-left">
+              <div class="trust-badge-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <div>
+                <div class="trust-name">الورقة البيضاء</div>
+                <div class="trust-desc">وثيقة المشروع وخارطة الطريق الفنية الرسمية</div>
+              </div>
+            </div>
+            <div class="trust-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <a href="https://t.me/delycom_official" target="_blank" rel="noopener noreferrer" class="trust-item">
+            <div class="trust-item-left">
+              <div class="trust-badge-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="trust-name">قناة تيليجرام</div>
+                <div class="trust-desc">تحديثات فورية وأخبار مجتمع دليكوم الرسمية</div>
+              </div>
+            </div>
+            <div class="trust-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <a href="https://x.com/delycom_app" target="_blank" rel="noopener noreferrer" class="trust-item">
+            <div class="trust-item-left">
+              <div class="trust-badge-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="trust-name">حساب X الرسمي</div>
+                <div class="trust-desc">التواصل مع المنظومة العالمية والشركاء</div>
+              </div>
+            </div>
+            <div class="trust-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <a href="https://www.zeeve.io" target="_blank" rel="noopener noreferrer" class="trust-item">
+            <div class="trust-item-left">
+              <div class="trust-badge-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+              </div>
+              <div>
+                <div class="trust-name">حساب شركة Zeeve</div>
+                <div class="trust-desc">البنية التحتية لعقد البلوكشين والحلول السحابية الموثوقة</div>
+              </div>
+            </div>
+            <div class="trust-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         5. آخر الرحلة - الأهم (تواصل مع يارا وتواصل مع المطور)
+         ==================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <h2 class="contact-headline">عندك سؤال؟</h2>
+
+        <div style="max-width: 440px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px;">
+          <!-- زرار كبير: تواصل مع يارا -->
+          <a href="#" class="btn btn-whatsapp-large" id="btn-yara-whatsapp" onclick="openYaraWhatsApp(event)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.51c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.45 1.03 2.61.12.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.59.21-1.09.15-1.19-.06-.1-.23-.17-.48-.29z"></path>
+            </svg>
+            <span>تواصل مع يارا</span>
+          </a>
+
+          <p style="font-size: 15px; color: var(--text-blue-light); opacity: 0.85; font-weight: 600; margin: 2px 0 6px;">
+            يارا هترد عليك وتوصلك بالمطور
+          </p>
+
+          <!-- زرار صغير ثانوي: تواصل مع المطور -->
+          <a href="#" class="btn btn-whatsapp-small" id="btn-dev-whatsapp" onclick="openDevWhatsApp(event)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.51c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.45 1.03 2.61.12.17 1.77 2.71 4.3 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.59.21-1.09.15-1.19-.06-.1-.23-.17-.48-.29z"></path>
+            </svg>
+            <span>تواصل مع المطور</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       الفوتر وأدوات الرفع
+       ==================================================================== -->
+  <footer>
+    <div class="container">
+      <div style="font-size: 19px; font-weight: 900; color: #ffffff; margin-bottom: 6px;">دليكوم</div>
+      <p style="color: var(--text-muted);">سوشيال + محفظة + شات مشفر في تطبيق واحد</p>
+
+      <!-- رمز صغير فقط في الأسفل لشعار MD7 داخل شكل مثلث -->
+      <div class="small-bottom-symbol" title="رمز الشعار">
+        <svg width="34" height="30" viewBox="0 0 70 60" style="filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.45));">
+          <polygon points="35,4 66,56 4,56" fill="rgba(3, 7, 18, 0.95)" stroke="#00f0ff" stroke-width="2.2" stroke-linejoin="round"></polygon>
+          <text x="35" y="44" font-size="14" font-weight="900" fill="#ffffff" text-anchor="middle" font-family="'Orbitron', sans-serif" letter-spacing="0.5px">MD7</text>
+        </svg>
+      </div>
+
+      <p style="margin-top: 4px; font-size: 13px;">جميع الحقوق محفوظة © <span id="currentYear">2026</span> دليكوم</p>
+
+      <div class="footer-tools">
+        <button class="btn-tool" onclick="downloadCurrentHtmlFile()" title="تحميل ملف index.html المستقل بالكامل لرفعه على Netlify أو GitHub">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>تحميل ملف index.html الجاهز</span>
+        </button>
+
+        <button class="btn-tool" onclick="copyFullHtmlCode()" title="نسخ الكود المصدري الكامل لملف index.html">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span>نسخ كود index.html بالكامل</span>
+        </button>
+
+        <button class="btn-tool" onclick="openSettingsModal()" title="إعداد روابط الواتساب بسهولة">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span>تخصيص روابط الواتساب</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       Modals
+       ==================================================================== -->
+  <!-- 1. نافذة تكبير الصور -->
+  <div class="modal-overlay" id="photoModal" onclick="closePhotoModal(event)">
+    <div class="modal-card" style="max-width: 660px; padding: 18px;" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title" id="photoModalTitle">معاينة الصورة بدقة كاملة</h3>
+        <button class="modal-close" onclick="closePhotoModal()">×</button>
+      </div>
+      <div style="width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(56, 189, 248, 0.3); background: #020617;">
+        <img id="photoModalImg" src="" alt="عرض صورة دليكوم" style="width: 100%; height: auto; max-height: 72vh; object-fit: contain; display: block;">
+      </div>
+      <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 13px; color: var(--text-muted);">انقر خارج النافذة للإغلاق</span>
+        <button class="btn btn-cyber-outline" style="min-height: 38px; font-size: 13px; width: auto; padding: 6px 16px;" onclick="closePhotoModal()">إغلاق</button>
+      </div>
     </div>
   </div>
-</section>
 
-<section id="md8" class="view-section"><div class="card-box">
-  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
-  <span class="tag">MD8</span>
-  <h2>🚀 MD8: مولد خطط المشاريع</h2>
-  <p class="about-p">نحوّل الفكرة إلى خطة مشروع منظمة. هذه مشروعات MD7 التي أنجزنا واجهاتها أو نعمل عليها الآن، وكل منها يصلح نموذجًا لخطتك.</p>
-  <div class="proj-grid" style="margin-top:12px">
-    <div class="proj feat"><span class="tag">MD1 · واجهة جاهزة للتجربة</span><h3>🚐 إعلانات المركبات</h3><p>معاينة ثلاثية الأبعاد، ورفع صورة الإعلان، وحساب السعر، وطلب حجز.</p><a href="md1.html#advertiser">افتح المشروع</a></div>
-    <div class="proj feat"><span class="tag">MD6 · عرض مشروع وباب شراكة</span><h3>♻️ إعادة التدوير من القمامة ليدك</h3><p>فرز من المصدر واقتصاد تدوير، وعروض شراكة لشركات النظافة والتدوير.</p><a href="md6-recycling.html">افتح المشروع</a></div>
-    <div class="proj feat"><span class="tag">MD4 · أداة جاهزة للتجربة</span><h3>📖 MD4 Book Creator</h3><p>تنسيق الكتب بمقاس A5 وتصدير PDF يدعم العربي.</p><a href="md4-book-creator.html">افتح الأداة</a></div>
-    <div class="proj"><span class="tag">MD2 · تسجيل بيانات</span><h3>📚 تطوير الإدارة</h3><p>نموذج لمن يريد تطوير مشروعه أو مؤسسته أو شركته.</p><a href="md2-management.html">سجّل بياناتك</a></div>
+  <!-- 2. نافذة خيارات تحميل التطبيق -->
+  <div class="modal-overlay" id="downloadModal" onclick="closeDownloadModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title" id="downloadModalTitle">تحميل تطبيق دليكوم</h3>
+        <button class="modal-close" onclick="closeDownloadModal()">×</button>
+      </div>
+      <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 20px;" id="downloadModalDesc">
+        اختر الطريقة الأنسب لك لتحميل التطبيق على جهازك مباشرة:
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 12px;" id="downloadModalButtons"></div>
+    </div>
   </div>
-  <p class="about-p" style="margin-top:12px;font-size:12px;color:#999">الحالة الفعلية: الواجهات تعمل للتجربة، وتسجيل الطلبات الدائم يحتاج ربطها بقاعدة بيانات.</p>
-  <div class="actions"><a class="share-btn big" href="join-md7.html" data-contact="partnership" data-proj="MD8 - خطة مشروع">🤝 اطلب خطة لمشروعك</a></div>
-</div></section>
-<section id="md2" class="view-section"><div class="card-box">
-  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
-  <span class="tag">MD2</span>
-  <h2>📚 MD2: تطوير الإدارة</h2>
-  <p class="about-p">سجّل بيانات مشروعك أو مؤسستك أو شركتك ليتم دراستها وتقديم مقترحات تطوير.</p>
-  <div class="actions"><a class="share-btn big" href="md2-management.html">سجّل بياناتك</a>
-  <a class="share-btn big alt" href="join-md7.html" data-contact="partnership" data-proj="MD2 - 📚 MD2: تطوير الإدارة">🤝 طلب شراكة</a></div>
-</div></section>
-<section id="md3" class="view-section"><div class="card-box">
-  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
-  <span class="tag">MD3</span>
-  <h2>🛒 MD3: منصة وصل</h2>
-  <p class="about-p">منصة وصل ضمن منظومة MD7 Group.</p>
-  <div class="val" style="margin:14px 0"><b>الحالة</b><span>قيد الإعداد — تُضاف تفاصيل هذا المشروع وخدماته هنا فور اعتمادها.</span></div>
-  <p style="margin:10px 0"><a class="share-btn big" href="wasal24.html">افتح منصة وصل</a></p>
-  <div class="actions">
-    <a class="share-btn big" href="join-md7.html" data-contact="partnership" data-proj="MD3 - منصة وصل">🤝 طلب شراكة</a>
-    <a class="share-btn big alt" href="join-md7.html" data-contact="contract" data-proj="MD3 - منصة وصل">📄 طلب عقد</a>
+
+  <!-- 3. نافذة ملخص الورقة البيضاء -->
+  <div class="modal-overlay" id="whitepaperModal" onclick="closeWhitepaperModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">الورقة البيضاء الرسمية | دليكوم</h3>
+        <button class="modal-close" onclick="closeWhitepaperModal()">×</button>
+      </div>
+      <div style="font-size: 14px; color: var(--text-blue-light); line-height: 1.7; max-height: 55vh; overflow-y: auto; padding-left: 6px;">
+        <p style="margin-bottom: 12px; font-weight: 700; color: #ffffff;">رؤية منظومة دليكوم:</p>
+        <p style="margin-bottom: 12px;">
+          دمج الشات المشفر فائق الأمان، المحفظة اللامركزية، واقتصاد المحتوى الرقمي المباشر بدون وسيط.
+        </p>
+        <ul style="padding-right: 18px; margin-bottom: 14px;">
+          <li style="margin-bottom: 6px;"><strong style="color: #00f0ff;">1. تشفير تام من طرف لطرف:</strong> سرية مطلقة للمحادثات الشخصية والتجارية.</li>
+          <li style="margin-bottom: 6px;"><strong style="color: #00f0ff;">2. محفظتك ملكك وحدك:</strong> السيطرة الكاملة على أموالك وأصولك الرقمية.</li>
+          <li style="margin-bottom: 6px;"><strong style="color: #00f0ff;">3. مكافآت وعائد حقيقي:</strong> خطط دخل وعمولات فورية تمنحك عوائد مستمرة.</li>
+        </ul>
+        <p style="margin-bottom: 12px;">
+          بنية تحتية متطورة بشراكة تقنية مع شركة Zeeve العالمية.
+        </p>
+      </div>
+      <div style="margin-top: 20px; display: flex; gap: 10px;">
+        <button class="btn btn-cyber-primary" style="min-height: 44px; font-size: 14px;" onclick="showToast('جاري تجهيز تحميل ملف PDF للورقة البيضاء...')">
+          تحميل ملف PDF
+        </button>
+        <button class="btn btn-cyber-outline" style="min-height: 44px; font-size: 14px; width: auto;" onclick="closeWhitepaperModal()">
+          إغلاق
+        </button>
+      </div>
+    </div>
   </div>
-</div></section>
-<section id="md4" class="view-section"><div class="card-box">
-  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
-  <span class="tag">MD4</span>
-  <h2>📖 MD4: Book Creator</h2>
-  <p class="about-p">أداة مستقلة لتنسيق الكتب بمقاس A5 وتصديرها PDF.</p>
-  <div class="actions"><a class="share-btn big" href="md4-book-creator.html">افتح الأداة</a>
-  <a class="share-btn big alt" href="join-md7.html" data-contact="partnership" data-proj="MD4 - 📖 MD4: Book Creator">🤝 طلب شراكة</a></div>
-</div></section>
-<section id="md5" class="view-section"><div class="card-box">
-  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
-  <span class="tag">MD5</span>
-  <h2>🎬 MD5: تعليم وصحة</h2>
-  <p class="about-p">مشروع الأعمال والتعليم والصحة ضمن منظومة MD7 Group.</p>
-  <div class="val" style="margin:14px 0"><b>الحالة</b><span>قيد الإعداد — تُضاف تفاصيل هذا المشروع وخدماته هنا فور اعتمادها.</span></div>
-  
-  <div class="actions">
-    <a class="share-btn big" href="join-md7.html" data-contact="partnership" data-proj="MD5 - تعليم وصحة">🤝 طلب شراكة</a>
-    <a class="share-btn big alt" href="join-md7.html" data-contact="contract" data-proj="MD5 - تعليم وصحة">📄 طلب عقد</a>
+
+  <!-- 4. نافذة إنشاء الحساب في دقيقة -->
+  <div class="modal-overlay" id="accountSimModal" onclick="closeAccountSimModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">إنشاء حساب في دقيقة واحدة</h3>
+        <button class="modal-close" onclick="closeAccountSimModal()">×</button>
+      </div>
+      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 14px;">
+        خطوات بسيطة جداً لا تحتاج سوى 60 ثانية للبدء والاستفادة من نظام الرتب والمكافآت:
+      </p>
+      <div style="background: rgba(3, 7, 18, 0.95); padding: 14px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25); margin-bottom: 16px;">
+        <div style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 4px;">الخطوة 1: أدخل اسم المستخدم</div>
+        <div style="font-size: 13px; color: var(--text-dim); margin-bottom: 10px;">سيكون هذا معرفك الدائم في المنظومة.</div>
+        <div style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 4px;">الخطوة 2: أنشئ مفتاح أمانك</div>
+        <div style="font-size: 13px; color: var(--text-dim); margin-bottom: 10px;">احفظ مفاتيح المحفظة الخاصة بك في مكان آمن.</div>
+        <div style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 4px;">الخطوة 3: انطلق واكسب</div>
+        <div style="font-size: 13px; color: var(--text-dim);">تواصل مع مجتمعك وافتح قنوات الأرباح والعمولات.</div>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-cyber-primary" style="min-height: 44px; font-size: 14px;" onclick="handleDownload(event, 'android'); closeAccountSimModal();">
+          تحميل التطبيق والبدء
+        </button>
+        <button class="btn btn-cyber-outline" style="min-height: 44px; font-size: 14px; width: auto;" onclick="closeAccountSimModal()">
+          إغلاق
+        </button>
+      </div>
+    </div>
   </div>
-</div></section>
-<section id="md6" class="view-section"><div class="card-box">
-  <button type="button" class="back-btn" data-go="projects">← كل المشاريع</button>
-  <span class="tag">MD6</span>
-  <h2>♻️ MD6: إعادة التدوير من القمامة ليدك</h2>
-  <p class="about-p">مشروع فرز من المصدر واقتصاد تدوير مع فتح باب الشراكة لشركات النظافة والتدوير.</p>
-  <div class="actions"><a class="share-btn big" href="md6-recycling.html">اكتشف المشروع</a>
-  <a class="share-btn big alt" href="join-md7.html" data-contact="partnership" data-proj="MD6 - ♻️ MD6: إعادة التدوير من القمامة ليدك">🤝 طلب شراكة</a></div>
-</div></section>
 
-<footer class="site-footer">
-  <h3>MD7 Group</h3>
-  <p>تأسست في 2026</p>
-  <p>avtarpreins@gmail.com</p>
-</footer>
+  <!-- 5. نافذة إعداد روابط الواتساب -->
+  <div class="modal-overlay" id="settingsModal" onclick="closeSettingsModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">تخصيص روابط الواتساب</h3>
+        <button class="modal-close" onclick="closeSettingsModal()">×</button>
+      </div>
+      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
+        يمكنك تعديل أرقام الواتساب ورسائلها الافتراضية هنا لتتحدث الأزرار فوراً في الرابط بدون أي ظهور للرقم كنص عام في الموقع:
+      </p>
 
-<script>
-  function switchTab(tabId) {
-    document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    document.querySelectorAll('.site-nav button').forEach(b => b.classList.toggle('on', b.getAttribute('data-go') === tabId));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-  document.addEventListener('click', function (e) {
-    var t = e.target.closest ? e.target.closest('[data-go]') : null;
-    if (t) switchTab(t.getAttribute('data-go'));
-  });
+      <div style="margin-bottom: 14px;">
+        <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: #fff;">رقم هاتف يارا (مع مفتاح الدولة بدون +):</label>
+        <input type="text" id="settingYaraPhone" placeholder="مثال: 201000000000" style="width: 100%; padding: 10px 14px; border-radius: 8px; background: #030712; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; font-family: monospace; direction: ltr; text-align: left;">
+      </div>
 
-  // أزرار الشراكة/العقد: واتساب صاحب المشروع إن ضُبط الرقم، وإلا تعمل صفحة join-md7.html كما كانت
-  document.addEventListener('click', function (e) {
-    var t = e.target.closest ? e.target.closest('[data-contact]') : null;
-    if (!t || !/^\d{8,15}$/.test(MD7_WA_NUMBER)) return;
-    e.preventDefault();
-    var kind = t.getAttribute('data-contact') === 'contract' ? 'عقد' : 'شراكة', proj = t.getAttribute('data-proj');
-    var msg = 'طلب ' + kind + ' - MD7 Group' + (proj ? ' - ' + proj : '') + ' - الصفحة: ' + window.location.href;
-    var url = 'https://wa.me/' + MD7_WA_NUMBER + '?text=' + encodeURIComponent(msg);
-    var w = window.open(url, '_blank');
-    if (w) { try { w.opener = null; } catch (x) {} } else { window.location.href = url; }
-  });
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: #fff;">رقم هاتف المطور (مع مفتاح الدولة بدون +):</label>
+        <input type="text" id="settingDevPhone" placeholder="مثال: 201111111111" style="width: 100%; padding: 10px 14px; border-radius: 8px; background: #030712; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; font-family: monospace; direction: ltr; text-align: left;">
+      </div>
 
-  // نافذة تعريف MD
-  (function () {
-    var m = document.getElementById('mdModal'), btn = document.getElementById('mdBtn'), last = null;
-    function open() { last = document.activeElement; m.classList.add('open'); document.getElementById('mdClose').focus(); }
-    function close() { m.classList.remove('open'); if (last && last.focus) last.focus(); }
-    btn.addEventListener('click', open);
-    document.getElementById('mdClose').addEventListener('click', close);
-    m.addEventListener('click', function (e) { if (e.target === m) close(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && m.classList.contains('open')) close(); });
-  })();
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-cyber-primary" style="min-height: 44px; font-size: 14px;" onclick="saveCustomWhatsAppSettings()">
+          حفظ وتطبيق فوراً
+        </button>
+        <button class="btn btn-cyber-outline" style="min-height: 44px; font-size: 14px; width: auto;" onclick="closeSettingsModal()">
+          إلغاء
+        </button>
+      </div>
+    </div>
+  </div>
 
-  // واجهة مصر الافتتاحية: تظهر مرة لكل جلسة، والضغط على الخريطة يفتح "من نحن؟"
-  (function () {
-    var intro = document.getElementById('intro');
-    var seen = false;
-    try { seen = sessionStorage.getItem('md7_intro') === '1'; } catch (e) {}
-    var h = (location.hash || '').replace('#', '');
-    function done(go) {
-      intro.classList.add('gone');
-      try { sessionStorage.setItem('md7_intro', '1'); } catch (e) {}
-      if (go) switchTab(go);
-    }
-    if (seen || h) { intro.classList.add('gone'); if (h && document.getElementById(h) && document.getElementById(h).classList.contains('view-section')) switchTab(h); }
-    document.getElementById('egyptBtn').addEventListener('click', function () { done('about'); });
-    document.getElementById('introSkip').addEventListener('click', function () { done(null); });
-  })();
+  <!-- Toast -->
+  <div class="toast" id="toastBox">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+    <span id="toastMsg">تمت العملية بنجاح</span>
+  </div>
 
-  // رقم واتساب الدولي (أرقام فقط بدون + أو أصفار، مثال: 20xxxxxxxxxx). اتركه فارغًا إلى أن تضع رقمك أنت.
-  // وهو فارغ لا يُفتح واتساب: تُنسخ الرسالة ويُعرض رابط بريد بديل.
-  const MD7_WA_NUMBER = '';
-  const MD7_EMAIL = 'avtarpreins@gmail.com';
+  <!-- ====================================================================
+       JavaScript المدمج
+       ==================================================================== -->
+  <script>
+    const CONFIG = {
+      yaraPhone: localStorage.getItem('delycom_yara_phone') || '201000000000',
+      yaraMessage: 'مرحباً يارا، أنا مهتم بتطبيق دليكوم وأريد الاستفسار والتسجيل.',
 
-  // الوقت الحالي بتوقيت القاهرة (يتعامل مع التوقيت الصيفي تلقائيًا)، وإن لم يتوفر يُستخدم وقت الجهاز
-  function cairoClock() {
-    try {
-      const parts = new Intl.DateTimeFormat('en-GB', {
-        timeZone: 'Africa/Cairo', hourCycle: 'h23', hour: 'numeric', minute: 'numeric', second: 'numeric'
-      }).formatToParts(new Date());
-      const get = t => parseInt(parts.find(p => p.type === t).value, 10);
-      return { h: get('hour'), m: get('minute'), s: get('second') };
-    } catch (e) {
-      const d = new Date();
-      return { h: d.getHours(), m: d.getMinutes(), s: d.getSeconds() };
-    }
-  }
+      devPhone: localStorage.getItem('delycom_dev_phone') || '201111111111',
+      devMessage: 'مرحباً، أود التواصل مع مطور دليكوم بخصوص المنصة.',
 
-  // عمر القمر بالأيام منذ آخر محاق (تقريبي، من دورة القمر الاقترانية 29.53 يومًا)
-  const SYNODIC = 29.530588853;
-  function moonAgeDays(d) {
-    const epoch = Date.UTC(2000, 0, 6, 18, 14); // محاق معروف
-    const age = ((d.getTime() - epoch) / 86400000) % SYNODIC;
-    return age < 0 ? age + SYNODIC : age;
-  }
-  // شكل الجزء المضيء: يبدأ هلالًا، ثم نصفًا، ثم بدرًا، ثم يتناقص (مضيء من اليمين أثناء التزايد)
-  function moonShape(age) {
-    const R = 50, f = age / SYNODIC, k = Math.cos(2 * Math.PI * f), rx = Math.abs(k) * R;
-    return {
-      d: 'M0,' + (-R) + ' A' + R + ',' + R + ' 0 0 1 0,' + R + ' A' + rx.toFixed(2) + ',' + R + ' 0 0 ' + (k > 0 ? 0 : 1) + ' 0,' + (-R) + ' Z',
-      waning: f > 0.5,
-      illum: (1 - k) / 2
+      telegramUrl: 'https://t.me/delycom_official',
+      xUrl: 'https://x.com/delycom_app',
+      zeeveUrl: 'https://www.zeeve.io'
     };
-  }
 
-  // نهار (وهج شمس) / ليل (قمر بطوره الحالي) بتوقيت القاهرة
-  function updateSolarNode() {
-    const t = cairoClock();
-    const isDay = t.h >= 6 && t.h < 18;
-    const node = document.getElementById('center-node');
-    document.documentElement.setAttribute('data-mode', isDay ? 'day' : 'night');
-    node.className = isDay ? 'center-sun-moon sun-mode' : 'center-sun-moon moon-mode';
-    const moon = moonShape(moonAgeDays(new Date()));
-    const lit = document.getElementById('moon-lit');
-    lit.setAttribute('d', moon.d);
-    lit.setAttribute('transform', moon.waning ? 'scale(-1,1)' : '');
-    // وهج القمر يقوى كلما اكتمل
-    node.style.boxShadow = isDay ? '' :
-      '0 0 ' + Math.round(14 + moon.illum * 46) + 'px ' + Math.round(2 + moon.illum * 8) + 'px rgba(190,220,255,' + (0.18 + 0.5 * moon.illum).toFixed(2) + ')';
-    node.setAttribute('data-moon-illum', moon.illum.toFixed(2));
-  }
-
-  function syncOrbitToCairo() {
-    const t = cairoClock();
-    const sec = t.h * 3600 + t.m * 60 + t.s;
-    const ring = document.querySelector('.orbit-ring');
-    if (ring) ring.style.animationDelay = '-' + (sec % 35) + 's';
-    document.querySelectorAll('.planet').forEach((p, i) => {
-      p.style.animationDelay = '-' + ((sec + i) % 6) + 's';
-    });
-  }
-
-  function addChatLine(logs, who, text, color) {
-    const p = document.createElement('p');
-    p.style.color = color;
-    const b = document.createElement('b');
-    b.textContent = who;
-    p.appendChild(b);
-    p.appendChild(document.createTextNode(' ' + text));
-    logs.appendChild(p);
-    return p;
-  }
-
-  // يحوّل سؤال العميل إلى واتساب المؤسس عبر اليوزرنيم فقط
-  function sendChatMessage() {
-    const input = document.getElementById('chatInput');
-    const logs = document.getElementById('chatLogs');
-    const val = input.value.trim();
-    if (!val) return;
-    const msg = 'مرحبا استاذ محمد - سؤال من منصة MD7: ' + val + ' - الصفحة: ' + window.location.href;
-    addChatLine(logs, 'أنت:', val, 'var(--gold)');
-    if (/^\d{8,15}$/.test(MD7_WA_NUMBER)) {
-      const url = 'https://wa.me/' + MD7_WA_NUMBER + '?text=' + encodeURIComponent(msg);
-      const w = window.open(url, '_blank');
-      if (w) {
-        w.opener = null;
-        addChatLine(logs, 'MD7:', 'تم فتح واتساب بالرسالة جاهزة. اضغط إرسال داخل واتساب لإتمام الإرسال.', '#fff');
-      } else {
-        const p = addChatLine(logs, 'MD7:', 'تعذّر فتح واتساب تلقائيًا. ', '#fff');
-        const a = document.createElement('a');
-        a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'اضغط هنا لفتح واتساب';
-        a.style.color = 'var(--gold)';
-        p.appendChild(a);
-      }
-    } else {
-      // لا يوجد رقم واتساب مضبوط: لم يُرسل شيء. ننسخ الرسالة ونعرض بريدًا بديلًا.
-      try { if (navigator.clipboard) navigator.clipboard.writeText(msg).catch(function () {}); } catch (e) {}
-      const p = addChatLine(logs, 'MD7:', 'لم يتم إرسال سؤالك بعد (واتساب غير مفعّل حاليًا). نسخنا الرسالة، ويمكنك إرسالها بالبريد: ', '#fff');
-      const a = document.createElement('a');
-      a.href = 'mailto:' + MD7_EMAIL + '?subject=' + encodeURIComponent('سؤال من منصة MD7') + '&body=' + encodeURIComponent(msg);
-      a.textContent = 'إرسال بالبريد';
-      a.style.color = 'var(--gold)';
-      p.appendChild(a);
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
     }
-    logs.scrollTop = logs.scrollHeight;
-    input.value = '';
-  }
 
-  document.getElementById('chatInput').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); sendChatMessage(); }
-  });
+    /**
+     * السكرول وتغيير المرحلة النشطة تلقائياً مع النبض الحي الهادئ
+     */
+    let currentActiveStage = 1;
 
-  window.onload = function() {
-    updateSolarNode();
-    syncOrbitToCairo();
-    setInterval(updateSolarNode, 60000);
-  };
-</script>
+    function setActiveStage(stageNumber) {
+      currentActiveStage = stageNumber;
 
-</body>
-</html>
+      const stages = [1, 2, 3];
+      stages.forEach(num => {
+        const stageEl = document.getElementById(`stage-${num}`);
+        if (!stageEl) return;
+
+        if (num === stageNumber) {
+          stageEl.classList.remove('is-dimmed');
+          stageEl.classList.add('is-active');
+        } else {
+          stageEl.classList.remove('is-active');
+          stageEl.classList.add('is-dimmed');
+        }
+      });
+    }
+
+    function setupScrollObserver() {
+      const options = {
+        root: null,
+        rootMargin: '-15% 0px -20% 0px',
+        threshold: [0.25, 0.5, 0.75]
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const stageNum = parseInt(entry.target.getAttribute('data-stage'), 10);
+            if (stageNum && stageNum !== currentActiveStage) {
+              setActiveStage(stageNum);
+            }
+          }
+        });
+      }, options);
+
+      [1, 2, 3].forEach(num => {
+        const el = document.getElementById(`stage-${num}`);
+        if (el) observer.observe(el);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setupScrollObserver();
+      setActiveStage(1);
+    });
+
+    /**
+     * الواتساب
+     */
+    function openYaraWhatsApp(e) {
+      if (e) e.preventDefault();
+      const phone = CONFIG.yaraPhone.replace(/[^0-9]/g, '');
+      const encodedMsg = encodeURIComponent(CONFIG.yaraMessage);
+      const url = `https://wa.me/${phone}?text=${encodedMsg}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    function openDevWhatsApp(e) {
+      if (e) e.preventDefault();
+      const phone = CONFIG.devPhone.replace(/[^0-9]/g, '');
+      const encodedMsg = encodeURIComponent(CONFIG.devMessage);
+      const url = `https://wa.me/${phone}?text=${encodedMsg}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    function handleDownload(e, os) {
+      if (e) e.preventDefault();
+      const modal = document.getElementById('downloadModal');
+      const title = document.getElementById('downloadModalTitle');
+      const desc = document.getElementById('downloadModalDesc');
+      const btnContainer = document.getElementById('downloadModalButtons');
+
+      if (os === 'android') {
+        title.textContent = 'تحميل تطبيق دليكوم لأندرويد';
+        desc.textContent = 'اختر التثبيت المباشر من Google Play أو تنزيل ملف APK الرسمي:';
+        btnContainer.innerHTML = `
+          <a href="https://play.google.com/store/apps/details?id=com.delycom.app" target="_blank" rel="noopener noreferrer" class="btn btn-cyber-primary" style="min-height: 48px; font-size: 15px;">
+            <span>فتح في متجر Google Play</span>
+          </a>
+          <button class="btn btn-cyber-outline" style="min-height: 48px; font-size: 14px;" onclick="simulateApkDownload()">
+            <span>تحميل ملف APK المباشر (V 2.4.0)</span>
+          </button>
+        `;
+      } else {
+        title.textContent = 'تحميل تطبيق دليكوم لآيفون (iOS)';
+        desc.textContent = 'تطبيق دليكوم متاح لهواتف iPhone وأجهزة iPad:';
+        btnContainer.innerHTML = `
+          <a href="https://apps.apple.com/app/delycom/id6448921021" target="_blank" rel="noopener noreferrer" class="btn btn-cyber-primary" style="min-height: 48px; font-size: 15px;">
+            <span>فتح في Apple App Store</span>
+          </a>
+          <button class="btn btn-cyber-outline" style="min-height: 48px; font-size: 14px;" onclick="openTestFlightInfo()">
+            <span>نسخة التجربة المبكرة (TestFlight)</span>
+          </button>
+        `;
+      }
+
+      modal.classList.add('active');
+    }
+
+    function closeDownloadModal(e) {
+      if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close')) return;
+      document.getElementById('downloadModal').classList.remove('active');
+    }
+
+    function simulateApkDownload() {
+      showToast('جاري بدء تنزيل ملف دليكوم Delycom.apk...');
+      setTimeout(() => {
+        closeDownloadModal();
+      }, 1500);
+    }
+
+    function openTestFlightInfo() {
+      showToast('جاري توجيهك لبرنامج TestFlight...');
+      window.open('https://testflight.apple.com/join/delycom', '_blank', 'noopener,noreferrer');
+      closeDownloadModal();
+    }
+
+    function copyCommunityLink() {
+      const link = CONFIG.telegramUrl;
+      navigator.clipboard.writeText(link).then(() => {
+        showToast('تم نسخ رابط مجتمع دليكوم بنجاح!');
+      }).catch(() => {
+        showToast('رابط المجتمع: ' + link);
+      });
+    }
+
+    function handleTrustClick(e, type) {
+      if (e) e.preventDefault();
+      if (type === 'whitepaper') {
+        document.getElementById('whitepaperModal').classList.add('active');
+      }
+    }
+
+    function closeWhitepaperModal(e) {
+      if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close')) return;
+      document.getElementById('whitepaperModal').classList.remove('active');
+    }
+
+    function openPhotoModal(imgSrc, title) {
+      const modal = document.getElementById('photoModal');
+      const img = document.getElementById('photoModalImg');
+      const titleEl = document.getElementById('photoModalTitle');
+
+      img.src = imgSrc;
+      titleEl.textContent = title || 'معاينة الصورة بدقة كاملة';
+      modal.classList.add('active');
+    }
+
+    function closePhotoModal(e) {
+      if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close')) return;
+      document.getElementById('photoModal').classList.remove('active');
+    }
+
+    function openSimulatedAccountModal() {
+      document.getElementById('accountSimModal').classList.add('active');
+    }
+
+    function closeAccountSimModal(e) {
+      if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close')) return;
+      document.getElementById('accountSimModal').classList.remove('active');
+    }
+
+    function openSettingsModal() {
+      document.getElementById('settingYaraPhone').value = CONFIG.yaraPhone;
+      document.getElementById('settingDevPhone').value = CONFIG.devPhone;
+      document.getElementById('settingsModal').classList.add('active');
+    }
+
+    function closeSettingsModal(e) {
+      if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close')) return;
+      document.getElementById('settingsModal').classList.remove('active');
+    }
+
+    function saveCustomWhatsAppSettings() {
+      const yPhone = document.getElementById('settingYaraPhone').value.trim();
+      const dPhone = document.getElementById('settingDevPhone').value.trim();
+
+      if (yPhone) {
+        CONFIG.yaraPhone = yPhone;
+        localStorage.setItem('delycom_yara_phone', yPhone);
+      }
+      if (dPhone) {
+        CONFIG.devPhone = dPhone;
+        localStorage.setItem('delycom_dev_phone', dPhone);
+      }
+
+      closeSettingsModal();
+      showToast('تم حفظ أرقام الواتساب بنجاح!');
+    }
+
+    function downloadCurrentHtmlFile() {
+      const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('تم تحميل ملف index.html المستقل بالكامل!');
+    }
+
+    function copyFullHtmlCode() {
+      const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      navigator.clipboard.writeText(htmlContent).then(() => {
+        showToast('تم نسخ كود index.html بالكامل إلى الحافظة!');
+      }).catch(() => {
+        showToast('تعذر النسخ التلقائي، يمكنك استخدام زر التحميل.');
+      });
+    }
+
+    let toastTimeout = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      const text = document.getElementById('toastMsg');
+      text.textContent = msg;
+
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+  </script>
+
+
+</body></html>
